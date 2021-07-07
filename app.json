@@ -128,9 +128,9 @@
       "required": false 
     }
   },
-  "addons": [{
+  "addons": {
     "plan": "heroku-postgresql",
     "options": {
       "version": "10"
     }
-  }]
+  }
