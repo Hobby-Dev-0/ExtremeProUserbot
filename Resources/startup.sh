@@ -3,7 +3,7 @@ echo "
  
 ExtremePro Userbot Setting Up
 "    
-python3 ../setup/updater.py ../requirements.txt ../start-requirements.txt
+python3 -m pip3 install Extre
 python3 -m Extre
 
 echo "
