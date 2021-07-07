@@ -1,7 +1,46 @@
-FROM python:3.9.2
-RUN pip3 install --upgrade Extre
-RUN chmod +x /usr/local/bin/*
-RUN wget https://raw.githubusercontent.com/amanpandey7647/ExtremeProUserbot/master/Resources/deploy.sh
-RUN sh deploy.sh
-WORKDIR /root/amanpandey7647/
-CMD ["bash", "Resources/startup.sh"]
+# MADE BY AMAN PANDY DONT KANG OR GET READY TO (You Can Understand)
+FROM alpine:edge
+RUN sed -e 's;^#http\(.*\)/v3.9/community;http\1/v3.9/community;g' -i /etc/apk/repositories
+RUN apk add --no-cache --update \
+    git \
+    bash \
+    libffi-dev \
+    openssl-dev \
+    bzip2-dev \
+    zlib-dev \
+    readline-dev \
+    sqlite-dev \
+    build-base \
+    python3
+RUN python3 -m ensurepip \
+    && pip3 install --upgrade pip setuptools \
+    && rm -r /usr/lib/python*/ensurepip && \
+    if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
+    if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
+    rm -r /root/.cache
+RUN apk --no-cache add build-base
+RUN apk add --no-cache \
+    py-pillow py-requests \
+    py-sqlalchemy py-psycopg2 git py-lxml \
+    libxslt-dev py-pip libxml2 libxml2-dev \
+    libpq postgresql-dev \
+    postgresql build-base linux-headers \
+    jpeg-dev curl neofetch git sudo \
+    gcc python-dev python3-dev \
+    postgresql postgresql-client php-pgsql \
+    musl postgresql-dev py-tz py3-aiohttp
+RUN apk add --no-cache sqlite figlet libwebp-dev
+RUN git clone https://github.com/psycopg/psycopg2 psycopg2 \
+&& cd psycopg2 \
+&& python setup.py install
+RUN  sed -e 's;^# \(%wheel.*NOPASSWD.*\);\1;g' -i /etc/sudoers
+RUN adduser userbot --disabled-password --home /home/userbot
+RUN adduser userbot wheel
+USER userbot
+RUN mkdir /home/userbot/userbot
+RUN git clone -b master https://github.com/amanpandey7647/ExtremeProUserbot /root/amanpandey7647
+WORKDIR /root/amanpandey7647
+COPY ./root/amanpandey7647
+RUN sudo pip3 install -U pip
+RUN sudo pip3 install -r requirements.txt
+CMD ["bash","Resources/startup.sh"]
