@@ -37,10 +37,10 @@ RUN  sed -e 's;^# \(%wheel.*NOPASSWD.*\);\1;g' -i /etc/sudoers
 RUN adduser userbot --disabled-password --home /home/userbot
 RUN adduser userbot wheel
 USER userbot
-RUN mkdir /home/userbot/userbot
+RUN mkdir /root/amanpandey7647
 RUN git clone -b master https://github.com/amanpandey7647/ExtremeProUserbot /root/amanpandey7647
 WORKDIR /root/amanpandey7647
-COPY ./root/amanpandey7647
+COPY ./Resources/startup.sh
 RUN sudo pip3 install -U pip
 RUN sudo pip3 install -r requirements.txt
 CMD ["bash","Resources/startup.sh"]
