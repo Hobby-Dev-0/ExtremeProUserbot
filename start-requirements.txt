@@ -1,7 +1,9 @@
-Extre
+Extre==0.20
 pip
 pymongo
 apscheduler
 configparser
 ast
 covid
+redis
+dill
