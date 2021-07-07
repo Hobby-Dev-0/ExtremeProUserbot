@@ -133,4 +133,10 @@
     "options": {
       "version": "10"
     }
-  }]
+  }],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
