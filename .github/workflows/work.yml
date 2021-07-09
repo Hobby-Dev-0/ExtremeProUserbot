@@ -18,7 +18,7 @@ jobs:
 
         with:
 
-          find: "hellcmd"
+          find: "hell_cmd"
 
           replace: "admin_cmd"
 
