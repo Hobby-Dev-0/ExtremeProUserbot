@@ -18,9 +18,9 @@ jobs:
 
         with:
 
-          find: "bot.on"
+          find: "Hêllẞø†"
 
-          replace: "Andencento.on"
+          replace: "ᴀɴᴅᴇɴᴄᴇɴᴛᴏ"
 
       - name: Create Pull Request
 
