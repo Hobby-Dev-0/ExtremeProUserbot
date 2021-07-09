@@ -10,7 +10,7 @@ from . import *
 SUDO_WALA = Config.SUDO_USERS
 lg_id = Config.LOGGER_ID
 
-@bot.on(hell_cmd(pattern="spam (.*)"))
+@bot.on(admin_cmd(pattern="spam (.*)"))
 @bot.on(sudo_cmd(pattern="spam (.*)", allow_sudo=True))
 async def spammer(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
@@ -24,7 +24,7 @@ async def spammer(e):
         )
 
 
-@bot.on(hell_cmd(pattern="bigspam"))
+@bot.on(admin_cmd(pattern="bigspam"))
 @bot.on(sudo_cmd(pattern="bigspam", allow_sudo=True))
 async def bigspam(hell):
     if not hell.text[0].isalpha() and hell.text[0] not in ("/", "#", "@", "!"):
@@ -39,7 +39,7 @@ async def bigspam(hell):
         )
 
 
-@bot.on(hell_cmd("dspam (.*)"))
+@bot.on(admin_cmd("dspam (.*)"))
 @bot.on(sudo_cmd(pattern="dspam (.*)", allow_sudo=True))
 async def spammer(e):
     if e.fwd_from:
@@ -54,7 +54,7 @@ async def spammer(e):
         await asyncio.sleep(spamDelay)
 
 
-@bot.on(hell_cmd(pattern="mspam (.*)"))
+@bot.on(admin_cmd(pattern="mspam (.*)"))
 @bot.on(sudo_cmd(pattern="mspam (.*)", allow_sudo=True))
 async def tiny_pic_spam(e):
     sender = await e.get_sender()

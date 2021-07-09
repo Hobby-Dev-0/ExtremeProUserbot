@@ -17,7 +17,7 @@ if not os.path.isdir(path):
     os.makedirs(path)
 
 
-@bot.on(hell_cmd(pattern="mmf ?(.*)", outgoing=True))
+@bot.on(admin_cmd(pattern="mmf ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="mmf ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -42,7 +42,7 @@ async def _(event):
     os.remove(webp_file)
 
 
-@bot.on(hell_cmd(pattern="mms ?(.*)", outgoing=True))
+@bot.on(admin_cmd(pattern="mms ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="mms ?(.*)", allow_sudo=True))
 async def sed(hellboy):
     if hellboy.fwd_from:
@@ -66,7 +66,7 @@ async def sed(hellboy):
     os.remove("kraken.webp")
     os.remove(photo)
     
-@bot.on(hell_cmd(pattern="doge(?: |$)(.*)", outgoing=True))
+@bot.on(admin_cmd(pattern="doge(?: |$)(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="doge(?: |$)(.*)", allow_sudo=True))
 async def nope(kraken):
     hell = kraken.pattern_match.group(1)

@@ -22,7 +22,7 @@ def progress(current, total):
 
 DOGBIN_URL = "https://del.dog/"
 
-@bot.on(hell_cmd(pattern="paste ?(.*)", outgoing=True))
+@bot.on(admin_cmd(pattern="paste ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="paste ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -68,7 +68,7 @@ async def _(event):
         await eor(event, "**📍 Pasted to Dogbin :** [HERE]({}) **in**  `{} seconds` .".format(url, ms))
 
 
-@bot.on(hell_cmd(pattern="getpaste(?: |$)(.*)", outgoing=True))
+@bot.on(admin_cmd(pattern="getpaste(?: |$)(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="getpaste(?: |$)(.*)", allow_sudo=True))
 async def get_dogbin_content(dog_url):
     textx = await dog_url.get_reply_message()
@@ -112,7 +112,7 @@ async def get_dogbin_content(dog_url):
 
     await eor(dog_url, reply_text)
 
-@bot.on(hell_cmd(pattern="neko ?(.*)", outgoing=True))
+@bot.on(admin_cmd(pattern="neko ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="neko ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:

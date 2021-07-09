@@ -4,7 +4,7 @@ from telethon.utils import get_display_name
 from . import *
 
 
-@bot.on(hell_cmd(pattern=r"tag(all|bots|admins)?(.*)"))
+@bot.on(admin_cmd(pattern=r"tag(all|bots|admins)?(.*)"))
 @bot.on(sudo_cmd(pattern=r"tag(all|bots|admins)?(.*)", allow_sudo=True))
 async def tag(event):
     text = event.text

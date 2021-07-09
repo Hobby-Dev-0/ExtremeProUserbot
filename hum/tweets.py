@@ -1,7 +1,7 @@
 from . import *
 
 
-@bot.on(hell_cmd(pattern=r"tweet(?: |$)(.*)"))
+@bot.on(admin_cmd(pattern=r"tweet(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="tweet(?: |$)(.*)", allow_sudo=True))
 async def nope(kraken):
     hell = kraken.pattern_match.group(1)
@@ -22,7 +22,7 @@ async def nope(kraken):
     await kraken.delete()
 
 
-@bot.on(hell_cmd(pattern=r"trump(?: |$)(.*)"))
+@bot.on(admin_cmd(pattern=r"trump(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern=r"trump(?: |$)(.*)", allow_sudo=True))
 async def nekobot(event):
     text = event.pattern_match.group(1)
@@ -55,7 +55,7 @@ async def nekobot(event):
     await event.delete()
 
 
-@bot.on(hell_cmd(pattern=r"modi(?: |$)(.*)"))
+@bot.on(admin_cmd(pattern=r"modi(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern=r"modi(?: |$)(.*)", allow_sudo=True))
 async def nekobot(event):
     text = event.pattern_match.group(1)
@@ -88,7 +88,7 @@ async def nekobot(event):
     await event.delete()
 
 
-@bot.on(hell_cmd(pattern=r"mia(?: |$)(.*)"))
+@bot.on(admin_cmd(pattern=r"mia(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern=r"mia(?: |$)(.*)", allow_sudo=True))
 async def nekobot(event):
     text = event.pattern_match.group(1)
@@ -121,7 +121,7 @@ async def nekobot(event):
     await event.delete()
 
 
-@bot.on(hell_cmd(pattern=r"dani(?: |$)(.*)"))
+@bot.on(admin_cmd(pattern=r"dani(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern=r"dani(?: |$)(.*)", allow_sudo=True))
 async def nekobot(event):
     text = event.pattern_match.group(1)
@@ -155,7 +155,7 @@ async def nekobot(event):
 
 
 # @register(pattern="^.pappu(?: |$)(.*)", outgoing=True)
-@bot.on(hell_cmd(pattern=r"pappu(?: |$)(.*)"))
+@bot.on(admin_cmd(pattern=r"pappu(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern=r"pappu(?: |$)(.*)", allow_sudo=True))
 async def nekobot(event):
     text = event.pattern_match.group(1)
@@ -188,7 +188,7 @@ async def nekobot(event):
     await event.delete()
 
 
-@bot.on(hell_cmd(pattern=r"sunny(?: |$)(.*)"))
+@bot.on(admin_cmd(pattern=r"sunny(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern=r"sunny(?: |$)(.*)", allow_sudo=True))
 async def nekobot(event):
     text = event.pattern_match.group(1)
@@ -221,7 +221,7 @@ async def nekobot(event):
     await event.delete()
 
 
-@bot.on(hell_cmd(pattern=r"johhny(?: |$)(.*)"))
+@bot.on(admin_cmd(pattern=r"johhny(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern=r"johhny(?: |$)(.*)", allow_sudo=True))
 async def nekobot(event):
     text = event.pattern_match.group(1)
@@ -254,7 +254,7 @@ async def nekobot(event):
     await event.delete()
 
 
-@bot.on(hell_cmd(pattern=r"gandhi(?: |$)(.*)"))
+@bot.on(admin_cmd(pattern=r"gandhi(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern=r"gandhi(?: |$)(.*)", allow_sudo=True))
 async def nekobot(event):
     text = event.pattern_match.group(1)
@@ -287,7 +287,7 @@ async def nekobot(event):
     await event.delete()  # bancho kitni baar bolu no offence
 
 
-@bot.on(hell_cmd(pattern=r"cmm(?: |$)(.*)"))
+@bot.on(admin_cmd(pattern=r"cmm(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern=r"cmm(?: |$)(.*)", allow_sudo=True))
 async def nekobot(event):
     text = event.pattern_match.group(1)
@@ -321,7 +321,7 @@ async def nekobot(event):
 
 
 
-@bot.on(hell_cmd(pattern=r"kanna(?: |$)(.*)"))
+@bot.on(admin_cmd(pattern=r"kanna(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern=r"kanna(?: |$)(.*)", allow_sudo=True))
 async def nekobot(event):
     text = event.pattern_match.group(1)

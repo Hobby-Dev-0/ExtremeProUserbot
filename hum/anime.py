@@ -67,7 +67,7 @@ async def formatJSON(outData):
         return msg
 
 
-@bot.on(hell_cmd(pattern="anilist (.*)"))
+@bot.on(admin_cmd(pattern="anilist (.*)"))
 @bot.on(sudo_cmd(pattern="anilist (.*)", allow_sudo=True))
 async def anilist(event):
     if event.fwd_from:
@@ -79,7 +79,7 @@ async def anilist(event):
     await event.edit(msg, link_preview=True)
 
 
-@bot.on(hell_cmd(pattern="anime(?: |$)(.*)"))
+@bot.on(admin_cmd(pattern="anime(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="anime(?: |$)(.*)", allow_sudo=True))
 async def nope(hel_):
     hell = hel_.pattern_match.group(1)
@@ -102,7 +102,7 @@ async def nope(hel_):
     await hel_.delete()
     
     
-@bot.on(hell_cmd(pattern="manga(?: |$)(.*)"))
+@bot.on(admin_cmd(pattern="manga(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="manga(?: |$)(.*)", allow_sudo=True))
 async def nope(hel_):
     hell = hel_.pattern_match.group(1)
@@ -125,7 +125,7 @@ async def nope(hel_):
     await hel_.delete()
     
 
-@bot.on(hell_cmd(pattern="character(?: |$)(.*)"))
+@bot.on(admin_cmd(pattern="character(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="character(?: |$)(.*)", allow_sudo=True))
 async def nope(hel_):
     hell = hel_.pattern_match.group(1)
