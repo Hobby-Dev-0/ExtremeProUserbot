@@ -110,7 +110,7 @@ async def _(event):
     await event.edit("```Processing ...```")
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
-    process = await asyncio.create_subprocess_shell(
+    process = await asyncio.create_subprocess_suser(
         cobra, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE)
     stdout, stderr = await process.communicate()
     await event.edit("```Uploading...```")

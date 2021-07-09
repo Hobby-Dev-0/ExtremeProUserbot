@@ -26,16 +26,16 @@ async def spammer(e):
 
 @bot.on(admin_cmd(pattern="bigspam"))
 @bot.on(sudo_cmd(pattern="bigspam", allow_sudo=True))
-async def bigspam(hell):
-    if not hell.text[0].isalpha() and hell.text[0] not in ("/", "#", "@", "!"):
-        hell_msg = hell.text
-        userbot_count = int(hell_msg[9:13])
-        hell_spam = str(hell.text[13:])
+async def bigspam(user):
+    if not user.text[0].isalpha() and user.text[0] not in ("/", "#", "@", "!"):
+        user_msg = user.text
+        userbot_count = int(user_msg[9:13])
+        user_spam = str(user.text[13:])
         for i in range(1, userbot_count):
-            await hell.respond(hell_spam)
-        await hell.delete()
-        await hell.client.send_message(
-                lg_id, f"#BIGSPAM \n\nBigspammed  `{hell_count}`  messages !!"
+            await user.respond(user_spam)
+        await user.delete()
+        await user.client.send_message(
+                lg_id, f"#BIGSPAM \n\nBigspammed  `{user_count}`  messages !!"
         )
 
 

@@ -17,15 +17,15 @@ async def _(event):
     cmd = "".join(event.text.split(maxsplit=1)[1:])
     if not cmd:
         return await eod(event, "`What should i execute?..`")
-    hellevent = await eor(event, "`Executing.....`")
-    process = await asyncio.create_subprocess_shell(
+    userevent = await eor(event, "`Executing.....`")
+    process = await asyncio.create_subprocess_suser(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     stdout, stderr = await process.communicate()
     result = str(stdout.decode().strip()) + str(stderr.decode().strip())
-    helluser = await event.client.get_me()
-    if helluser.username:
-        curruser = helluser.username
+    useruser = await event.client.get_me()
+    if useruser.username:
+        curruser = useruser.username
     else:
         curruser = "userbot"
     uid = os.geteuid()
@@ -48,7 +48,7 @@ async def _(event):
     cmd = "".join(event.text.split(maxsplit=1)[1:])
     if not cmd:
         return await eod(event, "`What should i run ?..`")
-    hellevent = await eor(event, "`Running ...`")
+    userevent = await eor(event, "`Running ...`")
     old_stderr = sys.stderr
     old_stdout = sys.stdout
     redirected_output = sys.stdout = io.StringIO()
@@ -72,7 +72,7 @@ async def _(event):
     else:
         evaluation = "Success"
     final_output = f"•  Eval : \n`{cmd}` \n\n•  Result : \n`{evaluation}` \n"
-    await eor(hellevent, "**Eval Command Executed. Check out LOGGER for result.**")
+    await eor(userevent, "**Eval Command Executed. Check out LOGGER for result.**")
     await event.client.send_message(
         lg_id,
         f"#EVAL \n\nEval command was executed sucessfully. \n\n{final_output}",
@@ -103,7 +103,7 @@ async def _(event):
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
     time.time() + PROCESS_RUN_TIME
-    process = await asyncio.create_subprocess_shell(
+    process = await asyncio.create_subprocess_suser(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     stdout, stderr = await process.communicate()

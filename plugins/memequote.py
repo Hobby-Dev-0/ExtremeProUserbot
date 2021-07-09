@@ -315,8 +315,8 @@ async def Sahih(congrats):
     await congrats.edit(choice(CONGRATULATION))
         
 @borg.on(admin_cmd(pattern=f"qhi$", outgoing=True))
-async def hoi(hello):
-    await hello.edit(choice(HELLOSTR))
+async def hoi(usero):
+    await usero.edit(choice(HELLOSTR))
     
 @borg.on(admin_cmd(pattern=f"gdbye$", outgoing=True))
 async def bhago(bhagobc):

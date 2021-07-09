@@ -11,8 +11,8 @@ from . import *
 @bot.on(admin_cmd(pattern="mev(?: |$)(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="mev(?: |$)(.*)", allow_sudo=True))
 async def nope(kraken):
-    hell = kraken.pattern_match.group(1)
-    if not hell:
+    user = kraken.pattern_match.group(1)
+    if not user:
         if kraken.is_reply:
             (await kraken.get_reply_message()).message
         else:
@@ -20,7 +20,7 @@ async def nope(kraken):
             )
             return
 
-    troll = await bot.inline_query("TrollVoiceBot", f"{(deEmojify(hell))}")
+    troll = await bot.inline_query("TrollVoiceBot", f"{(deEmojify(user))}")
     if troll:
         await kraken.delete()
         hel_ = await troll[0].click(Config.LOGGER_ID)
@@ -37,8 +37,8 @@ async def nope(kraken):
 @bot.on(admin_cmd(pattern="meev(?: |$)(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="meev(?: |$)(.*)", allow_sudo=True))
 async def nope(kraken):
-    hell = kraken.pattern_match.group(1)
-    if not hell:
+    user = kraken.pattern_match.group(1)
+    if not user:
         if kraken.is_reply:
             (await kraken.get_reply_message()).message
         else:
@@ -46,7 +46,7 @@ async def nope(kraken):
             )
             return
 
-    troll = await bot.inline_query("Myinstantsbot", f"{(deEmojify(hell))}")
+    troll = await bot.inline_query("Myinstantsbot", f"{(deEmojify(user))}")
     if troll:
         await kraken.delete()
         hel_ = await troll[0].click(Config.LOGGER_ID)

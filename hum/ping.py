@@ -5,15 +5,15 @@ from . import *
 
 @bot.on(admin_cmd(pattern="ping$"))
 @bot.on(sudo_cmd(pattern="ping$", allow_sudo=True))
-async def pong(hell):
-    if hell.fwd_from:
+async def pong(user):
+    if user.fwd_from:
         return
     start = datetime.datetime.now()
-    event = await eor(hell, "`·.·★ ℘ıŋɠ ★·.·´")
+    event = await eor(user, "`·.·★ ℘ıŋɠ ★·.·´")
     end = datetime.datetime.now()
     ms = (end - start).microseconds / 1000
     await event.edit(
-        f"╰•★★  ℘ơŋɠ ★★•╯\n\n    ⚘  `{ms}`\n    ⚘  __**Oɯɳҽɾ**__ **:**  {hell_mention}"
+        f"╰•★★  ℘ơŋɠ ★★•╯\n\n    ⚘  `{ms}`\n    ⚘  __**Oɯɳҽɾ**__ **:**  {user_mention}"
     )
 
 

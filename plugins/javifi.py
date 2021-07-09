@@ -26,7 +26,7 @@ async def _(event):
           try:
               await conv.send_message("/start")
               response = await conv.get_response()
-              await conv.send_message("/hello")
+              await conv.send_message("/usero")
               audio = await conv.get_response()
               await borg.send_file(event.chat_id, audio, caption="➡️**TO BOSS : **" + naam +"\n`Check This Bot out` [Sensible Userbot](ttps://github.com/spandey112/SensibleUserbot)")
               await event.delete()

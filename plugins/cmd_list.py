@@ -8,7 +8,7 @@ async def install(event):
     if event.fwd_from:
         return
     cmd = "ls userbot/plugins"
-    process = await asyncio.create_subprocess_shell(
+    process = await asyncio.create_subprocess_suser(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     stdout, stderr = await process.communicate()

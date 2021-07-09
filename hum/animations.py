@@ -39,8 +39,8 @@ async def _(event):
     event = await eor(event, "`Deploying...`")
     animation_chars = [
         "**Heroku Connecting To Latest [Github Build](The-HellBot/HellBot)**",
-        f"**Build started by user** {hell_mention}",
-        f"**Deploy** `535a74f0` **by user** **{hell_mention}**",
+        f"**Build started by user** {user_mention}",
+        f"**Deploy** `535a74f0` **by user** **{user_mention}**",
         "**Restarting Heroku Server...**",
         "**State changed from up to starting**",
         "**Stopping all processes with SIGTERM**",
@@ -462,9 +462,9 @@ async def _(event):
         
 @bot.on(admin_cmd(pattern="istar$", outgoing=True))
 @bot.on(sudo_cmd(pattern="istar$", allow_sudo=True))
-async def ammastar(hellstar):
+async def ammastar(userstar):
   
-    if hellstar.fwd_from:
+    if userstar.fwd_from:
       
         return
       
@@ -472,7 +472,7 @@ async def ammastar(hellstar):
     
     animation_ttl = range(0, 11)
     
-    await eor(hellstar, "I am A Star")
+    await eor(userstar, "I am A Star")
     
     animation_chars = [
         "I Party like a rockstar",
@@ -486,7 +486,7 @@ async def ammastar(hellstar):
       
         await asyncio.sleep(animation_interval)
         
-        await hellstar.edit(animation_chars[i % 11])
+        await userstar.edit(animation_chars[i % 11])
     
         
 @bot.on(admin_cmd(pattern=r"lmoon", outgoing=True))
@@ -624,16 +624,16 @@ async def _(event):
         name = "die"
     animation_interval = 0.7
     animation_ttl = range(8)
-    event = await eor(event, f"**Ready Commando **__{hell_mention}....")
+    event = await eor(event, f"**Ready Commando **__{user_mention}....")
     animation_chars = [
         "Ｆｉｉｉｉｉｒｅ",
-        f"__**Commando **__{hell_mention}          \n\n_/﹋\_\n (҂`_´)\n <,︻╦╤─ ҉ - \n _/﹋\_\n",
-        f"__**Commando **__{hell_mention}          \n\n_/﹋\_\n (҂`_´)\n  <,︻╦╤─ ҉ - -\n _/﹋\_\n",
-        f"__**Commando **__{hell_mention}          \n\n_/﹋\_\n (҂`_´)\n <,︻╦╤─ ҉ - - -\n _/﹋\_\n",
-        f"__**Commando **__{hell_mention}          \n\n_/﹋\_\n (҂`_´)\n<,︻╦╤─ ҉ - -\n _/﹋\_\n",
-        f"__**Commando **__{hell_mention}          \n\n_/﹋\_\n (҂`_´)\n <,︻╦╤─ ҉ - \n _/﹋\_\n",
-        f"__**Commando **__{hell_mention}         \n\n_/﹋\_\n (҂`_´)\n  <,︻╦╤─ ҉ - -\n _/﹋\_\n",
-        f"__**Commando **__{hell_mention}          \n\n_/﹋\_\n (҂`_´)\n <,︻╦╤─ ҉ - - - {name}\n _/﹋\_\n",
+        f"__**Commando **__{user_mention}          \n\n_/﹋\_\n (҂`_´)\n <,︻╦╤─ ҉ - \n _/﹋\_\n",
+        f"__**Commando **__{user_mention}          \n\n_/﹋\_\n (҂`_´)\n  <,︻╦╤─ ҉ - -\n _/﹋\_\n",
+        f"__**Commando **__{user_mention}          \n\n_/﹋\_\n (҂`_´)\n <,︻╦╤─ ҉ - - -\n _/﹋\_\n",
+        f"__**Commando **__{user_mention}          \n\n_/﹋\_\n (҂`_´)\n<,︻╦╤─ ҉ - -\n _/﹋\_\n",
+        f"__**Commando **__{user_mention}          \n\n_/﹋\_\n (҂`_´)\n <,︻╦╤─ ҉ - \n _/﹋\_\n",
+        f"__**Commando **__{user_mention}         \n\n_/﹋\_\n (҂`_´)\n  <,︻╦╤─ ҉ - -\n _/﹋\_\n",
+        f"__**Commando **__{user_mention}          \n\n_/﹋\_\n (҂`_´)\n <,︻╦╤─ ҉ - - - {name}\n _/﹋\_\n",
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)

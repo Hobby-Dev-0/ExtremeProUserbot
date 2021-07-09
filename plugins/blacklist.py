@@ -103,7 +103,7 @@ CMD_HELP.update(
     \n**Usage : **The given word or words will be removed from blacklist in that specific chat\
     \n\n**Syntax : **`.listblacklist`\
     \n**Usage : **Shows you the list of blacklist words in that specific chat\
-    \n\n**Note : **if you are adding more than one word at time via this, then remember that new word must be given in a new line that is not [hi hello]. It must be as\
-    \n[hi \n hello]"
+    \n\n**Note : **if you are adding more than one word at time via this, then remember that new word must be given in a new line that is not [hi usero]. It must be as\
+    \n[hi \n usero]"
     }
 )

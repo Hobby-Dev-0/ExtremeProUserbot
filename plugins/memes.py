@@ -1133,7 +1133,7 @@ async def smrk(smk):
             message = textx
             message = str(message.message)
         if message == 'dele':
-            await smk.edit( message +'te the hell' + "ツ" )
+            await smk.edit( message +'te the user' + "ツ" )
             await smk.edit("ツ")
         else:
              smirk = " ツ"

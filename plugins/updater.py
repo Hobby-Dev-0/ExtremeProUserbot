@@ -14,7 +14,7 @@ from userbot.utils import admin_cmd
 import io
 import heroku3
 import asyncio
-from asyncio import create_subprocess_shell as asyncSubprocess
+from asyncio import create_subprocess_suser as asyncSubprocess
 from asyncio.subprocess import PIPE as asyncPIPE
 
 import sys
@@ -44,7 +44,7 @@ except:
 	pass
 from userbot import CMD_HELP, bot
 from userbot import CMD_HELP, LOGS
-from asyncio import create_subprocess_shell as asyncrunapp
+from asyncio import create_subprocess_suser as asyncrunapp
 from asyncio.subprocess import PIPE as asyncPIPE
 from platform import python_version, uname
 from shutil import which
@@ -121,7 +121,7 @@ async def gen_chlog(repo, diff):
 async def update_requirements():
     reqs = str(requirements_path)
     try:
-        process = await asyncio.create_subprocess_shell(
+        process = await asyncio.create_subprocess_suser(
             ' '.join([sys.executable, "-m", "pip", "install", "-r", reqs]),
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE)

@@ -12,13 +12,13 @@ global groupsid
 groupsid = []
 
 
-async def all_groups_id(hell):
-    hellgroups = []
-    async for dialog in hell.client.iter_dialogs():
+async def all_groups_id(user):
+    usergroups = []
+    async for dialog in user.client.iter_dialogs():
         entity = dialog.entity
         if isinstance(entity, Channel) and entity.megagroup:
-            hellgroups.append(entity.id)
-    return hellgroups
+            usergroups.append(entity.id)
+    return usergroups
 
 
 @bot.on(admin_cmd(pattern="frwd$"))

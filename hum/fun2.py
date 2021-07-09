@@ -267,29 +267,29 @@ async def payf(event):
 
 @bot.on(admin_cmd(pattern="cat$"))
 @bot.on(sudo_cmd(pattern="cat$", allow_sudo=True))
-async def hmm(hell):
-    if hell.fwd_from:
+async def hmm(user):
+    if user.fwd_from:
         return
     reactcat = nekos.textcat()
-    await eor(hell, reactcat)
+    await eor(user, reactcat)
 
 
 @bot.on(admin_cmd(pattern="why$"))
 @bot.on(sudo_cmd(pattern="why$", allow_sudo=True))
-async def hmm(hell):
-    if hell.fwd_from:
+async def hmm(user):
+    if user.fwd_from:
         return
-    whyhell = nekos.why()
-    await eor(hell, whyhell)
+    whyuser = nekos.why()
+    await eor(user, whyuser)
 
 
 @bot.on(admin_cmd(pattern="fact$"))
 @bot.on(sudo_cmd(pattern="fact$", allow_sudo=True))
-async def hmm(hell):
-    if hell.fwd_from:
+async def hmm(user):
+    if user.fwd_from:
         return
-    facthell = nekos.fact()
-    await eor(hell, facthell)
+    factuser = nekos.fact()
+    await eor(user, factuser)
 
 
 CmdHelp("fun2").add_command(

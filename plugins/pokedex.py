@@ -33,9 +33,9 @@ async def _(event):
     hm = ""
     for pq in kk:
         hm += str(pq) + ",  "
-    hell = pokemon.get("eggGroups")
+    user = pokemon.get("eggGroups")
     uio = ""
-    for x in hell:
+    for x in user:
         uio += str(x) + ",  "
 
     height = pokemon.get("height")

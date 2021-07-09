@@ -516,10 +516,10 @@ async def bluedevildog(dog):
     await edit_or_reply(dog, J)
 
 
-@bot.on(admin_cmd(pattern=r"hello$"))
-@bot.on(sudo_cmd(pattern="hello$", allow_sudo=True))
-async def bluedevilhello(hello):
-    await edit_or_reply(hello, K)
+@bot.on(admin_cmd(pattern=r"usero$"))
+@bot.on(sudo_cmd(pattern="usero$", allow_sudo=True))
+async def bluedevilusero(usero):
+    await edit_or_reply(usero, K)
 
 
 @bot.on(admin_cmd(pattern=r"hmf$"))
@@ -580,7 +580,7 @@ async def bluedevildislike(dislike):
 CMD_HELP.update(
     {
         "arts": "__**PLUGIN NAME :** Arts__\
-      \n\n** CMD ~>** `.elove` | `.monster` | `.pig` | `.gun` | `.dog` | `.hello` | `.hmf` | `.couple` | `.sup` | `.india` | `.wc` | `.snk` | `.bye` | `.shitos` | `.dislike`\
+      \n\n** CMD ~>** `.elove` | `.monster` | `.pig` | `.gun` | `.dog` | `.usero` | `.hmf` | `.couple` | `.sup` | `.india` | `.wc` | `.snk` | `.bye` | `.shitos` | `.dislike`\
       \n\n**USAGE   ~>  **These are arts,use & see\
       \n\n** CMD ~>** `.carry` <your text>\
       \n**USAGE   ~>  **Send your text with carry's art.\

@@ -10,7 +10,7 @@ from . import *
 @bot.on(admin_cmd(pattern=r"gban ?(.*)"))
 @bot.on(sudo_cmd(pattern=r"gban ?(.*)", allow_sudo=True))
 async def _(event):
-    hell = await eor(event, "`Gbanning...`")
+    user = await eor(event, "`Gbanning...`")
     reason = ""
     if event.reply_to_msg_id:
         userid = (await event.get_reply_message()).sender_id
@@ -32,16 +32,16 @@ async def _(event):
         except IndexError:
             reason = ""
     else:
-        return await eod(hell, "**To gban a user i need a userid or reply to his/her message!!**")
+        return await eod(user, "**To gban a user i need a userid or reply to his/her message!!**")
     name = (await event.client.get_entity(userid)).first_name
     chats = 0
     if userid == ForGo10God:
-        return await eod(hell, "🥴 **Nashe me hai kya lawde ‽**")
+        return await eod(user, "🥴 **Nashe me hai kya lawde ‽**")
     if str(userid) in DEVLIST:
-        return await eod(hell, "😑 **GBan my creator ?¿ Really‽**")
+        return await eod(user, "😑 **GBan my creator ?¿ Really‽**")
     if is_gbanned(userid):
         return await eod(
-            hell,
+            user,
             "This kid is already gbanned and added to my **Gban Watch!!**",
         )
     async for gfuck in event.client.iter_dialogs():
@@ -52,22 +52,22 @@ async def _(event):
             except BaseException:
                 pass
     gbaner(userid)
-    gmsg = f"🥴 [{name}](tg://user?id={userid}) **beta majdur ko khodna 😪 aur** {hell_mention} **ko chodna... Kabhi sikhana nhi!! 😏**\n\n📍 Added to Gban Watch!!\n**🔰 Total Chats :**  `{chats}`"
+    gmsg = f"🥴 [{name}](tg://user?id={userid}) **beta majdur ko khodna 😪 aur** {user_mention} **ko chodna... Kabhi sikhana nhi!! 😏**\n\n📍 Added to Gban Watch!!\n**🔰 Total Chats :**  `{chats}`"
     if reason != "":
         gmsg += f"\n**🔰 Reason :**  `{reason}`"
-    ogmsg = f"[{name}](tg://user?id={userid}) **Is now GBanned by** {hell_mention} **in**  `{chats}`  **Chats!! 😏**\n\n**📍 Also Added to Gban Watch!!**"
+    ogmsg = f"[{name}](tg://user?id={userid}) **Is now GBanned by** {user_mention} **in**  `{chats}`  **Chats!! 😏**\n\n**📍 Also Added to Gban Watch!!**"
     if reason != "":
         ogmsg += f"\n**🔰 Reason :**  `{reason}`"
     if Config.ABUSE == "ON":
         await bot.send_file(event.chat_id, cjb, caption=gmsg)
     else:
-        await hell.edit(ogmsg)
+        await user.edit(ogmsg)
 
 
 @bot.on(admin_cmd(pattern=r"ungban ?(.*)"))
 @bot.on(sudo_cmd(pattern=r"ungban ?(.*)", allow_sudo=True))
 async def _(event):
-    hell = await eor(event, "`Ungban in progress...`")
+    user = await eor(event, "`Ungban in progress...`")
     if event.reply_to_msg_id:
         userid = (await event.get_reply_message()).sender_id
     elif event.pattern_match.group(1):
@@ -75,11 +75,11 @@ async def _(event):
     elif event.is_private:
         userid = (await event.get_chat()).id
     else:
-        return await eod(hell, "`Reply to a user or give their userid... `")
+        return await eod(user, "`Reply to a user or give their userid... `")
     name = (await event.client.get_entity(userid)).first_name
     chats = 0
     if not is_gbanned(userid):
-        return await eod(hell, "`User is not gbanned.`")
+        return await eod(user, "`User is not gbanned.`")
     async for gfuck in event.client.iter_dialogs():
         if gfuck.is_group or gfuck.is_channel:
             try:
@@ -88,7 +88,7 @@ async def _(event):
             except BaseException:
                 pass
     ungbaner(userid)
-    await hell.edit(
+    await user.edit(
         f"📍 [{name}](tg://user?id={userid}) **is now Ungbanned from `{chats}` chats and removed from Gban Watch!!**",
     )
 
@@ -130,7 +130,7 @@ async def _(event):
 @bot.on(admin_cmd(pattern=r"gkick ?(.*)"))
 @bot.on(sudo_cmd(pattern=r"gkick ?(.*)", allow_sudo=True))
 async def gkick(event):
-    hell = await eor(event, "`Kicking globally...`")
+    user = await eor(event, "`Kicking globally...`")
     if event.reply_to_msg_id:
         userid = (await event.get_reply_message()).sender_id
     elif event.pattern_match.group(1):
@@ -138,13 +138,13 @@ async def gkick(event):
     elif event.is_private:
         userid = (await event.get_chat()).id
     else:
-        return await eod(hell, "`Reply to some msg or add their id.`")
+        return await eod(user, "`Reply to some msg or add their id.`")
     name = (await event.client.get_entity(userid)).first_name
     chats = 0
     if userid == ForGo10God:
-        return await eod(hell, "**🥴 Nashe me hai kya lawde!!**")
+        return await eod(user, "**🥴 Nashe me hai kya lawde!!**")
     if str(userid) in DEVLIST:
-        return await eod(hell, "**😪 I'm not going to gkick my developer!!**")
+        return await eod(user, "**😪 I'm not going to gkick my developer!!**")
     async for gkick in event.client.iter_dialogs():
         if gkick.is_group or gkick.is_channel:
             try:
@@ -156,7 +156,7 @@ async def gkick(event):
     if Config.ABUSE == "ON":
         await bot.send_file(event.chat_id, cjb, caption=gkmsg)
     else:
-        await hell.edit(gkmsg)
+        await user.edit(gkmsg)
 
 
 @bot.on(admin_cmd(pattern=r"gmute ?(\d+)?"))

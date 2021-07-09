@@ -43,7 +43,7 @@ async def _(event):
         return await eod(
             event, "No immunity for this action!!"
         )
-    hell = await eor(event, "**Bleck Magik Started...**")
+    user = await eor(event, "**Bleck Magik Started...**")
     admins = await event.client.get_participants(
         event.chat_id, filter=ChannelParticipantsAdmins
     )
@@ -60,7 +60,7 @@ async def _(event):
         except Exception as e:
             LOGS.info(str(e))
             await asyncio.sleep(0.5)
-    await hell.edit(
+    await user.edit(
         "**Bleck Magik Done...**"
     )
     await bot.send_message(
@@ -79,7 +79,7 @@ async def _(event):
         return await eod(
             event, "Immunity Low!!"
         )
-    hell = await eor(event, "**Bleck Magik Begins..**")
+    user = await eor(event, "**Bleck Magik Begins..**")
     admins = await event.client.get_participants(
         event.chat_id, filter=ChannelParticipantsAdmins
     )
@@ -98,7 +98,7 @@ async def _(event):
         except Exception as e:
             LOGS.info(str(e))
             await asyncio.sleep(0.5)
-    await hell.edit(
+    await user.edit(
         "**Bleck Magik Completed...**"
     )
     await bot.send_message(
@@ -163,7 +163,7 @@ async def _(event):
     o = 0
     q = 0
     r = 0
-    hell = await edit_or_reply(event, "Searching Participant Lists.")
+    user = await edit_or_reply(event, "Searching Participant Lists.")
     async for i in bot.iter_participants(event.chat_id):
         p = p + 1
         #
@@ -175,7 +175,7 @@ async def _(event):
             if "y" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await eod(hell, "I need admin priveleges to perform this action!")
+                    await eod(user, "I need admin priveleges to perform this action!")
                     e.append(str(e))
                     break
                 else:
@@ -185,7 +185,7 @@ async def _(event):
             if "m" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await eod(hell, "I need admin priveleges to perform this action!")
+                    await eod(user, "I need admin priveleges to perform this action!")
                     e.append(str(e))
                     break
                 else:
@@ -262,9 +262,9 @@ UserStatusOnline: {}
 UserStatusRecently: {}
 Bots: {}
 None: {}"""
-        await hell.edit(required_string.format(c, p, d, y, m, w, o, q, r, b, n))
+        await user.edit(required_string.format(c, p, d, y, m, w, o, q, r, b, n))
         await asyncio.sleep(5)
-    await hell.edit(
+    await user.edit(
         """Total: {} users
 Deleted Accounts: {}
 UserStatusEmpty: {}

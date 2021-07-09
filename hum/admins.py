@@ -117,7 +117,7 @@ async def promote(promt):
         delete_messages=True,
         pin_messages=True,
     )
-    hellevent = await eor(promt, "`Promoting User...`")
+    userevent = await eor(promt, "`Promoting User...`")
     user, rank = await get_user_from_event(promt)
     if not rank:
         rank = "ǟɖʍɨռ"
@@ -125,9 +125,9 @@ async def promote(promt):
         return
     try:
         await promt.client(EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
-        await hellevent.edit(f"**🔥 Promoted  [{user.first_name}](tg://user?id={user.id})  Successfully In**  `{promt.chat.title}`!! \n**Admin Tag :**  `{rank}`")
+        await userevent.edit(f"**🔥 Promoted  [{user.first_name}](tg://user?id={user.id})  Successfully In**  `{promt.chat.title}`!! \n**Admin Tag :**  `{rank}`")
     except BadRequestError:
-        await hellevent.edit(NO_PERM)
+        await userevent.edit(NO_PERM)
         return
     await promt.client.send_message(
         lg_id,
@@ -149,7 +149,7 @@ async def demote(dmod):
     if not admin and not creator:
         await eor(dmod, NO_ADMIN)
         return
-    hellevent = await eor(dmod, "`Demoting User...`")
+    userevent = await eor(dmod, "`Demoting User...`")
     rank = "ǟɖʍɨռ"
     user = await get_user_from_event(dmod)
     user = user[0]
@@ -166,9 +166,9 @@ async def demote(dmod):
     try:
         await dmod.client(EditAdminRequest(dmod.chat_id, user.id, newrights, rank))
     except BadRequestError:
-        await hellevent.edit(NO_PERM)
+        await userevent.edit(NO_PERM)
         return
-    await hellevent.edit(f"**😪 Demoted  [{user.first_name}](tg://user?id={user.id})  Successfully In**  `{dmod.chat.title}`")
+    await userevent.edit(f"**😪 Demoted  [{user.first_name}](tg://user?id={user.id})  Successfully In**  `{dmod.chat.title}`")
     await dmod.client.send_message(
         lg_id,
         "#DEMOTE\n"
@@ -187,61 +187,61 @@ async def watcher(event):
 
 @bot.on(admin_cmd(pattern=r"mute ?(.*)"))
 @bot.on(sudo_cmd(pattern=r"mute ?(.*)", allow_sudo=True))
-async def muth(hell):
-    if hell.is_private:
-        await eor(hell, "**Enough of your bullshit  !!**")
+async def muth(user):
+    if user.is_private:
+        await eor(user, "**Enough of your bullshit  !!**")
         await sleep(2)
-        await hell.get_reply_message()
-        replied_user = await hell.client(GetFullUserRequest(hell.chat_id))
-        if is_muted(hell.chat_id, hell.chat_id):
-            return await hell.edit(
+        await user.get_reply_message()
+        replied_user = await user.client(GetFullUserRequest(user.chat_id))
+        if is_muted(user.chat_id, user.chat_id):
+            return await user.edit(
                 "Nigga is already muted here 🥴"
             )
-        if hell.chat_id == ForGo10God:
-            return await eod(hell, "Nashe me hai kya lawde 🥴")
+        if user.chat_id == ForGo10God:
+            return await eod(user, "Nashe me hai kya lawde 🥴")
         try:
-            mute(hell.chat_id, hell.chat_id)
+            mute(user.chat_id, user.chat_id)
         except Exception as e:
-            await eor(hell, f"**Error **\n`{str(e)}`")
+            await eor(user, f"**Error **\n`{str(e)}`")
         else:
-            await eor(hell, "**Chup Reh Lawde 🥴\n`**｀-´)⊃━☆ﾟ.*･｡ﾟ **`")
+            await eor(user, "**Chup Reh Lawde 🥴\n`**｀-´)⊃━☆ﾟ.*･｡ﾟ **`")
     else:
-        hellevent = await eor(hell, "`Muting...`")
-        input_str = hell.pattern_match.group(1)
-        chat = await hell.get_chat()
-        if hell.reply_to_msg_id:
-            userid = (await hell.get_reply_message()).sender_id
-            name = (await hell.client.get_entity(userid)).first_name
+        userevent = await eor(user, "`Muting...`")
+        input_str = user.pattern_match.group(1)
+        chat = await user.get_chat()
+        if user.reply_to_msg_id:
+            userid = (await user.get_reply_message()).sender_id
+            name = (await user.client.get_entity(userid)).first_name
         elif input_str:
             if input_str.isdigit():
                 try:
                     userid = input_str
-                    name = (await hell.client.get_entity(userid)).first_name
+                    name = (await user.client.get_entity(userid)).first_name
                 except ValueError as ve:
-                    return await hellevent.edit(str(ve))
+                    return await userevent.edit(str(ve))
             else:
-                userid = (await hell.client.get_entity(input_str)).id
-                name = (await hell.client.get_entity(userid)).first_name
+                userid = (await user.client.get_entity(input_str)).id
+                name = (await user.client.get_entity(userid)).first_name
         else:
-            return await eod(hellevent, "I Need a user to mute!!", 5)
+            return await eod(userevent, "I Need a user to mute!!", 5)
         if userid == ForGo10God:
-            return await eod(hellevent, "Nashe me hai kya lawde", 5)
+            return await eod(userevent, "Nashe me hai kya lawde", 5)
         if str(userid) in DEVLIST:
-            return await eod(hellevent, "**Error Muting God**", 7)
+            return await eod(userevent, "**Error Muting God**", 7)
         try:
-            await hell.client.edit_permissions(
+            await user.client.edit_permissions(
                 chat.id,
                 userid,
                 until_date=None,
                 send_messages=False,
             )
             await eor(
-                hellevent,
+                userevent,
                 f"**Successfully Muted**  [{name}](tg://user?id={userid}) **in**  `{chat.title}`",
             )
         except BaseException as be:
-            await eor(hellevent, f"`{str(be)}`")
-        await hell.client.send_message(
+            await eor(userevent, f"`{str(be)}`")
+        await user.client.send_message(
             lg_id,
             "#MUTE\n"
             f"\nUSER:  [{name}](tg://user?id={userid})\n"
@@ -269,7 +269,7 @@ async def nomuth(evn):
                 "Abb boll bsdk."
             )
     else:
-        hellevent = await eor(evn, "`Unmuting...`")
+        userevent = await eor(evn, "`Unmuting...`")
         input_str = evn.pattern_match.group(1)
         chat = await evn.get_chat()
         if evn.reply_to_msg_id:
@@ -281,12 +281,12 @@ async def nomuth(evn):
                     userid = input_str
                     name = (await evn.client.get_entity(userid)).first_name
                 except ValueError as ve:
-                    return await hellevent.edit(str(ve))
+                    return await userevent.edit(str(ve))
             else:
                 userid = (await evn.client.get_entity(input_str)).id
                 name = (await evn.client.get_entity(userid)).first_name
         else:
-            return await eod(hellevent, "I need a user to unmute!!", 3)
+            return await eod(userevent, "I need a user to unmute!!", 3)
         try:
             await evn.client.edit_permissions(
                 chat.id,
@@ -295,11 +295,11 @@ async def nomuth(evn):
                 send_messages=True,
             )
             await eor(
-                hellevent,
+                userevent,
                 f"**Successfully Unmuted**  [{name}](tg://user?id={userid}) **in**  `{chat.title}`",
             )
         except BaseException as be:
-            await eor(hellevent, f"`{str(be)}`")
+            await eor(userevent, f"`{str(be)}`")
         await evn.client.send_message(
             lg_id,
             "#UNMUTE\n"
@@ -314,7 +314,7 @@ async def nomuth(evn):
 async def ban(bon):
     if bon.fwd_from:
         return
-    hellevent = await eor(bon, "`Banning Nigga...`")
+    userevent = await eor(bon, "`Banning Nigga...`")
     chat = await bon.get_chat()
     admin = chat.admin_rights
     creator = chat.creator
@@ -323,25 +323,25 @@ async def ban(bon):
         return
     user, reason = await get_user_from_event(bon)
     if not user:
-        return await hellevent.edit("`Reply to a user or give username!!`")
+        return await userevent.edit("`Reply to a user or give username!!`")
     if str(user.id) in DEVLIST:
-        return await hellevent.edit("**Say again? Ban my creator??**")
+        return await userevent.edit("**Say again? Ban my creator??**")
     try:
         await bon.client(EditBannedRequest(bon.chat_id, user.id, BANNED_RIGHTS))
     except BadRequestError:
-        await hellevent.edit(NO_PERM)
+        await userevent.edit(NO_PERM)
         return
     try:
         reply = await bon.get_reply_message()
         if reply:
             await reply.delete()
     except BadRequestError:
-        await hellevent.edit(f"**Banned  [{user.first_name}](tg://user?id={user.id})  in** `[{bon.chat.title}]` !!\n\nMessage Nuking : **False**")
+        await userevent.edit(f"**Banned  [{user.first_name}](tg://user?id={user.id})  in** `[{bon.chat.title}]` !!\n\nMessage Nuking : **False**")
         return
     if reason:
-        await hellevent.edit(f"**Bitch** [{user.first_name}](tg://user?id={user.id}) **is now banned in**  `[{bon.chat.title}]` !!\n**Reason :** `{reason}`")
+        await userevent.edit(f"**Bitch** [{user.first_name}](tg://user?id={user.id}) **is now banned in**  `[{bon.chat.title}]` !!\n**Reason :** `{reason}`")
     else:
-        await hellevent.edit(f"**Bitch** [{user.first_name}](tg://user?id={user.id}) **is now banned in**  `[{bon.chat.title}]`!!")
+        await userevent.edit(f"**Bitch** [{user.first_name}](tg://user?id={user.id}) **is now banned in**  `[{bon.chat.title}]`!!")
     await bon.client.send_message(
         lg_id,
         "#BAN\n"
@@ -362,14 +362,14 @@ async def nothanos(unbon):
     if not admin and not creator:
         await eor(unbon, NO_ADMIN)
         return
-    hellevent = await eor(unbon, "`Unbanning...`")
+    userevent = await eor(unbon, "`Unbanning...`")
     user = await get_user_from_event(unbon)
     user = user[0]
     if not user:
         return
     try:
         await unbon.client(EditBannedRequest(unbon.chat_id, user.id, UNBAN_RIGHTS))
-        await hellevent.edit(f"[{user.first_name}](tg://user?id={user.id}) **Is Now Unbanned in**  `{unbon.chat.title}` !!")
+        await userevent.edit(f"[{user.first_name}](tg://user?id={user.id}) **Is Now Unbanned in**  `{unbon.chat.title}` !!")
         await unbon.client.send_message(
             lg_id,
             "#UNBAN\n"
@@ -377,7 +377,7 @@ async def nothanos(unbon):
             f"CHAT: {unbon.chat.title}(`{unbon.chat_id}`)",
         )
     except UserIdInvalidError:
-        await hellevent.edit("Invalid UserId!! Please Recheck it!!")
+        await userevent.edit("Invalid UserId!! Please Recheck it!!")
 
 
 @bot.on(admin_cmd(pattern="pin($| (.*))"))
@@ -439,19 +439,19 @@ async def kick(usr):
         return await eor(usr, "`Couldn't fetch user info...`")
     if str(user.id) in DEVLIST:
         return await eor(usr, "**Turn back, Go straight and fuck off!!**")
-    hellevent = await eor(usr, "`Kicking...`")
+    userevent = await eor(usr, "`Kicking...`")
     try:
         await usr.client.kick_participant(usr.chat_id, user.id)
         await sleep(0.5)
     except Exception as e:
-        await hellevent.edit(NO_PERM + f"\n`{str(e)}`")
+        await userevent.edit(NO_PERM + f"\n`{str(e)}`")
         return
     if reason:
-        await hellevent.edit(
+        await userevent.edit(
             f"**🏃 Kicked**  [{user.first_name}](tg://user?id={user.id})'s **Butt from** `{usr.chat.title}!`\nReason: `{reason}`"
         )
     else:
-        await hellevent.edit(f"**🏃 Kicked**  [{user.first_name}](tg://user?id={user.id})'s **Butt from** `{usr.chat.title}!`")
+        await userevent.edit(f"**🏃 Kicked**  [{user.first_name}](tg://user?id={user.id})'s **Butt from** `{usr.chat.title}!`")
     await usr.client.send_message(
         lg_id,
         "#KICK\n"

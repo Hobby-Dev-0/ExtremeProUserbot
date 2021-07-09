@@ -8,10 +8,10 @@ from . import *
 @bot.on(sudo_cmd(pattern=r"tag(all|bots|admins)?(.*)", allow_sudo=True))
 async def tag(event):
     text = event.text
-    hell = event.pattern_match.group(2)
+    user = event.pattern_match.group(2)
     part = 0
-    if hell:
-        users = f"{hell}"
+    if user:
+        users = f"{user}"
     else:
         users = ""
     async for members in event.client.iter_partcipants(event.chat_id, 99):

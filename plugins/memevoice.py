@@ -49,8 +49,8 @@ def deEmojify(inputString: str) -> str:
 
 @borg.on(admin_cmd(pattern="mev(?: |$)(.*)"))
 async def nope(legendx22):
-    hell = legendx22.pattern_match.group(1)
-    if not hell:
+    user = legendx22.pattern_match.group(1)
+    if not user:
         if legendx22.is_reply:
             what = (await legendx22.get_reply_message()).message
         else:
@@ -59,7 +59,7 @@ async def nope(legendx22):
 
     troll = await bot.inline_query(
 
-        "TrollVoiceBot", f"{(deEmojify(hell))}")
+        "TrollVoiceBot", f"{(deEmojify(user))}")
 
     await troll[0].click(legendx22.chat_id,
 

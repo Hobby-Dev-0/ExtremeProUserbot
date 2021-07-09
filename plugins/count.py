@@ -13,7 +13,7 @@ async def stats(
     event: NewMessage.Event,
 ) -> None:  # pylint: disable = R0912, R0914, R0915
     """Command to get stats about the account"""
-    hell = await edit_or_reply(event, "`Collecting stats...`")
+    user = await edit_or_reply(event, "`Collecting stats...`")
     start_time = time.time()
     private_chats = 0
     bots = 0
@@ -77,7 +77,7 @@ async def stats(
     response += f'🔱 **Unread Mentions:** {unread_mentions} \n\n'
     response += f'☣️   __It Took:__ {stop_time:.02f}s \n'
     response += f'📌 **From The DataBase Of** :- [Extreme Pro userbot](https://github.com/TeamExtremePro/ExtremeProUserbot)'
-    await hell.edit(response)
+    await user.edit(response)
 
 
 def make_mention(user):
