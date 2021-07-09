@@ -18,9 +18,9 @@ jobs:
 
         with:
 
-          find: "LEGEND BOT"
+          find: "hellbot"
 
-          replace: "Extreme Pro userbot"
+          replace: "userbot"
 
       - name: Create Pull Request
 
