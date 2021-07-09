@@ -44,7 +44,7 @@ async def re(user):
     if HEROKU_API_KEY:
         await restart(event)
     else:
-        await event.edit("Please Set Your `HEROKU_API_KEY` to restart Hêllẞø†")
+        await event.edit("Please Set Your `HEROKU_API_KEY` to restart ᴀɴᴅᴇɴᴄᴇɴᴛᴏ")
 
 
 @Andencento.on(admin_cmd(pattern="shutdown$"))
@@ -52,7 +52,7 @@ async def re(user):
 async def down(user):
     if user.fwd_from:
         return
-    await eor(user, "**[ ! ]** Turning off Hêllẞø† Dynos... Manually turn me on later ಠ_ಠ")
+    await eor(user, "**[ ! ]** Turning off ᴀɴᴅᴇɴᴄᴇɴᴛᴏ Dynos... Manually turn me on later ಠ_ಠ")
     if HEROKU_APP is not None:
         HEROKU_APP.process_formation()["worker"].scale(0)
     else:

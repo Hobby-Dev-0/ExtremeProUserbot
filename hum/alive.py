@@ -13,7 +13,7 @@ user_pic = Config.ALIVE_PIC or "https://telegra.ph/file/ea9e11f7c9db21c1b8d5e.mp
 alive_c = f"__**🔥🔥ɦɛʟʟɮօt ɨs օռʟɨռɛ🔥🔥**__\n\n"
 alive_c += f"__↼ Øwñêr ⇀__ : 『 {user_mention} 』\n\n"
 alive_c += f"•♦• Telethon     :  `{tel_ver}` \n"
-alive_c += f"•♦• Hêllẞø†       :  __**{user_ver}**__\n"
+alive_c += f"•♦• ᴀɴᴅᴇɴᴄᴇɴᴛᴏ       :  __**{user_ver}**__\n"
 alive_c += f"•♦• Sudo            :  `{is_sudo}`\n"
 alive_c += f"•♦• Channel      :  {user_channel}\n"
 
@@ -34,7 +34,7 @@ msg = f"""
 {Config.ALIVE_MSG}
 **🏅 𝙱𝚘𝚝 𝚂𝚝𝚊𝚝𝚞𝚜 🏅**
 **Telethon :**  `{tel_ver}`
-**Hêllẞø†  :**  **{user_ver}**
+**ᴀɴᴅᴇɴᴄᴇɴᴛᴏ  :**  **{user_ver}**
 **Uptime   :**  `{uptime}`
 **Abuse    :**  **{abuse_m}**
 **Sudo      :**  **{is_sudo}**
