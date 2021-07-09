@@ -18,9 +18,9 @@ jobs:
 
         with:
 
-          find: "hellbot"
+          find: "hellcmd"
 
-          replace: "userbot"
+          replace: "admin_cmd"
 
       - name: Create Pull Request
 
