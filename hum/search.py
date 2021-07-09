@@ -3,8 +3,8 @@ import requests
 from . import *
 
 
-@bot.on(admin_cmd(pattern="ytube (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="ytube (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="ytube (.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="ytube (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -24,8 +24,8 @@ async def _(event):
         await eod(event, "Something went wrong. Please try again later.")
 
 
-@bot.on(admin_cmd(pattern="ddg (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="ddg (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="ddg (.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="ddg (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -45,8 +45,8 @@ async def _(event):
         await eod(event, "Something went wrong. Please try again later.")
 
 
-@bot.on(admin_cmd(pattern="altn (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="altn (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="altn (.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="altn (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -64,8 +64,8 @@ async def _(event):
         await eod(event, "Something went wrong. Please try again later.")
 
 
-@bot.on(admin_cmd(pattern="var (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="var (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="var (.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="var (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -85,8 +85,8 @@ async def _(event):
         await eod(event, "Something went wrong. Please try again later.")
 
 
-@bot.on(admin_cmd(pattern="lmlog (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="lmlog (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="lmlog (.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="lmlog (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -104,8 +104,8 @@ async def _(event):
         await eod(event, "Something went wrong. Please try again later.")
 
 
-@bot.on(admin_cmd(pattern="hacc (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="hacc (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="hacc (.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="hacc (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -123,8 +123,8 @@ async def _(event):
         await eod(event, "Something went wrong. Please try again later.")
 
 
-@bot.on(admin_cmd(pattern="lmkp (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="lmkp (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="lmkp (.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="lmkp (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -142,8 +142,8 @@ async def _(event):
         await eod(event, "Something went wrong. Please try again later.")
 
 
-@bot.on(admin_cmd(pattern="gem (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="gem (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="gem (.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="gem (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -161,8 +161,8 @@ async def _(event):
         await eod(event, "Something went wrong. Please try again later.")
 
 
-@bot.on(admin_cmd(pattern="rchiv (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="rchiv (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="rchiv (.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="rchiv (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

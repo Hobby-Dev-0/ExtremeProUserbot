@@ -17,8 +17,8 @@ from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot import CMD_HELP
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=r"direct(?: |$)([\s\S]*)"))
-@bot.on(sudo_cmd(allow_sudo=True, pattern=r"direct(?: |$)([\s\S]*)"))
+@Andencento.on(admin_cmd(outgoing=True, pattern=r"direct(?: |$)([\s\S]*)"))
+@Andencento.on(sudo_cmd(allow_sudo=True, pattern=r"direct(?: |$)([\s\S]*)"))
 async def direct_link_generator(request):
     """ direct links generator """
     userevent = await edit_or_reply(request, "`Processing...`")

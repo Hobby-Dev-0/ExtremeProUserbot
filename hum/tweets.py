@@ -1,8 +1,8 @@
 from . import *
 
 
-@bot.on(admin_cmd(pattern=r"tweet(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="tweet(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"tweet(?: |$)(.*)"))
+@Andencento.on(sudo_cmd(pattern="tweet(?: |$)(.*)", allow_sudo=True))
 async def nope(kraken):
     user = kraken.pattern_match.group(1)
     okvai = await eor(kraken, "Trying to tweet for you...")
@@ -22,8 +22,8 @@ async def nope(kraken):
     await kraken.delete()
 
 
-@bot.on(admin_cmd(pattern=r"trump(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern=r"trump(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"trump(?: |$)(.*)"))
+@Andencento.on(sudo_cmd(pattern=r"trump(?: |$)(.*)", allow_sudo=True))
 async def nekobot(event):
     text = event.pattern_match.group(1)
     reply_to_id = event.message
@@ -55,8 +55,8 @@ async def nekobot(event):
     await event.delete()
 
 
-@bot.on(admin_cmd(pattern=r"modi(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern=r"modi(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"modi(?: |$)(.*)"))
+@Andencento.on(sudo_cmd(pattern=r"modi(?: |$)(.*)", allow_sudo=True))
 async def nekobot(event):
     text = event.pattern_match.group(1)
     reply_to_id = event.message
@@ -88,8 +88,8 @@ async def nekobot(event):
     await event.delete()
 
 
-@bot.on(admin_cmd(pattern=r"mia(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern=r"mia(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"mia(?: |$)(.*)"))
+@Andencento.on(sudo_cmd(pattern=r"mia(?: |$)(.*)", allow_sudo=True))
 async def nekobot(event):
     text = event.pattern_match.group(1)
     reply_to_id = event.message
@@ -121,8 +121,8 @@ async def nekobot(event):
     await event.delete()
 
 
-@bot.on(admin_cmd(pattern=r"dani(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern=r"dani(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"dani(?: |$)(.*)"))
+@Andencento.on(sudo_cmd(pattern=r"dani(?: |$)(.*)", allow_sudo=True))
 async def nekobot(event):
     text = event.pattern_match.group(1)
     reply_to_id = event.message
@@ -155,8 +155,8 @@ async def nekobot(event):
 
 
 # @register(pattern="^.pappu(?: |$)(.*)", outgoing=True)
-@bot.on(admin_cmd(pattern=r"pappu(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern=r"pappu(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"pappu(?: |$)(.*)"))
+@Andencento.on(sudo_cmd(pattern=r"pappu(?: |$)(.*)", allow_sudo=True))
 async def nekobot(event):
     text = event.pattern_match.group(1)
     reply_to_id = event.message
@@ -188,8 +188,8 @@ async def nekobot(event):
     await event.delete()
 
 
-@bot.on(admin_cmd(pattern=r"sunny(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern=r"sunny(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"sunny(?: |$)(.*)"))
+@Andencento.on(sudo_cmd(pattern=r"sunny(?: |$)(.*)", allow_sudo=True))
 async def nekobot(event):
     text = event.pattern_match.group(1)
     reply_to_id = event.message
@@ -221,8 +221,8 @@ async def nekobot(event):
     await event.delete()
 
 
-@bot.on(admin_cmd(pattern=r"johhny(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern=r"johhny(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"johhny(?: |$)(.*)"))
+@Andencento.on(sudo_cmd(pattern=r"johhny(?: |$)(.*)", allow_sudo=True))
 async def nekobot(event):
     text = event.pattern_match.group(1)
     reply_to_id = event.message
@@ -254,8 +254,8 @@ async def nekobot(event):
     await event.delete()
 
 
-@bot.on(admin_cmd(pattern=r"gandhi(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern=r"gandhi(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"gandhi(?: |$)(.*)"))
+@Andencento.on(sudo_cmd(pattern=r"gandhi(?: |$)(.*)", allow_sudo=True))
 async def nekobot(event):
     text = event.pattern_match.group(1)
     reply_to_id = event.message
@@ -287,8 +287,8 @@ async def nekobot(event):
     await event.delete()  # bancho kitni baar bolu no offence
 
 
-@bot.on(admin_cmd(pattern=r"cmm(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern=r"cmm(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"cmm(?: |$)(.*)"))
+@Andencento.on(sudo_cmd(pattern=r"cmm(?: |$)(.*)", allow_sudo=True))
 async def nekobot(event):
     text = event.pattern_match.group(1)
     reply_to_id = event.message
@@ -321,8 +321,8 @@ async def nekobot(event):
 
 
 
-@bot.on(admin_cmd(pattern=r"kanna(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern=r"kanna(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"kanna(?: |$)(.*)"))
+@Andencento.on(sudo_cmd(pattern=r"kanna(?: |$)(.*)", allow_sudo=True))
 async def nekobot(event):
     text = event.pattern_match.group(1)
     reply_to_id = event.message

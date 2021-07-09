@@ -17,7 +17,7 @@ last_afk_message = {}
 afk_start = {}
 
 
-@bot.on(events.NewMessage(outgoing=True))  # pylint:disable=E0602
+@Andencento.on(events.NewMessage(outgoing=True))  # pylint:disable=E0602
 async def set_not_afk(event):
     if event.fwd_from:
         return
@@ -61,7 +61,7 @@ async def set_not_afk(event):
         afk_time = None  # pylint:disable=E0602
 
 
-@bot.on(
+@Andencento.on(
     events.NewMessage(  # pylint:disable=E0602
         incoming=True, func=lambda e: bool(e.mentioned or e.is_private)
     )
@@ -101,7 +101,7 @@ async def on_afk(event):
         last_afk_message[event.chat_id] = msg  # pylint:disable=E0602
 
 
-@bot.on(admin_cmd(pattern=r"afk (.*)", outgoing=True))  # pylint:disable=E0602
+@Andencento.on(admin_cmd(pattern=r"afk (.*)", outgoing=True))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
@@ -168,7 +168,7 @@ night_time = None
 last_night_message = {}
 
 
-@bot.on(events.NewMessage(outgoing=True))
+@Andencento.on(events.NewMessage(outgoing=True))
 async def set_not_night(event):
     global USER_night 
     global night_time 
@@ -193,7 +193,7 @@ async def set_not_night(event):
         night_time = None
 
 
-@bot.on(admin_cmd(pattern=r"night ?(.*)"))
+@Andencento.on(admin_cmd(pattern=r"night ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -226,7 +226,7 @@ async def _(event):
             logger.warn(str(e))
 
 
-@bot.on(
+@Andencento.on(
     events.NewMessage(
         incoming=True, func=lambda e: bool(e.mentioned or e.is_private)
     )

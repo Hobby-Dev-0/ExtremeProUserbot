@@ -10,8 +10,8 @@ from . import *
 
 PICS_STR = []
 
-@bot.on(admin_cmd(pattern=r"logo ?(.*)"))
-@bot.on(sudo_cmd(pattern=r"logo ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"logo ?(.*)"))
+@Andencento.on(sudo_cmd(pattern=r"logo ?(.*)", allow_sudo=True))
 async def lg1(userevent):
     event = await eor(userevent, "`Processing.....`")
     fnt = await get_font_file(userevent.client, "@HELL_FRONTS")

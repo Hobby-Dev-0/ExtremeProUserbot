@@ -11,7 +11,7 @@ DEFAULTUSERBIO = Config.BIO_MSG
 DEL_TIME_OUT = 60
 
 
-@bot.on(admin_cmd(pattern="autoname"))
+@Andencento.on(admin_cmd(pattern="autoname"))
 async def _(event):
     if event.fwd_from:
         return
@@ -37,7 +37,7 @@ async def _(event):
         await bot.send_message(Config.LOGGER_ID, "#AUTONAME \n\nAutoname Started!!")
 
 
-@bot.on(admin_cmd(pattern="autobio"))  # pylint:disable=E0602
+@Andencento.on(admin_cmd(pattern="autobio"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
@@ -67,8 +67,8 @@ async def _(event):
         await bot.send_message(Config.LOGGER_ID, "#AUTOBIO \n\nAutoBio Started!!")
 
 
-@bot.on(admin_cmd(pattern="reserved", outgoing=True))
-@bot.on(sudo_cmd(pattern="reserved", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="reserved", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="reserved", allow_sudo=True))
 async def mine(event):
     if event.fwd_from:
         return

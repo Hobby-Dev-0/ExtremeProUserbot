@@ -1,7 +1,7 @@
 from . import *
 
-@bot.on(admin_cmd(pattern="carry (.*)"))
-@bot.on(sudo_cmd(pattern="carry (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="carry (.*)"))
+@Andencento.on(sudo_cmd(pattern="carry (.*)", allow_sudo=True))
 async def kraken(carry):
     if carry.fwd_from:
         return
@@ -12,8 +12,8 @@ async def kraken(carry):
     )
 
 
-@bot.on(admin_cmd(pattern="ded (.*)"))
-@bot.on(sudo_cmd(pattern="ded (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="ded (.*)"))
+@Andencento.on(sudo_cmd(pattern="ded (.*)", allow_sudo=True))
 async def kraken(ded):
     if ded.fwd_from:
         return
@@ -53,8 +53,8 @@ A = (
 )
 
 
-@bot.on(admin_cmd(pattern="sthink (.*)"))
-@bot.on(sudo_cmd(pattern="sthink (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="sthink (.*)"))
+@Andencento.on(sudo_cmd(pattern="sthink (.*)", allow_sudo=True))
 async def kraken(think):
     if think.fwd_from:
         return
@@ -80,8 +80,8 @@ async def kraken(think):
     await edit_or_reply(think, B)
 
 
-@bot.on(admin_cmd(pattern="sfrog (.*)"))
-@bot.on(sudo_cmd(pattern="sfrog (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="sfrog (.*)"))
+@Andencento.on(sudo_cmd(pattern="sfrog (.*)", allow_sudo=True))
 async def kraken(frogsay):
     if frogsay.fwd_from:
         return
@@ -107,8 +107,8 @@ async def kraken(frogsay):
     await edit_or_reply(frogsay, C)
 
 
-@bot.on(admin_cmd(pattern="sdead (.*)"))
-@bot.on(sudo_cmd(pattern="sdead (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="sdead (.*)"))
+@Andencento.on(sudo_cmd(pattern="sdead (.*)", allow_sudo=True))
 async def kraken(deadfrog):
     if deadfrog.fwd_from:
         return
@@ -134,8 +134,8 @@ async def kraken(deadfrog):
     await edit_or_reply(deadfrog, D)
 
 
-@bot.on(admin_cmd(pattern="strump (.*)"))
-@bot.on(sudo_cmd(pattern="strump (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="strump (.*)"))
+@Andencento.on(sudo_cmd(pattern="strump (.*)", allow_sudo=True))
 async def kraken(trumpsay):
     if trumpsay.fwd_from:
         return
@@ -161,8 +161,8 @@ async def kraken(trumpsay):
     await edit_or_reply(trumpsay, E)
 
 
-@bot.on(admin_cmd(pattern="schina (.*)"))
-@bot.on(sudo_cmd(pattern="schina (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="schina (.*)"))
+@Andencento.on(sudo_cmd(pattern="schina (.*)", allow_sudo=True))
 async def kraken(ckmkb):
     if ckmkb.fwd_from:
         return
@@ -189,16 +189,16 @@ async def kraken(ckmkb):
     await edit_or_reply(ckmkb, F)
 
 
-@bot.on(admin_cmd(pattern=r"sshit$"))
-@bot.on(sudo_cmd(pattern="sshit$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"sshit$"))
+@Andencento.on(sudo_cmd(pattern="sshit$", allow_sudo=True))
 async def kraken(shit):
     if shit.fwd_from:
         return
     await edit_or_reply(shit, A)
 
 
-@bot.on(admin_cmd(pattern=r"elove$"))
-@bot.on(sudo_cmd(pattern="elove$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"elove$"))
+@Andencento.on(sudo_cmd(pattern="elove$", allow_sudo=True))
 async def kakashi(event):
     if event.fwd_from:
         return
@@ -486,112 +486,112 @@ T = (
 )
 
 
-@bot.on(admin_cmd(pattern=r"monster$"))
-@bot.on(sudo_cmd(pattern="monster$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"monster$"))
+@Andencento.on(sudo_cmd(pattern="monster$", allow_sudo=True))
 async def bluedevilmonster(monster):
     if monster.fwd_from:
         return
     await edit_or_reply(monster, G)
 
 
-@bot.on(admin_cmd(pattern=r"pig$"))
-@bot.on(sudo_cmd(pattern="pig$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"pig$"))
+@Andencento.on(sudo_cmd(pattern="pig$", allow_sudo=True))
 async def bluedevilpig(pig):
     if pig.fwd_from:
         return
     await edit_or_reply(pig, H)
 
 
-@bot.on(admin_cmd(pattern=r"gun$"))
-@bot.on(sudo_cmd(pattern="gun$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"gun$"))
+@Andencento.on(sudo_cmd(pattern="gun$", allow_sudo=True))
 async def bluedevilgun(gun):
     if gun.fwd_from:
         return
     await edit_or_reply(gun, I)
 
 
-@bot.on(admin_cmd(pattern=r"dog$"))
-@bot.on(sudo_cmd(pattern="dog$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"dog$"))
+@Andencento.on(sudo_cmd(pattern="dog$", allow_sudo=True))
 async def bluedevildog(dog):
     if dog.fwd_from:
         return
     await edit_or_reply(dog, J)
 
 
-@bot.on(admin_cmd(pattern=r"usero$"))
-@bot.on(sudo_cmd(pattern="usero$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"usero$"))
+@Andencento.on(sudo_cmd(pattern="usero$", allow_sudo=True))
 async def bluedevilusero(usero):
     if usero.fwd_from:
         return
     await edit_or_reply(usero, K)
 
 
-@bot.on(admin_cmd(pattern=r"hmf$"))
-@bot.on(sudo_cmd(pattern="hmf$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"hmf$"))
+@Andencento.on(sudo_cmd(pattern="hmf$", allow_sudo=True))
 async def bluedevilhmf(hmf):
     if hmf.fwd_from:
         return
     await edit_or_reply(hmf, L)
 
 
-@bot.on(admin_cmd(pattern=r"couple$"))
-@bot.on(sudo_cmd(pattern="couple$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"couple$"))
+@Andencento.on(sudo_cmd(pattern="couple$", allow_sudo=True))
 async def bluedevilcouple(couple):
     if couple.fwd_from:
         return
     await edit_or_reply(couple, M)
 
 
-@bot.on(admin_cmd(pattern=r"sup$"))
-@bot.on(sudo_cmd(pattern="sup$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"sup$"))
+@Andencento.on(sudo_cmd(pattern="sup$", allow_sudo=True))
 async def bluedevilsupreme(supreme):
     if supreme.fwd_from:
         return
     await edit_or_reply(supreme, N)
 
 
-@bot.on(admin_cmd(pattern=r"india$"))
-@bot.on(sudo_cmd(pattern="india$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"india$"))
+@Andencento.on(sudo_cmd(pattern="india$", allow_sudo=True))
 async def bluedevilindia(event):
     if event.fwd_from:
         return
     await edit_or_reply(event, O)
 
 
-@bot.on(admin_cmd(pattern=r"wc$"))
-@bot.on(sudo_cmd(pattern="wc$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"wc$"))
+@Andencento.on(sudo_cmd(pattern="wc$", allow_sudo=True))
 async def bluedevilwelcome(welcome):
     if welcome.fwd_from:
         return
     await edit_or_reply(welcome, P)
 
 
-@bot.on(admin_cmd(pattern=r"snk$"))
-@bot.on(sudo_cmd(pattern="snk$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"snk$"))
+@Andencento.on(sudo_cmd(pattern="snk$", allow_sudo=True))
 async def bluedevilsnake(snake):
     if snake.fwd_from:
         return
     await edit_or_reply(snake, Q)
 
 
-@bot.on(admin_cmd(pattern=r"bye$"))
-@bot.on(sudo_cmd(pattern="bye$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"bye$"))
+@Andencento.on(sudo_cmd(pattern="bye$", allow_sudo=True))
 async def bluedevilbye(bye):
     if bye.fwd_from:
         return
     await edit_or_reply(bye, R)
 
 
-@bot.on(admin_cmd(pattern=r"shitos$"))
-@bot.on(sudo_cmd(pattern="shitos$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"shitos$"))
+@Andencento.on(sudo_cmd(pattern="shitos$", allow_sudo=True))
 async def bluedevilshitos(shitos):
     if shitos.fwd_from:
         return
     await edit_or_reply(shitos, S)
 
 
-@bot.on(admin_cmd(pattern=r"dislike$"))
-@bot.on(sudo_cmd(pattern="dislike$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"dislike$"))
+@Andencento.on(sudo_cmd(pattern="dislike$", allow_sudo=True))
 async def bluedevildislike(dislike):
     if dislike.fwd_from:
         return

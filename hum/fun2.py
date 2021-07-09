@@ -13,8 +13,8 @@ BASE_URL = "https://headp.at/pats/{}"
 PAT_IMAGE = "pat.jpg"
 
 
-@bot.on(admin_cmd(pattern="pat ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="pat ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="pat ?(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="pat ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -36,8 +36,8 @@ async def _(event):
     remove(PAT_IMAGE)
 
 
-@bot.on(admin_cmd(pattern="join$", outgoing=True))
-@bot.on(sudo_cmd(pattern="join$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="join$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="join$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -53,8 +53,8 @@ async def _(event):
         await eor(event, mentions)
 
 
-@bot.on(admin_cmd(pattern="pay$", outgoing=True))
-@bot.on(sudo_cmd(pattern="pay$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="pay$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="pay$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -70,8 +70,8 @@ async def _(event):
         await eor(event, mentions)
   
 
-@bot.on(admin_cmd(pattern="climb$", outgoing=True))
-@bot.on(sudo_cmd(pattern="climb$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="climb$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="climb$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -87,8 +87,8 @@ async def _(event):
         await eor(event, mentions)
   
 
-@bot.on(admin_cmd(pattern="aag$", outgoing=True))
-@bot.on(sudo_cmd(pattern="aag$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="aag$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="aag$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -104,8 +104,8 @@ async def _(event):
         await eor(event, mentions)
     
 
-@bot.on(admin_cmd(pattern="push$", outgoing=True))
-@bot.on(sudo_cmd(pattern="push$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="push$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="push$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -121,8 +121,8 @@ async def _(event):
         await eor(event, mentions)
     
 
-@bot.on(admin_cmd(pattern="work$", outgoing=True))
-@bot.on(sudo_cmd(pattern="work$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="work$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="work$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -138,8 +138,8 @@ async def _(event):
         await eor(event, mentions)
     
 
-@bot.on(admin_cmd(pattern="suckit$", outgoing=True))
-@bot.on(sudo_cmd(pattern="suckit$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="suckit$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="suckit$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -155,8 +155,8 @@ async def _(event):
         await eor(event, mentions)
    
 
-@bot.on(admin_cmd(pattern="ohh$", outgoing=True))
-@bot.on(sudo_cmd(pattern="ohh$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="ohh$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="ohh$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -172,8 +172,8 @@ async def _(event):
         await eor(event, mentions)
   
 
-@bot.on(admin_cmd(pattern="lovestory$", outgoing=True))
-@bot.on(sudo_cmd(pattern="lovestory$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="lovestory$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="lovestory$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -202,8 +202,8 @@ async def _(event):
         await event.edit(animation_chars[i % 103])
 
 
-@bot.on(admin_cmd(pattern="bf$", outgoing=True))
-@bot.on(sudo_cmd(pattern="bf$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="bf$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="bf$", allow_sudo=True))
 async def pressf(f):
     if f.fwd_from:
         return
@@ -228,8 +228,8 @@ async def pressf(f):
         await eor(f"`" + out + "`")
 
 
-@bot.on(admin_cmd(pattern="session$", outgoing=True))
-@bot.on(sudo_cmd(pattern="session$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="session$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="session$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -237,8 +237,8 @@ async def _(event):
     await eor(event, mentions)
 
 
-@bot.on(admin_cmd(pattern="ftext ?(.*)"))
-@bot.on(sudo_cmd(pattern="ftext ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="ftext ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="ftext ?(.*)", allow_sudo=True))
 async def payf(event):
     if event.fwd_from:
         return
@@ -265,8 +265,8 @@ async def payf(event):
     await event.edit(pay)
 
 
-@bot.on(admin_cmd(pattern="cat$"))
-@bot.on(sudo_cmd(pattern="cat$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="cat$"))
+@Andencento.on(sudo_cmd(pattern="cat$", allow_sudo=True))
 async def hmm(user):
     if user.fwd_from:
         return
@@ -274,8 +274,8 @@ async def hmm(user):
     await eor(user, reactcat)
 
 
-@bot.on(admin_cmd(pattern="why$"))
-@bot.on(sudo_cmd(pattern="why$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="why$"))
+@Andencento.on(sudo_cmd(pattern="why$", allow_sudo=True))
 async def hmm(user):
     if user.fwd_from:
         return
@@ -283,8 +283,8 @@ async def hmm(user):
     await eor(user, whyuser)
 
 
-@bot.on(admin_cmd(pattern="fact$"))
-@bot.on(sudo_cmd(pattern="fact$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="fact$"))
+@Andencento.on(sudo_cmd(pattern="fact$", allow_sudo=True))
 async def hmm(user):
     if user.fwd_from:
         return

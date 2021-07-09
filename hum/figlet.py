@@ -2,8 +2,8 @@ import pyfiglet
 
 from . import *
 
-@bot.on(admin_cmd(pattern="figlet ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="figlet ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="figlet ?(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="figlet ?(.*)", allow_sudo=True))
 async def figlet(event):
     if event.fwd_from:
         return

@@ -10,7 +10,7 @@ from telethon.tl.functions.channels import LeaveChannelRequest
 from . import *
 
 
-@bot.on(admin_cmd("kickme", outgoing=True))
+@Andencento.on(admin_cmd("kickme", outgoing=True))
 async def leave(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("😪 **KThnxBye** See u all in user!!")
@@ -20,8 +20,8 @@ async def leave(e):
         else:
             await eod(e, "**Iz this even a grp?😑**")
 
-@bot.on(admin_cmd(pattern=r"dc"))
-@bot.on(sudo_cmd(pattern=r"dc", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"dc"))
+@Andencento.on(sudo_cmd(pattern=r"dc", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -29,8 +29,8 @@ async def _(event):
     await eor(event, result.stringify())
 
 
-@bot.on(admin_cmd(pattern=r"config"))
-@bot.on(sudo_cmd(pattern=r"config", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"config"))
+@Andencento.on(sudo_cmd(pattern=r"config", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -40,8 +40,8 @@ async def _(event):
     await eor("Config Saved In You Heroku Logs.")
 
 
-@bot.on(admin_cmd(pattern="schd ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="schd ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="schd ?(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="schd ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -62,8 +62,8 @@ async def _(event):
         await event.edit(message)
 
 
-@bot.on(admin_cmd(pattern="dm ?(.*)"))
-@bot.on(sudo_cmd(pattern="dm ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="dm ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="dm ?(.*)", allow_sudo=True))
 async def _(event):
     if len(event.text) > 3:
         if not event.text[3] == " ":

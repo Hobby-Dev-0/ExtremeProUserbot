@@ -11,8 +11,8 @@ if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
     os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
 
 
-@bot.on(admin_cmd(pattern="ls ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="ls ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="ls ?(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="ls ?(.*)", allow_sudo=True))
 async def lst(event):
     if event.fwd_from:
         return
@@ -42,8 +42,8 @@ async def lst(event):
         await event.delete()
         
 
-@bot.on(admin_cmd(pattern="ls_local$", outgoing=True))
-@bot.on(sudo_cmd(pattern="ls_local$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="ls_local$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="ls_local$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -80,8 +80,8 @@ async def _(event):
     await eor(event, f"{OUTPUT}`{stdout.decode()}`")
 
 
-@bot.on(admin_cmd(pattern="ls_root$", outgoing=True))
-@bot.on(sudo_cmd(pattern="ls_root$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="ls_root$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="ls_root$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -115,8 +115,8 @@ async def _(event):
     await eor(event, f"{OUTPUT}`{stdout.decode()}`")
 
 
-@bot.on(admin_cmd(pattern="ls_saved$", outgoing=True))
-@bot.on(sudo_cmd(pattern="ls_saved$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="ls_saved$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="ls_saved$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -150,8 +150,8 @@ async def _(event):
     await eor(event, f"{OUTPUT}`{stdout.decode()}`")
 
 
-@bot.on(admin_cmd(pattern="rnsaved ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="rnsaved ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="rnsaved ?(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="rnsaved ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -189,8 +189,8 @@ async def _(event):
     await eor(event, f"File renamed `{src}` to `{dst}`")
 
 
-@bot.on(admin_cmd(pattern="rnlocal ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="rnlocal ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="rnlocal ?(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="rnlocal ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -228,8 +228,8 @@ async def _(event):
     await eor(event, f"File renamed `{src}` to `{dst}`")
 
 
-@bot.on(admin_cmd(pattern="delsave (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="delsave (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="delsave (.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="delsave (.*)", allow_sudo=True))
 async def handler(event):
     if event.fwd_from:
         return
@@ -244,8 +244,8 @@ async def handler(event):
         await eod(event, "⛔️File Not Found😬")
 
 
-@bot.on(admin_cmd(pattern="delocal (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="delocal (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="delocal (.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="delocal (.*)", allow_sudo=True))
 async def handler(event):
     if event.fwd_from:
         return

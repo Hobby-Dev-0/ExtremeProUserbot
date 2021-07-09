@@ -19,8 +19,8 @@ alive_c += f"•♦• Channel      :  {user_channel}\n"
 
 #-------------------------------------------------------------------------------
 
-@bot.on(admin_cmd(outgoing=True, pattern="alive$"))
-@bot.on(sudo_cmd(pattern="alive$", allow_sudo=True))
+@Andencento.on(admin_cmd(outgoing=True, pattern="alive$"))
+@Andencento.on(sudo_cmd(pattern="alive$", allow_sudo=True))
 async def up(user):
     if user.fwd_from:
         return
@@ -41,8 +41,8 @@ msg = f"""
 """
 botname = Config.BOT_USERNAME
 
-@bot.on(admin_cmd(pattern="user$"))
-@bot.on(sudo_cmd(pattern="user$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="user$"))
+@Andencento.on(sudo_cmd(pattern="user$", allow_sudo=True))
 async def user_a(event):
     try:
         user = await bot.inline_query(botname, "alive")

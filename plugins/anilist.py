@@ -75,8 +75,8 @@ async def formatJSON(outData):
         msg += " __" + re.sub("<br>", '\n', cat) +"__"
         return msg
         
-@bot.on(admin_cmd(pattern="anilist (.*)"))
-@bot.on(sudo_cmd(pattern="anilist (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="anilist (.*)"))
+@Andencento.on(sudo_cmd(pattern="anilist (.*)", allow_sudo=True))
 async def anilist(event):
     if event.fwd_from:
         return

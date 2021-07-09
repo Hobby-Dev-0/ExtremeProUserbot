@@ -12,8 +12,8 @@ from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 from sql_helper.echo_sql import addecho, get_all_echos, is_echo, remove_echo
 
 
-@bot.on(admin_cmd(pattern="echo$"))
-@bot.on(sudo_cmd(pattern="echo$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="echo$"))
+@Andencento.on(sudo_cmd(pattern="echo$", allow_sudo=True))
 async def echo(user):
     if user.fwd_from:
         return
@@ -37,8 +37,8 @@ async def echo(user):
 
 
 
-@bot.on(admin_cmd(pattern="rmecho$"))
-@bot.on(sudo_cmd(pattern="rmecho$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="rmecho$"))
+@Andencento.on(sudo_cmd(pattern="rmecho$", allow_sudo=True))
 async def echo(user):
     if user.fwd_from:
         return
@@ -61,8 +61,8 @@ async def echo(user):
         await edit_or_reply(user, "Reply to a User's message to echo his messages")
 
 
-@bot.on(admin_cmd(pattern="listecho$"))
-@bot.on(sudo_cmd(pattern="listecho$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="listecho$"))
+@Andencento.on(sudo_cmd(pattern="listecho$", allow_sudo=True))
 async def echo(user):
     if user.fwd_from:
         return
@@ -91,7 +91,7 @@ async def echo(user):
         await edit_or_reply(user, output_str)
 
 
-@bot.on(events.NewMessage(incoming=True))
+@Andencento.on(events.NewMessage(incoming=True))
 async def samereply(user):
     if user.chat_id in Config.UB_BLACK_LIST_CHAT:
         return

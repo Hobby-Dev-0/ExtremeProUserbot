@@ -13,8 +13,8 @@ if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
     os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
 
 
-@bot.on(admin_cmd(pattern="pips(?: |$)(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="pips(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="pips(?: |$)(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="pips(?: |$)(.*)", allow_sudo=True))
 async def pipcheck(pip):
     pipmodule = pip.pattern_match.group(1)
     if pipmodule:
@@ -61,8 +61,8 @@ async def pipcheck(pip):
         await pip.edit(f"`Use {hl}plinfo execmod to see an example`")
 
 
-@bot.on(admin_cmd(pattern="suicide$"))
-@bot.on(sudo_cmd(pattern="suicide$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="suicide$"))
+@Andencento.on(sudo_cmd(pattern="suicide$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -98,8 +98,8 @@ async def _(event):
         await event.edit(OUTPUT)
 
 
-@bot.on(admin_cmd(pattern="date$"))
-@bot.on(sudo_cmd(pattern="date$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="date$"))
+@Andencento.on(sudo_cmd(pattern="date$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -135,8 +135,8 @@ async def _(event):
         await event.edit(OUTPUT)
 
 
-@bot.on(admin_cmd(pattern="env$"))
-@bot.on(sudo_cmd(pattern="env$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="env$"))
+@Andencento.on(sudo_cmd(pattern="env$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -175,8 +175,8 @@ async def _(event):
         
 
 
-@bot.on(admin_cmd(pattern="speed$"))
-@bot.on(sudo_cmd(pattern="speed$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="speed$"))
+@Andencento.on(sudo_cmd(pattern="speed$", allow_sudo=True))
 async def _(event):
     await event.edit("calculating...")
     if event.fwd_from:

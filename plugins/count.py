@@ -7,8 +7,8 @@ from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot import CMD_HELP
 
 
-@bot.on(admin_cmd(pattern="stats$"))
-@bot.on(sudo_cmd(pattern="stats$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="stats$"))
+@Andencento.on(sudo_cmd(pattern="stats$", allow_sudo=True))
 async def stats(
     event: NewMessage.Event,
 ) -> None:  # pylint: disable = R0912, R0914, R0915

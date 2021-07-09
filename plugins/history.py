@@ -9,7 +9,7 @@ from userbot import CMD_HELP
 from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 import asyncio
 
-@bot.on(admin_cmd(pattern=("history ?(.*)")))
+@Andencento.on(admin_cmd(pattern=("history ?(.*)")))
 async def _(event):
    if event.fwd_from:
       return 

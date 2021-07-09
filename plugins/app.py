@@ -12,8 +12,8 @@ from userbot import ALIVE_NAME, CMD_HELP
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Hell User"
 
 
-@bot.on(admin_cmd(pattern="app (.*)"))
-@bot.on(sudo_cmd(pattern="app (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="app (.*)"))
+@Andencento.on(sudo_cmd(pattern="app (.*)", allow_sudo=True))
 async def apk(event):
     app_name = event.pattern_match.group(1)
     event = await edit_or_reply(event, "Searching!")
@@ -82,8 +82,8 @@ async def apk(event):
         await event.edit("Exception Occured:- " + str(err))
 
 
-@bot.on(admin_cmd(pattern="appr (.*)"))
-@bot.on(sudo_cmd(pattern="appr (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="appr (.*)"))
+@Andencento.on(sudo_cmd(pattern="appr (.*)", allow_sudo=True))
 async def apkr(event):
     app_name = event.pattern_match.group(1)
     event = await edit_or_reply(event, "searching!")

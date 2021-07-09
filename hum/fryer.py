@@ -9,8 +9,8 @@ from telethon.tl.types import DocumentAttributeFilename
 from . import *
 
 
-@bot.on(admin_cmd(pattern="frybot$"))
-@bot.on(sudo_cmd(pattern="frybot$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="frybot$"))
+@Andencento.on(sudo_cmd(pattern="frybot$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -54,8 +54,8 @@ async def _(event):
         await event.delete()
 
 
-@bot.on(admin_cmd(pattern=r"fry(?: |$)(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"fry(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"fry(?: |$)(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"fry(?: |$)(.*)", allow_sudo=True))
 async def deepfryer(event):
     try:
         frycount = int(event.pattern_match.group(1))

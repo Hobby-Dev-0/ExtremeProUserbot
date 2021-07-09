@@ -37,7 +37,7 @@ opener = urllib.request.build_opener() ; useragent = 'Mozilla/5.0 (Linux; Androi
   #made by Sh1vam Donot kang
 #made by Sh1vam Donot kang
 #made by Sh1vam Donot kang
-@tgbot.on(events.InlineQuery(pattern=r"google (.*)"))
+@tgAndencento.on(events.InlineQuery(pattern=r"google (.*)"))
 async def inline_id_handler(q_event: events.InlineQuery.Event):
     builder = q_event.builder
     #match = q_event.pattern_match.group(1)

@@ -10,8 +10,8 @@ if not os.path.isdir("./userbot/"):
     os.makedirs("./userbot/")
 
 
-@bot.on(admin_cmd(pattern=r"feye$"))
-@bot.on(sudo_cmd(pattern=r"feye$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"feye$"))
+@Andencento.on(sudo_cmd(pattern=r"feye$", allow_sudo=True))
 async def fun(event):
     if event.fwd_from:
         return
@@ -41,8 +41,8 @@ async def fun(event):
     hoi = await event.delete()
 
 
-@bot.on(admin_cmd(pattern=r"warp$"))
-@bot.on(sudo_cmd(pattern=r"warp$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"warp$"))
+@Andencento.on(sudo_cmd(pattern=r"warp$", allow_sudo=True))
 async def fun(event):
     if event.fwd_from:
         return
@@ -73,8 +73,8 @@ async def fun(event):
 
 
 
-@bot.on(admin_cmd(pattern=r"distort$"))
-@bot.on(sudo_cmd(pattern=r"distort$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"distort$"))
+@Andencento.on(sudo_cmd(pattern=r"distort$", allow_sudo=True))
 async def fun(event):
     if event.fwd_from:
         return

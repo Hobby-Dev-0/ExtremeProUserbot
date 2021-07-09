@@ -6,8 +6,8 @@ from selenium import webdriver
 
 from . import *
 
-@bot.on(admin_cmd(pattern="(webshot|screenshot) (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="(webshot|screenshot) (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="(webshot|screenshot) (.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="(webshot|screenshot) (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

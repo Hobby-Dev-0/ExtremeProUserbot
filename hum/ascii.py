@@ -4,8 +4,8 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from . import *
 
 
-@bot.on(admin_cmd(pattern="ascii (.*)"))
-@bot.on(sudo_cmd(pattern="ascii (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="ascii (.*)"))
+@Andencento.on(sudo_cmd(pattern="ascii (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -40,8 +40,8 @@ async def _(event):
         conv.chat_id, [first.id, response.id, second.id, output_op.id, last.id]
     )
 
-@bot.on(admin_cmd(pattern="line (.*)"))
-@bot.on(sudo_cmd(pattern="line (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="line (.*)"))
+@Andencento.on(sudo_cmd(pattern="line (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

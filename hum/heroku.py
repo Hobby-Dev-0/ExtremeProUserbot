@@ -35,8 +35,8 @@ async def restart(event):
         execl(executable, executable, "bash", "HellBot")
 
 
-@bot.on(admin_cmd(pattern="restart$"))
-@bot.on(sudo_cmd(pattern="restart$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="restart$"))
+@Andencento.on(sudo_cmd(pattern="restart$", allow_sudo=True))
 async def re(user):
     if user.fwd_from:
         return
@@ -47,8 +47,8 @@ async def re(user):
         await event.edit("Please Set Your `HEROKU_API_KEY` to restart Hêllẞø†")
 
 
-@bot.on(admin_cmd(pattern="shutdown$"))
-@bot.on(sudo_cmd(pattern="shutdown$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="shutdown$"))
+@Andencento.on(sudo_cmd(pattern="shutdown$", allow_sudo=True))
 async def down(user):
     if user.fwd_from:
         return
@@ -59,8 +59,8 @@ async def down(user):
         sys.exit(0)
 
 
-@bot.on(admin_cmd(pattern="(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", allow_sudo=True))
 async def variable(user):
     if user.fwd_from:
         return
@@ -153,8 +153,8 @@ async def variable(user):
             return await event.edit(f"`{variable}`  **does not exists**")
 
 
-@bot.on(admin_cmd(pattern="usage(?: |$)", outgoing=True))
-@bot.on(sudo_cmd(pattern="usage(?: |$)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="usage(?: |$)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="usage(?: |$)", allow_sudo=True))
 async def dyno_usage(user):
     if user.fwd_from:
         return
@@ -215,8 +215,8 @@ async def dyno_usage(user):
     )
 
 
-@bot.on(admin_cmd(pattern="logs$"))
-@bot.on(sudo_cmd(pattern="logs$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="logs$"))
+@Andencento.on(sudo_cmd(pattern="logs$", allow_sudo=True))
 async def _(dyno):
     if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
         return await eor(dyno, f"Make Sure Your HEROKU_APP_NAME & HEROKU_API_KEY are filled correct. Visit {user_grp} for help.", link_preview=False)

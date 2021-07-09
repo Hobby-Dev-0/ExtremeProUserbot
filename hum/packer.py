@@ -4,8 +4,8 @@ import asyncio
 from . import *
 
 
-@bot.on(admin_cmd(pattern=r"unpack", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"unpack"))
+@Andencento.on(admin_cmd(pattern=r"unpack", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"unpack"))
 async def _(event):
     b = await event.client.download_media(await event.get_reply_message())
     a = open(b, "r")
@@ -20,8 +20,8 @@ async def _(event):
     os.remove(b)
 
 
-@bot.on(admin_cmd(pattern=r"pack ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"pack ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"pack ?(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"pack ?(.*)", allow_sudo=True))
 async def _(event):
     a = await event.get_reply_message()
     input_str = event.pattern_match.group(1)

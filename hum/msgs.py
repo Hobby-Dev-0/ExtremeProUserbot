@@ -21,8 +21,8 @@ async def all_groups_id(user):
     return usergroups
 
 
-@bot.on(admin_cmd(pattern="frwd$"))
-@bot.on(sudo_cmd(pattern="frwd$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="frwd$"))
+@Andencento.on(sudo_cmd(pattern="frwd$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -45,8 +45,8 @@ async def _(event):
         await event.delete()
 
 
-@bot.on(admin_cmd(pattern="resend$"))
-@bot.on(sudo_cmd(pattern="resend$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="resend$"))
+@Andencento.on(sudo_cmd(pattern="resend$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -60,8 +60,8 @@ async def _(event):
     await event.respond(m)
 
 
-@bot.on(admin_cmd(pattern=r"fpost (.*)"))
-@bot.on(sudo_cmd(pattern=r"fpost (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"fpost (.*)"))
+@Andencento.on(sudo_cmd(pattern=r"fpost (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

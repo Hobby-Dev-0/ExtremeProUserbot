@@ -22,8 +22,8 @@ def progress(current, total):
 
 DOGBIN_URL = "https://del.dog/"
 
-@bot.on(admin_cmd(pattern="paste ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="paste ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="paste ?(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="paste ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -68,8 +68,8 @@ async def _(event):
         await eor(event, "**📍 Pasted to Dogbin :** [HERE]({}) **in**  `{} seconds` .".format(url, ms))
 
 
-@bot.on(admin_cmd(pattern="getpaste(?: |$)(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="getpaste(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="getpaste(?: |$)(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="getpaste(?: |$)(.*)", allow_sudo=True))
 async def get_dogbin_content(dog_url):
     textx = await dog_url.get_reply_message()
     message = dog_url.pattern_match.group(1)
@@ -112,8 +112,8 @@ async def get_dogbin_content(dog_url):
 
     await eor(dog_url, reply_text)
 
-@bot.on(admin_cmd(pattern="neko ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="neko ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="neko ?(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="neko ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

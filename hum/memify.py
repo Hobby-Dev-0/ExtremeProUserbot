@@ -17,8 +17,8 @@ if not os.path.isdir(path):
     os.makedirs(path)
 
 
-@bot.on(admin_cmd(pattern="mmf ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="mmf ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="mmf ?(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="mmf ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -42,8 +42,8 @@ async def _(event):
     os.remove(webp_file)
 
 
-@bot.on(admin_cmd(pattern="mms ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="mms ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="mms ?(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="mms ?(.*)", allow_sudo=True))
 async def sed(userboy):
     if userboy.fwd_from:
         return
@@ -66,8 +66,8 @@ async def sed(userboy):
     os.remove("kraken.webp")
     os.remove(photo)
     
-@bot.on(admin_cmd(pattern="doge(?: |$)(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="doge(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="doge(?: |$)(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="doge(?: |$)(.*)", allow_sudo=True))
 async def nope(kraken):
     user = kraken.pattern_match.group(1)
     if not user:

@@ -5,7 +5,7 @@ from userbot.sql import blacklist_sql as sq
 from . import *
 
 
-@bot.on(events.NewMessage(incoming=True))
+@Andencento.on(events.NewMessage(incoming=True))
 async def on_new_message(event):
     if event.fwd_from:
         return
@@ -23,8 +23,8 @@ async def on_new_message(event):
             break
 
 
-@bot.on(admin_cmd(pattern="addblacklist ((.|\n)*)"))
-@bot.on(sudo_cmd(pattern="addblacklist ((.|\n)*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="addblacklist ((.|\n)*)"))
+@Andencento.on(sudo_cmd(pattern="addblacklist ((.|\n)*)", allow_sudo=True))
 async def on_add_black_list(event):
     if event.fwd_from:
         return
@@ -43,8 +43,8 @@ async def on_add_black_list(event):
     )
 
 
-@bot.on(admin_cmd(pattern="rmblacklist ((.|\n)*)"))
-@bot.on(sudo_cmd(pattern="rmblacklist ((.|\n)*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="rmblacklist ((.|\n)*)"))
+@Andencento.on(sudo_cmd(pattern="rmblacklist ((.|\n)*)", allow_sudo=True))
 async def on_delete_blacklist(event):
     if event.fwd_from:
         return
@@ -64,8 +64,8 @@ async def on_delete_blacklist(event):
     )
 
 
-@bot.on(admin_cmd(pattern="listblacklist$"))
-@bot.on(sudo_cmd(pattern="listblacklist$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="listblacklist$"))
+@Andencento.on(sudo_cmd(pattern="listblacklist$", allow_sudo=True))
 async def on_view_blacklist(event):
     if event.fwd_from:
         return

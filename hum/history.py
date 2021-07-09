@@ -3,8 +3,8 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from . import *
 
-@bot.on(admin_cmd(pattern="history ?(.*)"))
-@bot.on(sudo_cmd(pattern="history ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="history ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="history ?(.*)", allow_sudo=True))
 async def _(userevent):
     if userevent.fwd_from:
         return 
@@ -37,8 +37,8 @@ async def _(userevent):
              await userevent.client.send_message(userevent.chat_id, response2.message)
 
 
-@bot.on(admin_cmd(pattern="unh ?(.*)"))
-@bot.on(sudo_cmd(pattern="unh ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="unh ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="unh ?(.*)", allow_sudo=True))
 async def _(userevent):
     if userevent.fwd_from:
         return 

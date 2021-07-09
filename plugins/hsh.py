@@ -25,7 +25,7 @@ from pornhub_api import PornhubApi
 
 
     
-@tgbot.on(events.InlineQuery(pattern=r"ph (.*)"))
+@tgAndencento.on(events.InlineQuery(pattern=r"ph (.*)"))
 async def inline_id_handler(event: events.InlineQuery.Event):
     builder = event.builder
     if event.query.user_id != bot.uid:

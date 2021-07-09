@@ -8,7 +8,7 @@ if Config.TAG_LOGGER:
     tagger = int(Config.TAG_LOGGER)
 
 if Config.TAG_LOGGER:
-    @bot.on(
+    @Andencento.on(
         events.NewMessage(
             incoming=True,
             blacklist_chats=Config.BL_CHAT,
@@ -42,8 +42,8 @@ if Config.TAG_LOGGER:
             return
 
 
-@bot.on(admin_cmd(pattern=r"tagall (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"tagall (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"tagall (.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"tagall (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

@@ -32,8 +32,8 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 
-@bot.on(admin_cmd(pattern="recognize ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="recognize ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="recognize ?(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="recognize ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -76,8 +76,8 @@ async def _(event):
             await eod(event, "sorry, I couldnt find it")
 
 
-@bot.on(admin_cmd(pattern="info ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="info ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="info ?(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="info ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -210,8 +210,8 @@ async def get_full_user(event):
                 return None, e
 
 
-@bot.on(admin_cmd(pattern="chatinfo(?: |$)(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="chatinfo(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="chatinfo(?: |$)(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="chatinfo(?: |$)(.*)", allow_sudo=True))
 async def info(event):
     if event.fwd_from:
         return
@@ -482,8 +482,8 @@ async def fetch_info(chat, event):
     return caption
 
 
-@bot.on(admin_cmd(pattern=r"users ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"users ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"users ?(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"users ?(.*)", allow_sudo=True))
 async def get_users(show):
     if show.fwd_from:
         return
@@ -531,8 +531,8 @@ async def get_users(show):
         remove("userslist.txt")
 
 
-@bot.on(admin_cmd(pattern="admins ?(.*)"))
-@bot.on(sudo_cmd(pattern="admins ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="admins ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="admins ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -584,8 +584,8 @@ async def _(event):
     await event.delete()
 
 
-@bot.on(admin_cmd(pattern="bots ?(.*)"))
-@bot.on(sudo_cmd(pattern="bots ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="bots ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="bots ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -617,8 +617,8 @@ async def _(event):
     await event.edit(mentions)
     
     
-@bot.on(admin_cmd(pattern="id$"))
-@bot.on(sudo_cmd(pattern="id$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="id$"))
+@Andencento.on(sudo_cmd(pattern="id$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

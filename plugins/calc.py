@@ -10,8 +10,8 @@ from userbot import CMD_HELP
 from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
-@bot.on(admin_cmd(pattern="calc (.*)"))
-@bot.on(sudo_cmd(pattern="calc (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="calc (.*)"))
+@Andencento.on(sudo_cmd(pattern="calc (.*)", allow_sudo=True))
 async def _(car):
     cmd = car.text.split(" ", maxsplit=1)[1]
     event = await edit_or_reply(car, "Calculating ...")

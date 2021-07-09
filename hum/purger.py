@@ -6,8 +6,8 @@ from . import *
 lg_id = Config.LOGGER_ID
 
 
-@bot.on(admin_cmd(pattern="del$"))
-@bot.on(sudo_cmd(pattern="del$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="del$"))
+@Andencento.on(sudo_cmd(pattern="del$", allow_sudo=True))
 @errors_handler
 async def delete_it(safai):
     msg_src = await safai.get_reply_message()
@@ -19,8 +19,8 @@ async def delete_it(safai):
         	pass
 
 
-@bot.on(admin_cmd(pattern=r"purge", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"purge", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"purge", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"purge", allow_sudo=True))
 @errors_handler
 async def fastpurger(purg):
     chat = await purg.get_input_chat()
@@ -50,8 +50,8 @@ async def fastpurger(purg):
     await done.delete()
 
 
-@bot.on(admin_cmd(pattern=r"purgeme", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"purgeme", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"purgeme", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"purgeme", allow_sudo=True))
 @errors_handler
 async def purgeme(delme):
     message = delme.text
@@ -76,8 +76,8 @@ async def purgeme(delme):
     await smsg.delete()
 
 
-@bot.on(admin_cmd(pattern=r"sd", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"sd", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"sd", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"sd", allow_sudo=True))
 @errors_handler
 async def selfdestruct(destroy):
     message = destroy.text

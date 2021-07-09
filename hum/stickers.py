@@ -33,8 +33,8 @@ KANGING_STR = [
 userbot = Config.STICKER_PACKNAME
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="kang"))
-@bot.on(sudo_cmd(pattern="kang", allow_sudo=True))
+@Andencento.on(admin_cmd(outgoing=True, pattern="kang"))
+@Andencento.on(sudo_cmd(pattern="kang", allow_sudo=True))
 async def kang(args):
     user = await bot.get_me()
     if not user.username:
@@ -286,8 +286,8 @@ async def resize_photo(photo):
     return image
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="stkrinfo"))
-@bot.on(sudo_cmd(pattern="stkrinfo", allow_sudo=True))
+@Andencento.on(admin_cmd(outgoing=True, pattern="stkrinfo"))
+@Andencento.on(sudo_cmd(pattern="stkrinfo", allow_sudo=True))
 async def get_pack_info(event):
     if not event.is_reply:
         await edit_or_reply(event, "`I can't fetch info from black hole!!!`")
@@ -334,8 +334,8 @@ async def get_pack_info(event):
     await edit_or_reply(event, OUTPUT)
 
 
-@bot.on(admin_cmd(pattern=r"delst ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"delst ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"delst ?(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"delst ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -375,8 +375,8 @@ async def _(event):
             await event.edit("**😐 Deleted that replied sticker, it will stop being available to Telegram users within about an hour.**")
 
 
-@bot.on(admin_cmd(pattern=r"editst ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"editst ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"editst ?(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"editst ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -418,8 +418,8 @@ async def _(event):
             else:
                 await event.edit(f"**😉 Done!! Edited sticker emoji**\n\nNew Emoji(s) :- {user}")
 
-@bot.on(admin_cmd(pattern="text (.*)"))
-@bot.on(sudo_cmd(pattern="text (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="text (.*)"))
+@Andencento.on(sudo_cmd(pattern="text (.*)", allow_sudo=True))
 async def sticklet(event):
     R = random.randint(0, 256)
     G = random.randint(0, 256)
@@ -477,8 +477,8 @@ async def get_font_file(client, channel_id):
     return await client.download_media(font_file_message)
 
 
-@bot.on(admin_cmd(pattern="waifu(?: |$)(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="waifu(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="waifu(?: |$)(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="waifu(?: |$)(.*)", allow_sudo=True))
 async def waifu(animu):
     text = animu.pattern_match.group(1)
     if not text:

@@ -7,8 +7,8 @@ from userbot.sql import gmute_sql as gsql
 from . import *
 
 
-@bot.on(admin_cmd(pattern=r"gban ?(.*)"))
-@bot.on(sudo_cmd(pattern=r"gban ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"gban ?(.*)"))
+@Andencento.on(sudo_cmd(pattern=r"gban ?(.*)", allow_sudo=True))
 async def _(event):
     user = await eor(event, "`Gbanning...`")
     reason = ""
@@ -64,8 +64,8 @@ async def _(event):
         await user.edit(ogmsg)
 
 
-@bot.on(admin_cmd(pattern=r"ungban ?(.*)"))
-@bot.on(sudo_cmd(pattern=r"ungban ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"ungban ?(.*)"))
+@Andencento.on(sudo_cmd(pattern=r"ungban ?(.*)", allow_sudo=True))
 async def _(event):
     user = await eor(event, "`Ungban in progress...`")
     if event.reply_to_msg_id:
@@ -93,8 +93,8 @@ async def _(event):
     )
 
 
-@bot.on(admin_cmd(pattern="listgban$"))
-@bot.on(sudo_cmd(pattern="listgban$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="listgban$"))
+@Andencento.on(sudo_cmd(pattern="listgban$", allow_sudo=True))
 async def already(event):
     gbanned_users = all_gbanned()
     GBANNED_LIST = "**Gbanned Users :**\n"
@@ -107,7 +107,7 @@ async def already(event):
     await edit_or_reply(event, GBANNED_LIST)
 
 
-@bot.on(events.ChatAction)
+@Andencento.on(events.ChatAction)
 async def _(event):
     if event.user_joined or event.added_by:
         user = await event.get_user()
@@ -127,8 +127,8 @@ async def _(event):
                     pass
 
 
-@bot.on(admin_cmd(pattern=r"gkick ?(.*)"))
-@bot.on(sudo_cmd(pattern=r"gkick ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"gkick ?(.*)"))
+@Andencento.on(sudo_cmd(pattern=r"gkick ?(.*)", allow_sudo=True))
 async def gkick(event):
     user = await eor(event, "`Kicking globally...`")
     if event.reply_to_msg_id:
@@ -159,8 +159,8 @@ async def gkick(event):
         await user.edit(gkmsg)
 
 
-@bot.on(admin_cmd(pattern=r"gmute ?(\d+)?"))
-@bot.on(sudo_cmd(allow_sudo=True, pattern=r"gmute ?(\d+)?"))
+@Andencento.on(admin_cmd(pattern=r"gmute ?(\d+)?"))
+@Andencento.on(sudo_cmd(allow_sudo=True, pattern=r"gmute ?(\d+)?"))
 async def gm(event):
     private = False
     if event.fwd_from:
@@ -196,8 +196,8 @@ async def gm(event):
         
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=r"ungmute ?(\d+)?"))
-@bot.on(sudo_cmd(allow_sudo=True, pattern=r"ungmute ?(\d+)?"))
+@Andencento.on(admin_cmd(outgoing=True, pattern=r"ungmute ?(\d+)?"))
+@Andencento.on(sudo_cmd(allow_sudo=True, pattern=r"ungmute ?(\d+)?"))
 async def endgmute(event):
     private = False
     if event.fwd_from:

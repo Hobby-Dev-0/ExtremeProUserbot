@@ -16,8 +16,8 @@ if not os.path.isdir("./temp"):
     os.makedirs("./temp")
 
 
-@bot.on(admin_cmd(pattern="stoi$"))
-@bot.on(sudo_cmd(pattern="stoi$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="stoi$"))
+@Andencento.on(sudo_cmd(pattern="stoi$", allow_sudo=True))
 async def _(user):
     if user.fwd_from:
         return
@@ -51,8 +51,8 @@ async def _(user):
         await event.edit(f"Syntax : `{hl}stoi` reply to a Telegram normal sticker")
 
 
-@bot.on(admin_cmd(pattern="itos$"))
-@bot.on(sudo_cmd(pattern="itos$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="itos$"))
+@Andencento.on(sudo_cmd(pattern="itos$", allow_sudo=True))
 async def _(user):
     if user.fwd_from:
         return
@@ -93,8 +93,8 @@ async def silently_send_message(conv, text):
     return response
 
 
-@bot.on(admin_cmd(pattern="ttf ?(.*)"))
-@bot.on(sudo_cmd(pattern="ttf ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="ttf ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="ttf ?(.*)", allow_sudo=True))
 async def get(event):
     if event.fwd_from:
         return
@@ -113,8 +113,8 @@ async def get(event):
         await eod(event, f"Reply to text message as `{hl}ttf <file name>`")
 
 
-@bot.on(admin_cmd(pattern="ftoi$"))
-@bot.on(sudo_cmd(pattern="ftoi$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="ftoi$"))
+@Andencento.on(sudo_cmd(pattern="ftoi$", allow_sudo=True))
 async def on_file_to_photo(event):
     if event.fwd_from:
         return
@@ -149,8 +149,8 @@ async def on_file_to_photo(event):
     await hbot.delete()
 
 
-@bot.on(admin_cmd(pattern="gif$"))
-@bot.on(sudo_cmd(pattern="gif$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="gif$"))
+@Andencento.on(sudo_cmd(pattern="gif$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -202,8 +202,8 @@ async def _(event):
             return
 
 
-@bot.on(admin_cmd(pattern="nfc ?(.*)"))
-@bot.on(sudo_cmd(pattern="nfc ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="nfc ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="nfc ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

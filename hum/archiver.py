@@ -18,8 +18,8 @@ extracted = Config.TMP_DOWNLOAD_DIRECTORY + "extracted/"
 if not os.path.isdir(extracted):
     os.makedirs(extracted)
 
-@bot.on(admin_cmd(pattern="zip", outgoing=True))
-@bot.on(sudo_cmd(pattern="zip", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="zip", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="zip", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -62,8 +62,8 @@ def zipdir(path, ziph):
             ziph.write(os.path.join(root, file))
             os.remove(os.path.join(root, file))
 
-@bot.on(admin_cmd(pattern="compress"))
-@bot.on(sudo_cmd(pattern="compress", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="compress"))
+@Andencento.on(sudo_cmd(pattern="compress", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -112,8 +112,8 @@ def zipdir(path, ziph):
             os.remove(os.path.join(root, file))
 
 
-@bot.on(admin_cmd(pattern="rar ?(.*)"))
-@bot.on(sudo_cmd(pattern="rar ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="rar ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="rar ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -165,8 +165,8 @@ async def _(event):
         )
 
 
-@bot.on(admin_cmd(pattern="7z ?(.*)"))
-@bot.on(sudo_cmd(pattern="7z ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="7z ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="7z ?(.*)", allow_sudo=True))
 async def _(event): 
     if event.fwd_from:
         return
@@ -216,8 +216,8 @@ async def _(event):
         await event.edit("Local file compressed to `{}`".format(directory_name + ".7z"))
 
 
-@bot.on(admin_cmd(pattern="tar ?(.*)"))
-@bot.on(sudo_cmd(pattern="tar ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="tar ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="tar ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -303,8 +303,8 @@ async def create_archive(input_directory):
     return return_name
 
 
-@bot.on(admin_cmd(pattern="unzip"))
-@bot.on(sudo_cmd(pattern="unzip", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="unzip"))
+@Andencento.on(sudo_cmd(pattern="unzip", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -396,8 +396,8 @@ async def _(event):
         os.remove(downloaded_file_name)
 
 
-@bot.on(admin_cmd(pattern="unrar"))
-@bot.on(sudo_cmd(pattern="unrar", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="unrar"))
+@Andencento.on(sudo_cmd(pattern="unrar", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -488,8 +488,8 @@ async def _(event):
         os.remove(downloaded_file_name)
 
 
-@bot.on(admin_cmd(pattern="untar"))
-@bot.on(sudo_cmd(pattern="untar", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="untar"))
+@Andencento.on(sudo_cmd(pattern="untar", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

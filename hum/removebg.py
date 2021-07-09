@@ -27,8 +27,8 @@ def convert_tosticker(response, filename=None):
     return filename
 
 
-@bot.on(admin_cmd(pattern="(rmbg|srmbg) ?(.*)"))
-@bot.on(sudo_cmd(pattern="(rmbg|srmbg) ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="(rmbg|srmbg) ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="(rmbg|srmbg) ?(.*)", allow_sudo=True))
 async def remove_background(event):
     if Config.REMOVE_BG_API is None:
         return await eod(

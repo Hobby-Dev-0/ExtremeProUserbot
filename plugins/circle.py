@@ -8,8 +8,8 @@ from userbot import CMD_HELP
 
 
 
-@bot.on(admin_cmd("circle ?(.*)"))
-@bot.on(sudo_cmd(pattern="circle ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd("circle ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="circle ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

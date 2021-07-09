@@ -10,8 +10,8 @@ from . import *
 SUDO_WALA = Config.SUDO_USERS
 lg_id = Config.LOGGER_ID
 
-@bot.on(admin_cmd(pattern="spam (.*)"))
-@bot.on(sudo_cmd(pattern="spam (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="spam (.*)"))
+@Andencento.on(sudo_cmd(pattern="spam (.*)", allow_sudo=True))
 async def spammer(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         message = e.text
@@ -24,8 +24,8 @@ async def spammer(e):
         )
 
 
-@bot.on(admin_cmd(pattern="bigspam"))
-@bot.on(sudo_cmd(pattern="bigspam", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="bigspam"))
+@Andencento.on(sudo_cmd(pattern="bigspam", allow_sudo=True))
 async def bigspam(user):
     if not user.text[0].isalpha() and user.text[0] not in ("/", "#", "@", "!"):
         user_msg = user.text
@@ -39,8 +39,8 @@ async def bigspam(user):
         )
 
 
-@bot.on(admin_cmd("dspam (.*)"))
-@bot.on(sudo_cmd(pattern="dspam (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd("dspam (.*)"))
+@Andencento.on(sudo_cmd(pattern="dspam (.*)", allow_sudo=True))
 async def spammer(e):
     if e.fwd_from:
         return
@@ -54,8 +54,8 @@ async def spammer(e):
         await asyncio.sleep(spamDelay)
 
 
-@bot.on(admin_cmd(pattern="mspam (.*)"))
-@bot.on(sudo_cmd(pattern="mspam (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="mspam (.*)"))
+@Andencento.on(sudo_cmd(pattern="mspam (.*)", allow_sudo=True))
 async def tiny_pic_spam(e):
     sender = await e.get_sender()
     me = await e.client.get_me()

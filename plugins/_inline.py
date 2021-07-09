@@ -59,7 +59,7 @@ HELP_COLOUMNS = int(os.environ.get("HELP_COLOUMNS", 3))
 
 if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
 
-    @tgbot.on(events.InlineQuery)  # pylint:disable=E0602
+    @tgAndencento.on(events.InlineQuery)  # pylint:disable=E0602
     async def inline_handler(event):
         builder = event.builder
         result = None
@@ -142,7 +142,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             )
         await event.answer([result] if result else None)
 
-    @tgbot.on(
+    @tgAndencento.on(
         events.callbackquery.CallbackQuery(  # pylint:disable=E0602
             data=re.compile(rb"helpme_next\((.+?)\)")
         )
@@ -159,7 +159,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             )
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"pmclick")))
+    @tgAndencento.on(events.callbackquery.CallbackQuery(data=re.compile(b"pmclick")))
     async def on_pm_click(event):
         if event.query.user_id == bot.uid:
             reply_pop_up_alert = "This ain't for you, master!"
@@ -169,7 +169,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 f"This is the PM Security for {DEFAULTUSER} to keep away spammers and retards.\n\nProtected by [ExtremePro](t.me/ExtremeProuserbotSupport)"
             )
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"reopen")))
+    @tgAndencento.on(events.callbackquery.CallbackQuery(data=re.compile(b"reopen")))
     async def megic(event):
         if event.query.user_id == bot.uid:
             buttons = paginate_help(0, CMD_LIST, "helpme")
@@ -178,7 +178,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             reply_pop_up_alert = "This bot ain't for u!!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"req")))
+    @tgAndencento.on(events.callbackquery.CallbackQuery(data=re.compile(b"req")))
     async def on_pm_click(event):
         if event.query.user_id == bot.uid:
             reply_pop_up_alert = "This ain't for you, master!"
@@ -195,7 +195,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             tosend = f"Hey {DEFAULTUSER}, [{first_name}](tg://user?id={ok}) is **requesting** something in PM!"
             await tgbot.send_message(LOG_GP, tosend)
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"chat")))
+    @tgAndencento.on(events.callbackquery.CallbackQuery(data=re.compile(b"chat")))
     async def on_pm_click(event):
         event.query.user_id
         if event.query.user_id == bot.uid:
@@ -213,7 +213,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             tosend = f"Hey {DEFAULTUSER}, [{first_name}](tg://user?id={ok}) wants to PM you for **Random Chatting**!"
             await tgbot.send_message(LOG_GP, tosend)
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"plshelpme")))
+    @tgAndencento.on(events.callbackquery.CallbackQuery(data=re.compile(b"plshelpme")))
     async def on_pm_click(event):
         if event.query.user_id == bot.uid:
             reply_pop_up_alert = "This ain't for you, master!"
@@ -230,7 +230,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             tosend = f"Hey {DEFAULTUSER}, [{first_name}](tg://user?id={ok}) wants to PM you for **help**!"
             await tgbot.send_message(LOG_GP, tosend)
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"heheboi")))
+    @tgAndencento.on(events.callbackquery.CallbackQuery(data=re.compile(b"heheboi")))
     async def on_pm_click(event):
         if event.query.user_id == bot.uid:
             reply_pop_up_alert = "This ain't for you, master!"
@@ -251,7 +251,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 f"[{first_name}](tg://user?id={ok}) tried to **spam** your inbox.\nHenceforth, **blocked**",
             )
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
+    @tgAndencento.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
     async def on_plug_in_callback_query_handler(event):
         if event.query.user_id == bot.uid:
             await event.edit(
@@ -261,12 +261,12 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             reply_pop_up_alert = "Please get your own userbot from @ExtremeProuserSupport "
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"statcheck")))
+    @tgAndencento.on(events.callbackquery.CallbackQuery(data=re.compile(b"statcheck")))
     async def rip(event):
         text = telestats
         await event.answer(text, alert=True)
 
-    @tgbot.on(
+    @tgAndencento.on(
         events.callbackquery.CallbackQuery(  # pylint:disable=E0602
             data=re.compile(rb"helpme_prev\((.+?)\)")
         )
@@ -283,7 +283,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             reply_pop_up_alert = "Please get your own Userbot, and don't use mine!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
-    @tgbot.on(
+    @tgAndencento.on(
         events.callbackquery.CallbackQuery(  # pylint:disable=E0602
             data=re.compile(b"us_plugin_(.*)")
         )

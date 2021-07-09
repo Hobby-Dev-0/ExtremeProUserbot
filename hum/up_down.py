@@ -14,8 +14,8 @@ from telethon.tl.types import DocumentAttributeVideo
 
 from . import *
 
-@bot.on(admin_cmd(pattern=r"webup ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"webup ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"webup ?(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"webup ?(.*)", allow_sudo=True))
 async def labstack(event):
     if event.fwd_from:
         return
@@ -72,8 +72,8 @@ async def labstack(event):
     )
 
 
-@bot.on(admin_cmd(pattern=r"upld_dir (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"upld_dir (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"upld_dir (.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"upld_dir (.*)", allow_sudo=True))
 async def uploadir(udir_event):
     """ For .uploadir command, allows you to upload everything from a folder in the server"""
     input_str = udir_event.pattern_match.group(1)
@@ -160,8 +160,8 @@ async def uploadir(udir_event):
         await udir_event.edit("404: Directory Not Found")
 
 
-@bot.on(admin_cmd(pattern=r"upload (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"upload (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"upload (.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"upload (.*)", allow_sudo=True))
 async def upload(u_event):
     """ For .upload command, allows you to upload a file from the userbot's server """
     await u_event.edit("Processing ...")
@@ -239,8 +239,8 @@ def extract_w_h(file):
         return width, height
 
 
-@bot.on(admin_cmd(pattern=r"upld_as(stream|vn|all) (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"upld_as (stream|vn|all) (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"upld_as(stream|vn|all) (.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"upld_as (stream|vn|all) (.*)", allow_sudo=True))
 async def uploadas(uas_event):
     """ For .uploadas command, allows you to specify some arguments for upload. """
     await uas_event.edit("Processing ...")
@@ -333,8 +333,8 @@ async def uploadas(uas_event):
         await uas_event.edit("404: File Not Found")
 
 
-@bot.on(admin_cmd(pattern="download(?: |$)(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="download(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="download(?: |$)(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="download(?: |$)(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

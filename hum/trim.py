@@ -37,8 +37,8 @@ def media_type(message):
     return media
     
 
-@bot.on(admin_cmd(pattern="tsave$"))
-@bot.on(sudo_cmd(pattern="tsave$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="tsave$"))
+@Andencento.on(sudo_cmd(pattern="tsave$", allow_sudo=True))
 async def ff_mpeg_trim_cmd(event):
     if event.fwd_from:
         return
@@ -77,8 +77,8 @@ async def ff_mpeg_trim_cmd(event):
         )
 
 
-@bot.on(admin_cmd(pattern="vtrim"))
-@bot.on(sudo_cmd(pattern="vtrim", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="vtrim"))
+@Andencento.on(sudo_cmd(pattern="vtrim", allow_sudo=True))
 async def ff_mpeg_trim_cmd(event):
     if event.fwd_from:
         return
@@ -158,8 +158,8 @@ async def ff_mpeg_trim_cmd(event):
     await eod(userevent, f"`Completed Process in {ms} seconds`", 3)
 
 
-@bot.on(admin_cmd(pattern="atrim"))
-@bot.on(sudo_cmd(pattern="atrim", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="atrim"))
+@Andencento.on(sudo_cmd(pattern="atrim", allow_sudo=True))
 async def ff_mpeg_trim_cmd(event):
     if event.fwd_from:
         return
@@ -216,8 +216,8 @@ async def ff_mpeg_trim_cmd(event):
     await eod(userevent, f"`Completed Process in {ms} seconds`", 3)
 
 
-@bot.on(admin_cmd(pattern="tclear$"))
-@bot.on(sudo_cmd(pattern="tclear$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="tclear$"))
+@Andencento.on(sudo_cmd(pattern="tclear$", allow_sudo=True))
 async def ff_mpeg_trim_cmd(event):
     if event.fwd_from:
         return

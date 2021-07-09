@@ -25,8 +25,8 @@ except:
 
 from . import *
 
-@bot.on(admin_cmd(pattern="lyrics(?: |$)(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="lyrics(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="lyrics(?: |$)(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="lyrics(?: |$)(.*)", allow_sudo=True))
 async def nope(kraken):
     user = kraken.pattern_match.group(1)
     await eor(kraken, f"Searching lyrics for  `{user}` ...")
@@ -49,8 +49,8 @@ async def nope(kraken):
     await kraken.delete()
     
 
-@bot.on(admin_cmd(pattern="song(?: |$)(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="song(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="song(?: |$)(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="song(?: |$)(.*)", allow_sudo=True))
 async def download_video(v_url):
     lazy = v_url
     sender = await lazy.get_sender()
@@ -171,8 +171,8 @@ async def download_video(v_url):
         await rkp.delete()
 
 
-@bot.on(admin_cmd(pattern="vsong(?: |$)(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="vsong(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="vsong(?: |$)(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="vsong(?: |$)(.*)", allow_sudo=True))
 async def download_video(v_url):
     lazy = v_url
     sender = await lazy.get_sender()

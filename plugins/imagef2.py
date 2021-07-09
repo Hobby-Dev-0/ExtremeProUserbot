@@ -25,7 +25,7 @@ path = "./dcobra/"
 if not os.path.isdir(path):
     os.makedirs(path)
 
-@bot.on(admin_cmd(pattern=r"trig"))
+@Andencento.on(admin_cmd(pattern=r"trig"))
 async def dc(event):
     if not event.reply_to_msg_id:
         await event.edit("Reply to any media.")
@@ -94,7 +94,7 @@ async def hmm(event):
     os.remove("shivamgta.png")
             
 
-@bot.on(admin_cmd(pattern="rgif"))
+@Andencento.on(admin_cmd(pattern="rgif"))
 async def _(event):
     if not event.reply_to_msg_id:
         await event.edit("Reply to any media.")
@@ -122,7 +122,7 @@ async def _(event):
 
             
 
-@bot.on(admin_cmd("grey"))
+@Andencento.on(admin_cmd("grey"))
 async def hehe(event):
     if not event.reply_to_msg_id:
         await event.edit("Reply to any Media.")
@@ -167,7 +167,7 @@ async def _(event):
     await event.delete()
     
    
-@bot.on(admin_cmd(pattern="circle", outgoing=True))
+@Andencento.on(admin_cmd(pattern="circle", outgoing=True))
 async def shiv(event):
     if not event.reply_to_msg_id:
         await event.edit("Reply to any media.")

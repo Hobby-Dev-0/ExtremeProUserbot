@@ -6,7 +6,7 @@ lg_id = Config .LOGGER_ID
 
 
 
-@bot.on(events.NewMessage(pattern=r'\#(\S+)', outgoing=True))
+@Andencento.on(events.NewMessage(pattern=r'\#(\S+)', outgoing=True))
 async def incom_note(event):
     if not lg_id:
         return
@@ -39,8 +39,8 @@ async def incom_note(event):
     except AttributeError:
         pass
 
-@bot.on(admin_cmd(pattern=r"snip ?(.*)"))
-@bot.on(sudo_cmd(pattern=r"snip ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"snip ?(.*)"))
+@Andencento.on(sudo_cmd(pattern=r"snip ?(.*)", allow_sudo=True))
 async def add_snip(event):
     if not lg_id:
         return await eod(
@@ -84,8 +84,8 @@ async def add_snip(event):
     return await eor(event, success.format("added", trigger))
 
 
-@bot.on(admin_cmd(pattern=r"rmsnip ?(.*)"))
-@bot.on(sudo_cmd(pattern=r"rmsnip ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"rmsnip ?(.*)"))
+@Andencento.on(sudo_cmd(pattern=r"rmsnip ?(.*)", allow_sudo=True))
 async def _(event):
     input_str = (event.pattern_match.group(1)).lower()
     if not input_str:
@@ -96,8 +96,8 @@ async def _(event):
     await eor(event, "Removed  `#{}`  from snips..".format(input_str))
 
 
-@bot.on(admin_cmd(pattern="listsnip"))
-@bot.on(sudo_cmd(pattern="listsnip", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="listsnip"))
+@Andencento.on(sudo_cmd(pattern="listsnip", allow_sudo=True))
 async def lsnote(event):
     all_snips = sq.get_notes()
     OUT_STR = "Available Snips:\n"

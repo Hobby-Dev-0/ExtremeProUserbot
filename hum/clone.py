@@ -10,7 +10,7 @@ BOTLOG_CHATID = Config.LOGGER_ID
 BOTLOG = True
 
 
-@bot.on(admin_cmd(pattern="clone ?(.*)"))
+@Andencento.on(admin_cmd(pattern="clone ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -59,7 +59,7 @@ async def _(event):
         )
 
 
-@bot.on(admin_cmd(pattern="revert$"))
+@Andencento.on(admin_cmd(pattern="revert$"))
 async def _(event):
     if event.fwd_from:
         return

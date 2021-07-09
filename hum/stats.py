@@ -7,8 +7,8 @@ from telethon.tl.types import Channel, Chat, User
 from . import *
 
 
-@bot.on(admin_cmd(pattern="stats$"))
-@bot.on(sudo_cmd(pattern="stats$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="stats$"))
+@Andencento.on(sudo_cmd(pattern="stats$", allow_sudo=True))
 async def stats(
     event: NewMessage.Event,
 ) -> None:  # pylint: disable = R0912, R0914, R0915

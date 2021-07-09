@@ -5,7 +5,7 @@ from . import *
 
 lg_id = Config.LOGGER_ID
 
-@bot.on(events.ChatAction)
+@Andencento.on(events.ChatAction)
 async def _(event):  # sourcery no-metrics
     cws = get_current_welcome(event.chat_id)
     if (
@@ -65,8 +65,8 @@ async def _(event):  # sourcery no-metrics
         update_welcome(event.chat_id, current_message.id)
 
 
-@bot.on(admin_cmd(pattern="savewelcome(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="savewelcome(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="savewelcome(?: |$)(.*)"))
+@Andencento.on(sudo_cmd(pattern="savewelcome(?: |$)(.*)", allow_sudo=True))
 async def save_welcome(event):
     msg = await event.get_reply_message()
     string = "".join(event.text.split(maxsplit=1)[1:])
@@ -95,8 +95,8 @@ async def save_welcome(event):
     await eod(event, "Error while setting welcome in this group")
 
 
-@bot.on(admin_cmd(pattern="cleanwelcome$"))
-@bot.on(sudo_cmd(pattern="cleanwelcome$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="cleanwelcome$"))
+@Andencento.on(sudo_cmd(pattern="cleanwelcome$", allow_sudo=True))
 async def del_welcome(event):
     if rm_welcome(event.chat_id) is True:
         await eod(event, "Welcome Message deleted for this chat", 7)
@@ -104,8 +104,8 @@ async def del_welcome(event):
         await eod(event, "To delete a welcome note you need to save one first.", 7)
 
 
-@bot.on(admin_cmd(pattern="showwelcome$"))
-@bot.on(sudo_cmd(pattern="showwelcome$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="showwelcome$"))
+@Andencento.on(sudo_cmd(pattern="showwelcome$", allow_sudo=True))
 async def getwelcome(event):
     cws = get_current_welcome(event.chat_id)
     if not cws:
@@ -125,8 +125,8 @@ async def getwelcome(event):
         await event.reply(cws.reply)
 
 
-@bot.on(admin_cmd(pattern="welcome_note$"))
-@bot.on(sudo_cmd(pattern="welcome_note$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="welcome_note$"))
+@Andencento.on(sudo_cmd(pattern="welcome_note$", allow_sudo=True))
 async def note(event):
     await eor(event, WELCOME_FORMAT)
 

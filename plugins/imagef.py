@@ -22,7 +22,7 @@ path = "./LEGENDX/"
 if not os.path.isdir(path):
     os.makedirs(path)
 
-@bot.on(admin_cmd("blur"))
+@Andencento.on(admin_cmd("blur"))
 async def hehe(event):
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
@@ -40,7 +40,7 @@ async def hehe(event):
     os.remove("danish.jpg")
 
 
-@bot.on(admin_cmd("invert"))
+@Andencento.on(admin_cmd("invert"))
 async def hehe(event):
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
@@ -59,7 +59,7 @@ async def hehe(event):
 
 
     
-@bot.on(admin_cmd("mirror"))
+@Andencento.on(admin_cmd("mirror"))
 async def hehe(event):
     if not event.reply_to_msg_id:
         await event.edit("Reply to media")
@@ -79,7 +79,7 @@ async def hehe(event):
     
 
 
-@bot.on(admin_cmd("quad"))
+@Andencento.on(admin_cmd("quad"))
 async def hehe(event):
     if not event.reply_to_msg_id:
         await event.edit("Reply to media")
@@ -101,7 +101,7 @@ async def hehe(event):
     os.remove("dark.jpg")   
     
 
-@bot.on(admin_cmd("flip"))
+@Andencento.on(admin_cmd("flip"))
 async def hehe(event):
     if not event.reply_to_msg_id:
         await event.edit("Reply to media")
@@ -122,7 +122,7 @@ async def hehe(event):
     
 
 
-@bot.on(admin_cmd("enhance"))
+@Andencento.on(admin_cmd("enhance"))
 async def hehe(event):
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
@@ -140,7 +140,7 @@ async def hehe(event):
     os.remove("danish.jpg")
 
 
-@bot.on(admin_cmd("pencil"))
+@Andencento.on(admin_cmd("pencil"))
 async def hehe(event):
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
@@ -161,7 +161,7 @@ async def hehe(event):
     shutil.rmtree(path)
     os.remove("danish.jpg")
     
-@bot.on(admin_cmd("smooth"))
+@Andencento.on(admin_cmd("smooth"))
 async def hehe(event):
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
@@ -180,7 +180,7 @@ async def hehe(event):
 
     # .ytc by @shivam_patel
     #  kang with credits
-@bot.on(admin_cmd(pattern=r"ytc"))
+@Andencento.on(admin_cmd(pattern=r"ytc"))
 async def hehe(event):
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")

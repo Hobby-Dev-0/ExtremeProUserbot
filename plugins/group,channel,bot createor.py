@@ -6,8 +6,8 @@ from Extre import CMD_HELP
 from Extre.utils import extremepro_cmd, edit_or_reply, amanpandey_cmd
 
 
-@bot.on(extremepro_cmd(pattern="create (b|g|c) (.*)"))  # pylint:disable=E0602
-@bot.on(amanpandey_cmd(pattern="create (b|g|c) (.*)", allow_sudo=True))
+@Andencento.on(extremepro_cmd(pattern="create (b|g|c) (.*)"))  # pylint:disable=E0602
+@Andencento.on(amanpandey_cmd(pattern="create (b|g|c) (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

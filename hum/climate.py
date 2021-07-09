@@ -29,8 +29,8 @@ async def get_tz(con):
         return
 
 
-@bot.on(admin_cmd(pattern="climate ?(.*)"))
-@bot.on(sudo_cmd(pattern="climate ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="climate ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="climate ?(.*)", allow_sudo=True))
 async def get_weather(weather):
     if not OWM_API:
         await eor(weather, "**Get an API key from** https://openweathermap.org/ **first.**")
@@ -130,8 +130,8 @@ async def get_weather(weather):
     )
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="setcity(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="setcity(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(outgoing=True, pattern="setcity(?: |$)(.*)"))
+@Andencento.on(sudo_cmd(pattern="setcity(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def set_default_city(city):
     if city.fwd_from:
@@ -180,8 +180,8 @@ async def set_default_city(city):
     await edit_or_reply(city, f"`Set default city as {cityname}, {fullc_n}.`")
 
 
-@bot.on(admin_cmd(pattern="wttr ?(.*)"))
-@bot.on(sudo_cmd(pattern="wttr ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="wttr ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="wttr ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

@@ -4,8 +4,8 @@ import traceback
 from . import *
 
 
-@bot.on(admin_cmd(pattern="calc (.*)"))
-@bot.on(sudo_cmd(pattern="calc (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="calc (.*)"))
+@Andencento.on(sudo_cmd(pattern="calc (.*)", allow_sudo=True))
 async def _(car):
     if car.fwd_from:
         return

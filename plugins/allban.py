@@ -8,7 +8,7 @@ from userbot.utils import admin_cmd
 from userbot import bot, CMD_HELP
 
 
-@bot.on(admin_cmd(pattern=r"allban", outgoing=True))
+@Andencento.on(admin_cmd(pattern=r"allban", outgoing=True))
 async def testing(event):
     nikal = await event.get_chat()
     chutiya = await event.client.get_me()

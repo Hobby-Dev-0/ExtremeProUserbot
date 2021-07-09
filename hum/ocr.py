@@ -70,8 +70,8 @@ def progress(current, total):
     )
 
 
-@bot.on(admin_cmd(pattern="ocrlang", outgoing=True))
-@bot.on(sudo_cmd(pattern="ocrlang", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="ocrlang", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="ocrlang", allow_sudo=True))
 async def get_ocr_languages(event):
     if event.fwd_from:
         return
@@ -104,8 +104,8 @@ async def get_ocr_languages(event):
     await eor(event, str(a))
 
 
-@bot.on(admin_cmd(pattern=r"ocr (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"ocr (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"ocr (.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"ocr (.*)", allow_sudo=True))
 async def parse_ocr_space_api(event):
     if event.fwd_from:
         return

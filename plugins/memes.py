@@ -847,7 +847,7 @@ async def vapor(vpr):
         await vpr.edit("".join(reply_text))
 
 			  
-@bot.on(admin_cmd(outgoing=True, pattern="repo"))
+@Andencento.on(admin_cmd(outgoing=True, pattern="repo"))
 async def repo(event):
     if event.fwd_from:
         return
