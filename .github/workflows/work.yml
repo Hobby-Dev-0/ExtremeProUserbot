@@ -18,9 +18,9 @@ jobs:
 
         with:
 
-          find: "Hêllẞø†"
+          find: "tgAndencento"
 
-          replace: "ᴀɴᴅᴇɴᴄᴇɴᴛᴏ"
+          replace: "tgbot"
 
       - name: Create Pull Request
 
