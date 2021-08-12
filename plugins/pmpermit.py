@@ -67,7 +67,6 @@ async def you_dm_niqq(event):
     if event.fwd_from:
         return
     chat = await event.get_chat()
-    chat_ids = event.chat_id
     if event.is_private:
         if not pmpermit_sql.is_approved(chat.id):
             if chat.id not in PM_WARNS:
@@ -175,7 +174,7 @@ async def on_new_private_message(event):
         # userbot's should not reply to other userbot's
         # https://core.telegram.org/bots/faq#why-doesn-39t-my-bot-see-messages-from-other-bots
         return
-    chat_ids = event.chat_id
+    chat_ids = event.sender_id
     sender = await bot.get_entity(chat_ids)
     
 
