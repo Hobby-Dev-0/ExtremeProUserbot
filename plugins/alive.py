@@ -46,5 +46,5 @@ async def up(op):
         return
     await op.get_chat()
     await op.delete()
-    await borg.send_file(op.chat_id, EXTREMEPRO_PIC, caption=EXTREMEPRO)
+    await client.send_file(op.chat_id, EXTREMEPRO_PIC, caption=EXTREMEPRO)
     await op.delete() 
