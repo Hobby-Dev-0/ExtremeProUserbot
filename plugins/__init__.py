@@ -26,6 +26,30 @@ from Extre import *
 from Extre import *
 from Extre import ALIVE_NAME, bot
 PMSECURITY = os.environ.get("PMSECURITY", None)
+bot = Andencento
+uptime = "dekhna jaruri hai kya"
+
+Eiva_USER = Andencento.me.first_name
+ForGo10God = Andencento.uid
+Eiva_mention = f"[{Eiva_USER}](tg://user?id={ForGo10God})"
+
+Andencento_USER = bot.me.first_name
+Andencento_mention = f"[{Andencento_USER}](tg://user?id={ForGo10God})"
+hl = Config.HANDLER
+shl = Config.SUDO_HANDLER
+Andencento_ver = "0.1"
+tel_ver = "0.1"
+devs = ""
+user_mention = Andencento_mention
+
+
+async def get_user_id(ids):
+    if str(ids).isdigit():
+        userid = int(ids)
+    else:
+        userid = (await bot.get_entity(ids)).id
+    return userid
+
 extremeprover = "0.1"
 # stats
 if Var.PRIVATE_GROUP_ID:
