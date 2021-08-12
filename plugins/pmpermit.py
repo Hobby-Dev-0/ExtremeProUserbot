@@ -19,7 +19,7 @@ TELEPIC = (
 )
 PM_WARNS = {}
 PREV_REPLY_MESSAGE = {}
-myid = bot.uid
+myid = Andencento.uid
 MESAG = (
     str(CUSTOM_PMPERMIT)
     if CUSTOM_PMPERMIT
@@ -158,7 +158,7 @@ async def approve_p_m(event):
 
 @bot.on(events.NewMessage(incoming=True))
 async def on_new_private_message(event):
-    if event.sender_id == bot.uid:
+    if event.sender_id == Andencento.uid:
         return
 
     if Var.PRIVATE_GROUP_ID is None:
@@ -177,7 +177,7 @@ async def on_new_private_message(event):
         return
     sender = await bot.get_entity(chat_id)
 
-    if chat_id == bot.uid:
+    if chat_id == Andencento.uid:
 
         # don't log Saved Messages
 
