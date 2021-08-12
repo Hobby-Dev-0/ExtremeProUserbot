@@ -158,6 +158,7 @@ chat_ids = event.chat_id
 
 @bot.on(events.NewMessage(incoming=True))
 async def on_new_private_message(event):
+    event = event
     if event.sender_id == Andencento.uid:
         return
 
