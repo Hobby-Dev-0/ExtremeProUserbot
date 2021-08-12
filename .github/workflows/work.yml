@@ -18,9 +18,9 @@ jobs:
 
         with:
 
-          find: "bot.uid"
+          find: "andencento_cmd"
 
-          replace: "Andencento.uid"
+          replace: "extremepro_cmd"
 
       - name: Create Pull Request
 
