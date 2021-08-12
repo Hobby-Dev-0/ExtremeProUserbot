@@ -40,3 +40,11 @@ async def up(op):
     await op.delete()
     await borg.send_file(op.chat_id, EXTREMEPRO_PIC, caption=EXTREMEPRO)
     await op.delete() 
+@client.on(extremepro_cmd(outgoing=True, pattern="alive$"))
+async def up(op):
+    if op.fwd_from:
+        return
+    await op.get_chat()
+    await op.delete()
+    await borg.send_file(op.chat_id, EXTREMEPRO_PIC, caption=EXTREMEPRO)
+    await op.delete() 
