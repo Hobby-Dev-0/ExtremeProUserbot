@@ -33,7 +33,7 @@ ALV_PIC = os.environ.get("ALIVE_PIC", None)
 PM_WARNS = {}
 PREV_REPLY_MESSAGE = {}
 
-mybot = Config.BOT_USERNAME
+mybot = os.environ.get("TG_BOT_TOKEN_BF_HER", None)
 if mybot.startswith("@"):
     botname = mybot
 else:
