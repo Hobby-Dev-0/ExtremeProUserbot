@@ -18,9 +18,9 @@ jobs:
 
         with:
 
-          find: "tgAndencento"
+          find: "bot.uid"
 
-          replace: "tgbot"
+          replace: "Andencento.uid"
 
       - name: Create Pull Request
 
