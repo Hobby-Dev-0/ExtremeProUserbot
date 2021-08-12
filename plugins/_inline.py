@@ -1,365 +1,427 @@
-
+from math import ceil
+from re import compile
 import asyncio
 import html
 import os
 import re
-from math import ceil
+import sys
 
 from telethon import Button, custom, events, functions
 from telethon.tl.functions.users import GetFullUserRequest
+from telethon.events import InlineQuery, callbackquery
+from telethon.sync import custom
+from telethon.errors.rpcerrorlist import UserNotParticipantError
+from telethon.tl.functions.channels import GetParticipantRequest
+from telethon.tl.functions.channels import JoinChannelRequest
+from telethon.tl.functions.messages import ExportChatInviteRequest
 from plugins import *
-Var.LOAD_MYBOT = True
-PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
-TELEPIC = (
-    PMPERMIT_PIC
-    if PMPERMIT_PIC
-    else "https://telegra.ph/file/92cfbab6598148837c2e4.jpg"
-)
+# Thanks to Shivansh To give permisson to import 3 plugins from Eiva Bot
+
+Eiva_mention = f"[{Eiva_USER}](tg://user?id={ForGo10God})"
+
+Eiva_row = os.environ.get("ROW", None)
+Eiva_emoji = os.environ.get("EMOJI", None)
+Eiva_pic = os.environ.get("ALIVE_PIC", None) or "None"
+cstm_pmp = os.environ.get("COUSTOM_PMPERMIT", None)
+ALV_PIC = os.environ.get("ALIVE_PIC", None)
+
 PM_WARNS = {}
 PREV_REPLY_MESSAGE = {}
-myid = Andencento.uid
-mybot = Var.TG_BOT_USER_NAME_BF_HER
+
+mybot = Config.BOT_USERNAME
 if mybot.startswith("@"):
     botname = mybot
 else:
     botname = f"@{mybot}"
-LOG_GP = Var.PRIVATE_GROUP_ID
-MESAG = (
-    str(CUSTOM_PMPERMIT)
-    if CUSTOM_PMPERMIT
-    else "`ExtremeProXAndencento PM security! Please wait for me to approve you. 😊"
+LOG_GP = Config.LOGGER_ID
+mssge = (
+    str(cstm_pmp)
+    if cstm_pmp
+    else "**You Have Trespassed To My Master's PM!\nThis Is Illegal And Regarded As Crime.**"
 )
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "ExtremeProXAndencento User"
-USER_BOT_WARN_ZERO = "`I had warned you not to spam. Now you have been blocked and reported until further notice.`\n\n**GoodBye!** "
 
-if Var.LOAD_MYBOT == "True":
-    USER_BOT_NO_WARN = (
-        "**PM Security of [{}](tg://user?id={})**\n\n"
-        "{}\n\n"
-        "For immediate help, PM me via {}"
-        "\nPlease choose why you are here, from the available options\n\n".format(
-            DEFAULTUSER, myid, MESAG, botname
+USER_BOT_WARN_ZERO = "Enough Of Your Flooding In My Master's PM!! \n\n**🚫 Blocked and Reported**"
+
+Eiva_FIRST = (
+    "**🔥 ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ᴘʀɪᴠᴀᴛᴇ ᴜʟᴛʀᴀ ꜱᴇᴄᴜʀɪᴛʏ ᴏꜰ ᴍʏ ᴍᴀꜱᴛᴇʀ 🔥**\n\nThis is to inform you that "
+    "{} is currently unavailable.\nThis is an automated message.\n\n"
+    "{}\n\n**Please Choose Why You Are Here!!**".format(Eiva_mention, mssge))
+
+
+def button(page, modules):
+    Row = Eiva_row
+    Column = 3
+
+    modules = sorted([modul for modul in modules if not modul.startswith("_")])
+    pairs = list(map(list, zip(modules[::2], modules[1::2])))
+    if len(modules) % 2 == 1:
+        pairs.append([modules[-1]])
+    max_pages = ceil(len(pairs) / Row)
+    pairs = [pairs[i : i + Row] for i in range(0, len(pairs), Row)]
+    buttons = []
+    for pairs in pairs[page]:
+        buttons.append(
+            [
+                custom.Button.inline(f"{Eiva_emoji} " + pair + f" {Eiva_emoji}", data=f"Information[{page}]({pair})")
+                for pair in pairs
+            ]
         )
+
+    buttons.append(
+        [
+            custom.Button.inline(
+               f"◀️ Back {Eiva_emoji}", data=f"page({(max_pages - 1) if page == 0 else (page - 1)})"
+            ),
+            custom.Button.inline(
+               f"• ❌ •", data="close"
+            ),
+            custom.Button.inline(
+               f"{Eiva_emoji} Next ▶️", data=f"page({0 if page == (max_pages - 1) else page + 1})"
+            ),
+        ]
     )
-elif Var.LOAD_MYBOT == "False":
-    USER_BOT_NO_WARN = (
-        "**PM Security of [{}](tg://user?id={})**\n\n"
-        "{}\n"
-        "\nPlease choose why you are here, from the available options\n".format(
-            DEFAULTUSER, myid, MESAG
-        )
-    )
+    return [max_pages, buttons]
 
-CUSTOM_HELP_EMOJI = os.environ.get("CUSTOM_HELP_EMOJI", "⚡")
-HELP_ROWS = int(os.environ.get("HELP_ROWS", 5))
-HELP_COLOUMNS = int(os.environ.get("HELP_COLOUMNS", 3))
 
-if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
-
-    @tgbot.on(events.InlineQuery)  # pylint:disable=E0602
+    modules = CMD_HELP
+if Config.BOT_USERNAME is not None and tgbot is not None:
+    @tgbot.on(InlineQuery)  # pylint:disable=E0602
     async def inline_handler(event):
         builder = event.builder
         result = None
         query = event.text
-        if event.query.user_id == Andencento.uid and query.startswith("`Userbot"):
+        if event.query.user_id == bot.uid and query == "Eivabot_help":
             rev_text = query[::-1]
-            buttons = paginate_help(0, CMD_LIST, "helpme")
-            result = builder.article(
-                "© Andencento Help",
-                text="{}\nCurrently Loaded Plugins: {}".format(query, len(CMD_LIST)),
-                buttons=buttons,
+            veriler = button(0, sorted(CMD_HELP))
+            apn = []
+            for x in CMD_LIST.values():
+                for y in x:
+                    apn.append(y)
+            result = await builder.article(
+                f"Hey! Only use .help please",
+                text=f"🔰 **{Eiva_mention}**\n\n📜 __No.of Plugins__ : `{len(CMD_HELP)}` \n🗂️ __Commands__ : `{len(apn)}`\n🗒️ __Page__ : 1/{veriler[0]}",
+                buttons=veriler[1],
                 link_preview=False,
             )
-        elif event.query.user_id == Andencento.uid and query == "stats":
-            result = builder.article(
-                title="Stats",
-                text=f"**Andencento Stats For [{DEFAULTUSER}](tg://user?id={myid})**\n\n__Bot is functioning normally, master!__\n\n(c) @Andencento",
-                buttons=[
-                    [custom.Button.inline("Stats", data="statcheck")],
-                    [Button.url("Repo", "https://github.com/Andencento")],
-                    [
-                        Button.url(
-                            "Deploy Now!",
-                            "k",
-                        )
+        elif event.query.user_id == bot.uid and query.startswith("fsub"):
+            hunter = event.pattern_match.group(1)
+            Eiva = hunter.split("+")
+            user = await bot.get_entity(int(Eiva[0]))
+            channel = await bot.get_entity(int(Eiva[1]))
+            msg = f"**👋 Welcome** [{user.first_name}](tg://user?id={user.id}), \n\n**📍 You need to Join** {channel.title} **to chat in this group.**"
+            if not channel.username:
+                link = (await bot(ExportChatInviteRequest(channel))).link
+            else:
+                link = "https://t.me/" + channel.username
+            result = [
+                await builder.article(
+                    title="force_sub",
+                    text = msg,
+                    buttons=[
+                        [Button.url(text="Channel", url=link)],
+                        [custom.Button.inline("🔓 Unmute Me", data=unmute)],
                     ],
-                ],
-            )
-        elif event.query.user_id == Andencento.uid and query.startswith("**PM"):
-            TELEBT = USER_BOT_NO_WARN.format(DEFAULTUSER, myid, MESAG)
+                )
+            ]
+
+        elif event.query.user_id == bot.uid and query == "alive":
+            he_ll = alive_txt.format(Config.ALIVE_MSG, tel_ver, Eiva_ver, uptime, abuse_m, is_sudo)
+            alv_btn = [
+                [Button.url(f"{Eiva_USER}", f"tg://openmessage?user_id={ForGo10God}")],
+                [Button.url("My Channel", f"https://t.me/{my_channel}"), 
+                Button.url("My Group", f"https://t.me/{my_group}")],
+            ]
+            if ALV_PIC and ALV_PIC.endswith((".jpg", ".png")):
+                result = builder.photo(
+                    ALV_PIC,
+                    text=he_ll,
+                    buttons=alv_btn,
+                    link_preview=False,
+                )
+            elif ALV_PIC:
+                result = builder.document(
+                    ALV_PIC,
+                    text=he_ll,
+                    title="EivaBot Alive",
+                    buttons=alv_btn,
+                    link_preview=False,
+                )
+            else:
+                result = builder.article(
+                    text=he_ll,
+                    title="EivaBot Alive",
+                    buttons=alv_btn,
+                    link_preview=False,
+                )
+
+        elif event.query.user_id == bot.uid and query == "pm_warn":
+            hel_l = Eiva_FIRST.format(Eiva_mention, mssge)
             result = builder.photo(
-                file=TELEPIC,
-                text=TELEBT,
+                file=Eiva_pic,
+                text=hel_l,
                 buttons=[
                     [
-                        custom.Button.inline("Request ", data="req"),
-                        custom.Button.inline("Chat 💭", data="chat"),
+                        custom.Button.inline("📝 Request 📝", data="req"),
+                        custom.Button.inline("💬 Chat 💬", data="chat"),
                     ],
-                    [custom.Button.inline("To spam 🚫", data="heheboi")],
-                    [custom.Button.inline("What is this ❓", data="pmclick")],
+                    [custom.Button.inline("🚫 Spam 🚫", data="heheboi")],
+                    [custom.Button.inline("Curious ❓", data="pmclick")],
                 ],
             )
-        elif event.query.user_id == Andencento.uid and query == "repo":
+
+        elif event.query.user_id == bot.uid and query == "repo":
             result = builder.article(
                 title="Repository",
-                text=f"Andencento-ExtremePro - Telegram Userbot.",
+                text=f"**⚡ ɛɢɛռɖαʀʏ ᴀғ єιναϐοτ ⚡**",
                 buttons=[
-                    [
-                        Button.url("Repo", "https://github.com/Andencento"),
-                        Button.url(
-                            "Deploy",
-                            "https://dashboard.heroku.com/",
-                        ),
-                    ],
-                    [Button.url("Support", "https://t.me/AndencentoSupport")],
+                    [Button.url("📑 Repo 📑", "https://github.com/Team-Andencento/Andencento")],
+                    [Button.url("🚀 Deploy 🚀", "https://github.com/Team-Andencento/Andencento")],
                 ],
             )
+
+        elif query.startswith("http"):
+            part = query.split(" ")
+            result = builder.article(
+                "File uploaded",
+                text=f"**File uploaded successfully to {part[2]} site.\n\nUpload Time : {part[1][:3]} second\n[‏‏‎ ‎]({part[0]})",
+                buttons=[[custom.Button.url("URL", part[0])]],
+                link_preview=True,
+            )
+
         else:
             result = builder.article(
-                "Source Code",
-                text="**Welcome to ExtremeProXAndencento**\n\n`Click below buttons for more`",
+                "@TheEiva",
+                text="""**Hey! This is [ᴀɴᴅᴇɴᴄᴇɴᴛᴏ](https://t.me/Andencento) \nYou can know more about me from the links given below 👇**""",
                 buttons=[
-                    [custom.Button.url("Creator👨‍🦱", "https://t.me/Andencento")],
                     [
+                        custom.Button.url("🔥 CHANNEL 🔥", "https://t.me/Andencento"),
                         custom.Button.url(
-                            "👨‍💻Source Code‍💻", "https://github.com/Andencento"
-                        ),
-                        custom.Button.url(
-                            "Deploy 🌀",
-                            "heroku.com",
+                            "⚡ GROUP ⚡", "https://t.me/AndencentoSupport"
                         ),
                     ],
                     [
                         custom.Button.url(
-                            "Updates and Support Group↗️", "https://t.me/Andencento"
-                        )
+                            "✨ REPO ✨", "https://github.com/Team-Andencento/Andencento"),
+                        custom.Button.url
+                    (
+                            "🔰 TUTORIAL 🔰", "Coming Soon"
+                    )
                     ],
                 ],
                 link_preview=False,
             )
         await event.answer([result] if result else None)
 
-    @tgbot.on(
-        events.callbackquery.CallbackQuery(  # pylint:disable=E0602
-            data=re.compile(rb"helpme_next\((.+?)\)")
-        )
-    )
-    async def on_plug_in_callback_query_handler(event):
-        if event.query.user_id == Andencento.uid:  # pylint:disable=E0602
-            current_page_number = int(event.data_match.group(1).decode("UTF-8"))
-            buttons = paginate_help(current_page_number + 1, CMD_LIST, "helpme")
-            # https://t.me/TelethonChat/115200
-            await event.edit(buttons=buttons)
-        else:
-            reply_pop_up_alert = (
-                "Please get your own Userbot from @Andencento , and don't use mine!"
-            )
-            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"pmclick")))
+    @tgbot.on(callbackquery.CallbackQuery(data=compile(b"pmclick")))
     async def on_pm_click(event):
-        if event.query.user_id == Andencento.uid:
-            reply_pop_up_alert = "This ain't for you, master!"
+        if event.query.user_id == bot.uid:
+            reply_pop_up_alert = "This is for Other Users..."
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
         else:
             await event.edit(
-                f"This is the PM Security for {DEFAULTUSER} to keep away spammers and retards.\n\nProtected by [Andencento](t.me/Andencento)"
+                f"🔰 This is Andencento PM Security for {Eiva_mention} to keep away unwanted retards from spamming PM..."
             )
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"reopen")))
-    async def megic(event):
-        if event.query.user_id == Andencento.uid:
-            buttons = paginate_help(0, CMD_LIST, "helpme")
-            await event.edit("Menu Re-opened", buttons=buttons)
-        else:
-            reply_pop_up_alert = "This bot ain't for u!!"
-            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
-
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"req")))
+    @tgbot.on(callbackquery.CallbackQuery(data=compile(b"req")))
     async def on_pm_click(event):
-        if event.query.user_id == Andencento.uid:
-            reply_pop_up_alert = "This ain't for you, master!"
+        if event.query.user_id == bot.uid:
+            reply_pop_up_alert = "This is for other users!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
         else:
             await event.edit(
-                f"Okay, `{DEFAULTUSER}` would get back to you soon!\nTill then please **wait patienly and don't spam here.**"
+                f"✅ **Request Registered** \n\n{Eiva_mention} will now decide to look for your request or not.\n😐 Till then wait patiently and don't spam!!"
             )
             target = await event.client(GetFullUserRequest(event.query.user_id))
             first_name = html.escape(target.user.first_name)
             ok = event.query.user_id
             if first_name is not None:
                 first_name = first_name.replace("\u2060", "")
-            tosend = f"Hey {DEFAULTUSER}, [{first_name}](tg://user?id={ok}) is **requesting** something in PM!"
-            await tgbot.send_message(LOG_GP, tosend)
+            tosend = f"**👀 Hey {Eiva_mention} !!** \n\n⚜️ You Got A Request From [{first_name}](tg://user?id={ok}) In PM!!"
+            await bot.send_message(LOG_GP, tosend)
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"chat")))
+
+    @tgbot.on(callbackquery.CallbackQuery(data=compile(b"chat")))
     async def on_pm_click(event):
         event.query.user_id
-        if event.query.user_id == Andencento.uid:
-            reply_pop_up_alert = "This ain't for you, master!"
+        if event.query.user_id == bot.uid:
+            reply_pop_up_alert = "This is for other users!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
         else:
             await event.edit(
-                f"Oho, you want to chat...\nPlease wait and see if {DEFAULTUSER} is in a mood to chat, if yes, he will be replying soon!\nTill then, **do not spam.**"
+                f"Ahh!! You here to do chit-chat!!\n\nPlease wait for {Eiva_mention} to come. Till then keep patience and don't spam."
             )
             target = await event.client(GetFullUserRequest(event.query.user_id))
             ok = event.query.user_id
             first_name = html.escape(target.user.first_name)
             if first_name is not None:
                 first_name = first_name.replace("\u2060", "")
-            tosend = f"Hey {DEFAULTUSER}, [{first_name}](tg://user?id={ok}) wants to PM you for **Random Chatting**!"
-            await tgbot.send_message(LOG_GP, tosend)
+            tosend = f"**👀 Hey {Eiva_mention} !!** \n\n⚜️ You Got A PM from  [{first_name}](tg://user?id={ok})  for random chats!!"
+            await bot.send_message(LOG_GP, tosend)
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"plshelpme")))
-    async def on_pm_click(event):
-        if event.query.user_id == Andencento.uid:
-            reply_pop_up_alert = "This ain't for you, master!"
-            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
-        else:
-            await event.edit(
-                f"Oh!\n{DEFAULTUSER} would be glad to help you out...\nPlease leave your message here **in a single line** and wait till I respond 😊"
-            )
-            target = await event.client(GetFullUserRequest(event.query.user_id))
-            first_name = html.escape(target.user.first_name)
-            ok = event.query.user_id
-            if first_name is not None:
-                first_name = first_name.replace("\u2060", "")
-            tosend = f"Hey {DEFAULTUSER}, [{first_name}](tg://user?id={ok}) wants to PM you for **help**!"
-            await tgbot.send_message(LOG_GP, tosend)
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"heheboi")))
+    @tgbot.on(callbackquery.CallbackQuery(data=compile(b"heheboi")))
     async def on_pm_click(event):
-        if event.query.user_id == Andencento.uid:
-            reply_pop_up_alert = "This ain't for you, master!"
+        if event.query.user_id == bot.uid:
+            reply_pop_up_alert = "This is for other users!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
         else:
             await event.edit(
-                f"Oh, so you are here to spam 😤\nGoodbye.\nYour message has been read and successfully ignored."
+                f"🥴 **Bohot Ho gya\nPehli fursat me nikal**"
             )
-            await borg(functions.contacts.BlockRequest(event.query.user_id))
+            await bot(functions.contacts.BlockRequest(event.query.user_id))
             target = await event.client(GetFullUserRequest(event.query.user_id))
             ok = event.query.user_id
             first_name = html.escape(target.user.first_name)
             if first_name is not None:
                 first_name = first_name.replace("\u2060", "")
             first_name = html.escape(target.user.first_name)
-            await tgbot.send_message(
+            await bot.send_message(
                 LOG_GP,
-                f"[{first_name}](tg://user?id={ok}) tried to **spam** your inbox.\nHenceforth, **blocked**",
+                f"**Blocked**  [{first_name}](tg://user?id={ok}) \n\nReason:- Spam",
             )
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
-    async def on_plug_in_callback_query_handler(event):
-        if event.query.user_id == Andencento.uid:
-            await event.edit(
-                "Menu Closed!!", buttons=[Button.inline("Re-open Menu", data="reopen")]
-            )
-        else:
-            reply_pop_up_alert = "Please get your own userbot from @Andencento "
-            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
-    @tgbot.on(
-        events.callbackquery.CallbackQuery(  # pylint:disable=E0602
-            data=re.compile(rb"helpme_prev\((.+?)\)")
-        )
-    )
-    async def on_plug_in_callback_query_handler(event):
-        if event.query.user_id == Andencento.uid:  # pylint:disable=E0602
-            current_page_number = int(event.data_match.group(1).decode("UTF-8"))
-            buttons = paginate_help(
-                current_page_number - 1, CMD_LIST, "helpme"  # pylint:disable=E0602
-            )
-            # https://t.me/TelethonChat/115200
-            await event.edit(buttons=buttons)
-        else:
-            reply_pop_up_alert = "Please get your own Userbot, and don't use mine!"
-            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
-    @tgbot.on(
-        events.callbackquery.CallbackQuery(  # pylint:disable=E0602
-            data=re.compile(b"us_plugin_(.*)")
+    @tgbot.on(callbackquery.CallbackQuery(data=compile(b"unmute")))
+    async def on_pm_click(event):
+        hunter = (event.data_match.group(1)).decode("UTF-8")
+        Eiva = hunter.split("+")
+        if not event.sender_id == int(Eiva[0]):
+            return await event.answer("This Ain't For You!!", alert=True)
+        try:
+            await bot(GetParticipantRequest(int(Eiva[1]), int(Eiva[0])))
+        except UserNotParticipantError:
+            return await event.answer(
+                "You need to join the channel first.", alert=True
+            )
+        await bot.edit_permissions(
+            event.chat_id, int(Eiva[0]), send_message=True, until_date=None
         )
-    )
-    async def on_plug_in_callback_query_handler(event):
-        if event.query.user_id == Andencento.uid:
-            plugin_name = event.data_match.group(1).decode("UTF-8")
-            help_string = ""
-            help_string += f"Commands Available in {plugin_name} - \n"
-            try:
-                if plugin_name in CMD_HELP:
-                    for i in CMD_HELP[plugin_name]:
-                        help_string += i
-                    help_string += "\n"
-                else:
-                    for i in CMD_LIST[plugin_name]:
-                        help_string += i
-                        help_string += "\n"
-            except BaseException:
-                pass
-            if help_string == "":
-                reply_pop_up_alert = "{} has no detailed info.\nUse .help {}".format(
-                    plugin_name, plugin_name
+        await event.edit("Yay! You can chat now !!")
+
+
+    @tgbot.on(callbackquery.CallbackQuery(data=compile(b"reopen")))
+    async def reopn(event):
+            if event.query.user_id == bot.uid or event.query.user_id in Config.SUDO_USERS:
+                current_page_number=0
+                simp = button(current_page_number, CMD_HELP)
+                veriler = button(0, sorted(CMD_HELP))
+                apn = []
+                for x in CMD_LIST.values():
+                    for y in x:
+                        apn.append(y)
+                await event.edit(
+                    f"🔰 **{Eiva_mention}**\n\n📜 __No.of Plugins__ : `{len(CMD_HELP)}` \n🗂️ __Commands__ : `{len(apn)}`\n🗒️ __Page__ : 1/{veriler[0]}",
+                    buttons=simp[1],
+                    link_preview=False,
                 )
             else:
-                reply_pop_up_alert = help_string
-            reply_pop_up_alert += "\n Use .unload {} to remove this plugin\n\
-                © AndencentoXExytremeProbot".format(
-                plugin_name
-            )
-            if len(help_string) >= 140:
-                oops = "List too long!\nCheck your saved messages!"
-                await event.answer(oops, cache_time=0, alert=True)
-                help_string += "\n\nThis will be auto-deleted in 1 minute!"
-                if bot is not None and event.query.user_id == Andencento.uid:
-                    ok = await bot.send_message("me", help_string)
-                    await asyncio.sleep(60)
-                    await ok.delete()
-            else:
+                reply_pop_up_alert = "Hoo gya aapka. Kabse tapar tapar dabae jaa rhe h. Khudka bna lo na agr chaiye to. © ΣIVΛBθƬ ™"
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+        
+
+    @tgbot.on(callbackquery.CallbackQuery(data=compile(b"close")))
+    async def on_plug_in_callback_query_handler(event):
+        if event.query.user_id == bot.uid or event.query.user_id in Config.SUDO_USERS:
+            veriler = custom.Button.inline(f"{Eiva_emoji} Re-Open Menu {Eiva_emoji}", data="reopen")
+            await event.edit(f"**⚜️ ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ᴍᴇɴᴜ ᴄʟᴏꜱᴇᴅ⚜️**\n\n**Bot Of :**  {Eiva_mention}\n\n        [©️ ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ™️]({chnl_link})", buttons=veriler, link_preview=False)
         else:
-            reply_pop_up_alert = "Please get your own Userbot, and don't use mine!"
+            reply_pop_up_alert = "Get Your Own userbot. © ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ™"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+   
 
-
-def paginate_help(page_number, loaded_plugins, prefix):
-    number_of_rows = HELP_ROWS
-    number_of_cols = HELP_COLOUMNS
-    tele = CUSTOM_HELP_EMOJI
-    helpable_plugins = []
-    for p in loaded_plugins:
-        if not p.startswith("_"):
-            helpable_plugins.append(p)
-    helpable_plugins = sorted(helpable_plugins)
-    modules = [
-        custom.Button.inline(
-            "{} {} {}".format(tele, x, tele), data="us_plugin_{}".format(x)
-        )
-        for x in helpable_plugins
-    ]
-    pairs = list(zip(modules[::number_of_cols], modules[1::number_of_cols]))
-    if len(modules) % number_of_cols == 1:
-        pairs.append((modules[-1],))
-    max_num_pages = ceil(len(pairs) / number_of_rows)
-    modulo_page = page_number % max_num_pages
-    if len(pairs) > number_of_rows:
-        pairs = pairs[
-            modulo_page * number_of_rows : number_of_rows * (modulo_page + 1)
-        ] + [
-            (
-                custom.Button.inline(
-                    "⫷ Previous", data="{}_prev({})".format(prefix, modulo_page)
-                ),
-                custom.Button.inline("║ Close ║", data="close"),
-                custom.Button.inline(
-                    "Next ⫸", data="{}_next({})".format(prefix, modulo_page)
-                ),
+    @tgbot.on(callbackquery.CallbackQuery(data=compile(b"page\((.+?)\)")))
+    async def page(event):
+        page = int(event.data_match.group(1).decode("UTF-8"))
+        veriler = button(page, CMD_HELP)
+        apn = []
+        for x in CMD_LIST.values():
+            for y in x:
+                apn.append(y)
+        if event.query.user_id == bot.uid or event.query.user_id in Config.SUDO_USERS:
+            await event.edit(
+                f"🔰 **{Eiva_mention}**\n\n📜 __No.of Plugins__ : `{len(CMD_HELP)}`\n🗂️ __Commands__ : `{len(apn)}`\n🗒️ __Page__ : {page + 1}/{veriler[0]}",
+                buttons=veriler[1],
+                link_preview=False,
             )
-        ]
-    return pairs
+        else:
+            return await event.answer(
+                "Get Your Own userbot. © ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ™",
+                cache_time=0,
+                alert=True,
+            )
 
 
-async def userinfo(event):
-    target = await event.client(GetFullUserRequest(event.query.user_id))
-    first_name = html.escape(target.user.first_name)
-    if first_name is not None:
-        first_name = first_name.replace("\u2060", "")
-    return first_name
+    @tgbot.on(
+        callbackquery.CallbackQuery(data=compile(b"Information\[(\d*)\]\((.*)\)"))
+    )
+    async def Information(event):
+        page = int(event.data_match.group(1).decode("UTF-8"))
+        commands = event.data_match.group(2).decode("UTF-8")
+        try:
+            buttons = [
+                custom.Button.inline(
+                    "⚡ " + cmd[0] + " ⚡", data=f"commands[{commands}[{page}]]({cmd[0]})"
+                )
+                for cmd in CMD_HELP_BOT[commands]["commands"].items()
+            ]
+        except KeyError:
+            return await event.answer(
+                "No Description is written for this plugin", cache_time=0, alert=True
+            )
+
+        buttons = [buttons[i : i + 2] for i in range(0, len(buttons), 2)]
+        buttons.append([custom.Button.inline(f"{Eiva_emoji} Main Menu {Eiva_emoji}", data=f"page({page})")])
+        if event.query.user_id == bot.uid or event.query.user_id in Config.SUDO_USERS:
+            await event.edit(
+                f"**📗 File :**  `{commands}`\n**🔢 Number of commands :**  `{len(CMD_HELP_BOT[commands]['commands'])}`",
+                buttons=buttons,
+                link_preview=False,
+            )
+        else:
+            return await event.answer(
+                "Hoo gya aapka. Kabse tapar tapar dabae jaa rhe h. Khudka bna lo na agr chaiye to. © ΣIVΛBθƬ ™",
+                cache_time=0,
+                alert=True,
+            )
+
+
+    @tgbot.on(
+        callbackquery.CallbackQuery(data=compile(b"commands\[(.*)\[(\d*)\]\]\((.*)\)"))
+    )
+    async def commands(event):
+        cmd = event.data_match.group(1).decode("UTF-8")
+        page = int(event.data_match.group(2).decode("UTF-8"))
+        commands = event.data_match.group(3).decode("UTF-8")
+        result = f"**📗 File :**  `{cmd}`\n"
+        if CMD_HELP_BOT[cmd]["info"]["info"] == "":
+            if not CMD_HELP_BOT[cmd]["info"]["warning"] == "":
+                result += f"**⚠️ Warning :**  {CMD_HELP_BOT[cmd]['info']['warning']}\n\n"
+        else:
+            if not CMD_HELP_BOT[cmd]["info"]["warning"] == "":
+                result += f"**⚠️ Warning :**  {CMD_HELP_BOT[cmd]['info']['warning']}\n"
+            result += f"**ℹ️ Info :**  {CMD_HELP_BOT[cmd]['info']['info']}\n\n"
+        command = CMD_HELP_BOT[cmd]["commands"][commands]
+        if command["params"] is None:
+            result += f"**🛠 Commands :**  `{HANDLER[:1]}{command['command']}`\n"
+        else:
+            result += f"**🛠 Commands :**  `{HANDLER[:1]}{command['command']} {command['params']}`\n"
+        if command["example"] is None:
+            result += f"**💬 Explanation :**  `{command['usage']}`\n\n"
+        else:
+            result += f"**💬 Explanation :**  `{command['usage']}`\n"
+            result += f"**⌨️ For Example :**  `{HANDLER[:1]}{command['example']}`\n\n"
+        if event.query.user_id == bot.uid or event.query.user_id in Config.SUDO_USERS:
+            await event.edit(
+                result,
+                buttons=[
+                    custom.Button.inline(f"{Eiva_emoji} Return {Eiva_emoji}", data=f"Information[{page}]({cmd})")
+                ],
+                link_preview=False,
+            )
+        else:
+            return await event.answer(
+                "Hoo gya aapka. Kabse tapar tapar dabae jaa rhe h. Khudka bna lo na agr chaiye to. © ΣIVΛBθƬ ™",
+                cache_time=0,
+                alert=True,
+            )
