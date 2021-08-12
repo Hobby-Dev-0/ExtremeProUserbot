@@ -15,10 +15,11 @@ from plugins import *
 
 DEVLIST = ["1320929227"]
 
-WARN_PIC = Config.PMPERMIT_PIC or "None"
+WARN_PIC = os.environ.get("PMPERMIT_PIC", None)
 PM_WARNS = {}
 PREV_REPLY_MESSAGE = {}
-PM_ON_OFF = Config.PM_PERMIT
+PM_ON_OFF = os.envirom.get("PM_PERMIT", None) or "ENABLE"
+Config.LOGGER_ID = os.environ.get("LOGGER_ID", None)
 CSTM_PMP = (
     Config.CUSTOM_PMPERMIT
     or "**You Have Trespassed To My Master's PM!\n ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ᴘʀɪᴠᴀᴛᴇ ᴜʟᴛʀᴀ ꜱᴇᴄᴜʀɪᴛʏ ᴏꜰ ᴍʏ ᴍᴀꜱᴛᴇʀ .**"
