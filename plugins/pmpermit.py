@@ -6,7 +6,7 @@ from telethon.tl.functions.users import GetFullUserRequest
 from userbot.utils import *
 
 from sql_helper import pmpermit_sql as pm_sql
-
+Config.INSTANT_BLOCK = os.environ.get("INSTANT_BLOCK"), None)
 from plugins import *
 Config.CUSTOM_PMPERMIT = os.environ.get("COUSTOMPM", None)
 # I Have Taken Permisson To Import Pmpermit, Inline, Help from Eiva
