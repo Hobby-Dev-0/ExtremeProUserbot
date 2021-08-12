@@ -315,16 +315,12 @@ if NEEDIT == "ENABLE":
             return
         if not pmpermit_sql.is_approved(chat_id):
             await bot(functions.contacts.BlockRequest(chat_id))
-
-
-CmdHelp("pm_permit").add_command(
-    "allow", "<in pm>", "Approves the user in which pm cmd is used."
-).add_command("disallow", "<in pm>", "Disapprove User to PM you.").add_command(
-    "block", "<in pm>", "Blocks the user"
-).add_command(
-    "listapproved", None, "Sends the list of all users approved by Σιναвσт"
-).add_info(
-    "PM SECURITY"
-).add_warning(
-    "✅ Harmless Module."
-).add()
+CMD_HELP.update(
+    {
+        "pmsecurity": ".approve/.a\nUse - Approve PM\
+        \n\n.disapprove/.da\nUse - DisApprove PM\
+        \n\n.listapproved\nUse - Get all approved PMs.\
+        \n\nSet var PMPERMIT_PIC for custom PMPic, CUSTOM_PMPERMIT for custom text, PMSECURITY <on/off> to enable/disable, INSTANT_BLOCK <on/off>.\
+        \nGet help from @ANDENCENTO."
+    }
+)
