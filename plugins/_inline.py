@@ -7,7 +7,7 @@ from math import ceil
 
 from telethon import Button, custom, events, functions
 from telethon.tl.functions.users import GetFullUserRequest
-from . import *
+from plugins import *
 
 PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
 TELEPIC = (
