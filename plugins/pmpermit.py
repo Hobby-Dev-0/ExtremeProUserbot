@@ -67,6 +67,7 @@ async def you_dm_niqq(event):
     if event.fwd_from:
         return
     chat = await event.get_chat()
+    chat_ids = event.chat_id
     if event.is_private:
         if not pmpermit_sql.is_approved(chat.id):
             if chat.id not in PM_WARNS:
@@ -154,11 +155,9 @@ async def approve_p_m(event):
             await event.delete()
     else:
         await event.edit(APPROVED_PMs)
-chat_ids = event.chat_id
 
 @bot.on(events.NewMessage(incoming=True))
 async def on_new_private_message(event):
-    event = event
     if event.sender_id == Andencento.uid:
         return
 
