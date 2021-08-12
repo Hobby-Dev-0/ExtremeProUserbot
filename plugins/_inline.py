@@ -19,7 +19,7 @@ from telethon.errors.rpcerrorlist import UserNotParticipantError
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.functions.messages import ExportChatInviteRequest
-
+Config.SUDO_USERS = os.environ.get("SUDO_USERS", None)
 # Thanks to Shivansh To give permisson to import 3 plugins from Eiva Bot
 
 Eiva_mention = f"[{Eiva_USER}](tg://user?id={ForGo10God})"
@@ -32,13 +32,15 @@ ALV_PIC = os.environ.get("ALIVE_PIC", None)
 
 PM_WARNS = {}
 PREV_REPLY_MESSAGE = {}
+Config.ALIVE_MSG = "IAMALIVE"
 
 mybot = os.environ.get("TG_BOT_TOKEN_BF_HER", None)
+Config.BOT_USERNAME = os.environ.get("TG_BOT_USER_NAME_BF_HER", None)
 if mybot.startswith("@"):
     botname = mybot
 else:
     botname = f"@{mybot}"
-LOG_GP = Config.LOGGER_ID
+LOG_GP = os.environ.get("LOGGER_ID", None)
 mssge = (
     str(cstm_pmp)
     if cstm_pmp
