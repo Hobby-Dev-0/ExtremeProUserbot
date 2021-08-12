@@ -297,7 +297,7 @@ async def _(event):
         return
     input_str = event.pattern_match.group(1)
     message_id = None
-    if event.sender_id != bot.uid:
+    if event.sender_id != Andencento.uid:
         message_id = event.message.id
     if event.reply_to_msg_id:
         message_id = event.reply_to_msg_id

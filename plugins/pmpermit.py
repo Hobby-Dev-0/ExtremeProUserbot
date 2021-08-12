@@ -47,7 +47,7 @@ if PM_ON_OFF != "DISABLE":
         chat_ids = event.chat_id
         sender = await event.client(GetFullUserRequest(await event.get_input_chat()))
         first_name = sender.user.first_name
-        if chat_ids == bot.uid:
+        if chat_ids == Andencento.uid:
             return
         if sender.user.bot:
             return
@@ -188,17 +188,17 @@ if PM_ON_OFF != "DISABLE":
     async def on_new_private_message(event):
         if not event.is_private:
             return
-        if event.sender_id == bot.uid:
+        if event.sender_id == Andencento.uid:
             return
         if Config.PRIVATE_GROUP_ID is None:
-            await borg.send_message(bot.uid, "Please Set `PRIVATE_GROUP_ID` For Working Of Pm Permit")
+            await borg.send_message(Andencento.uid, "Please Set `PRIVATE_GROUP_ID` For Working Of Pm Permit")
             return
         message_text = event.message.raw_text
         chat_ids = event.sender_id
         if USER_BOT_NO_WARN == message_text:
             return
         sender = await event.client.get_entity(await event.get_input_chat())
-        if chat_ids == bot.uid:
+        if chat_ids == Andencento.uid:
             return
         if sender.bot:
             return
