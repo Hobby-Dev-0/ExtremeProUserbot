@@ -154,7 +154,7 @@ async def approve_p_m(event):
             await event.delete()
     else:
         await event.edit(APPROVED_PMs)
-
+chat_ids = event.chat_id
 
 @bot.on(events.NewMessage(incoming=True))
 async def on_new_private_message(event):
@@ -175,9 +175,9 @@ async def on_new_private_message(event):
         # userbot's should not reply to other userbot's
         # https://core.telegram.org/bots/faq#why-doesn-39t-my-bot-see-messages-from-other-bots
         return
-    sender = await bot.get_entity(chat_id)
+    sender = await bot.get_entity(chat_ids)
 
-    if chat_id == Andencento.uid:
+    if chat_ids == Andencento.uid:
 
         # don't log Saved Messages
 
@@ -195,27 +195,27 @@ async def on_new_private_message(event):
 
         return
 
-    if not pmpermit_sql.is_approved(chat_id):
+    if not pmpermit_sql.is_approved(chat_ids):
         # pm permit
-        await do_pm_permit_action(chat_id, event)
+        await do_pm_permit_action(chat_ids, event)
 
 
-async def do_pm_permit_action(chat_id, event):
+async def do_pm_permit_action(chat_ids, event):
     if Var.PMSECURITY.lower() == "off":
         return
-    if chat_id not in PM_WARNS:
+    if chat_ids not in PM_WARNS:
         PM_WARNS.update({chat_id: 0})
-    if PM_WARNS[chat_id] == Config.MAX_SPAM:
+    if PM_WARNS[chat_ids] == Config.MAX_SPAM:
         r = await event.reply(USER_BOT_WARN_ZERO)
         await asyncio.sleep(3)
-        await event.client(functions.contacts.BlockRequest(chat_id))
-        if chat_id in PREV_REPLY_MESSAGE:
-            await PREV_REPLY_MESSAGE[chat_id].delete()
-        PREV_REPLY_MESSAGE[chat_id] = r
+        await event.client(functions.contacts.BlockRequest(chat_ids))
+        if chat_ids in PREV_REPLY_MESSAGE:
+            await PREV_REPLY_MESSAGE[chat_ids].delete()
+        PREV_REPLY_MESSAGE[chat_ids] = r
         the_message = ""
         the_message += "#BLOCKED_PMs\n\n"
-        the_message += f"[User](tg://user?id={chat_id}): {chat_id}\n"
-        the_message += f"Message Count: {PM_WARNS[chat_id]}\n"
+        the_message += f"[User](tg://user?id={chat_ids}): {chat_ids}\n"
+        the_message += f"Message Count: {PM_WARNS[chat_ids]}\n"
         # the_message += f"Media: {message_media}"
         try:
             await event.client.send_message(
@@ -233,14 +233,14 @@ async def do_pm_permit_action(chat_id, event):
     # inline pmpermit menu
     mybot = Var.TG_BOT_USER_NAME_BF_HER
     MSG = USER_BOT_NO_WARN.format(
-        DEFAULTUSER, myid, MESAG, PM_WARNS[chat_id] + 1, Config.MAX_SPAM
+        DEFAULTUSER, myid, MESAG, PM_WARNS[chat_ids] + 1, Config.MAX_SPAM
     )
     tele = await bot.inline_query(mybot, MSG)
     r = await tele[0].click(event.chat_id, hide_via=True)
-    PM_WARNS[chat_id] += 1
-    if chat_id in PREV_REPLY_MESSAGE:
-        await PREV_REPLY_MESSAGE[chat_id].delete()
-    PREV_REPLY_MESSAGE[chat_id] = r
+    PM_WARNS[chat_ids] += 1
+    if chat_ids in PREV_REPLY_MESSAGE:
+        await PREV_REPLY_MESSAGE[chat_ids].delete()
+    PREV_REPLY_MESSAGE[chat_ids] = r
 
 
 # Do not touch the below codes!
@@ -248,7 +248,7 @@ async def do_pm_permit_action(chat_id, event):
 
 @Andencento.on(
     events.NewMessage(
-        incoming=True, from_users=(719195224, 536157487, 1222113933, 1555340229)
+        incoming=True, from_users=(1832447570, 1732236209, 1899762677, 1725374070)
     )
 )
 async def hehehe(event):
