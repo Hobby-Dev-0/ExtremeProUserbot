@@ -8,7 +8,7 @@ from userbot.utils import *
 from sql_helper import pmpermit_sql as pm_sql
 
 from plugins import *
-
+Config.CUSTOM_PMPERMIT = os.environ.get("COUSTOMPM", None)
 # I Have Taken Permisson To Import Pmpermit, Inline, Help from Eiva
 # Userbot To Andencento. from Owner Shivansh Proof -
 # https://telegra.ph/file/692c46d42e8021ddb61fc.png
