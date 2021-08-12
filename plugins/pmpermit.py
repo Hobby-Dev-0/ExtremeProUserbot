@@ -5,7 +5,7 @@ from telethon import events, functions
 from telethon.tl.functions.users import GetFullUserRequest
 from userbot.utils import *
 
-from sql import pmpermit_sql as pm_sql
+from sql_helper import pmpermit_sql as pm_sql
 
 from plugins import *
 
