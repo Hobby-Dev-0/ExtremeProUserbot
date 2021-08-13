@@ -18,9 +18,9 @@ jobs:
 
         with:
 
-          find: "bot.on"
+          find: "bot.add"
 
-          replace: "client.on"
+          replace: "client.add"
 
       - name: Create Pull Request
 
