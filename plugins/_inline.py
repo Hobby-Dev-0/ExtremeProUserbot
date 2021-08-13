@@ -31,7 +31,7 @@ cmd = "commands"
 andencento = Config.YOUR_NAME
 if Config.BOT_USERNAME is not None and tgbot is not None:
 
-    @tgbot.on(events.InlineQuery)  # pylint:disable=E0602
+    @tgclient.on(events.InlineQuery)  # pylint:disable=E0602
     async def inline_handler(event):
         builder = event.builder
         result = None
@@ -115,7 +115,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             )
         await event.answer([result] if result else None)
 
-    @tgbot.on(
+    @tgclient.on(
         events.callbackquery.CallbackQuery(  # pylint:disable=E0602
             data=re.compile(b"pmclick\\((.+?)\\)")
         )
@@ -129,7 +129,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 f"🔰 This is Andencento PM Security for {Eiva_mention} to keep away unwanted retards from spamming PM..."
             )
 
-    @tgbot.on(
+    @tgclient.on(
         events.callbackquery.CallbackQuery(  # pylint:disable=E0602
             data=re.compile(b"reg\\((.+?)\\)")
         )
@@ -150,7 +150,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             tosend = f"**👀 Hey {Eiva_mention} !!** \n\n⚜️ You Got A Request From [{first_name}](tg://user?id={ok}) In PM!!"
             await bot.send_message(LOG_GP, tosend)
 
-    @tgbot.on(
+    @tgclient.on(
         events.callbackquery.CallbackQuery(  # pylint:disable=E0602
             data=re.compile(b"chat\\((.+?)\\)")
         )
@@ -172,7 +172,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             tosend = f"**👀 Hey {Eiva_mention} !!** \n\n⚜️ You Got A PM from  [{first_name}](tg://user?id={ok})  for random chats!!"
             await bot.send_message(LOG_GP, tosend)
 
-    @tgbot.on(
+    @tgclient.on(
         events.callbackquery.CallbackQuery(  # pylint:disable=E0602
             data=re.compile(b"heheboi\\((.+?)\\)")
         )
@@ -195,7 +195,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 f"**Blocked**  [{first_name}](tg://user?id={ok}) \n\nReason:- Spam",
             )
 
-    @tgbot.on(
+    @tgclient.on(
         events.callbackquery.CallbackQuery(  # pylint:disable=E0602
             data=re.compile(b"helpme_next\\((.+?)\\)")
         )
@@ -214,7 +214,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             )
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
-    @tgbot.on(
+    @tgclient.on(
         events.callbackquery.CallbackQuery(  # pylint:disable=E0602
             data=re.compile(b"helpme_prev\\((.+?)\\)")
         )
@@ -235,7 +235,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             )
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
-    @tgbot.on(
+    @tgclient.on(
         events.callbackquery.CallbackQuery(  # pylint:disable=E0602
             data=re.compile(b"us_plugin_(.*)")
         )

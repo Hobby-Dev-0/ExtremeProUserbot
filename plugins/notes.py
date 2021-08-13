@@ -15,7 +15,7 @@ TYPE_PHOTO = 1
 TYPE_DOCUMENT = 2
 
 
-@tgbot.on(events.NewMessage(pattern=r"\?(\S+)"))
+@tgclient.on(events.NewMessage(pattern=r"\?(\S+)"))
 async def on_snip(event):
     name = event.pattern_match.group(1)
     snip = get_snips(name)
@@ -42,7 +42,7 @@ async def on_snip(event):
         )
 
 
-@tgbot.on(
+@tgclient.on(
     events.NewMessage(pattern="^/addnote ?(.*)", func=lambda e: e.sender_id == Andencento.uid)
 )
 async def _(event):
@@ -77,7 +77,7 @@ async def _(event):
         await event.reply("Reply to a message with `snips keyword` to save the snip")
 
 
-@tgbot.on(events.NewMessage(pattern="^/notes"))
+@tgclient.on(events.NewMessage(pattern="^/notes"))
 async def on_snip_list(event):
     all_snips = get_all_snips()
     OUT_STR = "Available Snips:\n"
@@ -101,7 +101,7 @@ async def on_snip_list(event):
         await event.reply(OUT_STR)
 
 
-@tgbot.on(
+@tgclient.on(
     events.NewMessage(pattern="^/rmnote (\S+)", func=lambda e: e.sender_id == Andencento.uid)
 )
 async def on_snip_delete(event):
