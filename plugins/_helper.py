@@ -21,7 +21,7 @@ async def cmd_list(event):
             if len(string) > 4095:
                 with io.BytesIO(str.encode(string)) as out_file:
                     out_file.name = "cmd.txt"
-                    await client.send_file(
+                    await Andencento.send_file(
                         event.chat_id,
                         out_file,
                         force_document=True,
@@ -45,7 +45,7 @@ async def cmd_list(event):
         else:
             help_string = """Userbot Helper.. \nProvided by Andencento\n
 `Userbot Helper to reveal all the commands`"""
-            results = await client.inline_query(  # pylint:disable=E0602
+            results = await Andencento.inline_query(  # pylint:disable=E0602
                 tgbotusername, help_string
             )
             await results[0].click(
