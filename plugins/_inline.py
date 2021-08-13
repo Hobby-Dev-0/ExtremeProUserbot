@@ -11,8 +11,8 @@ from . import *
 Andencento_pic = (
     ExtremedB.get("ALIVE_PIC") or "https://telegra.ph/file/ac32724650ef92663fbd1.png"
 )
-cstm_pmp = Config.CUSTOM_PMPERMIT
-ALV_PIC = Config.ALIVE_PIC
+cstm_pmp = ExtremedB.get("CUSTOM_PMPERMIT")
+ALV_PIC = Andencento_pic
 mssge = (
     str(cstm_pmp)
     if cstm_pmp
@@ -28,8 +28,8 @@ ANDENCENTO_FIRST = (
     "{}\n\n**Please Choose Why You Are Here!!**".format(Andencento_mention, mssge)
 )
 cmd = "commands"
-andencento = Config.YOUR_NAME
-if Config.BOT_USERNAME is not None and tgbot is not None:
+andencento = ExtremedB.get("YOUR_NAME")
+if ExtremedB.get("TG_BOT_USER_NAME_BF_HER") is not None and tgbot is not None:
 
     @tgclient.on(events.InlineQuery)  # pylint:disable=E0602
     async def inline_handler(event):
@@ -202,7 +202,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
     )
     async def on_plug_in_callback_query_handler(event):
         if (
-            event.query.user_id == bot.uid or event.query.user_id in Config.SUDO_USERS
+            event.query.user_id == bot.uid or event.query.user_id in ExtremedB.get("SUDO_USERS")
         ):  # pylint:disable=E0602
             current_page_number = int(event.data_match.group(1).decode("UTF-8"))
             buttons = paginate_help(current_page_number + 1, CMD_LIST, "helpme")
@@ -221,7 +221,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
     )
     async def on_plug_in_callback_query_handler(event):
         if (
-            event.query.user_id == bot.uid or event.query.user_id in Config.SUDO_USERS
+            event.query.user_id == bot.uid or event.query.user_id in ExtremedB.get("SUDO_USERS")
         ):  # pylint:disable=E0602
             current_page_number = int(event.data_match.group(1).decode("UTF-8"))
             buttons = paginate_help(
@@ -241,7 +241,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         )
     )
     async def on_plug_in_callback_query_handler(event):
-        if event.query.user_id == bot.uid or event.query.user_id in Config.SUDO_USERS:
+        if event.query.user_id == bot.uid or event.query.user_id in ExtremedB.get("SUDO_USERS"):
             plugin_name = event.data_match.group(1).decode("UTF-8")
             help_string = ""
             try:
