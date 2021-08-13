@@ -5,7 +5,7 @@ from . import *
 
 
 @command(pattern="^.help ?(.*)")
-@Andencento.on(sudo_cmd(pattern="help$", allow_sudo=True))
+@client.on(sudo_cmd(pattern="help$", allow_sudo=True))
 async def cmd_list(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         tgbotusername = Config.BOT_USERNAME
