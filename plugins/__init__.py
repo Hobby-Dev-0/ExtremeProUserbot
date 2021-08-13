@@ -34,7 +34,7 @@ Eiva_USER = "Andencento User"
 ForGo10God = "-100"
 Eiva_mention = f"[{Eiva_USER}](tg://user?id={ForGo10God})"
 
-Andencento_USER = client.me.first_name
+Andencento_USER = "Andencento"
 Andencento_mention = f"[{Andencento_USER}](tg://user?id={ForGo10God})"
 hl = os.environ.get("HANDLER", None) or "."
 shl = os.environ.get("SUDO_HANDLER", None) or "."
