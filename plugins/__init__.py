@@ -57,27 +57,27 @@ from Extre import *
 from Extre import *
 from Extre import ALIVE_NAME, bot
 PMSECURITY = os.environ.get("PMSECURITY", None)
-bot = Andencento
+bot = client
 uptime = "dekhna jaruri hai kya"
 
-Eiva_USER = "Andencento User"
+Eiva_USER = "client User"
 ForGo10God = "-100"
 Eiva_mention = f"[{Eiva_USER}](tg://user?id={ForGo10God})"
 
-Andencento_USER = "Andencento"
-Andencento_mention = f"[{Andencento_USER}](tg://user?id={ForGo10God})"
+client_USER = "client"
+client_mention = f"[{client_USER}](tg://user?id={ForGo10God})"
 hl = os.environ.get("HANDLER", None) or "."
 shl = os.environ.get("SUDO_HANDLER", None) or "."
-Andencento_ver = "0.1"
+client_ver = "0.1"
 tel_ver = "0.1"
 devs = ""
-user_mention = Andencento_mention
+user_mention = client_mention
 
 import os
 
 from Extre import CMD_HELP
 
-chnl_link = "https://t.me/Andencento"
+chnl_link = "https://t.me/client"
 
 COMMAND_HAND_LER = os.environ.get("HANDLER", ".")
 

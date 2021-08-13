@@ -10,7 +10,7 @@ Config.INSTANT_BLOCK = os.environ.get("INSTANT_BLOCK", None)
 from plugins import *
 Config.CUSTOM_PMPERMIT = os.environ.get("COUSTOMPM", None)
 # I Have Taken Permisson To Import Pmpermit, Inline, Help from Eiva
-# Userbot To Andencento. from Owner Shivansh Proof -
+# Userbot To client. from Owner Shivansh Proof -
 # https://telegra.ph/file/692c46d42e8021ddb61fc.png
 
 DEVLIST = ["1320929227"]
@@ -85,7 +85,7 @@ if PM_ON_OFF != "DISABLE":
         chat_ids = event.chat_id
         sender = await event.client(GetFullUserRequest(await event.get_input_chat()))
         sender.user.first_name
-        if chat_ids == Andencento.uid:
+        if chat_ids == client.uid:
             return
         if sender.user.bot:
             return
@@ -233,13 +233,13 @@ if PM_ON_OFF != "DISABLE":
     async def on_new_private_message(event):
         if not event.is_private:
             return
-        if event.sender_id == Andencento.uid:
+        if event.sender_id == client.uid:
             return
         if str(event.sender_id) in DEVLIST:
             return
         if Config.LOGGER_ID is None:
             await bot.send_message(
-                Andencento.uid, "Please Set `LOGGER_ID` For Working Of Pm Permit"
+                client.uid, "Please Set `LOGGER_ID` For Working Of Pm Permit"
             )
             return
         message_text = event.message.raw_text
@@ -247,7 +247,7 @@ if PM_ON_OFF != "DISABLE":
         if Eiva_FIRST == message_text:
             return
         sender = await event.client.get_entity(await event.get_input_chat())
-        if chat_ids == Andencento.uid:
+        if chat_ids == client.uid:
             return
         if sender.bot:
             return
@@ -305,7 +305,7 @@ if NEEDIT == "ENABLE":
         event.message.to_id
         chat_id = event.chat_id
         sender = await bot.get_entity(chat_id)
-        if chat_id == Andencento.uid:
+        if chat_id == client.uid:
             return
         if chat_id == 1432756163:
             return
