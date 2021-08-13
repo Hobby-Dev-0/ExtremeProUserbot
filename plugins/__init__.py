@@ -23,6 +23,37 @@ from Extre import CMD_LIST, CMD_HELP, CMD_HELP_BOT, BRAIN_CHECKER, INT_PLUG, LOA
 AUTONAME = os.environ.get("AUTONAME", None)
 from telethon.tl.types import Channel
 
+
+import asyncio
+import time
+
+from Extre import *
+from Extre.dB import *
+from Extre.functions.all import *
+from Extre.functions.sudos import *
+from Extre.version import *
+from telethon import Button
+from telethon.tl import functions, types
+
+from strings import get_string
+
+start_time = time.time()
+
+OWNER_NAME = extremepro_bot.me.first_name
+OWNER_ID = extremepro_bot.me.id
+
+List = []
+Dict = {}
+N = 0
+
+NOSPAM_CHAT = [
+    -1001387666944,  # @PyrogramChat
+    -1001109500936,  # @TelethonChat
+    -1001050982793,  # @Python
+    -1001256902287,  # @DurovsChat
+]
+
+
 from Extre import *
 from Extre import *
 from Extre import ALIVE_NAME, bot
