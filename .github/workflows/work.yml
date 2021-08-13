@@ -18,9 +18,9 @@ jobs:
 
         with:
 
-          find: "Andencento"
+          find: "client"
 
-          replace: "client"
+          replace: "Andencento"
 
       - name: Create Pull Request
 
@@ -28,7 +28,7 @@ jobs:
 
         with:
 
-          commit_message: 'Replaced new name'
+          commit_message: 'client'
 
           commit_options: '--no-verify'
 
