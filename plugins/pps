@@ -13,7 +13,7 @@ from telethon import events
 from telethon.tl import functions, types
 import asyncio
 from telethon import utils
-from uniborg.util import admin_cmd
+from Extre.utils import admin_cmd
 import html
 from html import *
 from telethon.tl.functions.photos import GetUserPhotosRequest

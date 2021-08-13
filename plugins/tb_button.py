@@ -3,7 +3,7 @@
 import re
 
 from telethon import custom
-from uniborg.util import admin_cmd
+from Extre.utils import admin_cmd
 
 BTN_URL_REGEX = re.compile(r"(\{([^\[]+?)\}\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
 

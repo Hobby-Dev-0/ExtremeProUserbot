@@ -4,7 +4,7 @@ from telethon import events
 import requests
 from bs4 import BeautifulSoup
 from Extre import CMD_HELP
-from uniborg.util import admin_cmd
+from Extre.utils import admin_cmd
 
 
 @borg.on(admin_cmd(pattern="filext (.*)"))

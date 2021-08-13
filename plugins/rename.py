@@ -3,7 +3,7 @@ import os
 import time
 from datetime import datetime
 
-from uniborg.util import admin_cmd
+from Extre.utils import admin_cmd
 
 from Extre import CMD_HELP
 from Extre.utils import admin_cmd, progress

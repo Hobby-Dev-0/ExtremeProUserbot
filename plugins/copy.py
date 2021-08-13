@@ -1,6 +1,6 @@
 
 from telethon import events
-from uniborg.util import admin_cmd
+from Extre.utils import admin_cmd
 from Extre import CMD_HELP
 
 @borg.on(admin_cmd(pattern="copy"))

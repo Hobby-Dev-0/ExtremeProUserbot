@@ -9,7 +9,7 @@ import urllib
 
 import requests
 from telethon.tl import functions
-from uniborg.util import admin_cmd
+from Extre.utils import admin_cmd
 
 COLLECTION_STRING = [
     "star-wars-wallpaper-1080p",

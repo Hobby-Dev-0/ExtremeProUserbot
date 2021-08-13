@@ -23,7 +23,7 @@ import telethon
 
 from PIL import Image
 from io import BytesIO
-from uniborg.util import admin_cmd
+from Extre.utils import admin_cmd
 
 logger = logging.getLogger(__name__)
 

@@ -2,7 +2,7 @@ from telethon import events
 import asyncio
 import os
 import sys
-from uniborg.util import admin_cmd
+from Extre.utils import admin_cmd
 
 
 

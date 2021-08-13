@@ -192,7 +192,7 @@ import asyncio
 from datetime import datetime
 import requests
 import json
-from uniborg.util import admin_cmd
+from Extre.utils import admin_cmd
 
 
 @Andencento.on(admin_cmd(pattern="cal (.*)"))

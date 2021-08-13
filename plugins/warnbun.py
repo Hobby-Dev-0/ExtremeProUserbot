@@ -25,7 +25,7 @@ async def _(event):
 import asyncio
 from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
-from uniborg.util import admin_cmd
+from Extre.utils import admin_cmd
 
 
 @borg.on(admin_cmd("warn2"))
@@ -48,7 +48,7 @@ async def _(event):
 import asyncio
 from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
-from uniborg.util import admin_cmd
+from Extre.utils import admin_cmd
 
 
 @borg.on(admin_cmd("warn3"))
@@ -71,7 +71,7 @@ async def _(event):
 import asyncio
 from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
-from uniborg.util import admin_cmd
+from Extre.utils import admin_cmd
 
 
 @borg.on(admin_cmd("warn0"))
@@ -94,7 +94,7 @@ async def _(event):
 import asyncio
 from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
-from uniborg.util import admin_cmd
+from Extre.utils import admin_cmd
 
 
 

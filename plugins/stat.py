@@ -9,7 +9,7 @@ Note - If you have a last name remove it unless it automatically removed.
 import os , urllib
 from telethon import events
 from telethon.tl import functions
-from uniborg.util import extremepro_cmd
+from Extre.utils import extremepro_cmd
 
 OFFLINE_TAG = "[OFFLINE]"
 ONLINE_TAG = "[ONLINE]"

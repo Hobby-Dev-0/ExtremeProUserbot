@@ -1,7 +1,7 @@
 """WikiPedia.ORG
 Syntax: .wikipedia Query"""
 import wikipedia
-from uniborg.util import admin_cmd
+from Extre.utils import admin_cmd
 
 
 @borg.on(admin_cmd(pattern="wikipedia (.*)"))

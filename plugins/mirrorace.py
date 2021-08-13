@@ -8,7 +8,7 @@ import os
 import requests
 import time
 from datetime import datetime
-from uniborg.util import admin_cmd, progress
+from Extre.utils import admin_cmd, progress
 
 
 @borg.on(admin_cmd(pattern="ma ?(.*)", allow_sudo=True))

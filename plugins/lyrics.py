@@ -3,7 +3,7 @@ command: .lyrics singer name - song name
 by @quiec
 """
 from telethon import events
-from uniborg.util import admin_cmd
+from Extre.utils import admin_cmd
 import asyncio
 from PyLyrics import *
 

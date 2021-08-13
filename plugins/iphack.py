@@ -5,7 +5,7 @@
 import json
 import urllib.request
 
-from uniborg.util import admin_cmd
+from Extre.utils import admin_cmd
 
 from Extre import CMD_HELP
 

@@ -8,7 +8,7 @@ from datetime import datetime
 
 import qrcode
 from bs4 import BeautifulSoup
-from uniborg.util import admin_cmd
+from Extre.utils import admin_cmd
 
 
 def progress(current, total):

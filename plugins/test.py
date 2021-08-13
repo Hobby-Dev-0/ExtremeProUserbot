@@ -4,7 +4,7 @@
 
 import random, re
 from Extre import CMD_HELP
-from uniborg.util import admin_cmd
+from Extre.utils import admin_cmd
 import asyncio
 from telethon import events
 

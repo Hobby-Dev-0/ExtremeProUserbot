@@ -3,7 +3,7 @@ Available Commands:
 .fleave"""
 import asyncio
 
-from uniborg.util import admin_cmd
+from Extre.utils import admin_cmd
 
 
 @borg.on(admin_cmd(pattern=r"fleave"))
