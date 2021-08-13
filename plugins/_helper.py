@@ -1,72 +1,80 @@
-import os
 
-from Extre import ALIVE_NAME, CMD_HELP, CMD_LIST
-from Extre.config import Config
-from Extre.utils import extremepro_cmd
+from Extre.dB.core import *
+from telethon.errors.rpcerrorlist import BotInlineDisabledError as dis
+from telethon.errors.rpcerrorlist import BotMethodInvalidError
+from telethon.errors.rpcerrorlist import BotResponseTimeoutError as rep
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "EXTREMEPRO USER"
-CMD_HNDLR = os.environ.get("CMD_HNDLR", None)
-CUSTOM_HELP_EMOJI = os.environ.get("CUSTOM_HELP_EMOJI", "⚡")
-
-if CMD_HNDLR is None:
-    CMD_HNDLR = "."
+from . import *
 
 
-@Andencento.on(extremepro_cmd(pattern="help ?(.*)"))
-@Andencento.on(amanpandey_cmd(pattern="help ?(.*)", allow_sudo=True))
-async def cmd_list(event):
-    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
-        tgbotusername = Var.TG_BOT_USER_NAME_BF_HER
-        input_str = event.pattern_match.group(1)
-        if tgbotusername is None or input_str == "text":
-            string = ""
-            for i in CMD_HELP:
-                string += CUSTOM_HELP_EMOJI + " " + i + " " + CUSTOM_HELP_EMOJI + "\n"
-                for iter_list in CMD_HELP[i]:
-                    string += "    `" + str(iter_list) + "`"
-                    string += "\n"
-                string += "\n"
-            if len(string) > 4095:
-                with io.BytesIO(str.encode(string)) as out_file:
-                    out_file.name = "cmd.txt"
-                    await tgbot.send_file(
-                        event.chat_id,
-                        out_file,
-                        force_document=True,
-                        allow_cache=False,
-                        caption="**COMMANDS**",
-                        reply_to=reply_to_id,
-                    )
-                    await event.delete()
+@extremepiro_cmd(pattern="help ?(.*)")
+async def _help(ult):
+    plug = ult.pattern_match.group(1)
+    if plug:
+        try:
+            if plug in HELP:
+                output = f"**Plugin** - `{plug}`\n"
+                for i in HELP[plug]:
+                    output += i
+                output += "\n© @Andencento"
+                await eor(ult, output)
+            elif plug in CMD_HELP:
+                kk = f"Plugin Name-{plug}\n\n✘ Commands Available -\n\n"
+                kk += str(CMD_HELP[plug])
+                await eor(ult, kk)
             else:
-                await event.edit(string)
-        elif input_str:
-            if input_str in CMD_LIST:
-                string = "**Cσɱɱαɳԃʂ αʋαιʅαႦʅҽ ιɳ {}** \n\n".format(input_str)
-                if input_str in CMD_HELP:
-                    for i in CMD_HELP[input_str]:
-                        string += i
-                    string += "\n\n**© @Extremepro_UserbotBotSupport**"
-                    await event.edit(string)
-                else:
-                    for i in CMD_LIST[input_str]:
-                        string += "    " + i
-                        string += "\n"
-                    string += "\n**© @EXTREMEPRO_USERBOT**"
-                    await event.edit(string)
-            else:
-                await event.edit(input_str + " is not a valid plugin!")
-        else:
-            help_string = f"""`Userbot Helper for {DEFAULTUSER} to reveal all the commands of `**[ExtremeProUSerbot](@EXTREMEPRO_USERBOT)**\n\n"""
-            try:
-                results = await bot.inline_query(  # pylint:disable=E0602
-                    tgbotusername, help_string
-                )
-                await results[0].click(
-                    event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
-                )
-                await event.delete()
-            except BaseException:
-                await event.edit(
-                    f"тнιѕ вσт нαѕ ιηℓιηє ∂ιѕαвℓє∂. ρℓєαѕє єηαвℓє ιт тσ υѕє `{CMD_HNDLR}help`.\nGet help from [here](t.me/EXTREMEPRO_USERBOT)"
-                )
+                try:
+                    x = f"Plugin Name-{plug}\n\n✘ Commands Available -\n\n"
+                    for d in LIST[plug]:
+                        x += HNDLR + d
+                        x += "\n"
+                    x += "\n© @Andencento"
+                    await eor(ult, x)
+                except BaseException:
+                    await eod(ult, get_string("help_1").format(plug), time=5)
+        except BaseException:
+            await eor(ult, "Error 🤔 occured.")
+    else:
+        tgbot = asst.me.username
+        try:
+            results = await ult.client.inline_query(tgbot, "ultd")
+        except BotMethodInvalidError:
+            z = []
+            for x in LIST.values():
+                for y in x:
+                    z.append(y)
+            cmd = len(z) + 10
+            return await ult.client.send_message(
+                ult.chat_id,
+                get_string("inline_4").format(
+                    OWNER_NAME,
+                    len(PLUGINS) - 5,
+                    len(ADDONS),
+                    cmd,
+                ),
+                buttons=[
+                    [
+                        Button.inline("• Pʟᴜɢɪɴs", data="hrrrr"),
+                        Button.inline("• Aᴅᴅᴏɴs", data="frrr"),
+                    ],
+                    [
+                        Button.inline("Oᴡɴᴇʀ•ᴛᴏᴏʟꜱ", data="ownr"),
+                        Button.inline("Iɴʟɪɴᴇ•Pʟᴜɢɪɴs", data="inlone"),
+                    ],
+                    [
+                        Button.url(
+                            "⚙️Sᴇᴛᴛɪɴɢs⚙️", url=f"https://t.me/{tgbot}?start=set"
+                        ),
+                    ],
+                    [Button.inline("••Cʟᴏꜱᴇ••", data="close")],
+                ],
+            )
+        except rep:
+            return await eor(
+                ult,
+                get_string("help_2").format(HNDLR),
+            )
+        except dis:
+            return await eor(ult, get_string("help_3"))
+        await results[0].click(ult.chat_id, reply_to=ult.reply_to_msg_id, hide_via=True)
+        await ult.delete()
