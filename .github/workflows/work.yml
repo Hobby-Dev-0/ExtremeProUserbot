@@ -18,9 +18,9 @@ jobs:
 
         with:
 
-          find: "tgclient"
+          find: "Andencento"
 
-          replace: "tgbot"
+          replace: "client"
 
       - name: Create Pull Request
 
