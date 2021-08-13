@@ -11,7 +11,7 @@ import os
 import random
 from telethon import events, TelegramClient
 from Extre import *
-from Extre.utils import extremepro_cmd
+from Extre.utils import *
 from telethon.tl.types import ChannelParticipantsAdmins
 from Extre import ALIVE_NAME, StartTime
 from plugins import *
@@ -31,8 +31,9 @@ EXTREMEPRO += f"┣•➳➠ `υρтιмє :` `{StartTime}` \n"
 EXTREMEPRO += f"┣•➳➠ `яєρσ🔥 :` [яєρσ🔥](https://github.com/TeamExtremePro/ExtremeProUserbot)\n"
 EXTREMEPRO += f"┣•➳➠ `ɖɛքʟօʏ⚡ :` [ɖɛքʟօʏ⚡Me](https://dashboard.heroku.com/new?button-url=https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FTeamExtremePro%2FDeploy&template=https%3A%2F%2Fgithub.com%2FTeamExtremePro%2FDeploy)\n"
 EXTREMEPRO += f"┗━━━━━━━━━━━━━━━━━━━\n"
-@borg.on(extremepro_cmd(outgoing=True, pattern="alive$"))
-@borg.on(amanpandey_cmd(pattern="alive$", allow_sudo=True))
+@extremepiro_cmd(
+    pattern="alive$",
+)
 async def up(op):
     if op.fwd_from:
         return
