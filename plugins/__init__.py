@@ -13,6 +13,7 @@ CMD_HELP_BOT = {}
 from Extre.utils import *
 from Extre._wrappers import *
 from Extre.func import *
+from strings import get_string
 from Extre.core import *
 from Extre.sudo import *
 from Extre.extremecmd import *
