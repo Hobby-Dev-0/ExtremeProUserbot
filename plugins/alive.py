@@ -46,8 +46,8 @@ extreme_version = "0.1"
 
 ExtremeVer = "0.34"
 pyver = "0.34"
-OWNER_NAME = extremepro_bot.me.first_name
-OWNER_ID = extremepro_bot.me.id
+OWNER_NAME = os.environ.get("ALIVE_NAME", None)
+OWNER_ID = os.environ.get("OWNER_ID", None)
 @extremepiro_cmd(
     pattern="alive$",
 )
