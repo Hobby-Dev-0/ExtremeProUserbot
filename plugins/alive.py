@@ -49,7 +49,7 @@ pyver = "0.34"
 OWNER_NAME = os.environ.get("ALIVE_NAME", None)
 OWNER_ID = os.environ.get("OWNER_ID", None)
 @extremepiro_cmd(
-    pattern="alive$",
+    pattern="ialive$",
 )
 async def lol(ult):
     pic = ExtremedB.get("ALIVE_PIC")
@@ -90,5 +90,5 @@ async def up(iampro):
         return
     await iampro.get_chat()
     await iampro.delete()
-    await client.send_file(op.chat_id, EXTREMEPRO_PIC, caption=EXTREMEPRO)
+    await client.send_file(iampro.chat_id, EXTREMEPRO_PIC, caption=EXTREMEPRO)
     await iampro.delete() 
