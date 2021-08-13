@@ -12,7 +12,7 @@ import asyncio
 import os
 from pathlib import Path
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from userbot.utils import admin_cmd, edit_or_reply
+from Extre.utils import admin_cmd, edit_or_reply
 
 
 IF_EMOJI = re.compile(

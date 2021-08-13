@@ -7,7 +7,7 @@ Syntax: .qt
 import asyncio
 import random
 
-from userbot.utils import admin_cmd
+from Extre.utils import admin_cmd
 
 
 @borg.on(admin_cmd(pattern=r"qt"))

@@ -9,7 +9,7 @@ from telethon import events
 import os
 import requests
 import json
-from userbot.utils import admin_cmd
+from Extre.utils import admin_cmd
 from Extre import CMD_HELP
 
 @borg.on(admin_cmd("dns (.*)"))

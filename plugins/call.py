@@ -5,7 +5,7 @@ Available Commands:
 import asyncio
 
 from Extre import ALIVE_NAME
-from userbot.utils import admin_cmd
+from Extre.utils import admin_cmd
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "@pureindialover"
 

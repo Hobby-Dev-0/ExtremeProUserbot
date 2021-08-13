@@ -13,7 +13,7 @@ merged by @legendx22
 import random
 from asyncio import sleep
 
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from Extre.utils import admin_cmd, edit_or_reply, sudo_cmd
 from Extre import CMD_HELP
 
 

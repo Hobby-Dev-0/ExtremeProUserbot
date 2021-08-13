@@ -1,4 +1,4 @@
-from userbot.utils import admin_cmd
+from Extre.utils import admin_cmd
 
 @borg.on(admin_cmd(pattern="gnt$"))
 async def gn(event):

@@ -5,7 +5,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from Extre import CMD_HELP
 
-from userbot.utils import admin_cmd
+from Extre.utils import admin_cmd
 
 
 bot = "@MadBoy_Rotomgram2_Bot"

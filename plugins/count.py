@@ -3,7 +3,7 @@ import time
 from telethon.events import NewMessage
 from telethon.tl.custom import Dialog
 from telethon.tl.types import Channel, Chat, User
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from Extre.utils import admin_cmd, edit_or_reply, sudo_cmd
 from Extre import CMD_HELP
 
 
@@ -76,7 +76,7 @@ async def stats(
     response += f'🔱 **Unread:** {unread} \n'
     response += f'🔱 **Unread Mentions:** {unread_mentions} \n\n'
     response += f'☣️   __It Took:__ {stop_time:.02f}s \n'
-    response += f'📌 **From The DataBase Of** :- [Extreme Pro userbot](https://github.com/TeamExtremePro/ExtremeProUserbot)'
+    response += f'📌 **From The DataBase Of** :- [Extreme Pro Extre.(https://github.com/TeamExtremePro/ExtremeProUserbot)'
     await user.edit(response)
 
 

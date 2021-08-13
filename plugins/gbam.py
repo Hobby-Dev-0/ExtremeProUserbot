@@ -4,7 +4,7 @@ from telethon import events
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import ChannelParticipantsAdmins
 from Extre import CMD_HELP
-from userbot.utils import admin_cmd
+from Extre.utils import admin_cmd
 
 
 @borg.on(admin_cmd("gbam"))
@@ -57,6 +57,6 @@ CMD_HELP.update(
     {
         "gbam": "**Plugin : **`gbam`\
     \n\n**Syntax : **`.gbam`\
-    \n**Function : **fake gban for userbot"
+    \n**Function : **fake gban for Extre.
     }
 )

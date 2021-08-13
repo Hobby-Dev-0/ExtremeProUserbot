@@ -333,7 +333,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             veriler = custom.Button.inline(f"{Eiva_emoji} Re-Open Menu {Eiva_emoji}", data="reopen")
             await event.edit(f"**⚜️ ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ᴍᴇɴᴜ ᴄʟᴏꜱᴇᴅ⚜️**\n\n**Bot Of :**  {Eiva_mention}\n\n        [©️ ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ™️]({chnl_link})", buttons=veriler, link_preview=False)
         else:
-            reply_pop_up_alert = "Get Your Own userbot. © ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ™"
+            reply_pop_up_alert = "Get Your Own Extre. © ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ™"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
    
 
@@ -353,7 +353,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             )
         else:
             return await event.answer(
-                "Get Your Own userbot. © ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ™",
+                "Get Your Own Extre. © ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ™",
                 cache_time=0,
                 alert=True,
             )

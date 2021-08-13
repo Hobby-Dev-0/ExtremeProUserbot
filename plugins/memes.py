@@ -23,7 +23,7 @@ from telethon.tl.types import MessageEntityMentionName
 from cowpy import cow
 from Extre import bot
 from Extre import CMD_HELP,YOUTUBE_API_KEY
-from userbot.utils import register,admin_cmd
+from Extre.utils import register,admin_cmd
 
 # ================= CONSTANT =================
 RENDISTR = [

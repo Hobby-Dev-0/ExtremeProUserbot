@@ -1,6 +1,6 @@
 
 import random, re
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from Extre.utils import admin_cmd, edit_or_reply, sudo_cmd
 import asyncio
 from telethon import events
 from Extre import CMD_HELP

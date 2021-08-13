@@ -3,7 +3,7 @@ import io
 
 from telethon import events, functions
 from telethon.tl.functions.users import GetFullUserRequest
-from userbot.utils import *
+from Extre.utils import *
 
 from sql_helper import pmpermit_sql as pm_sql
 Config.INSTANT_BLOCK = os.environ.get("INSTANT_BLOCK", None)

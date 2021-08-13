@@ -10,7 +10,7 @@ from os import execl
 import sys
 import os
 from Extre import bot as javes
-from userbot.utils import admin_cmd
+from Extre.utils import admin_cmd
 import io
 import heroku3
 import asyncio
@@ -232,7 +232,7 @@ async def upstream(ups):
         heroku_applications = heroku.apps()
         if not HEROKU_APPNAME:
             await ups.edit(
-                '`Please set up the HEROKU_APPNAME variable to be able to update userbot.`'
+                '`Please set up the HEROKU_APPNAME variable to be able to update Extre.`'
             )
             repo.__del__()
             return
@@ -276,12 +276,12 @@ async def upstream(ups):
         await ups.edit('`Successfully Updated!\n'
                        'restarting......`')
         # Spin a new instance of bot
-        args = [sys.executable, "-m", "userbot"]
+        args = [sys.executable, "-m", "Extre.]
         execle(sys.executable, *args, environ)
         return
 
 '''
-from userbot.utils import admin_cmd
+from Extre.utils import admin_cmd
 @borg.on(admin_cmd(pattern="update|update now"))
 async def hehe (event):
   await event.edit("want to update your bot ?\nnow not use update now use \n`.restart` only")

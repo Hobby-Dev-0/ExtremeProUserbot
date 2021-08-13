@@ -15,7 +15,7 @@ from pytz import timezone as tz
 
 from Extre import CMD_HELP
 from Extre import OPEN_WEATHER_MAP_APPID as OWM_API
-from userbot.events import errors_handler, register
+from Extre.events import errors_handler, register
 
 # ===== CONSTANT =====
 DEFCITY = "Ahmedabad"

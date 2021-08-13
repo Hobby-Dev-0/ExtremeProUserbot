@@ -3,7 +3,7 @@
 #will be adding more soon
 
 import os, urllib, requests, asyncio
-from userbot.utils import admin_cmd,edit_or_reply, sudo_cmd
+from Extre.utils import admin_cmd,edit_or_reply, sudo_cmd
 
 @Andencento.on(admin_cmd("boobs$"))
 @Andencento.on(sudo_cmd(pattern="boobs$", allow_sudo=True))

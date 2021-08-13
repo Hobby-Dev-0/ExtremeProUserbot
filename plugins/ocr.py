@@ -6,7 +6,7 @@ import os
 
 import requests
 
-from userbot.utils import admin_cmd
+from Extre.utils import admin_cmd
 
 
 def ocr_space_file(

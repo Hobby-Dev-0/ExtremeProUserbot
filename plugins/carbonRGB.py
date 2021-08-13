@@ -11,7 +11,7 @@ from urllib.parse import quote_plus
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-from userbot.utils import admin_cmd
+from Extre.utils import admin_cmd
 
 
 # @borg.on(events.NewMessage(pattern=r"\.karb ", outgoing=True))

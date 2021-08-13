@@ -1,5 +1,5 @@
 """
-Telegram Channel Media Downloader Plugin for userbot.
+Telegram Channel Media Downloader Plugin for Extre.
 usage: .geta channel_username [will  get all media from channel, tho there is limit of 3000 there to prevent API limits.]
        .getc number_of_messsages channel_username  
 By: @Zero_cool7870
@@ -9,7 +9,7 @@ import asyncio
 import os
 import subprocess
 import sys
-from userbot.utils import admin_cmd, humanbytes, progress, time_formatter
+from Extre.utils import admin_cmd, humanbytes, progress, time_formatter
 from Extre import CMD_HELP
 
 @borg.on(admin_cmd(pattern=r"getc"))
@@ -84,7 +84,7 @@ async def get_media(event):
 CMD_HELP.update(
     {
         "channel_download": f"""**Plugin : **`channel_download`
-**Telegram Channel Media Downloader Plugin for userbot.**
+**Telegram Channel Media Downloader Plugin for Extre.**
   • **Syntax : **`.geta channel_username` 
   • **Function : **__will  download all media from channel into your bot server but there is limit of 3000 to prevent API limits.__
   

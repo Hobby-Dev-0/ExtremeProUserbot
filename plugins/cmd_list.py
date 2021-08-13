@@ -1,13 +1,13 @@
 import asyncio
 
-from userbot.utils import admin_cmd
+from Extre.utils import admin_cmd
 
 
 @borg.on(admin_cmd(pattern=r"cmds"))
 async def install(event):
     if event.fwd_from:
         return
-    cmd = "ls userbot/plugins"
+    cmd = "ls Extre.plugins"
     process = await asyncio.create_subprocess_suser(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )

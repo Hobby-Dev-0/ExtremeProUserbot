@@ -3,8 +3,8 @@
 
 from telethon import events
 import asyncio
-#from userbot.utils import admin_cmd
-from userbot.events import register 
+#from Extre.utils import admin_cmd
+from Extre.events import register 
 from Extre import bot, CMD_HELP
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 import os

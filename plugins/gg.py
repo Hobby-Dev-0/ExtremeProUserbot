@@ -18,7 +18,7 @@ from telethon import events
 #made by Sh1vam Donot kang
 import asyncio
 #made by Sh1vam Donot kang
-from userbot.utils import admin_cmd
+from Extre.utils import admin_cmd
 from Extre import bot as tgbot
 from Extre import bot as borg
 import os

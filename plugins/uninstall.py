@@ -2,20 +2,20 @@
 #credits shivam thanks bruh
 
 from telethon import events
-from userbot.events import remove_plugin, load_module
+from Extre.events import remove_plugin, load_module
 from telethon import functions, types
 from telethon.tl.types import InputMessagesFilterDocument
-from userbot.utils import command, remove_plugin, load_module
+from Extre.utils import command, remove_plugin, load_module
 from pathlib import Path
 from Extre import LOAD_PLUG, CMD_HELP
-from userbot.utils import admin_cmd
+from Extre.utils import admin_cmd
 import os
 @Andencento.on(admin_cmd(pattern=r"^uninstall (?P<shortname>\w+)$"))
 async def unload(event):
     if event.fwd_from:
         return
     shortname = event.pattern_match["shortname"]
-    dir_path =f"./userbot/plugins/{shortname}.py"
+    dir_path =f"./Extre.plugins/{shortname}.py"
     try:
         remove_plugin(shortname)
         os.remove(dir_path)

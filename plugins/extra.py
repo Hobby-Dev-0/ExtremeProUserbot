@@ -8,8 +8,8 @@ from telethon.tl.functions.contacts import BlockRequest
 from telethon.tl.functions.channels import LeaveChannelRequest, CreateChannelRequest, DeleteMessagesRequest
 from collections import deque
 from telethon.tl.functions.users import GetFullUserRequest
-from userbot.events import register
-from userbot.utils import admin_cmd
+from Extre.events import register
+from Extre.utils import admin_cmd
 
 
 @borg.on(admin_cmd(";__;$"))
@@ -137,7 +137,7 @@ CMD_HELP.update({
     "readme": "Reedme."
 })
 CMD_HELP.update({
-    "source": "Gives the source of your userbot"
+    "source": "Gives the source of your Extre.
 })
 CMD_HELP.update({
     "myusernames": "List of Usernames owned by you."

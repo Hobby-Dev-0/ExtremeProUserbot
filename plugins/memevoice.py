@@ -7,7 +7,7 @@
 import re
 import random
 from Extre import bot
-from userbot.utils import admin_cmd
+from Extre.utils import admin_cmd
 
 
 IF_EMOJI = re.compile(

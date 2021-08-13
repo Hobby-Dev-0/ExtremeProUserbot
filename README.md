@@ -42,7 +42,7 @@ Anyone Intrested To Join our Team THen Join We Are Waiting
 [![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?button-url=https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FAmanPandey7647%2FEx&template=https%3A%2F%2Fgithub.com%2FAmanPandey7647%2FEx)
 
 
-[![Extreme Pro вσт ℓσgσ](https://telegra.ph/file/75520b56df7b9159438cb.jpg)](https://t.me/ExtremeProuserbotSupport)
+[![Extreme Pro вσт ℓσgσ](https://telegra.ph/file/75520b56df7b9159438cb.jpg)](https://t.me/ExtremeProExtre.upport)
 
 ## STATUS OF THIS BOTS 
 <p align="left"><a href="https://github.com/teamExtremePro/ExtremeProUserbot/network/members"><img src="https://img.shields.io/github/forks/TeamExtremePro/ExtremeProUserbot?label=Forks&logoColor=pink&style=social"></a><p align="left"><a href="https://github.com/TeamExtremePro/ExtremeProUserbot"><img src="https://img.shields.io/github/stars/TeamExtremePro/ExtremeProUserbot?logoColor=red&style=social"></a><p align="left"><a href="https://github.com/TeamExtremePro/ExtremeProUserbot"><img src="https://img.shields.io/github/lastExtrecommit/TeamExtremePro/ExtremeProUserbot/dev?style=plastic"></a>

@@ -17,7 +17,7 @@ from telethon.errors import (BadRequestError, ChatAdminRequiredError,
                              ImageProcessFailedError, PhotoCropSizeSmallError,
                              UserAdminInvalidError)
 from Extre import CMD_HELP
-from userbot.utils import  errors_handler, admin_cmd
+from Extre.utils import  errors_handler, admin_cmd
 
 @borg.on(admin_cmd(pattern="leave$"))
 async def leave(e):

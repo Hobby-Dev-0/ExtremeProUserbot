@@ -6,7 +6,7 @@ Available Commands:
 .create (b|g) GroupName"""
 from telethon.tl import functions
 from Extre import CMD_HELP
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from Extre.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @Andencento.on(admin_cmd(pattern="create (b|g|c) (.*)"))  # pylint:disable=E0602
@@ -50,7 +50,7 @@ async def _(event):
             r = await event.client(
                 functions.channels.CreateChannelRequest(
                     title=group_name,
-                    about="Created By Extreme Pro userbot",
+                    about="Created By Extreme Pro Extre.,
                     megagroup=type_of_group != "c",
                 )
             )

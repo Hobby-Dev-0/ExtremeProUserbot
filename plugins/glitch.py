@@ -7,13 +7,13 @@ import shlex
 from PIL import Image 
 from Extre import LOGS , CMD_HELP
 from telethon import functions, types
-from userbot.utils import admin_cmd
+from Extre.utils import admin_cmd
 from glitch_this import ImageGlitcher
 from typing import Optional, Tuple
 
 
 from Extre import bot, CMD_HELP, LOGS
-from userbot.events import register
+from Extre.events import register
 
 async def take_screen_shot(
     video_file: str, duration: int, path: str = ""

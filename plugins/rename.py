@@ -6,7 +6,7 @@ from datetime import datetime
 from uniborg.util import admin_cmd
 
 from Extre import CMD_HELP
-from userbot.utils import admin_cmd, progress
+from Extre.utils import admin_cmd, progress
 
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "thumb_image.jpg"
 

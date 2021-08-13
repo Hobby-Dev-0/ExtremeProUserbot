@@ -8,7 +8,7 @@ from asyncio import wait
 from Extre import CMD_HELP
 
 
-from userbot.events import register
+from Extre.events import register
 
 @register(outgoing=True, pattern="^.tspam")
 async def tmeme(e):

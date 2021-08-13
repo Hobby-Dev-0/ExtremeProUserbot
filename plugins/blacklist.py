@@ -12,7 +12,7 @@ from telethon import events
 import sql_helper.blacklist_sql as sql
 
 from Extre import CMD_HELP
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from Extre.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @Andencento.on(events.NewMessage(incoming=True))
