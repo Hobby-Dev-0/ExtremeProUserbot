@@ -29,7 +29,7 @@ from telethon.tl.types import (
 from Extre.utils import admin_cmd
 
 
-@Andencento.on(admin_cmd(pattern="akang ?(.*)"))
+@client.on(admin_cmd(pattern="akang ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

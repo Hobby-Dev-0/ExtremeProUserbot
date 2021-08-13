@@ -6,7 +6,7 @@ from telethon.tl.functions.channels import LeaveChannelRequest
 from Extre.utils import admin_cmd
 import time
 
-@Andencento.on(admin_cmd("kickme", outgoing=True))
+@client.on(admin_cmd("kickme", outgoing=True))
 async def leave(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("**I Iz lev this Kensur grp** 🤧🤧🤧🖕🏼")

@@ -3,7 +3,7 @@ import asyncio
 from Extre.utils import admin_cmd
 
 
-@Andencento.on(admin_cmd(pattern="dump ?(.*)"))
+@client.on(admin_cmd(pattern="dump ?(.*)"))
 async def _(message):
     try:
         obj = message.pattern_match.group(1)

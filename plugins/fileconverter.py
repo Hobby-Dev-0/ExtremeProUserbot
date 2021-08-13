@@ -14,7 +14,7 @@ from datetime import datetime
 from Extre.utils import admin_cmd, sudo_cmd , edit_or_reply
 from Extre import CMD_HELP, bot
 
-@Andencento.on(admin_cmd(pattern=r"open", outgoing=True))
+@client.on(admin_cmd(pattern=r"open", outgoing=True))
 async def _(event):
     b = await event.Andencento.download_media(await event.get_reply_message())
     a = open(b, "r")
@@ -36,7 +36,7 @@ async def _(event):
     os.remove(b)
 
 
-@Andencento.on(admin_cmd(pattern="doc ?(.*)"))
+@client.on(admin_cmd(pattern="doc ?(.*)"))
 async def get(event):
     name = event.text[5:]
     if name is None:
@@ -66,8 +66,8 @@ async def get(event):
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "thumb_image.jpg"
 
 
-@Andencento.on(admin_cmd(pattern="stoi"))
-@Andencento.on(sudo_cmd(pattern="stoi", allow_sudo=True))
+@client.on(admin_cmd(pattern="stoi"))
+@client.on(sudo_cmd(pattern="stoi", allow_sudo=True))
 async def danish(hehe):
     if hehe.fwd_from:
         return
@@ -121,8 +121,8 @@ async def danish(hehe):
   
   #hehe
   
-@Andencento.on(admin_cmd(pattern="itos"))
-@Andencento.on(sudo_cmd(pattern="itos", allow_sudo=True))
+@client.on(admin_cmd(pattern="itos"))
+@client.on(sudo_cmd(pattern="itos", allow_sudo=True))
 async def teamcobra(hehe):
     if hehe.fwd_from:
         return

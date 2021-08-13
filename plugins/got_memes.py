@@ -11,7 +11,7 @@ import random
 from Extre.utils import admin_cmd
 
 
-@Andencento.on(admin_cmd(pattern=r"gotm"))
+@client.on(admin_cmd(pattern=r"gotm"))
 async def _(event):
 
     if event.fwd_from:

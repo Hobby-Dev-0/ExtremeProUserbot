@@ -38,7 +38,7 @@ if 1 == 1:
 
 
 
-    @Andencento.on(admin_cmd(pattern="poto(.*)"))
+    @client.on(admin_cmd(pattern="poto(.*)"))
 
     async def potocmd(event):
 

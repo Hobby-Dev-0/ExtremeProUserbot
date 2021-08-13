@@ -37,7 +37,7 @@ async def animepp():
     urllib.request.urlretrieve(fy, "donottouch.jpg")
 
 
-@Andencento.on(admin_cmd(pattern="gamerdp ?(.*)"))
+@client.on(admin_cmd(pattern="gamerdp ?(.*)"))
 async def main(event):
     await event.edit(
         "**Starting Gamer Profile Pic.......\n\nModded by @Mariodevs ! Check Your Dp After 20 Seconds"

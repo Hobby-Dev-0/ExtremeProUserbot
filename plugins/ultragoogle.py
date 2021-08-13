@@ -17,7 +17,7 @@ def progress(current, total):
     logger.info("Downloaded {} of {}\nCompleted {}".format(current, total, (current / total) * 100))
 
 
-@Andencento.on(admin_cmd(pattern="google search (.*)"))
+@client.on(admin_cmd(pattern="google search (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -42,7 +42,7 @@ async def _(event):
     await event.edit("Google: {}\n{}".format(input_str, output_str), link_preview=False)
 
 
-@Andencento.on(admin_cmd(pattern="google image (.*)"))
+@client.on(admin_cmd(pattern="google image (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -83,7 +83,7 @@ async def _(event):
     await event.delete()
 
 
-@Andencento.on(admin_cmd(pattern="google reverse search"))
+@client.on(admin_cmd(pattern="google reverse search"))
 async def _(event):
     if event.fwd_from:
         return

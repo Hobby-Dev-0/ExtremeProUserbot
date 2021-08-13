@@ -33,7 +33,7 @@ def get_lst_of_files(input_directory, output_lst):
     return output_lst
 
 
-@Andencento.on(admin_cmd("uploadir (.*)"))
+@client.on(admin_cmd("uploadir (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -141,7 +141,7 @@ async def _(event):
         await event.edit("404: Directory Not Found")
 
 
-@Andencento.on(admin_cmd(pattern="upload (.*)", allow_sudo=True))
+@client.on(admin_cmd(pattern="upload (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -186,7 +186,7 @@ def get_video_thumb(file, output=None, width=90):
         return output
 
 
-@Andencento.on(admin_cmd(pattern="uploadsstream (.*)", allow_sudo=True))
+@client.on(admin_cmd(pattern="uploadsstream (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

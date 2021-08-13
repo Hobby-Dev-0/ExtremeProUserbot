@@ -2,7 +2,7 @@ import pyfiglet
 from Extre.utils import admin_cmd
 
 #@command(pattern="^.figlet ?(.*)", outgoing=True)
-@Andencento.on(admin_cmd(pattern=r"figlet ?(.*)"))
+@client.on(admin_cmd(pattern=r"figlet ?(.*)"))
 async def figlet(event):
     if event.fwd_from:
         return

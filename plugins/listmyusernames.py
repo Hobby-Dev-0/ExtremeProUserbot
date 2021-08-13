@@ -6,7 +6,7 @@ from Extre.utils import admin_cmd
 from Extre import CMD_HELP
 from telethon.tl.functions.channels import GetAdminedPublicChannelsRequest
 
-@Andencento.on(admin_cmd("listmyusernames"))
+@client.on(admin_cmd("listmyusernames"))
 
 async def mine(event):
     """ For .reserved command, get a list of your reserved usernames. """

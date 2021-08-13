@@ -9,8 +9,8 @@ from Extre import CMD_HELP
 from Extre.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
-@Andencento.on(admin_cmd(pattern="create (b|g|c) (.*)"))  # pylint:disable=E0602
-@Andencento.on(sudo_cmd(pattern="create (b|g|c) (.*)", allow_sudo=True))
+@client.on(admin_cmd(pattern="create (b|g|c) (.*)"))  # pylint:disable=E0602
+@client.on(sudo_cmd(pattern="create (b|g|c) (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

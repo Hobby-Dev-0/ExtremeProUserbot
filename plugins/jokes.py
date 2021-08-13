@@ -7,7 +7,7 @@ from Extre.utils import admin_cmd
 from Extre import CMD_HELP, LOGS
 
 
-@Andencento.on(admin_cmd(pattern="join"))
+@client.on(admin_cmd(pattern="join"))
 async def _(event):
     if event.fwd_from:
         return
@@ -23,7 +23,7 @@ async def _(event):
         await event.reply(mentions)
     await event.delete()
 
-@Andencento.on(admin_cmd(pattern="pay"))
+@client.on(admin_cmd(pattern="pay"))
 async def _(event):
     if event.fwd_from:
         return
@@ -41,7 +41,7 @@ async def _(event):
 
 
 
-@Andencento.on(admin_cmd(pattern="climb"))
+@client.on(admin_cmd(pattern="climb"))
 async def _(event):
     if event.fwd_from:
         return
@@ -57,7 +57,7 @@ async def _(event):
         await event.reply(mentions)
     await event.delete()
 
-@Andencento.on(admin_cmd(pattern="aag"))
+@client.on(admin_cmd(pattern="aag"))
 async def _(event):
     if event.fwd_from:
         return
@@ -73,7 +73,7 @@ async def _(event):
         await event.reply(mentions)
     await event.delete()
 
-@Andencento.on(admin_cmd(pattern="push"))
+@client.on(admin_cmd(pattern="push"))
 async def _(event):
     if event.fwd_from:
         return
@@ -90,7 +90,7 @@ async def _(event):
     await event.delete()
 
 
-@Andencento.on(admin_cmd(pattern="work"))
+@client.on(admin_cmd(pattern="work"))
 async def _(event):
     if event.fwd_from:
         return
@@ -106,7 +106,7 @@ async def _(event):
         await event.reply(mentions)
     await event.delete()
     
-@Andencento.on(admin_cmd(pattern="suckit"))
+@client.on(admin_cmd(pattern="suckit"))
 async def _(event):
     if event.fwd_from:
         return
@@ -123,7 +123,7 @@ async def _(event):
     await event.delete() 
     
     
-@Andencento.on(admin_cmd(pattern="ohh"))
+@client.on(admin_cmd(pattern="ohh"))
 async def _(event):
     if event.fwd_from:
         return
@@ -139,7 +139,7 @@ async def _(event):
         await event.reply(mentions)
     await event.delete()
     
-@Andencento.on(admin_cmd(pattern="lovestory"))
+@client.on(admin_cmd(pattern="lovestory"))
 async def _(event):
     if event.fwd_from:
         return
@@ -168,7 +168,7 @@ async def _(event):
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 103])
   
-@Andencento.on(admin_cmd(outgoing=True, pattern="bf"))
+@client.on(admin_cmd(outgoing=True, pattern="bf"))
 async def pressf(f):
     """Pays respects"""
     args = f.text.split()
@@ -190,7 +190,7 @@ async def pressf(f):
             out += (arg * c) + "\n"
         await f.edit("`" + out + "`")
         
-@Andencento.on(admin_cmd(pattern="session$"))
+@client.on(admin_cmd(pattern="session$"))
 async def _(event):
     if event.fwd_from:
         return

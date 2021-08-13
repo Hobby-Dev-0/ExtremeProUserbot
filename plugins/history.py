@@ -9,7 +9,7 @@ from Extre import CMD_HELP
 from Extre.utils import admin_cmd, edit_or_reply, sudo_cmd
 import asyncio
 
-@Andencento.on(admin_cmd(pattern=("history ?(.*)")))
+@client.on(admin_cmd(pattern=("history ?(.*)")))
 async def _(event):
    if event.fwd_from:
       return 

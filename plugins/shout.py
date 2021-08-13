@@ -9,7 +9,7 @@ from Extre.utils import admin_cmd
 import random
 
 
-@Andencento.on(admin_cmd(pattern=r"shout"))
+@client.on(admin_cmd(pattern=r"shout"))
 async def shout(args):
     if args.fwd_from:
         return

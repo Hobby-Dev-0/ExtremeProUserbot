@@ -9,7 +9,7 @@ import asyncio
 from Extre.utils import admin_cmd
 
 
-@Andencento.on(admin_cmd(pattern=r"(.*)"))
+@client.on(admin_cmd(pattern=r"(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -36,7 +36,7 @@ async def _(event):
             await event.edit(animation_chars[i % 10])
 
 
-@Andencento.on(admin_cmd(pattern=r"(.*)"))
+@client.on(admin_cmd(pattern=r"(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -63,7 +63,7 @@ async def _(event):
             await event.edit(animation_chars[i % 10])
 
 
-@Andencento.on(admin_cmd(pattern=r"(.*)"))
+@client.on(admin_cmd(pattern=r"(.*)"))
 async def _(event):
     if event.fwd_from:
         return

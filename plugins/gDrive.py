@@ -34,7 +34,7 @@ G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 
 
 # @command(pattern="^.ugdrive ?(.*)")
-@Andencento.on(admin_cmd(pattern=r"ugdrive ?(.*)"))
+@client.on(admin_cmd(pattern=r"ugdrive ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -115,7 +115,7 @@ async def _(event):
 
 
 # @command(pattern="^.drivesch ?(.*)")
-@Andencento.on(admin_cmd(pattern=r"drivesch ?(.*)"))
+@client.on(admin_cmd(pattern=r"drivesch ?(.*)"))
 async def sch(event):
     if event.fwd_from:
         return
@@ -191,7 +191,7 @@ async def gsearch(http, query, filename):
 
 
 # @command(pattern="^.gdrivedir ?(.*)")
-@Andencento.on(admin_cmd(pattern=r"gdrivedir ?(.*)"))
+@client.on(admin_cmd(pattern=r"gdrivedir ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -370,7 +370,7 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
 
 
 # @command(pattern="^.gfolder ?(.*)")
-@Andencento.on(admin_cmd(pattern=r"gfolder ?(.*)"))
+@client.on(admin_cmd(pattern=r"gfolder ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

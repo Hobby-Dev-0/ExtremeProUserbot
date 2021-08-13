@@ -5,7 +5,7 @@ import asyncio
 from collections import deque
 
 
-@Andencento.on(events.NewMessage(pattern=r".floodwarn", outgoing=True))
+@client.on(events.NewMessage(pattern=r".floodwarn", outgoing=True))
 async def _(event):
 	if event.fwd_from:
 		return

@@ -6,7 +6,7 @@ from Extre.utils import admin_cmd
 from Extre import bot
 
 
-@Andencento.on(admin_cmd(pattern=r"stats"))
+@client.on(admin_cmd(pattern=r"stats"))
 async def _(event):
     if event.fwd_from:
         return

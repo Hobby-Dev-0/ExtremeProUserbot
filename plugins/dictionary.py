@@ -10,8 +10,8 @@ from Extre import CMD_HELP
 from Extre.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
-@Andencento.on(admin_cmd(pattern="ud (.*)"))
-@Andencento.on(sudo_cmd(pattern="ud (.*)", allow_sudo=True))
+@client.on(admin_cmd(pattern="ud (.*)"))
+@client.on(sudo_cmd(pattern="ud (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -29,8 +29,8 @@ async def _(event):
         await edit_or_reply(event, "No result found for **" + word + "**")
 
 
-@Andencento.on(admin_cmd(pattern="meaning (.*)"))
-@Andencento.on(sudo_cmd(pattern="meaning (.*)", allow_sudo=True))
+@client.on(admin_cmd(pattern="meaning (.*)"))
+@client.on(sudo_cmd(pattern="meaning (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

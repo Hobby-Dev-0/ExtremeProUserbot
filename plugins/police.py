@@ -7,7 +7,7 @@ from Extre import ALIVE_NAME
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "ExtremeProUserbotBot"
 
 
-@Andencento.on(admin_cmd(pattern=r"police"))
+@client.on(admin_cmd(pattern=r"police"))
 async def _(event):
 
     if event.fwd_from:

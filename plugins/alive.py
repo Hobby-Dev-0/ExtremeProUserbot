@@ -31,7 +31,7 @@ EXTREMEPRO += f"┣•➳➠ `яєρσ🔥 :` [яєρσ🔥](https://github.com/
 EXTREMEPRO += f"┣•➳➠ `ɖɛքʟօʏ⚡ :` [ɖɛքʟօʏ⚡Me](https://dashboard.heroku.com/new?button-url=https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FTeamExtremePro%2FDeploy&template=https%3A%2F%2Fgithub.com%2FTeamExtremePro%2FDeploy)\n"
 EXTREMEPRO += f"┗━━━━━━━━━━━━━━━━━━━\n"
 
-@Andencento.on(extremepro_cmd(outgoing=True, pattern="alive$"))
+@client.on(extremepro_cmd(outgoing=True, pattern="alive$"))
 async def up(iampro):
     if iampro.fwd_from:
         return

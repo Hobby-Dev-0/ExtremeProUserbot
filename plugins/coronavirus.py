@@ -5,7 +5,7 @@ from covid import Covid
 from Extre.utils import admin_cmd
 
 
-@Andencento.on(admin_cmd(pattern="corona (.*)"))
+@client.on(admin_cmd(pattern="corona (.*)"))
 async def _(event):
     covid = Covid()
     data = covid.get_data()

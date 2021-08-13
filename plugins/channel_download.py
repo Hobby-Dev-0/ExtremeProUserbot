@@ -12,7 +12,7 @@ import sys
 from Extre.utils import admin_cmd, humanbytes, progress, time_formatter
 from Extre import CMD_HELP
 
-@Andencento.on(admin_cmd(pattern=r"getc"))
+@client.on(admin_cmd(pattern=r"getc"))
 async def get_media(event):
     if event.fwd_from:
         return
@@ -48,7 +48,7 @@ async def get_media(event):
 
 
 
-@Andencento.on(admin_cmd(pattern=r"geta"))
+@client.on(admin_cmd(pattern=r"geta"))
 async def get_media(event):
     if event.fwd_from:
         return

@@ -9,7 +9,7 @@ from telethon.utils import get_input_location
 from Extre.utils import admin_cmd
 
 
-@Andencento.on(admin_cmd(pattern="ppg ?(.*)"))
+@client.on(admin_cmd(pattern="ppg ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

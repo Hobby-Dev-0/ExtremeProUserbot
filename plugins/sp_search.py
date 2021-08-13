@@ -12,7 +12,7 @@ from Extre.utils import admin_cmd
 
 
 
-@Andencento.on(admin_cmd(pattern="sch ?(.*)", allow_sudo=True))
+@client.on(admin_cmd(pattern="sch ?(.*)", allow_sudo=True))
 async def sp_search(event):
 	search_str = event.pattern_match.group(1)
 

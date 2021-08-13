@@ -14,7 +14,7 @@ UNAPPROVED_MSG = (
 )
 
 
-@Andencento.on_message(Filters.private & ~Filters.me)
+@client.on_message(Filters.private & ~Filters.me)
 def incoming_pm(bot: BOT, message: Message):
     if PM_PERMIT:
         approved = PmPermit().check_if_approved(message.chat.id)
@@ -45,18 +45,18 @@ def incoming_pm(bot: BOT, message: Message):
                 PmPermit().increment_retard_level(message.chat.id)
 
 
-@Andencento.on_message(Filters.private & Filters.me)
+@client.on_message(Filters.private & Filters.me)
 def auto_approve_user_on_message(bot: BOT, message: Message):
     PmPermit().approve(message.chat.id)
 
 
-@Andencento.on_message(Filters.command('approve', '.') & Filters.me)
+@client.on_message(Filters.command('approve', '.') & Filters.me)
 def approve(bot: BOT, message: Message):
     PmPermit().approve(message.chat.id)
     message.edit("You have been approved to PM me. Please continue on with your story.")
 
 
-@Andencento.on_message(Filters.command('block', '.') & Filters.me)
+@client.on_message(Filters.command('block', '.') & Filters.me)
 def block(bot: BOT, message: Message):
     PmPermit().block_pm(message.chat.id)
     message.edit("`You have been blocked. Sad day for you init.`")

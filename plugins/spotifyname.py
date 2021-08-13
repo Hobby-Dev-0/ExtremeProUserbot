@@ -19,7 +19,7 @@ from telethon.tl.functions.account import UpdateProfileRequest
 
 
 import spotify_token as st
-from Extre.uniAndencento.onfig import Config
+from Extre.uniclient.onfig import Config
 
 # =================== CONSTANT ===================
 SPO_BIO_ENABLED = "```Spotify Current Music to Name enabled.```"
@@ -115,8 +115,8 @@ async def dirtyfix():
 
 
 
-@Andencento.on(admin_cmd(pattern=f"ensp", allow_sudo=True))
-@Andencento.on(events.NewMessage(pattern=r"\.ensp ?(.*)", outgoing=True))
+@client.on(admin_cmd(pattern=f"ensp", allow_sudo=True))
+@client.on(events.NewMessage(pattern=r"\.ensp ?(.*)", outgoing=True))
 async def set_biostgraph(setstbio):
     setrecursionlimit(700000)
     if not SPOTIFYCHECK:
@@ -129,8 +129,8 @@ async def set_biostgraph(setstbio):
 
 
 
-@Andencento.on(admin_cmd(pattern=f"disp", allow_sudo=True))
-@Andencento.on(events.NewMessage(pattern=r"\.disp ?(.*)", outgoing=True))
+@client.on(admin_cmd(pattern=f"disp", allow_sudo=True))
+@client.on(events.NewMessage(pattern=r"\.disp ?(.*)", outgoing=True))
 async def set_biodgraph(setdbio):
     global SPOTIFYCHECK
     global RUNNING

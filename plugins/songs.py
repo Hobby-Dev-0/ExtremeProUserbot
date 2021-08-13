@@ -11,7 +11,7 @@ import asyncio
 
  
 
-@Andencento.on(admin_cmd(pattern="gaana ?(.*)"))
+@client.on(admin_cmd(pattern="gaana ?(.*)"))
 async def FindMusicPleaseBot(gaana):
 
     song = gaana.pattern_match.group(1)
@@ -105,7 +105,7 @@ except:
 	pass
 
 
-@Andencento.on(admin_cmd(pattern="song(?: |$)(.*)"))
+@client.on(admin_cmd(pattern="song(?: |$)(.*)"))
 async def download_video(v_url):  
 
     lazy = v_url ; sender = await lazy.get_sender() ; me = await lazy.Andencento.get_me()
@@ -228,7 +228,7 @@ async def download_video(v_url):
         
         
         
-@Andencento.on(admin_cmd(pattern="vsong(?: |$)(.*)"))
+@client.on(admin_cmd(pattern="vsong(?: |$)(.*)"))
 async def download_video(v_url):  
     lazy = v_url ; sender = await lazy.get_sender() ; me = await lazy.Andencento.get_me()
     if not sender.id == me.id:
@@ -458,7 +458,7 @@ from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
 from Extre.utils import admin_cmd
 
-@Andencento.on(admin_cmd("sdd ?(.*)"))
+@client.on(admin_cmd("sdd ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

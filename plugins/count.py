@@ -7,8 +7,8 @@ from Extre.utils import admin_cmd, edit_or_reply, sudo_cmd
 from Extre import CMD_HELP
 
 
-@Andencento.on(admin_cmd(pattern="stats$"))
-@Andencento.on(sudo_cmd(pattern="stats$", allow_sudo=True))
+@client.on(admin_cmd(pattern="stats$"))
+@client.on(sudo_cmd(pattern="stats$", allow_sudo=True))
 async def stats(
     event: NewMessage.Event,
 ) -> None:  # pylint: disable = R0912, R0914, R0915

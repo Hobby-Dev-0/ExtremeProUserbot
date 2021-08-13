@@ -19,7 +19,7 @@ if not os.path.isdir("./temp"):
     os.makedirs("./temp")
 
 
-@Andencento.on(admin_cmd(pattern="dox ?(.*)"))
+@client.on(admin_cmd(pattern="dox ?(.*)"))
 async def get(event):
     name = event.text[5:]
     if name is None:

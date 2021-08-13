@@ -8,7 +8,7 @@ from datetime import datetime
 from Extre.utils import admin_cmd, progress
 
 
-@Andencento.on(admin_cmd(pattern="nfc (.*)"))  # pylint:disable=E0602
+@client.on(admin_cmd(pattern="nfc (.*)"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return

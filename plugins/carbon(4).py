@@ -20,8 +20,8 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Extre USER"
 CARBONLANG = "auto"
 LANG = "en"
 
-@Andencento.on(extremepro_cmd(outgoing=True, pattern="carbon(?: |$)(.*)"))
-@Andencento.on(amanpandey_cmd(pattern="carbon(?: |$)(.*)", allow_sudo=True))
+@client.on(extremepro_cmd(outgoing=True, pattern="carbon(?: |$)(.*)"))
+@client.on(amanpandey_cmd(pattern="carbon(?: |$)(.*)", allow_sudo=True))
 async def carbon_api(e):
     """ A Wrapper for carbon.now.sh """
     await e.edit("`Processing..`")
@@ -84,8 +84,8 @@ async def carbon_api(e):
     await godboy.delete()
 
 
-@Andencento.on(extremepro_cmd(outgoing=True, pattern="krb"))
-@Andencento.on(amanpandey_cmd(pattern="krb", allow_sudo=True))
+@client.on(extremepro_cmd(outgoing=True, pattern="krb"))
+@client.on(amanpandey_cmd(pattern="krb", allow_sudo=True))
 async def carbon_api(e):
     godboy = await edit_or_reply(e, "`Processing....`")
     CARBON = "https://carbon.now.sh/?l={lang}&code={code}"
@@ -168,8 +168,8 @@ async def carbon_api(e):
     await godboy.delete()
 
 
-@Andencento.on(extremepro_cmd(pattern=f"kar1(?: |$)(.*)", outgoing=True))
-@Andencento.on(amanpandey_cmd(pattern="kar1(?: |$)(.*)", allow_sudo=True))
+@client.on(extremepro_cmd(pattern=f"kar1(?: |$)(.*)", outgoing=True))
+@client.on(amanpandey_cmd(pattern="kar1(?: |$)(.*)", allow_sudo=True))
 async def carbon_api(e):
     """ A Wrapper for carbon.now.sh """
     godboy = await edit_or_reply(e, "🔲🔲🔲🔲🔲")
@@ -230,8 +230,8 @@ async def carbon_api(e):
     await godboy.delete()  # Deleting msg
 
 
-@Andencento.on(extremepro_cmd(pattern=f"kar2(?: |$)(.*)", outgoing=True))
-@Andencento.on(amanpandey_cmd(pattern="kar2(?: |$)(.*)", allow_sudo=True))
+@client.on(extremepro_cmd(pattern=f"kar2(?: |$)(.*)", outgoing=True))
+@client.on(amanpandey_cmd(pattern="kar2(?: |$)(.*)", allow_sudo=True))
 async def carbon_api(e):
     """ A Wrapper for carbon.now.sh """
     godboy = await edit_or_reply(e, "📛📛📛📛📛")
@@ -292,8 +292,8 @@ async def carbon_api(e):
     await godboy.delete()  # Deleting msg
 
 
-@Andencento.on(extremepro_cmd(pattern=f"kar3(?: |$)(.*)", outgoing=True))
-@Andencento.on(amanpandey_cmd(pattern="kar3(?: |$)(.*)", allow_sudo=True))
+@client.on(extremepro_cmd(pattern=f"kar3(?: |$)(.*)", outgoing=True))
+@client.on(amanpandey_cmd(pattern="kar3(?: |$)(.*)", allow_sudo=True))
 async def carbon_api(e):
     """ A Wrapper for carbon.now.sh """
     godboy = await edit_or_reply(e, "🎛🎛🎛🎛🎛")
@@ -358,8 +358,8 @@ async def carbon_api(e):
     await godboy.delete()  # Deleting msg
 
 
-@Andencento.on(extremepro_cmd(pattern=f"kar4(?: |$)(.*)", outgoing=True))
-@Andencento.on(amanpandey_cmd(pattern="kar4(?: |$)(.*)", allow_sudo=True))
+@client.on(extremepro_cmd(pattern=f"kar4(?: |$)(.*)", outgoing=True))
+@client.on(amanpandey_cmd(pattern="kar4(?: |$)(.*)", allow_sudo=True))
 async def carbon_api(e):
     """ A Wrapper for carbon.now.sh """
     godboy = await edit_or_reply(e, "🌚🌚🌚🌚🌚")
@@ -423,8 +423,8 @@ async def carbon_api(e):
     await godboy.delete()  # Deleting msg
 
 
-@Andencento.on(extremepro_cmd(pattern=f"rgbk2(?: |$)(.*)", outgoing=True))
-@Andencento.on(amanpandey_cmd(pattern="rgbk2(?: |$)(.*)", allow_sudo=True))
+@client.on(extremepro_cmd(pattern=f"rgbk2(?: |$)(.*)", outgoing=True))
+@client.on(amanpandey_cmd(pattern="rgbk2(?: |$)(.*)", allow_sudo=True))
 async def carbon_api(e):
     RED = random.randint(0, 256)
     GREEN = random.randint(0, 256)
@@ -492,8 +492,8 @@ async def carbon_api(e):
     await godboy.delete()  # Deleting msg
 
 
-@Andencento.on(extremepro_cmd(pattern=f"kargb(?: |$)(.*)", outgoing=True))
-@Andencento.on(amanpandey_cmd(pattern="kargb(?: |$)(.*)", allow_sudo=True))
+@client.on(extremepro_cmd(pattern=f"kargb(?: |$)(.*)", outgoing=True))
+@client.on(amanpandey_cmd(pattern="kargb(?: |$)(.*)", allow_sudo=True))
 async def carbon_api(e):
     RED = random.randint(0, 256)
     GREEN = random.randint(0, 256)

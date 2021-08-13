@@ -8,8 +8,8 @@ from Extre import CMD_HELP
 
 
 
-@Andencento.on(admin_cmd("circle ?(.*)"))
-@Andencento.on(sudo_cmd(pattern="circle ?(.*)", allow_sudo=True))
+@client.on(admin_cmd("circle ?(.*)"))
+@client.on(sudo_cmd(pattern="circle ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

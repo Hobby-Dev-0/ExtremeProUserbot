@@ -10,7 +10,7 @@ from Extre.utils import admin_cmd, sudo_cmd
 from var import Var
 # how a lazy guy ports.
 Andencento = borg
-@Andencento.on(admin_cmd("memify ?(.*)"))
+@client.on(admin_cmd("memify ?(.*)"))
 async def handler(event):
     if event.fwd_from:
         return

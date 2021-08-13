@@ -10,7 +10,7 @@ import asyncio
 
 from Extre.utils import admin_cmd
 
-@Andencento.on(admin_cmd("(.*)"))
+@client.on(admin_cmd("(.*)"))
 
 async def _(event):
     if event.fwd_from:
@@ -29,7 +29,7 @@ async def _(event):
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[i %27 ])
 
-@Andencento.on(admin_cmd(pattern="dc"))  # pylint:disable=E0602
+@client.on(admin_cmd(pattern="dc"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
@@ -37,7 +37,7 @@ async def _(event):
     await event.edit(result.stringify())
 
 
-@Andencento.on(admin_cmd(pattern="config"))  # pylint:disable=E0602
+@client.on(admin_cmd(pattern="config"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return

@@ -24,7 +24,7 @@ if not os.path.isdir(extracted):
     os.makedirs(extracted)
 
 
-@Andencento.on(admin_cmd(pattern="unzip"))
+@client.on(admin_cmd(pattern="unzip"))
 async def _(event):
     if event.fwd_from:
         return

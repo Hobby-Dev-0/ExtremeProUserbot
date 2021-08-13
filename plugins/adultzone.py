@@ -5,8 +5,8 @@
 import os, urllib, requests, asyncio
 from Extre.utils import admin_cmd,edit_or_reply, sudo_cmd
 
-@Andencento.on(admin_cmd("boobs$"))
-@Andencento.on(sudo_cmd(pattern="boobs$", allow_sudo=True))
+@client.on(admin_cmd("boobs$"))
+@client.on(sudo_cmd(pattern="boobs$", allow_sudo=True))
 async def boobs(event):
     if not os.path.isdir(Var.TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Var.TEMP_DOWNLOAD_DIRECTORY)
@@ -21,8 +21,8 @@ async def boobs(event):
     await event.delete()
     await a.delete()
 
-@Andencento.on(admin_cmd("butts$"))
-@Andencento.on(sudo_cmd(pattern="butts$", allow_sudo=True))
+@client.on(admin_cmd("butts$"))
+@client.on(sudo_cmd(pattern="butts$", allow_sudo=True))
 async def butts(event):
     if not os.path.isdir(Var.TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Var.TEMP_DOWNLOAD_DIRECTORY)

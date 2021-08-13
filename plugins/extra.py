@@ -12,7 +12,7 @@ from Extre.events import register
 from Extre.utils import admin_cmd
 
 
-@Andencento.on(admin_cmd(";__;$"))
+@client.on(admin_cmd(";__;$"))
 #@register(outgoing=True, pattern="^;__;$")
 async def fun(e):
     t = ";__;"
@@ -20,7 +20,7 @@ async def fun(e):
         t = t[:-1] + "_;"
         await e.edit(t)
 
-@Andencento.on(admin_cmd("yo$"))
+@client.on(admin_cmd("yo$"))
 #@register(outgoing=True, pattern="^yo$")
 async def Ooo(e):
     t = "yo"
@@ -28,7 +28,7 @@ async def Ooo(e):
         t = t[:-1] + "oo"
         await e.edit(t)
 
-@Andencento.on(admin_cmd("Oof$"))
+@client.on(admin_cmd("Oof$"))
 #@register(outgoing=True, pattern="^Oof$")
 async def Oof(e):
     t = "Oof"
@@ -36,19 +36,19 @@ async def Oof(e):
         t = t[:-1] + "of"
         await e.edit(t)
 
-@Andencento.on(admin_cmd("ccry$"))
+@client.on(admin_cmd("ccry$"))
 #@register(outgoing=True, pattern="^.cry$")
 async def cry(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("(;´༎ຶД༎ຶ)")
 
-@Andencento.on(admin_cmd("fp$"))
+@client.on(admin_cmd("fp$"))
 #@register(outgoing=True, pattern="^.fp$")
 async def facepalm(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("🤦‍♂")
 
-@Andencento.on(admin_cmd("moon$"))
+@client.on(admin_cmd("moon$"))
 #@register(outgoing=True, pattern="^.mmoon$")
 async def _(event):
 	if event.fwd_from:
@@ -60,20 +60,20 @@ async def _(event):
 		deq.rotate(1)
 		
 
-@Andencento.on(admin_cmd("source$"))
+@client.on(admin_cmd("source$"))
 #@register(outgoing=True, pattern="^.source$")
 async def source(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("/HellBoy-OP/LEGENDBOT")
 
-@Andencento.on(admin_cmd("readme$"))
+@client.on(admin_cmd("readme$"))
 #@register(outgoing=True, pattern="^.readme$")
 async def reedme(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("/HellBoy-OP/LEGENDBOT/blob/master/README.md")
 
 
-@Andencento.on(admin_cmd(pattern="evil ?(.*)"))
+@client.on(admin_cmd(pattern="evil ?(.*)"))
 async def _(event):
      if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         await event.edit("😒You Know I'm a good **PERSON**😏")
@@ -90,7 +90,7 @@ async def _(event):
 
 
 
-@Andencento.on(admin_cmd("heart$"))		
+@client.on(admin_cmd("heart$"))		
 #@register(outgoing=True, pattern="^.heart$")
 async def _(event):
 	if event.fwd_from:
@@ -101,7 +101,7 @@ async def _(event):
 		await event.edit("".join(deq))
 		deq.rotate(1)
 		
-@Andencento.on(admin_cmd("fap$"))
+@client.on(admin_cmd("fap$"))
 #@register(outgoing=True, pattern="^.fap$")
 async def _(event):
 	if event.fwd_from:

@@ -7,7 +7,7 @@ from telethon.tl.types import ChannelParticipantsAdmins
 from Extre.utils import admin_cmd
 
 
-@Andencento.on(admin_cmd(pattern=r"tagall", outgoing=True))
+@client.on(admin_cmd(pattern=r"tagall", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -19,7 +19,7 @@ async def _(event):
     await event.delete()
 
 
-@Andencento.on(admin_cmd(pattern=r"administrator", outgoing=True))
+@client.on(admin_cmd(pattern=r"administrator", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return

@@ -12,7 +12,7 @@ from Extre.utils import admin_cmd
 
 
 
-@Andencento.on(admin_cmd(pattern=r"hypno"))
+@client.on(admin_cmd(pattern=r"hypno"))
 
 async def _(event):
 

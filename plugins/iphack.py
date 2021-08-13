@@ -10,7 +10,7 @@ from Extre.utils import admin_cmd
 from Extre import CMD_HELP
 
 
-@Andencento.on(admin_cmd(pattern="ip (.*)"))
+@client.on(admin_cmd(pattern="ip (.*)"))
 async def _(event):
     if event.fwd_from:
         return

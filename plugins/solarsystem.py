@@ -3,7 +3,7 @@ import asyncio
 from Extre.utils import admin_cmd
 
 
-@Andencento.on(admin_cmd(pattern=r"solarsystem"))
+@client.on(admin_cmd(pattern=r"solarsystem"))
 async def _(event):
     if event.fwd_from:
         return

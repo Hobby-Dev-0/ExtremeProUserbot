@@ -42,8 +42,8 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 # ================================================
 
 
-@Andencento.on(admin_cmd(pattern=f"zombies", allow_sudo=True))
-@Andencento.on(events.NewMessage(pattern="^.zombies(?: |$)(.*)", outgoing=True))
+@client.on(admin_cmd(pattern=f"zombies", allow_sudo=True))
+@client.on(events.NewMessage(pattern="^.zombies(?: |$)(.*)", outgoing=True))
 async def rm_deletedacc(show):
     """ For .zombies command, list all the ghost/deleted/zombie accounts in a chat. """
     con = show.pattern_match.group(1).lower()

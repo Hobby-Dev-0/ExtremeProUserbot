@@ -5,7 +5,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from Extre.utils import admin_cmd
 
 
-@Andencento.on(admin_cmd("scan ?(.*)"))
+@client.on(admin_cmd("scan ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

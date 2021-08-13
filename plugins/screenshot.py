@@ -11,7 +11,7 @@ from telethon import events
 from Extre.utils import admin_cmd
 
 
-@Andencento.on(admin_cmd(pattern="screenshot (.*)"))
+@client.on(admin_cmd(pattern="screenshot (.*)"))
 async def _(event):
     if event.fwd_from:
         return

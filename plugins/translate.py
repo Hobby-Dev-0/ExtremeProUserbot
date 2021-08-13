@@ -10,8 +10,8 @@ from telethon import events
 
 
 
-@Andencento.on(admin_cmd(pattern="tr ?(.*)"))
-@Andencento.on(events.NewMessage(pattern=r"\.tr ?(.*)",incoming=True))
+@client.on(admin_cmd(pattern="tr ?(.*)"))
+@client.on(events.NewMessage(pattern=r"\.tr ?(.*)",incoming=True))
 async def _(event):
     if event.fwd_from:
         return

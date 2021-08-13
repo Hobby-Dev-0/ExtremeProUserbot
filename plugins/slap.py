@@ -75,7 +75,7 @@ HIT = [
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "IndianBot"
 
-@Andencento.on(admin_cmd(pattern="slap ?(.*)", allow_sudo=True))
+@client.on(admin_cmd(pattern="slap ?(.*)", allow_sudo=True))
 async def who(event):
     if event.fwd_from:
         return

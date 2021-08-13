@@ -13,7 +13,7 @@ import requests
 import math
 from Extre.utils import admin_cmd
 from Extre import CMD_HELP
-from Extre.uniAndencento.onfig import Config
+from Extre.uniclient.onfig import Config
 
 # ================= 
 
@@ -27,7 +27,7 @@ Heroku = heroku3.from_key(Var.HEROKU_API_KEY)
 heroku_api = "https://api.heroku.com"
 
 
-@Andencento.on(admin_cmd(pattern="(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", outgoing=True))
+@client.on(admin_cmd(pattern="(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", outgoing=True))
 async def variable(var):
     """
         Manage most of ConfigVars setting, set new var, get current var,
@@ -104,7 +104,7 @@ async def variable(var):
             return await var.edit(f"**{variable}**  `is not exists`")
 
 
-@Andencento.on(admin_cmd(pattern="usage(?: |$)", outgoing=True))
+@client.on(admin_cmd(pattern="usage(?: |$)", outgoing=True))
 async def dyno_usage(dyno):
     """
         Get your account Dyno Usage
@@ -161,7 +161,7 @@ async def dyno_usage(dyno):
                            f"**|**  [`{percentage}`**%**]"
                            )
 
-@Andencento.on(admin_cmd(pattern="logs$", outgoing=True))
+@client.on(admin_cmd(pattern="logs$", outgoing=True))
 async def _(dyno):        
         try:
              Heroku = heroku3.from_key(HEROKU_API_KEY)                         

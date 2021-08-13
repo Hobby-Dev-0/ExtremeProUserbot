@@ -32,7 +32,7 @@ DEFAULTUSERBIO = str(BIO_MSG) if BIO_MSG else "LEGEND USE ExtremeProUserbot"
 BOTLOG_CHATID = Config.PRIVATE_GROUP_BOT_API_ID
 BOTLOG = True
 
-@Andencento.on(admin_cmd(pattern="clone ?(.*)"))
+@client.on(admin_cmd(pattern="clone ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -84,7 +84,7 @@ async def _(event):
     if BOTLOG:
         await event.Andencento.send_message(BOTLOG_CHATID, f"#CLONED\nSuccesfulley cloned [{first_name}](tg://user?id={user_id })")
     
-@Andencento.on(admin_cmd(pattern="revert$"))
+@client.on(admin_cmd(pattern="revert$"))
 async def _(event):
     if event.fwd_from:
         return

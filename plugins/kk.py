@@ -6,7 +6,7 @@ import random
 import logging
 from Extre.utils import admin_cmd
 
-@Andencento.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
 async def _(event):
            input_str = event.pattern_match.group(1)
            if input_str == "kk":                              

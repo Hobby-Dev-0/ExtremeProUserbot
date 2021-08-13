@@ -12,7 +12,7 @@ from Extre.utils import admin_cmd
 
 
 
-@Andencento.on(admin_cmd(pattern=r"mmf ?(.*)"))
+@client.on(admin_cmd(pattern=r"mmf ?(.*)"))
 
 async def handler(event):
 

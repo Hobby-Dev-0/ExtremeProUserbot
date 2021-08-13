@@ -3,7 +3,7 @@ import asyncio
 from Extre.utils import admin_cmd
 
 
-@Andencento.on(admin_cmd(pattern="ttf ?(.*)"))
+@client.on(admin_cmd(pattern="ttf ?(.*)"))
 async def get(event):
     name = event.text[5:]
     m = await event.get_reply_message()

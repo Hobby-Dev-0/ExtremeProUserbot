@@ -33,8 +33,8 @@ from Extre import CMD_HELP
 from Extre.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
-@Andencento.on(admin_cmd(pattern="frybot$"))
-@Andencento.on(sudo_cmd(pattern="frybot$", allow_sudo=True))
+@client.on(admin_cmd(pattern="frybot$"))
+@client.on(sudo_cmd(pattern="frybot$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -78,8 +78,8 @@ async def _(event):
         await event.delete()
 
 
-@Andencento.on(admin_cmd(pattern="deepfry(?: |$)(.*)", outgoing=True))
-@Andencento.on(sudo_cmd(pattern="deepfry(?: |$)(.*)", allow_sudo=True))
+@client.on(admin_cmd(pattern="deepfry(?: |$)(.*)", outgoing=True))
+@client.on(sudo_cmd(pattern="deepfry(?: |$)(.*)", allow_sudo=True))
 async def deepfryer(event):
     try:
         frycount = int(event.pattern_match.group(1))

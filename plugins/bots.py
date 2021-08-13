@@ -14,7 +14,7 @@ telegraph = Telegraph()
 mee = telegraph.create_account(short_name="yohohehe")
 
 
-@Andencento.on(admin_cmd(pattern="recognize ?(.*)"))
+@client.on(admin_cmd(pattern="recognize ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 
@@ -51,7 +51,7 @@ async def _(event):
               
 
 
-@Andencento.on(admin_cmd(pattern="wspr ?(.*)"))
+@client.on(admin_cmd(pattern="wspr ?(.*)"))
 async def wspr(event):
     if event.fwd_from:
         return
@@ -65,7 +65,7 @@ async def wspr(event):
 
 
 
-@Andencento.on(admin_cmd(pattern="purl ?(.*)"))
+@client.on(admin_cmd(pattern="purl ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -92,7 +92,7 @@ async def _(event):
         )
   
 
-@Andencento.on(admin_cmd(pattern="limits ?(.*)"))
+@client.on(admin_cmd(pattern="limits ?(.*)"))
 async def _(event):
     bot = "@SpamBot"
     if event.fwd_from:
@@ -111,7 +111,7 @@ async def _(event):
             except YouBlockedUserError:
                 await event.edit("**Error:** `unblock` @spambot `and retry!")
 
-@Andencento.on(admin_cmd(pattern="sgm ?(.*)", allow_sudo=True))
+@client.on(admin_cmd(pattern="sgm ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return 
@@ -136,7 +136,7 @@ async def _(event):
           await event.delete()
           await event.Andencento.send_message(event.chat_id, response.message, reply_to=reply_message)
 
-@Andencento.on(admin_cmd(pattern="reader ?(.*)", allow_sudo=True))
+@client.on(admin_cmd(pattern="reader ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return 

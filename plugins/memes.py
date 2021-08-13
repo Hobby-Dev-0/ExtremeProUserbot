@@ -656,7 +656,7 @@ HIT = [
 
 
 #@register(outgoing=True, pattern=r"^.(\w+)say (.*)")
-@Andencento.on(admin_cmd(pattern=r"(\w+)say (.*)"))
+@client.on(admin_cmd(pattern=r"(\w+)say (.*)"))
 async def univsaye(cowmsg):
     """ For .cowsay module, Extre wrapper for cow which says things. """
     if not cowmsg.text[0].isalpha() and cowmsg.text[0] not in ("/", "#", "@", "!"):
@@ -847,7 +847,7 @@ async def vapor(vpr):
         await vpr.edit("".join(reply_text))
 
 			  
-@Andencento.on(admin_cmd(outgoing=True, pattern="repo"))
+@client.on(admin_cmd(outgoing=True, pattern="repo"))
 async def repo(event):
     if event.fwd_from:
         return

@@ -5,7 +5,7 @@ import asyncio
 from Extre.utils import admin_cmd
 
 
-@Andencento.on(admin_cmd(pattern="get_poll"))
+@client.on(admin_cmd(pattern="get_poll"))
 async def _(event):
     reply_message = await event.get_reply_message()
     if reply_message.media is None:

@@ -27,8 +27,8 @@ async def await_read(chat, message):
     await fut
 
 
-@Andencento.on(admin_cmd(pattern="(del)(?:ete)?$"))
-@Andencento.on(admin_cmd(pattern="(edit)(?:\s+(.*))?$"))
+@client.on(admin_cmd(pattern="(del)(?:ete)?$"))
+@client.on(admin_cmd(pattern="(edit)(?:\s+(.*))?$"))
 async def delete(event):
     await event.delete()
     command = event.pattern_match.group(1)

@@ -10,12 +10,12 @@ from telethon import events
 _last_messages = {}
 
 
-@Andencento.on(events.NewMessage(outgoing=True))
+@client.on(events.NewMessage(outgoing=True))
 async def _(event):
     _last_messages[event.chat_id] = event.message
 
 
-@Andencento.on(events.NewMessage(pattern=r"\.(fix)?reply", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.(fix)?reply", outgoing=True))
 async def _(event):
     if not event.is_reply or event.chat_id not in _last_messages:
         return

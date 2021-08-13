@@ -9,7 +9,7 @@ from telethon.tl.functions.users import GetFullUserRequest
 from Extre.utils import admin_cmd
 
 
-@Andencento.on(admin_cmd(pattern=r"kill"))
+@client.on(admin_cmd(pattern=r"kill"))
 async def _(event):
 
     if event.fwd_from:

@@ -32,7 +32,7 @@ def get_video_thumb(file, output=None, width=320):
         return output
 
 
-@Andencento.on(admin_cmd(pattern="savethumbnail"))
+@client.on(admin_cmd(pattern="savethumbnail"))
 async def _(event):
     if event.fwd_from:
         return
@@ -71,7 +71,7 @@ async def _(event):
         await event.edit("Reply to a photo to save custom thumbnail")
 
 
-@Andencento.on(admin_cmd(pattern="clearthumbnail"))
+@client.on(admin_cmd(pattern="clearthumbnail"))
 async def _(event):
     if event.fwd_from:
         return
@@ -80,7 +80,7 @@ async def _(event):
     await event.edit("✅ Custom thumbnail cleared succesfully.")
 
 
-@Andencento.on(admin_cmd(pattern="getthumbnail"))
+@client.on(admin_cmd(pattern="getthumbnail"))
 async def _(event):
     if event.fwd_from:
         return

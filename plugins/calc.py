@@ -10,8 +10,8 @@ from Extre import CMD_HELP
 from Extre.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
-@Andencento.on(admin_cmd(pattern="calc (.*)"))
-@Andencento.on(sudo_cmd(pattern="calc (.*)", allow_sudo=True))
+@client.on(admin_cmd(pattern="calc (.*)"))
+@client.on(sudo_cmd(pattern="calc (.*)", allow_sudo=True))
 async def _(car):
     cmd = car.text.split(" ", maxsplit=1)[1]
     event = await edit_or_reply(car, "Calculating ...")

@@ -8,7 +8,7 @@ from Extre.utils import admin_cmd
 
 
 
-@Andencento.on(admin_cmd(pattern="lovestory"))
+@client.on(admin_cmd(pattern="lovestory"))
 
 async def _(event):
 

@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 from Extre.utils import admin_cmd, humanbytes
 
 
-@Andencento.on(admin_cmd(  # pylint:disable=E0602
+@client.on(admin_cmd(  # pylint:disable=E0602
     pattern="movie (torrentz2\.eu|idop\.se) (.*)"
 ))
 async def _(event):

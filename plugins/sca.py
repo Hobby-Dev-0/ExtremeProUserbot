@@ -17,7 +17,7 @@ import asyncio
 from Extre.utils import admin_cmd
  
  
-@Andencento.on(admin_cmd("sca ?(.*)"))
+@client.on(admin_cmd("sca ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

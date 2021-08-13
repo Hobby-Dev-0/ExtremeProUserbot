@@ -128,8 +128,8 @@ def parse(message, old_entities=None):
     return del_surrogate(message), entities + old_entities
 
 
-@Andencento.on(events.MessageEdited(outgoing=True))
-@Andencento.on(events.NewMessage(outgoing=True))
+@client.on(events.MessageEdited(outgoing=True))
+@client.on(events.NewMessage(outgoing=True))
 async def reparse(event):
     old_entities = event.message.entities or []
     parser = partial(parse, old_entities=old_entities)

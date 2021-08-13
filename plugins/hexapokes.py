@@ -11,7 +11,7 @@ bot = "@hexamonbot"
 
 Pokes = ('**Here Are Your HexaPokes**\n➖➖➖➖➖➖➖➖➖➖➖\n')
 
-@Andencento.on(admin_cmd("mypokes ?(.*)"))
+@client.on(admin_cmd("mypokes ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

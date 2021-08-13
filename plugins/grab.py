@@ -5,7 +5,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from Extre.utils import admin_cmd
 
-@Andencento.on(admin_cmd("grab ?(.*)"))
+@client.on(admin_cmd("grab ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 

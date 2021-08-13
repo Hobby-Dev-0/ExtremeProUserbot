@@ -15,7 +15,7 @@ from datetime import datetime
 from Extre.utils import admin_cmd, progress
 
 
-@Andencento.on(admin_cmd(pattern="verystream ?(.*)", allow_sudo=True))
+@client.on(admin_cmd(pattern="verystream ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

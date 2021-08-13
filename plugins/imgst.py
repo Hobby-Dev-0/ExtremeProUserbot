@@ -5,7 +5,7 @@ from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from Extre.utils import admin_cmd
 from Extre import bot 
 
-@Andencento.on(admin_cmd(pattern="ss2 ?(.*)"))
+@client.on(admin_cmd(pattern="ss2 ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 
@@ -33,7 +33,7 @@ async def _(event):
              await event.Andencento.send_message(event.chat_id, response.message)
           await bot.send_read_acknowledge(conv.chat_id)
             
-@Andencento.on(admin_cmd(pattern="stoi ?(.*)"))
+@client.on(admin_cmd(pattern="stoi ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 

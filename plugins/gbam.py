@@ -7,7 +7,7 @@ from Extre import CMD_HELP
 from Extre.utils import admin_cmd
 
 
-@Andencento.on(admin_cmd("gbam"))
+@client.on(admin_cmd("gbam"))
 async def gbun(event):
     if event.fwd_from:
         return

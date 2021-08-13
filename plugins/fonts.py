@@ -12,7 +12,7 @@ boxtextfont = ['🄰','🄱','🄲','🄳','🄴','🄵','🄶','🄷','🄸','�
 bubbletextfont = ['Ⓐ','Ⓑ','Ⓒ','Ⓓ','Ⓔ','Ⓕ','Ⓖ','Ⓗ','Ⓘ','Ⓙ','Ⓚ','Ⓛ','Ⓜ','Ⓝ','Ⓞ','Ⓟ','Ⓠ','Ⓡ','Ⓢ','Ⓣ','Ⓤ','Ⓥ','Ⓦ','Ⓧ','Ⓨ','Ⓩ']
 
 
-@Andencento.on(extremepro_cmd(pattern="weeb ?(.*)"))
+@client.on(extremepro_cmd(pattern="weeb ?(.*)"))
 async def weebify(event):
 
     args = event.pattern_match.group(1)
@@ -30,7 +30,7 @@ async def weebify(event):
     await event.edit(string)
     
 
-@Andencento.on(extremepro_cmd(pattern="tantext ?(.*)"))
+@client.on(extremepro_cmd(pattern="tantext ?(.*)"))
 async def tantxt(event):
 
     args = event.pattern_match.group(1)
@@ -48,7 +48,7 @@ async def tantxt(event):
     await event.edit(string)
 
 
-@Andencento.on(extremepro_cmd(pattern="linetext ?(.*)"))
+@client.on(extremepro_cmd(pattern="linetext ?(.*)"))
 async def linetxt(event):
 
     args = event.pattern_match.group(1)
@@ -66,7 +66,7 @@ async def linetxt(event):
     await event.edit(string)
 
 
-@Andencento.on(extremepro_cmd(pattern="boxtext ?(.*)"))
+@client.on(extremepro_cmd(pattern="boxtext ?(.*)"))
 async def boxtxt(event):
 
     args = event.pattern_match.group(1)
@@ -84,7 +84,7 @@ async def boxtxt(event):
     await event.edit(string)
 
 
-@Andencento.on(extremepro_cmd(pattern="bubbletext ?(.*)"))
+@client.on(extremepro_cmd(pattern="bubbletext ?(.*)"))
 async def bubbletxt(event):
 
     args = event.pattern_match.group(1)

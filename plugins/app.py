@@ -12,8 +12,8 @@ from Extre import ALIVE_NAME, CMD_HELP
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Hell User"
 
 
-@Andencento.on(admin_cmd(pattern="app (.*)"))
-@Andencento.on(sudo_cmd(pattern="app (.*)", allow_sudo=True))
+@client.on(admin_cmd(pattern="app (.*)"))
+@client.on(sudo_cmd(pattern="app (.*)", allow_sudo=True))
 async def apk(event):
     app_name = event.pattern_match.group(1)
     event = await edit_or_reply(event, "Searching!")
@@ -82,8 +82,8 @@ async def apk(event):
         await event.edit("Exception Occured:- " + str(err))
 
 
-@Andencento.on(admin_cmd(pattern="appr (.*)"))
-@Andencento.on(sudo_cmd(pattern="appr (.*)", allow_sudo=True))
+@client.on(admin_cmd(pattern="appr (.*)"))
+@client.on(sudo_cmd(pattern="appr (.*)", allow_sudo=True))
 async def apkr(event):
     app_name = event.pattern_match.group(1)
     event = await edit_or_reply(event, "searching!")
@@ -153,7 +153,7 @@ async def apkr(event):
         await event.edit("Exception Occured:- " + str(err))
 
 
-@Andencento.on(admin_cmd(pattern="mods ?(.*)"))
+@client.on(admin_cmd(pattern="mods ?(.*)"))
 async def mod(event):
     if event.fwd_from:
         return

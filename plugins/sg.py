@@ -8,7 +8,7 @@ from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from Extre.utils import admin_cmd
 from Extre import bot, CMD_HELP
 
-@Andencento.on(admin_cmd(pattern="sg ?(.*)"))
+@client.on(admin_cmd(pattern="sg ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 

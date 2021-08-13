@@ -61,7 +61,7 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 
 #@register(outgoing=True, pattern="^.setgpic$")
-@Andencento.on(extremepro_cmd(pattern=r"setgpic"))
+@client.on(extremepro_cmd(pattern=r"setgpic"))
 @errors_handler
 async def set_group_photo(gpic):
     """ For .setgpic command, changes the picture of a group """
@@ -100,7 +100,7 @@ async def set_group_photo(gpic):
 
 
 #@register(outgoing=True, pattern="^.promote(?: |$)(.*)")
-@Andencento.on(extremepro_cmd(pattern=r"promote(?: |$)(.*)"))
+@client.on(extremepro_cmd(pattern=r"promote(?: |$)(.*)"))
 @errors_handler
 async def promote(promt):
     """ For .promote command, promotes the replied/tagged person """
@@ -152,7 +152,7 @@ async def promote(promt):
 
 
 #@register(outgoing=True, pattern="^.demote(?: |$)(.*)")
-@Andencento.on(extremepro_cmd(pattern=r"demote(?: |$)(.*)"))
+@client.on(extremepro_cmd(pattern=r"demote(?: |$)(.*)"))
 @errors_handler
 async def demote(dmod):
     """ For .demote command, demotes the replied/tagged person """
@@ -203,7 +203,7 @@ async def demote(dmod):
 
 
 #@register(outgoing=True, pattern="^.ban(?: |$)(.*)")
-@Andencento.on(extremepro_cmd(pattern=r"ban(?: |$)(.*)"))
+@client.on(extremepro_cmd(pattern=r"ban(?: |$)(.*)"))
 @errors_handler
 async def ban(bon):
     """ For .ban command, bans the replied/tagged person """
@@ -258,7 +258,7 @@ async def ban(bon):
 
 
 #@register(outgoing=True, pattern="^.unban(?: |$)(.*)")
-@Andencento.on(extremepro_cmd(pattern=r"unban(?: |$)(.*)"))
+@client.on(extremepro_cmd(pattern=r"unban(?: |$)(.*)"))
 @errors_handler
 async def nothanos(unbon):
     """ For .unban command, unbans the replied/tagged person """
@@ -297,7 +297,7 @@ async def nothanos(unbon):
 
 
 #@register(outgoing=True, pattern="^.mute(?: |$)(.*)")
-@Andencento.on(extremepro_cmd(pattern=r"mute(?: |$)(.*)"))
+@client.on(extremepro_cmd(pattern=r"mute(?: |$)(.*)"))
 @errors_handler
 async def spider(spdr):
     """
@@ -359,7 +359,7 @@ async def spider(spdr):
 
 
 #@register(outgoing=True, pattern="^.unmute(?: |$)(.*)")
-@Andencento.on(extremepro_cmd(pattern=r"unmute(?: |$)(.*)"))
+@client.on(extremepro_cmd(pattern=r"unmute(?: |$)(.*)"))
 @errors_handler
 async def unmoot(unmot):
     """ For .unmute command, unmute the replied/tagged person """
@@ -441,7 +441,7 @@ async def muter(moot):
 
 
 #@register(outgoing=True, pattern="^.ungmute(?: |$)(.*)")
-@Andencento.on(extremepro_cmd(pattern=r"ungmute(?: |$)(.*)"))
+@client.on(extremepro_cmd(pattern=r"ungmute(?: |$)(.*)"))
 @errors_handler
 async def ungmoot(un_gmute):
     """ For .ungmute command, ungmutes the target in the EXTREMEPRO """
@@ -486,7 +486,7 @@ async def ungmoot(un_gmute):
 
 
 #@register(outgoing=True, pattern="^.gmute(?: |$)(.*)")
-@Andencento.on(extremepro_cmd(pattern=r"gmute(?: |$)(.*)"))
+@client.on(extremepro_cmd(pattern=r"gmute(?: |$)(.*)"))
 @errors_handler
 async def gspider(gspdr):
     """ For .gmute command, globally mutes the replied/tagged person """
@@ -532,7 +532,7 @@ async def gspider(gspdr):
 
 
 #@register(outgoing=True, pattern="^.delusers(?: |$)(.*)")
-@Andencento.on(extremepro_cmd(pattern=r"delusers(?: |$)(.*)"))
+@client.on(extremepro_cmd(pattern=r"delusers(?: |$)(.*)"))
 @errors_handler
 async def rm_deletedacc(show):
     """ For .delusers command, list all the ghost/deleted accounts in a chat. """
@@ -605,7 +605,7 @@ async def rm_deletedacc(show):
 
 
 #@register(outgoing=True, pattern="^.adminlist$")
-@Andencento.on(extremepro_cmd(pattern=r"adminlist"))
+@client.on(extremepro_cmd(pattern=r"adminlist"))
 @errors_handler
 async def get_admin(show):
     """ For .admins command, list all of the admins of the chat. """
@@ -627,7 +627,7 @@ async def get_admin(show):
 
 
 #@register(outgoing=True, pattern="^.pin(?: |$)(.*)")
-@Andencento.on(extremepro_cmd(pattern=r"pin(?: |$)(.*)"))
+@client.on(extremepro_cmd(pattern=r"pin(?: |$)(.*)"))
 @errors_handler
 async def pin(msg):
     """ For .pin command, pins the replied/tagged message on the top the chat. """
@@ -674,7 +674,7 @@ async def pin(msg):
 
 
 #@register(outgoing=True, pattern="^.kick(?: |$)(.*)")
-@Andencento.on(extremepro_cmd(pattern=r"kick(?: |$)(.*)"))
+@client.on(extremepro_cmd(pattern=r"kick(?: |$)(.*)"))
 @errors_handler
 async def kick(usr):
     """ For .kick command, kicks the replied/tagged person from the group. """
@@ -718,7 +718,7 @@ async def kick(usr):
 
 
 #@register(outgoing=True, pattern="^.users ?(.*)")
-@Andencento.on(extremepro_cmd(pattern=r"users ?(.*)"))
+@client.on(extremepro_cmd(pattern=r"users ?(.*)"))
 @errors_handler
 async def get_users(show):
     """ For .users command, list all of the users in a chat. """

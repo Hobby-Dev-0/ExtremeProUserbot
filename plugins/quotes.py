@@ -2,7 +2,7 @@ import random
 import requests
 from Extre.utils import admin_cmd
 
-@Andencento.on(admin_cmd(pattern="quote ?(.*)"))
+@client.on(admin_cmd(pattern="quote ?(.*)"))
 async def quote_search(event):
     if event.fwd_from:
         return

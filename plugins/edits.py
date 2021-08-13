@@ -16,7 +16,7 @@ from collections import deque
 from Extre.utils import admin_cmd
 
 
-@Andencento.on(admin_cmd(pattern=r"candy"))
+@client.on(admin_cmd(pattern=r"candy"))
 async def _(event):
     if event.fwd_from:
         return
@@ -27,7 +27,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@Andencento.on(admin_cmd(pattern=r"nothappy"))
+@client.on(admin_cmd(pattern=r"nothappy"))
 async def _(event):
     if event.fwd_from:
         return
@@ -38,7 +38,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@Andencento.on(admin_cmd(pattern=r"heart"))
+@client.on(admin_cmd(pattern=r"heart"))
 async def _(event):
     if event.fwd_from:
         return
@@ -49,7 +49,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@Andencento.on(admin_cmd(pattern=r"tlol"))
+@client.on(admin_cmd(pattern=r"tlol"))
 async def _(event):
     if event.fwd_from:
         return
@@ -60,7 +60,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@Andencento.on(admin_cmd(pattern=r"lol"))
+@client.on(admin_cmd(pattern=r"lol"))
 async def _(event):
     if event.fwd_from:
         return

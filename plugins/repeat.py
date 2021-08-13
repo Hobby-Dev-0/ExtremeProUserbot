@@ -3,7 +3,7 @@ from asyncio import wait
 from Extre.utils import admin_cmd
 
 
-@Andencento.on(admin_cmd("repeat ?(.*)"))
+@client.on(admin_cmd("repeat ?(.*)"))
 async def _(event):
     message = event.text[10:]
     count = int(event.text[8:10])
