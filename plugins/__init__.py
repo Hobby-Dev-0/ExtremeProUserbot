@@ -35,7 +35,6 @@ from Extre.version import *
 from telethon import Button
 from telethon.tl import functions, types
 
-from strings import get_string
 
 start_time = time.time()
 
