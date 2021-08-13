@@ -18,9 +18,9 @@ jobs:
 
         with:
 
-          find: "userbot."
+          find: "uniborg.util"
 
-          replace: "Extre."
+          replace: "Extre.utils"
 
       - name: Create Pull Request
 
