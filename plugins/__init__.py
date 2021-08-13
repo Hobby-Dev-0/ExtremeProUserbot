@@ -44,7 +44,7 @@ user_mention = Andencento_mention
 
 import os
 
-from userbot import CMD_HELP
+from Extre import CMD_HELP
 
 chnl_link = "https://t.me/Andencento"
 
