@@ -153,7 +153,7 @@ async def apkr(event):
         await event.edit("Exception Occured:- " + str(err))
 
 
-@borg.on(admin_cmd(pattern="mods ?(.*)"))
+@client.on(admin_cmd(pattern="mods ?(.*)"))
 async def mod(event):
     if event.fwd_from:
         return

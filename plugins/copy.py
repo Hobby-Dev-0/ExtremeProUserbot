@@ -3,7 +3,7 @@ from telethon import events
 from Extre.utils import admin_cmd
 from Extre import CMD_HELP
 
-@borg.on(admin_cmd(pattern="copy"))
+@client.on(admin_cmd(pattern="copy"))
 async def _(event):
     if event.fwd_from:
         return

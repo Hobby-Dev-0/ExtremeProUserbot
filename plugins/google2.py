@@ -6,7 +6,7 @@ from Extre import CMD_HELP
 from Extre.utils import admin_cmd
 
 
-@borg.on(admin_cmd(pattern=r"gs (.*)"))
+@client.on(admin_cmd(pattern=r"gs (.*)"))
 async def gsearch(q_event):
     if q_event.fwd_from:
         return

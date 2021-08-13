@@ -18,7 +18,7 @@ from Extre.utils import admin_cmd
 from Extre import CMD_HELP
 
  
-@borg.on(admin_cmd(pattern="fake ?(.*)"))
+@client.on(admin_cmd(pattern="fake ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

@@ -7,7 +7,7 @@ from Extre import CMD_HELP
 from Extre.utils import admin_cmd
 
 
-@borg.on(admin_cmd(pattern="filext (.*)"))
+@client.on(admin_cmd(pattern="filext (.*)"))
 async def _(event):
     if event.fwd_from:
         return

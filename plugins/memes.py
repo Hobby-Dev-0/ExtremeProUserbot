@@ -656,7 +656,7 @@ HIT = [
 
 
 #@register(outgoing=True, pattern=r"^.(\w+)say (.*)")
-@borg.on(admin_cmd(pattern=r"(\w+)say (.*)"))
+@client.on(admin_cmd(pattern=r"(\w+)say (.*)"))
 async def univsaye(cowmsg):
     """ For .cowsay module, Extre wrapper for cow which says things. """
     if not cowmsg.text[0].isalpha() and cowmsg.text[0] not in ("/", "#", "@", "!"):

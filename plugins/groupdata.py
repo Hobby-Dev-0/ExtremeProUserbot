@@ -19,7 +19,7 @@ from telethon.errors import (BadRequestError, ChatAdminRequiredError,
 from Extre import CMD_HELP
 from Extre.utils import  errors_handler, admin_cmd
 
-@borg.on(admin_cmd(pattern="leave$"))
+@client.on(admin_cmd(pattern="leave$"))
 async def leave(e):
         await e.edit("`Legend is leaving this chat.....!Goodbye aren't forever..` ")
         time.sleep(3)
@@ -28,7 +28,7 @@ async def leave(e):
         else:
             await e.edit('`Sar This is Not A Chat`')
 
-@borg.on(admin_cmd(pattern="chatinfo(?: |$)(.*)", outgoing=True))
+@client.on(admin_cmd(pattern="chatinfo(?: |$)(.*)", outgoing=True))
 async def info(event):
     await event.edit("`Analysing the chat...`")
     chat = await get_chatinfo(event)
@@ -208,7 +208,7 @@ async def fetch_info(chat, event):
         caption += f"Description: \n<code>{description}</code>\n"
     return caption
   
-@borg.on(admin_cmd(pattern="adminlist", outgoing=True))
+@client.on(admin_cmd(pattern="adminlist", outgoing=True))
 @errors_handler
 async def get_admin(show):
     """ For .admins command, list all of the admins of the chat. """
@@ -229,7 +229,7 @@ async def get_admin(show):
     await show.edit(mentions, parse_mode="html")
 
     
-@borg.on(admin_cmd(pattern=r"users ?(.*)", outgoing=True))
+@client.on(admin_cmd(pattern=r"users ?(.*)", outgoing=True))
 async def get_users(show):
         if not show.is_group:
             await show.edit("Are you sure this is a group?")

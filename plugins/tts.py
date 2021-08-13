@@ -11,7 +11,7 @@ from gtts import gTTS
 from Extre.utils import admin_cmd
 
 
-@borg.on(admin_cmd("tts (.*)"))
+@client.on(admin_cmd("tts (.*)"))
 async def _(event):
     if event.fwd_from:
         return

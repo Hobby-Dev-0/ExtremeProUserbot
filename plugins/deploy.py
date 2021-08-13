@@ -14,7 +14,7 @@ from Extre import AUTONAME
 DEFAULTUSER = str(AUTONAME) if AUTONAME else "ExtremeProUserbot"
 
 
-@borg.on(admin_cmd(pattern=r"deploy"))
+@client.on(admin_cmd(pattern=r"deploy"))
 async def _(event):
 
     if event.fwd_from:

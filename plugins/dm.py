@@ -10,7 +10,7 @@ from Extre.utils import admin_cmd
 
 
 # Fixed by LEGDND X
-@borg.on(admin_cmd(pattern="dm ?(.*)"))
+@client.on(admin_cmd(pattern="dm ?(.*)"))
 async def _(dc):
 
     d = dc.pattern_match.group(1)

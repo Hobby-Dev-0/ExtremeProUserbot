@@ -4,7 +4,7 @@ import wikipedia
 from Extre.utils import admin_cmd
 
 
-@borg.on(admin_cmd(pattern="wikipedia (.*)"))
+@client.on(admin_cmd(pattern="wikipedia (.*)"))
 async def _(event):
     if event.fwd_from:
         return

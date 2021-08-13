@@ -4,7 +4,7 @@ import requests
 from Extre.utils import admin_cmd
 
 
-@borg.on(admin_cmd(pattern="wikimedia (.*)"))
+@client.on(admin_cmd(pattern="wikimedia (.*)"))
 async def _(event):
     if event.fwd_from:
         return

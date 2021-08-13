@@ -52,7 +52,7 @@ async def get_user_sender_id(user, event):
         return None
     return user_obj
 
-@borg.on(admin_cmd(pattern="gban ?(.*)"))
+@client.on(admin_cmd(pattern="gban ?(.*)"))
 async def gspider(Extre.:
     lol = userbot
     sender = await lol.get_sender()
@@ -118,7 +118,7 @@ async def gspider(Extre.:
     )
 
 
-@borg.on(admin_cmd(pattern="ungban ?(.*)"))
+@client.on(admin_cmd(pattern="ungban ?(.*)"))
 async def gspider(Extre.:
     lol = userbot
     sender = await lol.get_sender()
@@ -184,7 +184,7 @@ async def gspider(Extre.:
 
 
 
-@borg.on(ChatAction)
+@client.on(ChatAction)
 async def handler(rkG): 
    if rkG.user_joined or rkG.user_added:      
        try:       	

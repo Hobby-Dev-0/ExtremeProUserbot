@@ -18,7 +18,7 @@ import random
 
 from Extre.utils import admin_cmd
 
-@borg.on(admin_cmd(pattern=r"engsongs", outgoing=True))
+@client.on(admin_cmd(pattern=r"engsongs", outgoing=True))
 
 async def _(event):
 

@@ -8,7 +8,7 @@ from datetime import datetime
 from Extre.utils import extremepro_cmd, progress
 
 
-@borg.on(extremepro_cmd(pattern="convert (.*)"))  # pylint:disable=E0602
+@client.on(extremepro_cmd(pattern="convert (.*)"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return

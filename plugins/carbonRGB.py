@@ -14,8 +14,8 @@ from selenium.webdriver.chrome.options import Options
 from Extre.utils import admin_cmd
 
 
-# @borg.on(events.NewMessage(pattern=r"\.karb ", outgoing=True))
-@borg.on(admin_cmd(pattern="karb"))
+# @client.on(events.NewMessage(pattern=r"\.karb ", outgoing=True))
+@client.on(admin_cmd(pattern="karb"))
 async def carbon_api(e):
     RED = random.randint(0, 256)
     GREEN = random.randint(0, 256)

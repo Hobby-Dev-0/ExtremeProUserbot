@@ -8,7 +8,7 @@ import speedtest
 from Extre.utils import admin_cmd
 
 
-@borg.on(admin_cmd("speedtest ?(.*)"))
+@client.on(admin_cmd("speedtest ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

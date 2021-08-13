@@ -11,7 +11,7 @@ from Extre.utils import admin_cmd
 FONT_FILE_TO_USE = "Fonts/digital.ttf"
 
 @command(pattern="^.seconddp", outgoing=True)
-#@borg.on(admin_cmd(pattern=r"seconddp"))
+#@client.on(admin_cmd(pattern=r"seconddp"))
 async def seconddp(event):
     downloaded_file_name = "Extre.original_pic.png"
     downloader = SmartDL(Var.DOWNLOAD_PFP_URL_CLOCK, downloaded_file_name, progress_bar=False)

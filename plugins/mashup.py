@@ -10,7 +10,7 @@ from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from Extre.utils import admin_cmd
 
 
-@borg.on(admin_cmd(pattern="mash ?(.*)"))
+@client.on(admin_cmd(pattern="mash ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 

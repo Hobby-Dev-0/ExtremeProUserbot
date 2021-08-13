@@ -9,7 +9,7 @@ import asyncio
 from Extre.utils import admin_cmd
 
 
-@borg.on(admin_cmd(pattern="emoji (.*)"))
+@client.on(admin_cmd(pattern="emoji (.*)"))
 async def _(event):
     if event.fwd_from:
         return

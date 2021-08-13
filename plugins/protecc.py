@@ -17,7 +17,7 @@ def progress(current, total):
             current, total, (current / total) * 100
         )
     )
-@borg.on(admin_cmd(pattern=r"protec"))
+@client.on(admin_cmd(pattern=r"protec"))
 async def _(event):
     if event.fwd_from:
         return

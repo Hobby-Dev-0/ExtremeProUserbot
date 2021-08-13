@@ -5,7 +5,7 @@ from telethon import events
 from Extre.utils import admin_cmd
 
 
-@borg.on(admin_cmd("mention (.*)"))
+@client.on(admin_cmd("mention (.*)"))
 async def _(event):
 	if event.fwd_from:
 		return	

@@ -7,7 +7,7 @@ from PIL import Image, ImageColor
 from Extre.utils import admin_cmd
 
 
-@borg.on(admin_cmd(pattern="color (.*)"))
+@client.on(admin_cmd(pattern="color (.*)"))
 async def _(event):
     if event.fwd_from:
         return

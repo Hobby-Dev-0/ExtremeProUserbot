@@ -6,7 +6,7 @@ from telethon import events
 import asyncio
 from Extre.utils import admin_cmd
 
-@borg.on(admin_cmd("inflag"))
+@client.on(admin_cmd("inflag"))
 async def _(event):
     if event.fwd_from:
         return

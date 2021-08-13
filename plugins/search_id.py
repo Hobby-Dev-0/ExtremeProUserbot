@@ -5,7 +5,7 @@ from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from Extre.utils import extremepro_cmd
 from Extre import bot, CMD_HELP
 
-@borg.on(extremepro_cmd(pattern="sg ?(.*)"))
+@client.on(extremepro_cmd(pattern="sg ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 

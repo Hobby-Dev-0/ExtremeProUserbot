@@ -38,7 +38,7 @@ if 1 == 1:
 
 
 
-    @borg.on(extremepro_cmd(pattern="poto(.*)"))
+    @client.on(extremepro_cmd(pattern="poto(.*)"))
 
     async def potocmd(event):
 

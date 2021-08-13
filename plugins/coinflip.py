@@ -5,7 +5,7 @@ import random
 from Extre.utils import admin_cmd
 
 
-@borg.on(admin_cmd(pattern="coin ?(.*)"))
+@client.on(admin_cmd(pattern="coin ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

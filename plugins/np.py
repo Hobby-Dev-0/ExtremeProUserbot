@@ -10,7 +10,7 @@ import asyncio
 from Extre.utils import admin_cmd
 
 
-@borg.on(admin_cmd("np"))
+@client.on(admin_cmd("np"))
 async def _(event):
     if event.fwd_from:
         return

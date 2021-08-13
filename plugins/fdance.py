@@ -15,7 +15,7 @@ from Extre.utils import admin_cmd
 
 
 
-@borg.on(admin_cmd(pattern=r"fdance"))
+@client.on(admin_cmd(pattern=r"fdance"))
 
 async def _(event):
 

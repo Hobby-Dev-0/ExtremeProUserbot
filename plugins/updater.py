@@ -282,7 +282,7 @@ async def upstream(ups):
 
 '''
 from Extre.utils import admin_cmd
-@borg.on(admin_cmd(pattern="update|update now"))
+@client.on(admin_cmd(pattern="update|update now"))
 async def hehe (event):
   await event.edit("want to update your bot ?\nnow not use update now use \n`.restart` only")
 #maked by LEGENDX22 🔥🔥🔥⚡⚡⚡⚡

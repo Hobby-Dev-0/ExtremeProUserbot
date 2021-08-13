@@ -7,7 +7,7 @@ from datetime import datetime
 from Extre.utils import admin_cmd
 
 
-@borg.on(admin_cmd(pattern="stt (.*)"))
+@client.on(admin_cmd(pattern="stt (.*)"))
 async def _(event):
     if event.fwd_from:
         return

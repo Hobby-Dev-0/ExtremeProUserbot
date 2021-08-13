@@ -13,7 +13,7 @@ from telethon.tl.types import InputMessagesFilterDocument
 from Extre.utils import admin_cmd
 
 
-@borg.on(admin_cmd(pattern="text (.*)"))
+@client.on(admin_cmd(pattern="text (.*)"))
 async def sticklet(event):
     R = random.randint(0,256)
     G = random.randint(0,256)

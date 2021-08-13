@@ -5,7 +5,7 @@ from telethon.utils import pack_bot_file_id
 from Extre.utils import admin_cmd
 
 
-@borg.on(admin_cmd("id"))
+@client.on(admin_cmd("id"))
 async def _(event):
     if event.fwd_from:
         return

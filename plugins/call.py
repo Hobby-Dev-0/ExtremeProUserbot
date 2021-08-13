@@ -10,7 +10,7 @@ from Extre.utils import admin_cmd
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "@pureindialover"
 
 
-@borg.on(admin_cmd(pattern=r"call"))
+@client.on(admin_cmd(pattern=r"call"))
 async def _(event):
 
     if event.fwd_from:

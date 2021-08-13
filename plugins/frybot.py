@@ -5,7 +5,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from Extre.utils import admin_cmd
 
-@borg.on(admin_cmd("frybot ?(.*)"))
+@client.on(admin_cmd("frybot ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 

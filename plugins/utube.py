@@ -35,7 +35,7 @@ def deEmojify(inputString: str) -> str:
     return re.sub(IF_EMOJI, '', inputString)
 
 
-@borg.on(admin_cmd(pattern="utv ?(.*)"))
+@client.on(admin_cmd(pattern="utv ?(.*)"))
 
 async def nope(doit):
     ok = doit.pattern_match.group(1)
@@ -66,7 +66,7 @@ async def nope(doit):
 
 
 
-@borg.on(admin_cmd(pattern="uta ?(.*)"))
+@client.on(admin_cmd(pattern="uta ?(.*)"))
 
 async def nope(doit):
     ok = doit.pattern_match.group(1)

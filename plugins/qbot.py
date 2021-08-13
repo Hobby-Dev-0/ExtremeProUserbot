@@ -7,7 +7,7 @@ from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from Extre import bot, CMD_HELP
 from Extre.utils import admin_cmd
 
-@borg.on(admin_cmd("qbot ?(.*)"))
+@client.on(admin_cmd("qbot ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 

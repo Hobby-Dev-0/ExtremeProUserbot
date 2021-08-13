@@ -7,7 +7,7 @@ from Extre.utils import admin_cmd
 import asyncio
 from PyLyrics import *
 
-@borg.on(admin_cmd(pattern="lyrics (.*)"))
+@client.on(admin_cmd(pattern="lyrics (.*)"))
 async def _(event):
     if event.fwd_from:
         return

@@ -10,7 +10,7 @@ import os
 import sys
 from Extre.utils import admin_cmd
 
-@borg.on(admin_cmd(pattern=r"meme"))
+@client.on(admin_cmd(pattern=r"meme"))
 async def meme(event):
     if event.fwd_from:
         return   
@@ -54,7 +54,7 @@ Bonus : Flower Boquee Generater
 usage:- .flower
 
 """
-@borg.on(admin_cmd(pattern=r"flower"))
+@client.on(admin_cmd(pattern=r"flower"))
 async def meme(event):
     if event.fwd_from:
         return   

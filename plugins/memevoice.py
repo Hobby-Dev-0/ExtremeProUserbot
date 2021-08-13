@@ -47,7 +47,7 @@ def deEmojify(inputString: str) -> str:
 
 
 
-@borg.on(admin_cmd(pattern="mev(?: |$)(.*)"))
+@client.on(admin_cmd(pattern="mev(?: |$)(.*)"))
 async def nope(legendx22):
     user = legendx22.pattern_match.group(1)
     if not user:

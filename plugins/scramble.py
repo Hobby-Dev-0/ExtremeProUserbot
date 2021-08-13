@@ -8,7 +8,7 @@ import re
 from Extre.utils import admin_cmd
 
 
-@borg.on(admin_cmd(pattern="scramble(\s+[\S\s]+|$)"))
+@client.on(admin_cmd(pattern="scramble(\s+[\S\s]+|$)"))
 async def scramble_message(e):
     reply_message = await e.get_reply_message()
     text = e.pattern_match.group(1) or reply_message.text

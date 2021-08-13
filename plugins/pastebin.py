@@ -16,7 +16,7 @@ def progress(current, total):
     )
 
 
-@borg.on(admin_cmd("paste ?(.*)"))
+@client.on(admin_cmd("paste ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

@@ -50,7 +50,7 @@ async def dc(event):
 
     # New .wst By @Shivam_Patel with @danish_00
 
-@borg.on(admin_cmd(pattern=r"wst"))
+@client.on(admin_cmd(pattern=r"wst"))
 async def hmm(event):
     if not event.reply_to_msg_id:
         await event.edit("Reply to any media.")
@@ -141,7 +141,7 @@ async def hehe(event):
 
     # api for adding color only....  
 DARKCOBRA = Config.DEEP_AI if Config.DEEP_AI else "quickstart-QUdJIGlzIGNvbWluZy4uLi4K"
-@borg.on(admin_cmd(pattern="color$", outgoing=True))
+@client.on(admin_cmd(pattern="color$", outgoing=True))
 async def _(event):
     if not event.reply_to_msg_id:
         await event.edit("Reply to any Media.")
@@ -194,7 +194,7 @@ async def shiv(event):
     os.remove("danish.jpg")
 
 
-@borg.on(admin_cmd(pattern="ftoon$"))
+@client.on(admin_cmd(pattern="ftoon$"))
 async def _(event):
     if not event.reply_to_msg_id:
         await event.edit("Reply to any Media.")

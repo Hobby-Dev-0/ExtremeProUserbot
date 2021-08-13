@@ -5,7 +5,7 @@ import sys
 import random
 from Extre.utils import admin_cmd
 
-@borg.on(admin_cmd(pattern=r"gf$", outgoing=True))
+@client.on(admin_cmd(pattern=r"gf$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -40,7 +40,7 @@ async def _(event):
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[i % 21])
 
-@borg.on(admin_cmd(pattern=r"mom$", outgoing=True))
+@client.on(admin_cmd(pattern=r"mom$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return

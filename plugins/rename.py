@@ -11,7 +11,7 @@ from Extre.utils import admin_cmd, progress
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "thumb_image.jpg"
 
 
-@borg.on(admin_cmd(pattern="ren (.*)"))
+@client.on(admin_cmd(pattern="ren (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -74,7 +74,7 @@ async def _(event):
         await dcevent.edit(".rename file.name as reply to a Telegram media/file")
 
 
-@borg.on(admin_cmd(pattern="tf ?(.*)"))
+@client.on(admin_cmd(pattern="tf ?(.*)"))
 async def get(event):
     name = event.text[5:]
     m = await event.get_reply_message()
