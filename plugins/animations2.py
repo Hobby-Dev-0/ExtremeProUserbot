@@ -7,8 +7,8 @@ from Extre import ALIVE_NAME, CMD_HELP
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Hell User"
 
 
-@client.on(admin_cmd(pattern=r"boxs$", outgoing=True))
-@client.on(sudo_cmd(pattern=r"boxs$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"boxs$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"boxs$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -20,8 +20,8 @@ async def _(event):
         deq.rotate(1)
 
 
-@client.on(admin_cmd(pattern=r"rain$", outgoing=True))
-@client.on(sudo_cmd(pattern=r"rain$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"rain$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"rain$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -33,8 +33,8 @@ async def _(event):
         deq.rotate(1)
 
 
-@client.on(admin_cmd(pattern=r"deploy$", outgoing=True))
-@client.on(sudo_cmd(pattern=r"deploy$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"deploy$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"deploy$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -60,8 +60,8 @@ async def _(event):
         await event.edit(animation_chars[i % 12])
 
 
-@client.on(admin_cmd(pattern=r"dump$", outgoing=True))
-@client.on(sudo_cmd(pattern=r"dump$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"dump$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"dump$", allow_sudo=True))
 async def _(message):
     if event.fwd_from:
         return
@@ -103,8 +103,8 @@ async def _(message):
                 return
 
 
-@client.on(admin_cmd(pattern=r"fleaveme$", outgoing=True))
-@client.on(sudo_cmd(pattern=r"fleaveme$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"fleaveme$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"fleaveme$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -129,8 +129,8 @@ async def _(event):
         await event.edit(animation_chars[i % 10])
 
 
-@client.on(admin_cmd(pattern=r"loveu$", outgoing=True))
-@client.on(sudo_cmd(pattern=r"loveu$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"loveu$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"loveu$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -179,8 +179,8 @@ async def _(event):
         await event.edit(animation_chars[i % 35])
 
 
-@client.on(admin_cmd(pattern=r"plane$", outgoing=True))
-@client.on(sudo_cmd(pattern=r"plane$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"plane$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"plane$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -202,8 +202,8 @@ async def _(event):
     await asyncio.sleep(3)
 
 
-@client.on(admin_cmd(pattern=r"police$", outgoing=True))
-@client.on(sudo_cmd(pattern=r"police$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"police$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"police$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -228,8 +228,8 @@ async def _(event):
         await event.edit(animation_chars[i % 12])
 
 
-@client.on(admin_cmd(pattern=r"jio$", outgoing=True))
-@client.on(sudo_cmd(pattern=r"jio$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"jio$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"jio$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -262,8 +262,8 @@ async def _(event):
         await event.edit(animation_chars[i % 19])
 
 
-@client.on(admin_cmd(pattern=r"solarsystem$", outgoing=True))
-@client.on(sudo_cmd(pattern=r"solarsystem$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"solarsystem$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"solarsystem$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

@@ -7,7 +7,7 @@ from Extre import CMD_HELP
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd("gbam"))
+@Andencento.on(admin_cmd("gbam"))
 async def gbun(event):
     if event.fwd_from:
         return
@@ -23,7 +23,7 @@ async def gbun(event):
     reply_message = None
     if event.reply_to_msg_id:
         reply_message = await event.get_reply_message()
-        replied_user = await event.client(GetFullUserRequest(reply_message.sender_id))
+        replied_user = await event.Andencento(GetFullUserRequest(reply_message.sender_id))
         firstname = replied_user.user.first_name
         usname = replied_user.user.username
         idd = reply_message.sender_id

@@ -17,7 +17,7 @@ async def get_full_user(event):
     extra = None
     if event.reply_to_msg_id and not len(args) == 2:
         previous_message = await event.get_reply_message()
-        user_obj = await event.client.get_entity(previous_message.sender_id)
+        user_obj = await event.Andencento.get_entity(previous_message.sender_id)
         extra = event.pattern_match.group(1)
     elif len(args[0]) > 0:
         user = args[0]
@@ -33,10 +33,10 @@ async def get_full_user(event):
             if isinstance(probable_user_mention_entity,
                           MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
-                user_obj = await event.client.get_entity(user_id)
+                user_obj = await event.Andencento.get_entity(user_id)
                 return user_obj
         try:
-            user_obj = await event.client.get_entity(user)
+            user_obj = await event.Andencento.get_entity(user)
         except Exception as err:
             return await event.edit("Something Went Wrong", str(err))           
     return user_obj, extra
@@ -46,22 +46,22 @@ async def get_user_sender_id(user, event):
     if isinstance(user, str):
         user = int(user)
     try:
-        user_obj = await event.client.get_entity(user)
+        user_obj = await event.Andencento.get_entity(user)
     except (TypeError, ValueError) as err:
         await event.edit(str(err))
         return None
     return user_obj
 
-@client.on(admin_cmd(pattern="gban ?(.*)"))
+@Andencento.on(admin_cmd(pattern="gban ?(.*)"))
 async def gspider(Extre.:
     lol = userbot
     sender = await lol.get_sender()
-    me = await lol.client.get_me()
+    me = await lol.Andencento.get_me()
     if not sender.id == me.id:
         friday = await lol.reply("Gbanning This Retard DumbAss😁😁")
     else:
         friday = await lol.edit("Wait Processing.....")
-    me = await Extre.client.get_me()
+    me = await Extre.Andencento.get_me()
     await friday.edit(f"Global Ban Is Coming ! Wait And Watch You bitch😎🔥")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
@@ -91,17 +91,17 @@ async def gspider(Extre.:
         except:
             pass
         try:
-            await Extre.client(BlockRequest(user))
+            await Extre.Andencento(BlockRequest(user))
         except:
             pass
         testExtre = [
             d.entity.id
-            for d in await Extre.client.get_dialogs()
+            for d in await Extre.Andencento.get_dialogs()
             if (d.is_group or d.is_channel)
         ]
         for i in testExtre.
             try:
-                await Extre.client.edit_permissions(i, user, view_messages=False)
+                await Extre.Andencento.edit_permissions(i, user, view_messages=False)
                 a += 1
                 await friday.edit(f"**GBANNED // Total Affected Chats **: `{a}`")
             except:
@@ -118,16 +118,16 @@ async def gspider(Extre.:
     )
 
 
-@client.on(admin_cmd(pattern="ungban ?(.*)"))
+@Andencento.on(admin_cmd(pattern="ungban ?(.*)"))
 async def gspider(Extre.:
     lol = userbot
     sender = await lol.get_sender()
-    me = await lol.client.get_me()
+    me = await lol.Andencento.get_me()
     if not sender.id == me.id:
         friday = await lol.reply("`Wait Let Me Process`")
     else:
         friday = await lol.edit("Just a Second ")
-    me = await Extre.client.get_me()
+    me = await Extre.Andencento.get_me()
     await friday.edit(f"Trying To Ungban User !")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
@@ -155,17 +155,17 @@ async def gspider(Extre.:
         except:
             pass
         try:
-            await Extre.client(UnblockRequest(user))
+            await Extre.Andencento(UnblockRequest(user))
         except:
             pass
         testExtre = [
             d.entity.id
-            for d in await Extre.client.get_dialogs()
+            for d in await Extre.Andencento.get_dialogs()
             if (d.is_group or d.is_channel)
         ]
         for i in testExtre.
             try:
-                await Extre.client.edit_permissions(i, user, send_messages=True)
+                await Extre.Andencento.edit_permissions(i, user, send_messages=True)
                 a += 1
                 await friday.edit(f"**UNGBANNING // AFFECTED CHATS - {a} **")
             except:
@@ -184,7 +184,7 @@ async def gspider(Extre.:
 
 
 
-@client.on(ChatAction)
+@Andencento.on(ChatAction)
 async def handler(rkG): 
    if rkG.user_joined or rkG.user_added:      
        try:       	
@@ -201,7 +201,7 @@ async def handler(rkG):
                 creator = chat.creator   
                 if admin or creator:
                  try:
-                    await client.edit_permissions(rkG.chat_id, guser.id, view_messages=False)                              
+                    await Andencento.edit_permissions(rkG.chat_id, guser.id, view_messages=False)                              
                     await rkG.reply(
                      f"**Gbanned User Joined!!** \n"                      
                      f"**Victim Id**: [{guser.id}](tg://user?id={guser.id})\n"                   

@@ -14,7 +14,7 @@ telegraph = Telegraph()
 mee = telegraph.create_account(short_name="yohohehe")
 
 
-@client.on(admin_cmd(pattern="recognize ?(.*)"))
+@Andencento.on(admin_cmd(pattern="recognize ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 
@@ -31,10 +31,10 @@ async def _(event):
        await event.edit("Reply to actual users message.")
        return
     cat = await event.edit("recognizeing this media")
-    async with event.client.conversation(chat) as conv:
+    async with event.Andencento.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=461083923))
-              await event.client.forward_messages(chat, reply_message)
+              await event.Andencento.forward_messages(chat, reply_message)
               response = await response 
           except YouBlockedUserError: 
               await event.edit("unblock @Rekognition_Bot and try again")
@@ -51,7 +51,7 @@ async def _(event):
               
 
 
-@client.on(admin_cmd(pattern="wspr ?(.*)"))
+@Andencento.on(admin_cmd(pattern="wspr ?(.*)"))
 async def wspr(event):
     if event.fwd_from:
         return
@@ -65,7 +65,7 @@ async def wspr(event):
 
 
 
-@client.on(admin_cmd(pattern="purl ?(.*)"))
+@Andencento.on(admin_cmd(pattern="purl ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -76,23 +76,23 @@ async def _(event):
     chat = "@FiletolinkTGbot"
     reply_message.sender
     await event.edit("**Making public url...**")
-    async with event.client.conversation(chat) as conv:
+    async with event.Andencento.conversation(chat) as conv:
         try:
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=1011636686)
             )
-            await event.client.forward_messages(chat, reply_message)
+            await event.Andencento.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
             await event.edit("```Please unblock me (@FiletolinkTGbot) u Nigga```")
             return
         await event.delete()
-        await event.client.send_message(
+        await event.Andencento.send_message(
             event.chat_id, response.message, reply_to=reply_message
         )
   
 
-@client.on(admin_cmd(pattern="limits ?(.*)"))
+@Andencento.on(admin_cmd(pattern="limits ?(.*)"))
 async def _(event):
     bot = "@SpamBot"
     if event.fwd_from:
@@ -111,7 +111,7 @@ async def _(event):
             except YouBlockedUserError:
                 await event.edit("**Error:** `unblock` @spambot `and retry!")
 
-@client.on(admin_cmd(pattern="sgm ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="sgm ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return 
@@ -125,18 +125,18 @@ async def _(event):
     chat = "@sangmatainfo_bot"
     sender = reply_message.sender
     await event.edit("**Getting user's name history..**")
-    async with event.client.conversation(chat) as conv:
+    async with event.Andencento.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=461843263))
-              await event.client.forward_messages(chat, reply_message)
+              await event.Andencento.forward_messages(chat, reply_message)
               response = await response 
           except YouBlockedUserError: 
               await event.reply("Please unblock me @SangMataInfo_bot")
               return
           await event.delete()
-          await event.client.send_message(event.chat_id, response.message, reply_to=reply_message)
+          await event.Andencento.send_message(event.chat_id, response.message, reply_to=reply_message)
 
-@client.on(admin_cmd(pattern="reader ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="reader ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return 
@@ -150,16 +150,16 @@ async def _(event):
     chat = "@chotamreaderbot"
     sender = reply_message.sender
     await event.edit("**Making instant view...**")
-    async with event.client.conversation(chat) as conv:
+    async with event.Andencento.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=272572121))
-              await event.client.forward_messages(chat, reply_message)
+              await event.Andencento.forward_messages(chat, reply_message)
               response = await response 
           except YouBlockedUserError: 
               await event.reply("Please unblock me @chotamreaderbot")
               return
           await event.delete()
-          await event.client.send_message(event.chat_id, response.message, reply_to=reply_message)
+          await event.Andencento.send_message(event.chat_id, response.message, reply_to=reply_message)
 
 
 

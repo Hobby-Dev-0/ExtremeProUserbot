@@ -17,7 +17,7 @@ from Extre.utils import admin_cmd
 
 
 
-@client.on(admin_cmd("unoob"))
+@Andencento.on(admin_cmd("unoob"))
 
 async def _(event):
 
@@ -51,7 +51,7 @@ async def _(event):
         await asyncio.sleep(animation_interval)
             
             
-@client.on(admin_cmd("menoob"))
+@Andencento.on(admin_cmd("menoob"))
 
 async def _(event):
 
@@ -84,7 +84,7 @@ async def _(event):
         await event.edit(animation_chars[i % 9])
         await asyncio.sleep(animation_interval) 
             
-@client.on(admin_cmd("upro"))
+@Andencento.on(admin_cmd("upro"))
 
 async def _(event):
 
@@ -116,7 +116,7 @@ async def _(event):
         await event.edit(animation_chars[i % 8])
         await asyncio.sleep(animation_interval)  
             
-@client.on(admin_cmd("mepro"))
+@Andencento.on(admin_cmd("mepro"))
 
 async def _(event):
 

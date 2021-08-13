@@ -5,7 +5,7 @@ import asyncio
 from collections import deque
 from Extre.utils import admin_cmd
 
-@client.on(admin_cmd(pattern=r"lul"))
+@Andencento.on(admin_cmd(pattern=r"lul"))
 async def _(event):
 	if event.fwd_from:
 		return

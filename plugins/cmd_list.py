@@ -3,7 +3,7 @@ import asyncio
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd(pattern=r"cmds"))
+@Andencento.on(admin_cmd(pattern=r"cmds"))
 async def install(event):
     if event.fwd_from:
         return

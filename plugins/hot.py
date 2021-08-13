@@ -67,7 +67,7 @@ async def WooMai(netase):
           await netase.edit("`sending wait!😎`")
           await asyncio.sleep(3)
           await bot.send_file(netase.chat_id, respond)
-    await netase.client.delete_messages(conv.chat_id,
+    await netase.Andencento.delete_messages(conv.chat_id,
                                        [msg.id, response.id, respond.id])
     await netase.delete()
 
@@ -96,7 +96,7 @@ async def DeezLoader(Deezlod):
               await Deezlod.edit("**Error:** `unblock` @DeezLoadBot `and retry!`")
               return
           await bot.send_file(Deezlod.chat_id, song, caption=details.text)
-          await Deezlod.client.delete_messages(conv.chat_id,
+          await Deezlod.Andencento.delete_messages(conv.chat_id,
                                              [msg_start.id, response.id, r.id, msg.id, details.id, song.id])
           await Deezlod.delete()          
     

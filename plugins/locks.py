@@ -7,7 +7,7 @@ from Extre.utils import admin_cmd
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
 #@register(outgoing=True, pattern=r"^.lock ?(.*)")
-@client.on(admin_cmd(pattern=r"lock ?(.*)"))
+@Andencento.on(admin_cmd(pattern=r"lock ?(.*)"))
 @errors_handler
 async def locks(event):
     input_str = event.pattern_match.group(1).lower()
@@ -86,7 +86,7 @@ async def locks(event):
         change_info=changeinfo,
     )
     try:
-        await event.client(
+        await event.Andencento(
             EditChatDefaultBannedRightsRequest(peer=peer_id,
                                                banned_rights=lock_rights))
         await event.edit(f"{DEFAULTUSER} `locked {what} Because its Rest Time Nimba!!`")
@@ -175,7 +175,7 @@ async def rem_locks(event):
         change_info=changeinfo,
     )
     try:
-        await event.client(
+        await event.Andencento(
             EditChatDefaultBannedRightsRequest(peer=peer_id,
                                                banned_rights=unlock_rights))
         await event.edit(f"{DEFAULTUSER} `Unlocked {what} now Start Chit Chat !!`")

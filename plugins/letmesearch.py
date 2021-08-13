@@ -26,7 +26,7 @@ from Extre.utils import admin_cmd
 
 
 
-@client.on(admin_cmd(pattern="lmg (.*)"))
+@Andencento.on(admin_cmd(pattern="lmg (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -40,7 +40,7 @@ async def _(event):
 
 
 
-@client.on(admin_cmd(pattern="lmy (.*)"))
+@Andencento.on(admin_cmd(pattern="lmy (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -55,7 +55,7 @@ async def _(event):
 
 
 
-@client.on(admin_cmd(pattern="ddg (.*)"))
+@Andencento.on(admin_cmd(pattern="ddg (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -70,7 +70,7 @@ async def _(event):
 
 
 
-@client.on(admin_cmd(pattern="lmalt (.*)"))
+@Andencento.on(admin_cmd(pattern="lmalt (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -84,7 +84,7 @@ async def _(event):
 
 
 
-@client.on(admin_cmd(pattern="lmvar (.*)"))
+@Andencento.on(admin_cmd(pattern="lmvar (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -98,7 +98,7 @@ async def _(event):
 
 
 
-@client.on(admin_cmd(pattern="lmlog (.*)"))
+@Andencento.on(admin_cmd(pattern="lmlog (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -113,7 +113,7 @@ async def _(event):
 
 
 
-@client.on(admin_cmd(pattern="dyno(.*)"))
+@Andencento.on(admin_cmd(pattern="dyno(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -126,7 +126,7 @@ async def _(event):
         await event.edit("Something went wrong. Please try again later.")
 
 
-@client.on(admin_cmd(pattern="lmkp (.*)"))
+@Andencento.on(admin_cmd(pattern="lmkp (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -141,7 +141,7 @@ async def _(event):
 
 
 
-@client.on(admin_cmd(pattern="gem (.*)"))
+@Andencento.on(admin_cmd(pattern="gem (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -155,7 +155,7 @@ async def _(event):
 
 
       
-@client.on(admin_cmd(pattern="archive (.*)"))
+@Andencento.on(admin_cmd(pattern="archive (.*)"))
 async def _(event):
     if event.fwd_from:
         return

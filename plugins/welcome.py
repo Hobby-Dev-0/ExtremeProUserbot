@@ -4,7 +4,7 @@ from sql_helper.welcome_sql import get_current_welcome_settings, \
     add_welcome_setting, rm_welcome_setting, update_previous_welcome
 
 
-@client.on(events.ChatAction())  # pylint:disable=E0602
+@Andencento.on(events.ChatAction())  # pylint:disable=E0602
 async def _(event):
     cws = get_current_welcome_settings(event.chat_id)
     if cws:
@@ -27,7 +27,7 @@ async def _(event):
             me = await bot.get_me()
 
             title = chat.title if chat.title else "this chat"
-            participants = await event.client.get_participants(chat)
+            participants = await event.Andencento.get_participants(chat)
             count = len(participants)
             mention = "[{}](tg://user?id={})".format(a_user.first_name, a_user.id)
             first = a_user.first_name

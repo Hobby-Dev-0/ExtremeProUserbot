@@ -19,7 +19,7 @@ if not os.path.isdir("./temp"):
     os.makedirs("./temp")
 
 
-@client.on(admin_cmd(pattern="dox ?(.*)"))
+@Andencento.on(admin_cmd(pattern="dox ?(.*)"))
 async def get(event):
     name = event.text[5:]
     if name is None:
@@ -30,7 +30,7 @@ async def get(event):
         with open(name, "w") as f:
             f.write(m.message)
         await event.delete()
-        await event.client.send_file(event.chat_id, name, force_document=True)
+        await event.Andencento.send_file(event.chat_id, name, force_document=True)
         os.remove(name)
     else:
         await event.edit("reply to text message as `.ttf <file name>`")

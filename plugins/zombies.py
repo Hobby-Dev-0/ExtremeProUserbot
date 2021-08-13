@@ -42,8 +42,8 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 # ================================================
 
 
-@client.on(admin_cmd(pattern=f"zombies", allow_sudo=True))
-@client.on(events.NewMessage(pattern="^.zombies(?: |$)(.*)", outgoing=True))
+@Andencento.on(admin_cmd(pattern=f"zombies", allow_sudo=True))
+@Andencento.on(events.NewMessage(pattern="^.zombies(?: |$)(.*)", outgoing=True))
 async def rm_deletedacc(show):
     """ For .zombies command, list all the ghost/deleted/zombie accounts in a chat. """
     con = show.pattern_match.group(1).lower()
@@ -51,7 +51,7 @@ async def rm_deletedacc(show):
     del_status = "`No deleted accounts found, Group is clean`"
     if con != "clean":
         await show.edit("`Searching for ghost/deleted/zombie accounts...`")
-        async for user in show.client.iter_participants(show.chat_id):
+        async for user in show.Andencento.iter_participants(show.chat_id):
 
             if user.deleted:
                 del_u += 1
@@ -71,10 +71,10 @@ async def rm_deletedacc(show):
     await show.edit("`Deleting deleted accounts...\nOh I can do that?!?!`")
     del_u = 0
     del_a = 0
-    async for user in show.client.iter_participants(show.chat_id):
+    async for user in show.Andencento.iter_participants(show.chat_id):
         if user.deleted:
             try:
-                await show.client(
+                await show.Andencento(
                     EditBannedRequest(show.chat_id, user.id, BANNED_RIGHTS)
                 )
             except ChatAdminRequiredError:
@@ -83,7 +83,7 @@ async def rm_deletedacc(show):
             except UserAdminInvalidError:
                 del_u -= 1
                 del_a += 1
-            await show.client(EditBannedRequest(show.chat_id, user.id, UNBAN_RIGHTS))
+            await show.Andencento(EditBannedRequest(show.chat_id, user.id, UNBAN_RIGHTS))
             del_u += 1
     if del_u > 0:
         del_status = f"Cleaned **{del_u}** deleted account(s)"
@@ -95,7 +95,7 @@ async def rm_deletedacc(show):
     await sleep(2)
     await show.delete()
     if Config.G_BAN_LOGGER_GROUP is not None:
-        await show.client.send_message(
+        await show.Andencento.send_message(
             Config.G_BAN_LOGGER_GROUP,
             "#CLEANUP\n"
             f"Cleaned **{del_u}** deleted account(s) !!\

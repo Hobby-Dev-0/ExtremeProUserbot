@@ -15,12 +15,12 @@ OFFLINE_TAG = "[OFFLINE]"
 ONLINE_TAG = "[ONLINE]"
 PROFILE_IMAGE = os.environ.get("PROFILE_IMAGE", "https://telegra.ph/file/9f0638dbfa028162a8682.jpg")
 
-@client.on(extremepro_cmd(pattern="offline"))  # pylint:disable=E0602
+@Andencento.on(extremepro_cmd(pattern="offline"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
     user_it = "me"
-    user = await event.client.get_entity(user_it)
+    user = await event.Andencento.get_entity(user_it)
     if user.first_name.startswith(OFFLINE_TAG):
         await event.edit("**Already in Offline Mode.**")
         return
@@ -30,7 +30,7 @@ async def _(event):
     urllib.request.urlretrieve("https://telegra.ph/file/249f27d5b52a87babcb3f.jpg","donottouch.jpg")
     photo = "donottouch.jpg"
     if photo:
-        file = await event.client.upload_file(photo)
+        file = await event.Andencento.upload_file(photo)
         try:
             await borg(functions.photos.UploadProfilePhotoRequest(file))
         except Exception as e:  # pylint:disable=C0103,W0703
@@ -53,12 +53,12 @@ async def _(event):
     except Exception as e:  # pylint:disable=C0103,W0703
         await event.edit(str(e))
 
-@client.on(extremepro_cmd(pattern="online"))  # pylint:disable=E0602
+@Andencento.on(extremepro_cmd(pattern="online"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
     user_it = "me"
-    user = await event.client.get_entity(user_it)
+    user = await event.Andencento.get_entity(user_it)
     if user.first_name.startswith(OFFLINE_TAG):
         await event.edit("**Changing Profile to Online...**")
     else:
@@ -69,7 +69,7 @@ async def _(event):
     urllib.request.urlretrieve(PROFILE_IMAGE,"donottouch.jpg")
     photo = "donottouch.jpg"
     if photo:
-        file = await event.client.upload_file(photo)
+        file = await event.Andencento.upload_file(photo)
         try:
             await borg(functions.photos.UploadProfilePhotoRequest(file))
         except Exception as e:  # pylint:disable=C0103,W0703

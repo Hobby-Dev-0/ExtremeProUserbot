@@ -100,7 +100,7 @@ async def lst(event):
     if len(msg) > MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(msg)) as out_file:
             out_file.name = "ls.txt"
-            await event.client.send_file(
+            await event.Andencento.send_file(
                 event.chat_id,
                 out_file,
                 force_document=True,

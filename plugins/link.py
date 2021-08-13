@@ -14,7 +14,7 @@ from telethon.tl.types import (PeerChannel, ChannelParticipantsAdmins,
                                MessageEntityMentionName,
                                ChannelParticipantsBots)
 
-@client.on(admin_cmd(pattern="link(?: |$)(.*)"))
+@Andencento.on(admin_cmd(pattern="link(?: |$)(.*)"))
 async def permalink(mention):
     """ For .link command, generates a link to the user's PM with a custom text. """
     user, custom = await get_user_from_event(mention)
@@ -34,7 +34,7 @@ async def get_user_from_event(event):
     extra = None
     if event.reply_to_msg_id and not len(args) == 2:
         previous_message = await event.get_reply_message()
-        user_obj = await event.client.get_entity(previous_message.sender_id)
+        user_obj = await event.Andencento.get_entity(previous_message.sender_id)
         extra = event.pattern_match.group(1)
     elif len(args[0]) > 0:
         user = args[0]
@@ -54,10 +54,10 @@ async def get_user_from_event(event):
             if isinstance(probable_user_mention_entity,
                           MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
-                user_obj = await event.client.get_entity(user_id)
+                user_obj = await event.Andencento.get_entity(user_id)
                 return user_obj
         try:
-            user_obj = await event.client.get_entity(user)
+            user_obj = await event.Andencento.get_entity(user)
         except (TypeError, ValueError) as err:
             await event.edit(str(err))
             return None
@@ -70,7 +70,7 @@ async def get_user_sender_id(user, event):
         user = int(user)
 
     try:
-        user_obj = await event.client.get_entity(user)
+        user_obj = await event.Andencento.get_entity(user)
     except (TypeError, ValueError) as err:
         await event.edit(str(err))
         return None

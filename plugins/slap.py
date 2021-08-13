@@ -75,7 +75,7 @@ HIT = [
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "IndianBot"
 
-@client.on(admin_cmd(pattern="slap ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="slap ?(.*)", allow_sudo=True))
 async def who(event):
     if event.fwd_from:
         return
@@ -95,7 +95,7 @@ async def who(event):
 async def get_user(event):
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
-        replied_user = await event.client(GetFullUserRequest(previous_message.sender_id))
+        replied_user = await event.Andencento(GetFullUserRequest(previous_message.sender_id))
     else:
         user = event.pattern_match.group(1)
 
@@ -103,7 +103,7 @@ async def get_user(event):
             user = int(user)
 
         if not user:
-            self_user = await event.client.get_me()
+            self_user = await event.Andencento.get_me()
             user = self_user.id
 
         if event.message.entities is not None:
@@ -111,11 +111,11 @@ async def get_user(event):
 
             if isinstance(probable_user_mention_entity, MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
-                replied_user = await event.client(GetFullUserRequest(user_id))
+                replied_user = await event.Andencento(GetFullUserRequest(user_id))
                 return replied_user
         try:
-            user_object = await event.client.get_entity(user)
-            replied_user = await event.client(GetFullUserRequest(user_object.id))
+            user_object = await event.Andencento.get_entity(user)
+            replied_user = await event.Andencento(GetFullUserRequest(user_object.id))
 
         except (TypeError, ValueError):
             await event.edit("`I don't slap strangers !!`")

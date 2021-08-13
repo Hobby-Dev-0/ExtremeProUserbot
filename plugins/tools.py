@@ -16,8 +16,8 @@ from Extre.utils import admin_cmd, edit_or_reply, sudo_cmd
 from Extre import CMD_HELP
 
 
-@client.on(admin_cmd(pattern="scan ?(.*)"))
-@client.on(sudo_cmd(pattern="scan ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="scan ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="scan ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -33,12 +33,12 @@ async def _(event):
         await edit_or_reply(event, "Reply to actual users message.")
         return
     userevent = await edit_or_reply(event, " `Scanning This media..... wait👀`")
-    async with event.client.conversation(chat) as conv:
+    async with event.Andencento.conversation(chat) as conv:
         try:
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=161163358)
             )
-            await event.client.forward_messages(chat, reply_message)
+            await event.Andencento.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
             await userevent.edit("`Please unblock `@DrWebBot `and try again`")
@@ -58,13 +58,13 @@ async def _(event):
                 )
 
 
-@client.on(admin_cmd(pattern=r"decode$", outgoing=True))
-@client.on(sudo_cmd(pattern=r"decode$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"decode$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"decode$", allow_sudo=True))
 async def parseqr(qr_e):
     if not os.path.isdir(Config.TEMP_DIR):
         os.makedirs(Config.TEMP_DIR)
     # For .decode command, get QR Code/BarCode content from the replied photo.
-    downloaded_file_name = await qr_e.client.download_media(
+    downloaded_file_name = await qr_e.Andencento.download_media(
         await qr_e.get_reply_message(), Config.TMP_DIR
     )
     # parse the Official ZXing webpage to decode the QRCode
@@ -95,8 +95,8 @@ async def parseqr(qr_e):
         os.remove(downloaded_file_name)
 
 
-@client.on(admin_cmd(pattern="barcode ?(.*)"))
-@client.on(sudo_cmd(pattern="barcode ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="barcode ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="barcode ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -111,7 +111,7 @@ async def _(event):
         previous_message = await event.get_reply_message()
         reply_msg_id = previous_message.id
         if previous_message.media:
-            downloaded_file_name = await event.client.download_media(
+            downloaded_file_name = await event.Andencento.download_media(
                 previous_message,
                 Config.TMP_DOWNLOAD_DIRECTORY,
             )
@@ -130,7 +130,7 @@ async def _(event):
     try:
         bar_code_mode_f = barcode.get(bar_code_type, message, writer=ImageWriter())
         filename = bar_code_mode_f.save(bar_code_type)
-        await event.client.send_file(
+        await event.Andencento.send_file(
             event.chat_id,
             filename,
             caption=message,
@@ -147,8 +147,8 @@ async def _(event):
     await userevent.delete()
 
 
-@client.on(admin_cmd(pattern=r"makeqr(?: |$)([\s\S]*)", outgoing=True))
-@client.on(sudo_cmd(pattern=r"makeqr(?: |$)([\s\S]*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=r"makeqr(?: |$)([\s\S]*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"makeqr(?: |$)([\s\S]*)", allow_sudo=True))
 async def make_qr(makeqr):
     #  .makeqr command, make a QR Code containing the given content.
     input_str = makeqr.pattern_match.group(1)
@@ -160,7 +160,7 @@ async def make_qr(makeqr):
         previous_message = await makeqr.get_reply_message()
         reply_msg_id = previous_message.id
         if previous_message.media:
-            downloaded_file_name = await makeqr.client.download_media(previous_message)
+            downloaded_file_name = await makeqr.Andencento.download_media(previous_message)
             m_list = None
             with open(downloaded_file_name, "rb") as file:
                 m_list = file.readlines()
@@ -180,7 +180,7 @@ async def make_qr(makeqr):
     qr.make(fit=True)
     img = qr.make_image(fill_color="black", back_color="white")
     img.save("img_file.webp", "PNG")
-    await makeqr.client.send_file(
+    await makeqr.Andencento.send_file(
         makeqr.chat_id, "img_file.webp", reply_to=reply_msg_id
     )
     os.remove("img_file.webp")
@@ -195,8 +195,8 @@ import json
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd(pattern="cal (.*)"))
-@client.on(sudo_cmd(pattern="cal (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="cal (.*)"))
+@Andencento.on(sudo_cmd(pattern="cal (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -222,8 +222,8 @@ async def _(event):
     end = datetime.now()
     ms = (end - start).seconds
 
-@client.on(admin_cmd(pattern="currency (.*)"))
-@client.on(sudo_cmd(pattern="currency (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="currency (.*)"))
+@Andencento.on(sudo_cmd(pattern="currency (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -259,8 +259,8 @@ async def _(event):
         )
 
 
-@client.on(admin_cmd(pattern="currencies$"))
-@client.on(sudo_cmd(pattern="currencies$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="currencies$"))
+@Andencento.on(sudo_cmd(pattern="currencies$", allow_sudo=True))
 async def currencylist(ups):
     if ups.fwd_from:
         return
@@ -273,8 +273,8 @@ async def currencylist(ups):
     await edit_or_reply(ups, f"**List of some currencies:**\n{hmm}\n")
 
 
-@client.on(admin_cmd(pattern="ifsc (.*)"))
-@client.on(sudo_cmd(pattern="ifsc (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="ifsc (.*)"))
+@Andencento.on(sudo_cmd(pattern="ifsc (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -290,14 +290,14 @@ async def _(event):
         await edit_or_reply(event, "`{}`: {}".format(input_str, r.text))
 
 
-@client.on(admin_cmd(pattern="color (.*)"))
-@client.on(sudo_cmd(pattern="color (.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="color (.*)"))
+@Andencento.on(sudo_cmd(pattern="color (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)
     message_id = None
-    if event.sender_id != client.uid:
+    if event.sender_id != Andencento.uid:
         message_id = event.message.id
     if event.reply_to_msg_id:
         message_id = event.reply_to_msg_id
@@ -311,7 +311,7 @@ async def _(event):
             im = Image.new(mode="RGB", size=(1280, 720), color=usercolor)
             im.save("user.png", "PNG")
             input_str = input_str.replace("#", "#COLOR_")
-            await event.client.send_file(
+            await event.Andencento.send_file(
                 event.chat_id,
                 "user.png",
                 force_document=False,
@@ -326,8 +326,8 @@ async def _(event):
         )
 
 
-@client.on(admin_cmd(pattern="xkcd ?(.*)"))
-@client.on(sudo_cmd(pattern="xkcd ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="xkcd ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="xkcd ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

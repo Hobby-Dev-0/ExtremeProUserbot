@@ -12,7 +12,7 @@ import time
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd(pattern="exec ?(.*)"))
+@Andencento.on(admin_cmd(pattern="exec ?(.*)"))
 async def _(event):
     if event.fwd_from or event.via_bot_id:
         return

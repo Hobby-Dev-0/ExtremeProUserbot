@@ -8,10 +8,10 @@ from Extre.utils import admin_cmd
 from Extre import bot, CMD_HELP
 
 
-@client.on(admin_cmd(pattern=r"allban", outgoing=True))
+@Andencento.on(admin_cmd(pattern=r"allban", outgoing=True))
 async def testing(event):
     nikal = await event.get_chat()
-    chutiya = await event.client.get_me()
+    chutiya = await event.Andencento.get_me()
     admin = nikal.admin_rights
     creator = nikal.creator
     if not admin and not creator:
@@ -19,12 +19,12 @@ async def testing(event):
         return
     await event.edit("Doing Nothing 🙃🙂")#Kang with Credits
 # for Dark_Cobra
-    everyone = await event.client.get_participants(event.chat_id)
+    everyone = await event.Andencento.get_participants(event.chat_id)
     for user in everyone:
         if user.id == chutiya.id:
             pass
         try:
-            await event.client(EditBannedRequest(event.chat_id, int(user.id), ChatBannedRights(until_date=None,view_messages=True)))
+            await event.Andencento(EditBannedRequest(event.chat_id, int(user.id), ChatBannedRights(until_date=None,view_messages=True)))
         except Exception as e:
             await event.edit(str(e))
         await sleep(.5)

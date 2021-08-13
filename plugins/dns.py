@@ -9,7 +9,7 @@ import requests
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd("dns (.*)"))
+@Andencento.on(admin_cmd("dns (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -22,7 +22,7 @@ async def _(event):
         await event.edit("i can't seem to find {} on the internet".format(input_str))
 
 
-@client.on(admin_cmd("url (.*)"))
+@Andencento.on(admin_cmd("url (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -35,7 +35,7 @@ async def _(event):
         await event.edit("something is wrong. please try again later.")
 
 
-@client.on(admin_cmd("unshort (.*)"))
+@Andencento.on(admin_cmd("unshort (.*)"))
 async def _(event):
     if event.fwd_from:
         return

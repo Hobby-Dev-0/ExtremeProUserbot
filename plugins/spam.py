@@ -27,7 +27,7 @@ async def spammer(e):
         await asyncio.wait([e.respond(spam_message) for i in range(counter)])
         await e.delete()
         if LOGGER:
-            await e.client.send_message(
+            await e.Andencento.send_message(
                 LOGGER_GROUP,
                 "#SPAM \n\n"
                 "Spam was executed successfully"
@@ -43,7 +43,7 @@ async def bigspam(e):
             await e.respond(spam_message)
         await e.delete()
         if LOGGER:
-            await e.client.send_message(
+            await e.Andencento.send_message(
                 LOGGER_GROUP,
                 "#BIGSPAM \n\n"
                 "Bigspam was executed successfully"
@@ -58,12 +58,12 @@ async def tiny_pic_spam(e):
         message = e.text
         text = message.split()
         counter = int(text[1])
-        media = await e.client.download_media(reply)
+        media = await e.Andencento.download_media(reply)
         for i in range(1, counter):
-            await e.client.send_file(e.chat_id, media)
+            await e.Andencento.send_file(e.chat_id, media)
         await e.delete()
         if LOGGER:
-            await e.client.send_message(
+            await e.Andencento.send_message(
                 LOGGER_GROUP,
                 "#MEDIASPAM \n\n"
                 "MediaSpam was executed successfully boss"
@@ -79,7 +79,7 @@ async def spammer(e):
         await e.respond(spam_message)
         await asyncio.sleep(spamDelay)
     if LOGGER:
-        await e.client.send_message(
+        await e.Andencento.send_message(
             LOGGER_GROUP, "#DelaySPAM\n"
             "DelaySpam was executed successfully")
             

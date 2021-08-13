@@ -11,7 +11,7 @@ from Extre.utils import sudo_cmd
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "extremepro"
 
 
-@client.on(sudo_cmd(allow_sudo=True, pattern="shelp(?: |$)(.*)"))
+@Andencento.on(sudo_cmd(allow_sudo=True, pattern="shelp(?: |$)(.*)"))
 async def info(event):
     if event.fwd_from:
         return

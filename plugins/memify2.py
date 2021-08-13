@@ -12,7 +12,7 @@ from Extre.utils import admin_cmd
 
 
 
-@client.on(admin_cmd(pattern=r"mmf ?(.*)"))
+@Andencento.on(admin_cmd(pattern=r"mmf ?(.*)"))
 
 async def handler(event):
 
@@ -46,7 +46,7 @@ async def handler(event):
 
     meme = await drawText(file, text)
 
-    await event.client.send_file(event.chat_id, file=meme, force_document=False)
+    await event.Andencento.send_file(event.chat_id, file=meme, force_document=False)
 
     os.remove(meme)
 

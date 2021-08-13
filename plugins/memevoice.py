@@ -47,7 +47,7 @@ def deEmojify(inputString: str) -> str:
 
 
 
-@client.on(admin_cmd(pattern="mev(?: |$)(.*)"))
+@Andencento.on(admin_cmd(pattern="mev(?: |$)(.*)"))
 async def nope(legendx22):
     user = legendx22.pattern_match.group(1)
     if not user:

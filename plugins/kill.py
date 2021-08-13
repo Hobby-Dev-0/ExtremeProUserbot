@@ -9,7 +9,7 @@ from telethon.tl.functions.users import GetFullUserRequest
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd(pattern=r"kill"))
+@Andencento.on(admin_cmd(pattern=r"kill"))
 async def _(event):
 
     if event.fwd_from:
@@ -26,7 +26,7 @@ async def _(event):
 
     if event.reply_to_msg_id:
         reply_message = await event.get_reply_message()
-        replied_user = await event.client(GetFullUserRequest(reply_message.from_id))
+        replied_user = await event.Andencento(GetFullUserRequest(reply_message.from_id))
         replied_user.user.first_name
         replied_user.user.username
         idd = reply_message.from_id

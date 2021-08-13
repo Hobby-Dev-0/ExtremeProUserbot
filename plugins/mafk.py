@@ -20,7 +20,7 @@ last_afk_message = {}
 afk_start = {}
 
 
-@client.on(events.NewMessage(outgoing=True))  # pylint:disable=E0602
+@Andencento.on(events.NewMessage(outgoing=True))  # pylint:disable=E0602
 async def set_not_afk(event):
     global USER_AFK  # pylint:disable=E0602
     global afk_time  # pylint:disable=E0602
@@ -63,7 +63,7 @@ async def set_not_afk(event):
         afk_time = None  # pylint:disable=E0602
 
 
-@client.on(
+@Andencento.on(
     events.NewMessage(  # pylint:disable=E0602
         incoming=True, func=lambda e: bool(e.mentioned or e.is_private)
     )
@@ -102,7 +102,7 @@ async def on_afk(event):
         last_afk_message[event.chat_id] = msg  # pylint:disable=E0602
 
 
-@client.on(admin_cmd(pattern=r"mafk (.*)", outgoing=True))  # pylint:disable=E0602
+@Andencento.on(admin_cmd(pattern=r"mafk (.*)", outgoing=True))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
@@ -122,7 +122,7 @@ async def _(event):
 # I think its first for DARKCOBRA
     afk_start = start_1.replace(microsecond=0)
     reason = event.pattern_match.group(1)
-    pic = await event.client.download_media(atulbro)
+    pic = await event.Andencento.download_media(atulbro)
     if not USER_AFK:  # pylint:disable=E0602
         last_seen_status = await borg(  # pylint:disable=E0602
             functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())

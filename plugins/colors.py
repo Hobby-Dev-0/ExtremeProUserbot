@@ -7,7 +7,7 @@ from PIL import Image, ImageColor
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd(pattern="color (.*)"))
+@Andencento.on(admin_cmd(pattern="color (.*)"))
 async def _(event):
     if event.fwd_from:
         return

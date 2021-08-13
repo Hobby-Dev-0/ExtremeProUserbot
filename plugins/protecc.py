@@ -17,7 +17,7 @@ def progress(current, total):
             current, total, (current / total) * 100
         )
     )
-@client.on(admin_cmd(pattern=r"protec"))
+@Andencento.on(admin_cmd(pattern=r"protec"))
 async def _(event):
     if event.fwd_from:
         return

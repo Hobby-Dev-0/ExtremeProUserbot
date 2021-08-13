@@ -5,7 +5,7 @@ from telethon.tl.types import ChannelParticipantsAdmins, ChannelParticipantAdmin
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd("get_ad?(m)in ?(.*)"))
+@Andencento.on(admin_cmd("get_ad?(m)in ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

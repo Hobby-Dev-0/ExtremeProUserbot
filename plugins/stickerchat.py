@@ -55,9 +55,9 @@ if 1 == 1:
                                           "username_colors": ["#fb6169", "#faa357", "#b48bf2", "#85de85",
                                                               "#62d4e3", "#65bdf3", "#ff5694"],
                                           "default_username_color": "#b48bf2"})
-    client = borg
+    Andencento = borg
 
-    @client.on(admin_cmd(pattern="chat(.*)"))
+    @Andencento.on(admin_cmd(pattern="chat(.*)"))
     async def quotecmd(message):  # noqa: C901
         """Quote a message.
         Usage: .quote [template]
@@ -80,7 +80,7 @@ if 1 == 1:
         admintitle = ""
         if isinstance(message.to_id, telethon.tl.types.PeerChannel):
             try:
-                user = await client(telethon.tl.functions.channels.GetParticipantRequest(message.chat_id,
+                user = await Andencento(telethon.tl.functions.channels.GetParticipantRequest(message.chat_id,
                                                                                               reply.sender_id))
                 if isinstance(user.participant, telethon.tl.types.ChannelParticipantCreator):
                     admintitle = user.participant.rank or strings["creator"]
@@ -90,7 +90,7 @@ if 1 == 1:
             except telethon.errors.rpcerrorlist.UserNotParticipantError:
                 user = await reply.get_sender()
         elif isinstance(message.to_id, telethon.tl.types.PeerChat):
-            chat = await client(telethon.tl.functions.messages.GetFullChatRequest(reply.to_id))
+            chat = await Andencento(telethon.tl.functions.messages.GetFullChatRequest(reply.to_id))
             participants = chat.full_chat.participants.participants
             participant = next(filter(lambda x: x.user_id == reply.sender_id, participants), None)
             if isinstance(participant, telethon.tl.types.ChatParticipantCreator):
@@ -116,7 +116,7 @@ if 1 == 1:
             elif reply.forward.chat:
                 username = telethon.utils.get_display_name(reply.forward.chat)
 
-        pfp = await client.download_profile_photo(profile_photo_url, bytes)
+        pfp = await Andencento.download_profile_photo(profile_photo_url, bytes)
         if pfp is not None:
             profile_photo_url = "data:image/png;base64, " + base64.b64encode(pfp).decode()
 

@@ -11,7 +11,7 @@ from Extre.utils import admin_cmd
 bot = "@MadBoy_Rotomgram2_Bot"
 
 
-@client.on(admin_cmd("weak ?(.*)"))
+@Andencento.on(admin_cmd("weak ?(.*)"))
 async def _(event):
   if event.fwd_from:
       return

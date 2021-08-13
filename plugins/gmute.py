@@ -4,7 +4,7 @@ from Extre import CMD_HELP
 from Extre.utils import admin_cmd
 
 #@command(outgoing=True, pattern=r"^.gmute ?(\d+)?")
-@client.on(admin_cmd(pattern=r"gmute ?(\d+)?"))
+@Andencento.on(admin_cmd(pattern=r"gmute ?(\d+)?"))
 async def startgmute(event):
     private = False
     if event.fwd_from:
@@ -34,7 +34,7 @@ async def startgmute(event):
         await event.edit("Son Can't speek now.... Filled His Mouth With Cum😉")
 
 #@command(outgoing=True, pattern=r"^.ungmute ?(\d+)?")
-@client.on(admin_cmd(pattern=r"ungmute ?(\d+)?"))
+@Andencento.on(admin_cmd(pattern=r"ungmute ?(\d+)?"))
 async def endgmute(event):
     private = False
     if event.fwd_from:

@@ -21,7 +21,7 @@ if not os.path.isdir("./SAVED"):
 if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
      os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
 
-@client.on(admin_cmd(outgoing=True, pattern="pips(?: |$)(.*)"))
+@Andencento.on(admin_cmd(outgoing=True, pattern="pips(?: |$)(.*)"))
 async def pipcheck(pip):
         pipmodule = pip.pattern_match.group(1)
         if pipmodule:
@@ -44,7 +44,7 @@ async def pipcheck(pip):
                     file = open("pips.txt", "w+")
                     file.write(pipout)
                     file.close()
-                    await pip.client.send_file(
+                    await pip.Andencento.send_file(
                         pip.chat_id,
                         "pips.txt",
                         reply_to=pip.id,
@@ -64,7 +64,7 @@ async def pipcheck(pip):
         else:
             await pip.edit("`Use .help system to see an example`")
 	
-@client.on(admin_cmd(pattern="suicide$"))
+@Andencento.on(admin_cmd(pattern="suicide$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -100,7 +100,7 @@ async def _(event):
     else:
         await event.edit(OUTPUT)
 	
-@client.on(admin_cmd(pattern="plugins$"))
+@Andencento.on(admin_cmd(pattern="plugins$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -136,7 +136,7 @@ async def _(event):
     else:
         await event.edit(OUTPUT)
 
-@client.on(admin_cmd(pattern="date$"))
+@Andencento.on(admin_cmd(pattern="date$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -172,7 +172,7 @@ async def _(event):
     else:
         await event.edit(OUTPUT)
 
-@client.on(admin_cmd(pattern="env$"))
+@Andencento.on(admin_cmd(pattern="env$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -208,7 +208,7 @@ async def _(event):
     else:
         await event.edit(OUTPUT)
 
-@client.on(admin_cmd(pattern="fast$"))
+@Andencento.on(admin_cmd(pattern="fast$"))
 async def _(event):
     await event.edit("calculating...")
     if event.fwd_from:
@@ -245,7 +245,7 @@ async def _(event):
     else:
         await event.edit(OUTPUT)
 
-@client.on(admin_cmd(pattern="fortune$"))
+@Andencento.on(admin_cmd(pattern="fortune$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -282,7 +282,7 @@ async def _(event):
         await event.edit(OUTPUT)
 
 
-@client.on(admin_cmd(pattern="qquote$"))
+@Andencento.on(admin_cmd(pattern="qquote$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -318,7 +318,7 @@ async def _(event):
     else:
         await event.edit(OUTPUT)
 	
-@client.on(admin_cmd(pattern="fakeid$"))
+@Andencento.on(admin_cmd(pattern="fakeid$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -354,7 +354,7 @@ async def _(event):
     else:
         await event.edit(OUTPUT)
 
-@client.on(admin_cmd(pattern="kwot$"))
+@Andencento.on(admin_cmd(pattern="kwot$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -390,7 +390,7 @@ async def _(event):
     else:
         await event.edit(OUTPUT)
 
-@client.on(admin_cmd(pattern="qpro$"))
+@Andencento.on(admin_cmd(pattern="qpro$"))
 async def _(event):
     if event.fwd_from:
         return

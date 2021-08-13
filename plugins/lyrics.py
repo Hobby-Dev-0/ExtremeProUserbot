@@ -7,7 +7,7 @@ from Extre.utils import admin_cmd
 import asyncio
 from PyLyrics import *
 
-@client.on(admin_cmd(pattern="lyrics (.*)"))
+@Andencento.on(admin_cmd(pattern="lyrics (.*)"))
 async def _(event):
     if event.fwd_from:
         return

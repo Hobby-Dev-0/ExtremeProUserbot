@@ -25,7 +25,7 @@ path = "./dcobra/"
 if not os.path.isdir(path):
     os.makedirs(path)
 
-@client.on(admin_cmd(pattern=r"trig"))
+@Andencento.on(admin_cmd(pattern=r"trig"))
 async def dc(event):
     if not event.reply_to_msg_id:
         await event.edit("Reply to any media.")
@@ -41,7 +41,7 @@ async def dc(event):
     api = f"https://some-random-api.ml/canvas/triggered?avatar={link}"
     r = requests.get(api)
     open("shivam.gif", "wb").write(r.content)
-    await event.client.send_file(event.chat_id, "shivam.gif", force_document=False, reply_to=event.reply_to_msg_id)
+    await event.Andencento.send_file(event.chat_id, "shivam.gif", force_document=False, reply_to=event.reply_to_msg_id)
     await event.delete()
     shutil.rmtree(path)
     os.remove("danish.png")
@@ -50,7 +50,7 @@ async def dc(event):
 
     # New .wst By @Shivam_Patel with @danish_00
 
-@client.on(admin_cmd(pattern=r"wst"))
+@Andencento.on(admin_cmd(pattern=r"wst"))
 async def hmm(event):
     if not event.reply_to_msg_id:
         await event.edit("Reply to any media.")
@@ -86,7 +86,7 @@ async def hmm(event):
     miraculous=PIL.Image.open("shivamwasted.png")
     img=miraculous.resize((int(shi),int(vam)))
     img.save("shivamwastedgta.png", format="PNG", optimize=True)
-    await event.client.send_file(event.chat_id, "shivamwastedgta.png", force_document=False, reply_to=event.reply_to_msg_id)
+    await event.Andencento.send_file(event.chat_id, "shivamwastedgta.png", force_document=False, reply_to=event.reply_to_msg_id)
     await event.delete()
     os.remove("shivamwasted.png")
     os.remove("shivamwastedgta.png")
@@ -94,7 +94,7 @@ async def hmm(event):
     os.remove("shivamgta.png")
             
 
-@client.on(admin_cmd(pattern="rgif"))
+@Andencento.on(admin_cmd(pattern="rgif"))
 async def _(event):
     if not event.reply_to_msg_id:
         await event.edit("Reply to any media.")
@@ -114,7 +114,7 @@ async def _(event):
         cobra, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE)
     stdout, stderr = await process.communicate()
     await event.edit("```Uploading...```")
-    await event.client.send_file(event.chat_id, "danish.mp4" , force_document=False, reply_to=event.reply_to_msg_id)
+    await event.Andencento.send_file(event.chat_id, "danish.mp4" , force_document=False, reply_to=event.reply_to_msg_id)
     await event.delete()
     shutil.rmtree(path)
     os.remove("danish.mp4")
@@ -122,7 +122,7 @@ async def _(event):
 
             
 
-@client.on(admin_cmd("grey"))
+@Andencento.on(admin_cmd("grey"))
 async def hehe(event):
     if not event.reply_to_msg_id:
         await event.edit("Reply to any Media.")
@@ -134,14 +134,14 @@ async def hehe(event):
     ret, frame = img.read()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) 
     cv2.imwrite("danish.jpg", gray)
-    await event.client.send_file(event.chat_id, "danish.jpg", force_document=False, reply_to=event.reply_to_msg_id)
+    await event.Andencento.send_file(event.chat_id, "danish.jpg", force_document=False, reply_to=event.reply_to_msg_id)
     await event.delete()
     shutil.rmtree(path)
     os.remove("danish.jpg")
 
     # api for adding color only....  
 DARKCOBRA = Config.DEEP_AI if Config.DEEP_AI else "quickstart-QUdJIGlzIGNvbWluZy4uLi4K"
-@client.on(admin_cmd(pattern="color$", outgoing=True))
+@Andencento.on(admin_cmd(pattern="color$", outgoing=True))
 async def _(event):
     if not event.reply_to_msg_id:
         await event.edit("Reply to any Media.")
@@ -167,7 +167,7 @@ async def _(event):
     await event.delete()
     
    
-@client.on(admin_cmd(pattern="circle", outgoing=True))
+@Andencento.on(admin_cmd(pattern="circle", outgoing=True))
 async def shiv(event):
     if not event.reply_to_msg_id:
         await event.edit("Reply to any media.")
@@ -187,14 +187,14 @@ async def shiv(event):
     npAlpha=np.array(alpha)
     npImage=np.dstack((npImage,npAlpha))
     Image.fromarray(npImage).save('shivam.webp')
-    await event.client.send_file(event.chat_id, "shivam.webp", force_document=False, reply_to=event.reply_to_msg_id)
+    await event.Andencento.send_file(event.chat_id, "shivam.webp", force_document=False, reply_to=event.reply_to_msg_id)
     await event.delete()
     shutil.rmtree(path)
     os.remove("shivam.webp")
     os.remove("danish.jpg")
 
 
-@client.on(admin_cmd(pattern="ftoon$"))
+@Andencento.on(admin_cmd(pattern="ftoon$"))
 async def _(event):
     if not event.reply_to_msg_id:
         await event.edit("Reply to any Media.")

@@ -32,7 +32,7 @@ USERNAME_TAKEN = "```This username is already taken.```"
 # ===============================================================
 
 
-@client.on(admin_cmd(pattern="pbio (.*)"))  # pylint:disable=E0602
+@Andencento.on(admin_cmd(pattern="pbio (.*)"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
@@ -46,7 +46,7 @@ async def _(event):
         await event.edit(str(e))
 
 
-@client.on(admin_cmd(pattern="pname ((.|\n)*)"))  # pylint:disable=E0602,W0703
+@Andencento.on(admin_cmd(pattern="pname ((.|\n)*)"))  # pylint:disable=E0602,W0703
 async def _(event):
     if event.fwd_from:
         return
@@ -65,7 +65,7 @@ async def _(event):
         await event.edit(str(e))
 
 
-@client.on(admin_cmd(pattern="ppic"))  # pylint:disable=E0602
+@Andencento.on(admin_cmd(pattern="ppic"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
@@ -99,18 +99,18 @@ async def _(event):
         logger.warn(str(e))  # pylint:disable=E0602
 
 
-@client.on(admin_cmd(outgoing=True, pattern="username (.*)"))
+@Andencento.on(admin_cmd(outgoing=True, pattern="username (.*)"))
 async def update_username(username):
     """ For .username command, set a new username in Telegram. """
     newusername = username.pattern_match.group(1)
     try:
-        await username.client(UpdateUsernameRequest(newusername))
+        await username.Andencento(UpdateUsernameRequest(newusername))
         await username.edit(USERNAME_SUCCESS)
     except UsernameOccupiedError:
         await username.edit(USERNAME_TAKEN)
 
 
-@client.on(admin_cmd(outgoing=True, pattern="count$"))
+@Andencento.on(admin_cmd(outgoing=True, pattern="count$"))
 async def count(event):
     """ For .count command, get profile stats. """
     u = 0
@@ -147,7 +147,7 @@ async def count(event):
     await event.edit(result)
 
 
-@client.on(admin_cmd(outgoing=True, pattern=r"delpfp"))
+@Andencento.on(admin_cmd(outgoing=True, pattern=r"delpfp"))
 async def remove_profilepic(delpfp):
     """ For .delpfp command, delete your current profile picture in Telegram. """
     group = delpfp.text[8:]
@@ -158,7 +158,7 @@ async def remove_profilepic(delpfp):
     else:
         lim = 1
 
-    pfplist = await delpfp.client(
+    pfplist = await delpfp.Andencento(
         GetUserPhotosRequest(user_id=delpfp.sender_id,
                              offset=0,
                              max_id=0,
@@ -169,11 +169,11 @@ async def remove_profilepic(delpfp):
             InputPhoto(id=sep.id,
                        access_hash=sep.access_hash,
                        file_reference=sep.file_reference))
-    await delpfp.client(DeletePhotosRequest(id=input_photos))
+    await delpfp.Andencento(DeletePhotosRequest(id=input_photos))
     await delpfp.edit(
         f"`Successfully deleted {len(input_photos)} profile picture(s).`")
 
-@client.on(admin_cmd(pattern="myusernames$"))
+@Andencento.on(admin_cmd(pattern="myusernames$"))
 async def _(event):
     if event.fwd_from:
         return

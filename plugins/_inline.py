@@ -8,11 +8,11 @@ from userbot import CMD_LIST
 
 from . import *
 
-client_pic = (
+Andencento_pic = (
     ExtremedB.get("ALIVE_PIC") or "https://telegra.ph/file/ac32724650ef92663fbd1.png"
 )
 cstm_pmp = ExtremedB.get("CUSTOM_PMPERMIT")
-ALV_PIC = client_pic
+ALV_PIC = Andencento_pic
 mssge = (
     str(cstm_pmp)
     if cstm_pmp
@@ -23,9 +23,9 @@ USER_BOT_WARN_ZERO = (
     "Enough Of Your Flooding In My Master's PM!! \n\n**🚫 Blocked and Reported**"
 )
 ANDENCENTO_FIRST = (
-    "**🔥 client ULTRA Private Security 🔥**\n\nThis is to inform you that "
+    "**🔥 Andencento ULTRA Private Security 🔥**\n\nThis is to inform you that "
     "{} is currently unavailable.\nThis is an automated message.\n\n"
-    "{}\n\n**Please Choose Why You Are Here!!**".format(client_mention, mssge)
+    "{}\n\n**Please Choose Why You Are Here!!**".format(Andencento_mention, mssge)
 )
 cmd = "commands"
 andencento = ExtremedB.get("YOUR_NAME")
@@ -46,15 +46,15 @@ if ExtremedB.get("TG_BOT_USER_NAME_BF_HER") is not None and tgbot is not None:
             buttons = paginate_help(0, CMD_LIST, "helpme")
 
             result = builder.article(
-                "© client-UserBot Help",
-                text=f"client[🤖](https://telegra.ph/file/ac32724650ef92663fbd1.png)\n🔰 **{andencento}**\n\n📜 __No.of Plugins__ : `{len(CMD_LIST)}` \n🗂️ __Commands__ : `{len(apn)}`",
+                "© Andencento-UserBot Help",
+                text=f"Andencento[🤖](https://telegra.ph/file/ac32724650ef92663fbd1.png)\n🔰 **{andencento}**\n\n📜 __No.of Plugins__ : `{len(CMD_LIST)}` \n🗂️ __Commands__ : `{len(apn)}`",
                 buttons=buttons,
                 link_preview=False,
             )
         elif event.query.user_id == bot.uid and query == "pm_warn":
-            hel_l = ANDENCENTO_FIRST.format(client_mention, mssge)
+            hel_l = ANDENCENTO_FIRST.format(Andencento_mention, mssge)
             result = builder.photo(
-                file=client_pic,
+                file=Andencento_pic,
                 text=hel_l,
                 buttons=[
                     [
@@ -69,13 +69,13 @@ if ExtremedB.get("TG_BOT_USER_NAME_BF_HER") is not None and tgbot is not None:
         elif event.query.user_id == bot.uid and query == "repo":
             result = builder.article(
                 title="Repository",
-                text=f"**⚡ ɛɢɛռɖαʀʏ ᴀғ client Userbot ⚡**",
+                text=f"**⚡ ɛɢɛռɖαʀʏ ᴀғ Andencento Userbot ⚡**",
                 buttons=[
-                    [Button.url("📑 Repo 📑", "https://t.me/clientSupport")],
+                    [Button.url("📑 Repo 📑", "https://t.me/AndencentoSupport")],
                     [
                         Button.url(
                             "🚀 Deploy 🚀",
-                            "https://heroku.com/deploy?template=https://github.com/client/Deploy-client",
+                            "https://heroku.com/deploy?template=https://github.com/Andencento/Deploy-Andencento",
                         )
                     ],
                 ],
@@ -93,17 +93,17 @@ if ExtremedB.get("TG_BOT_USER_NAME_BF_HER") is not None and tgbot is not None:
         else:
             result = builder.article(
                 "@TheEiva",
-                text="""**Hey! This is [client](https://t.me/client) \nYou can know more about me from the links given below 👇**""",
+                text="""**Hey! This is [Andencento](https://t.me/Andencento) \nYou can know more about me from the links given below 👇**""",
                 buttons=[
                     [
-                        custom.Button.url("🔥 CHANNEL 🔥", "https://t.me/client"),
+                        custom.Button.url("🔥 CHANNEL 🔥", "https://t.me/Andencento"),
                         custom.Button.url(
-                            "⚡ GROUP ⚡", "https://t.me/clientSupport"
+                            "⚡ GROUP ⚡", "https://t.me/AndencentoSupport"
                         ),
                     ],
                     [
                         custom.Button.url(
-                            "✨ REPO ✨", "https://github.com/client/client"
+                            "✨ REPO ✨", "https://github.com/Andencento/Andencento"
                         ),
                         custom.Button.url(
                             "🔰 TUTORIAL 🔰",
@@ -126,7 +126,7 @@ if ExtremedB.get("TG_BOT_USER_NAME_BF_HER") is not None and tgbot is not None:
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
         else:
             await event.edit(
-                f"🔰 This is client PM Security for {Eiva_mention} to keep away unwanted retards from spamming PM..."
+                f"🔰 This is Andencento PM Security for {Eiva_mention} to keep away unwanted retards from spamming PM..."
             )
 
     @tgbot.on(
@@ -142,7 +142,7 @@ if ExtremedB.get("TG_BOT_USER_NAME_BF_HER") is not None and tgbot is not None:
             await event.edit(
                 f"✅ **Request Registered** \n\n{Eiva_mention} will now decide to look for your request or not.\n😐 Till then wait patiently and don't spam else block!!"
             )
-            target = await event.client(GetFullUserRequest(event.query.user_id))
+            target = await event.Andencento(GetFullUserRequest(event.query.user_id))
             first_name = html.escape(target.user.first_name)
             ok = event.query.user_id
             if first_name is not None:
@@ -164,7 +164,7 @@ if ExtremedB.get("TG_BOT_USER_NAME_BF_HER") is not None and tgbot is not None:
             await event.edit(
                 f"Ahh!! You here to do chit-chat!!\n\nPlease wait for {Eiva_mention} to come. Till then keep patience and don't spam."
             )
-            target = await event.client(GetFullUserRequest(event.query.user_id))
+            target = await event.Andencento(GetFullUserRequest(event.query.user_id))
             ok = event.query.user_id
             first_name = html.escape(target.user.first_name)
             if first_name is not None:
@@ -184,7 +184,7 @@ if ExtremedB.get("TG_BOT_USER_NAME_BF_HER") is not None and tgbot is not None:
         else:
             await event.edit(f"🥴 **Go away from here\nYou Are Blocked Now**")
             await bot(functions.contacts.BlockRequest(event.query.user_id))
-            target = await event.client(GetFullUserRequest(event.query.user_id))
+            target = await event.Andencento(GetFullUserRequest(event.query.user_id))
             ok = event.query.user_id
             first_name = html.escape(target.user.first_name)
             if first_name is not None:
@@ -263,7 +263,7 @@ if ExtremedB.get("TG_BOT_USER_NAME_BF_HER") is not None and tgbot is not None:
             except BaseException:
                 with io.BytesIO(str.encode(reply_pop_up_alert)) as out_file:
                     out_file.name = "{}.txt".format(plugin_name)
-                    await event.client.send_file(
+                    await event.Andencento.send_file(
                         event.chat_id,
                         out_file,
                         force_document=True,

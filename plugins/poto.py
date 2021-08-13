@@ -34,11 +34,11 @@ if 1 == 1:
 
     name = "Profile Photos"
 
-    client = borg
+    Andencento = borg
 
 
 
-    @client.on(admin_cmd(pattern="poto(.*)"))
+    @Andencento.on(admin_cmd(pattern="poto(.*)"))
 
     async def potocmd(event):
 
@@ -52,21 +52,21 @@ if 1 == 1:
 
         if user:
 
-            photos = await event.client.get_profile_photos(user.sender)
+            photos = await event.Andencento.get_profile_photos(user.sender)
 
         else:
 
-            photos = await event.client.get_profile_photos(chat)
+            photos = await event.Andencento.get_profile_photos(chat)
 
         if id.strip() == "":
 
             try:
 
-                await event.client.send_file(event.chat_id, photos)
+                await event.Andencento.send_file(event.chat_id, photos)
 
             except a:
 
-                photo = await event.client.download_profile_photo(chat)
+                photo = await event.Andencento.download_profile_photo(chat)
 
                 await borg.send_file(event.chat_id, photo)
 
@@ -90,7 +90,7 @@ if 1 == 1:
 
             if int(id) <= (len(photos)):
 
-                send_photos = await event.client.download_media(photos[id - 1])
+                send_photos = await event.Andencento.download_media(photos[id - 1])
 
                 await borg.send_file(event.chat_id, send_photos)
 

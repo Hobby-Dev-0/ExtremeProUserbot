@@ -13,7 +13,7 @@ from telethon import events, types, functions, utils
 
 def choser(cmd, pack, blacklist={}):
     docs = None
-    @client.on(events.NewMessage(pattern=rf'\.{cmd}', outgoing=True))
+    @Andencento.on(events.NewMessage(pattern=rf'\.{cmd}', outgoing=True))
     async def handler(event):
         await event.delete()
 

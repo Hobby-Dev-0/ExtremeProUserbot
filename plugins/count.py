@@ -7,8 +7,8 @@ from Extre.utils import admin_cmd, edit_or_reply, sudo_cmd
 from Extre import CMD_HELP
 
 
-@client.on(admin_cmd(pattern="stats$"))
-@client.on(sudo_cmd(pattern="stats$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="stats$"))
+@Andencento.on(sudo_cmd(pattern="stats$", allow_sudo=True))
 async def stats(
     event: NewMessage.Event,
 ) -> None:  # pylint: disable = R0912, R0914, R0915
@@ -26,7 +26,7 @@ async def stats(
     unread_mentions = 0
     unread = 0
     dialog: Dialog
-    async for dialog in event.client.iter_dialogs():
+    async for dialog in event.Andencento.iter_dialogs():
         entity = dialog.entity
         if isinstance(entity, Channel):
             # participants_count = (await event.get_participants(dialog,
@@ -60,7 +60,7 @@ async def stats(
         unread_mentions += dialog.unread_mentions_count
         unread += dialog.unread_count
     stop_time = time.time() - start_time
-    full_name = inline_mention(await event.client.get_me())
+    full_name = inline_mention(await event.Andencento.get_me())
     response = f'🔰**Stats for {full_name}**🔰\n\n'
     response += f'🔱 **Private Chats:** {private_chats} \n'
     response += f'🔸   `Users: {private_chats - bots}` \n'

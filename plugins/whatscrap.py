@@ -3,7 +3,7 @@ from telethon import events
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd(pattern="whatscrapp"))
+@Andencento.on(admin_cmd(pattern="whatscrapp"))
 async def _(event):
     if event.fwd_from:
         return

@@ -19,8 +19,8 @@ def progress(current, total):
     )
 from Extre.utils import extremepro_cmd, amanpandey_cmd
 
-@client.on(extremepro_cmd(pattern="neko(?: |$)(.*)", outgoing=True))
-@client.on(amanpandey_cmd(pattern="neko(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(extremepro_cmd(pattern="neko(?: |$)(.*)", outgoing=True))
+@Andencento.on(amanpandey_cmd(pattern="neko(?: |$)(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -32,7 +32,7 @@ async def _(event):
     elif event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         if previous_message.media:
-            downloaded_file_name = await event.client.download_media(
+            downloaded_file_name = await event.Andencento.download_media(
                 previous_message,
                 Config.TEMP_DIR,
             )
@@ -76,8 +76,8 @@ async def _(event):
     reply_text = f"**Pasted to Nekobin :** [Neko]({url})\n**Raw url :** [Raw](https://nekobin.com/raw/{key})\n\n**𝑷𝒂𝒔𝒕𝒆𝒅 𝒂𝒏𝒅 𝑼𝒑𝒍𝒐𝒂𝒅𝒆𝒅 𝒕𝒐 𝑵𝒆𝒌𝒐𝑩𝒊𝒏 𝒃𝒚 υℓтяα χ**"
     await catevent.edit(reply_text)
 
-@client.on(extremepro_cmd(pattern="pcode(?: |$)(.*)"))
-@client.on(amanpandey_cmd(pattern="pcode(?: |$)(.*)"))
+@Andencento.on(extremepro_cmd(pattern="pcode(?: |$)(.*)"))
+@Andencento.on(amanpandey_cmd(pattern="pcode(?: |$)(.*)"))
 async def code_print(event):
     if event.fwd_from:
         return
@@ -89,7 +89,7 @@ async def code_print(event):
     if reply:
         mediatype = media_type(reply)
         if mediatype == "Document":
-            d_file_name = await event.client.download_media(reply, "./temp/")
+            d_file_name = await event.Andencento.download_media(reply, "./temp/")
             f = open(d_file_name, "r")
             text_to_print = f.read()
     if text_to_print == "":
@@ -109,7 +109,7 @@ async def code_print(event):
         "out.png",
     )
     try:
-        await event.client.send_file(
+        await event.Andencento.send_file(
             event.chat_id, "out.png", force_document=False, reply_to=reply_to
         )
     except Exception as e:

@@ -11,7 +11,7 @@ import asyncio
 
  
 
-@client.on(admin_cmd(pattern="gaana ?(.*)"))
+@Andencento.on(admin_cmd(pattern="gaana ?(.*)"))
 async def FindMusicPleaseBot(gaana):
 
     song = gaana.pattern_match.group(1)
@@ -105,10 +105,10 @@ except:
 	pass
 
 
-@client.on(admin_cmd(pattern="song(?: |$)(.*)"))
+@Andencento.on(admin_cmd(pattern="song(?: |$)(.*)"))
 async def download_video(v_url):  
 
-    lazy = v_url ; sender = await lazy.get_sender() ; me = await lazy.client.get_me()
+    lazy = v_url ; sender = await lazy.get_sender() ; me = await lazy.Andencento.get_me()
 
     if not sender.id == me.id:
         rkp = await lazy.reply("`processing...`")
@@ -195,7 +195,7 @@ async def download_video(v_url):
         await rkp.edit(f"`Preparing to upload song:`\
         \n**{rip_data['title']}**\
         \nby *{rip_data['uploader']}*")
-        await v_url.client.send_file(
+        await v_url.Andencento.send_file(
             v_url.chat_id,
             f"{rip_data['id']}.mp3",
             supports_streaming=True,
@@ -214,7 +214,7 @@ async def download_video(v_url):
         await rkp.edit(f"`Preparing to upload song :`\
         \n**{rip_data['title']}**\
         \nby *{rip_data['uploader']}*")
-        await v_url.client.send_file(
+        await v_url.Andencento.send_file(
             v_url.chat_id,
             f"{rip_data['id']}.mp4",
             supports_streaming=True,
@@ -228,9 +228,9 @@ async def download_video(v_url):
         
         
         
-@client.on(admin_cmd(pattern="vsong(?: |$)(.*)"))
+@Andencento.on(admin_cmd(pattern="vsong(?: |$)(.*)"))
 async def download_video(v_url):  
-    lazy = v_url ; sender = await lazy.get_sender() ; me = await lazy.client.get_me()
+    lazy = v_url ; sender = await lazy.get_sender() ; me = await lazy.Andencento.get_me()
     if not sender.id == me.id:
         rkp = await lazy.reply("`processing...`")
     else:
@@ -313,7 +313,7 @@ async def download_video(v_url):
         await rkp.edit(f"`Preparing to upload song `\
         \n**{rip_data['title']}**\
         \nby *{rip_data['uploader']}*")
-        await v_url.client.send_file(
+        await v_url.Andencento.send_file(
             v_url.chat_id,
             f"{rip_data['id']}.mp3",
             supports_streaming=True,
@@ -332,7 +332,7 @@ async def download_video(v_url):
         await rkp.edit(f"`Preparing to upload video song :`\
         \n**{rip_data['title']}**\
         \nby *{rip_data['uploader']}*")
-        await v_url.client.send_file(
+        await v_url.Andencento.send_file(
             v_url.chat_id,
             f"{rip_data['id']}.mp4",
             supports_streaming=True,
@@ -372,7 +372,7 @@ def bruh(name):
 async def getmusic(so):
     if so.fwd_from:
         return
-    await so.client(JoinChannelRequest("t.me/anitimeofficial"))
+    await so.Andencento(JoinChannelRequest("t.me/anitimeofficial"))
     song = so.pattern_match.group(1)
     chat = "@SongsForYouBot"
     link = f"/song {song}"
@@ -392,7 +392,7 @@ async def getmusic(so):
           await so.edit("Ohh.. I got something!! Wait sending😋🤙")
           await asyncio.sleep(3)
           await bot.send_file(so.chat_id, respond)
-    await so.client.delete_messages(conv.chat_id,
+    await so.Andencento.delete_messages(conv.chat_id,
                                        [msg.id, response.id, respond.id])
     await so.delete()
 
@@ -444,7 +444,7 @@ async def DeezLoader(Deezlod):
               await Deezlod.edit("**Error:** `unblock` @DeezLoadBot `and retry!`")
               return
           await bot.send_file(Deezlod.chat_id, song, caption=details.text)
-          await Deezlod.client.delete_messages(conv.chat_id,
+          await Deezlod.Andencento.delete_messages(conv.chat_id,
                                              [msg_start.id, response.id, r.id, msg.id, details.id, song.id])
           await Deezlod.delete()   
           
@@ -458,7 +458,7 @@ from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
 from Extre.utils import admin_cmd
 
-@client.on(admin_cmd("sdd ?(.*)"))
+@Andencento.on(admin_cmd("sdd ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

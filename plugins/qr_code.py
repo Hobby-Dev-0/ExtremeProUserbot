@@ -19,7 +19,7 @@ def progress(current, total):
     )
 
 
-@client.on(admin_cmd(pattern="getqr"))
+@Andencento.on(admin_cmd(pattern="getqr"))
 async def _(event):
     if event.fwd_from:
         return
@@ -67,7 +67,7 @@ async def _(event):
     await event.edit(qr_contents)
 
 
-@client.on(admin_cmd(pattern="makeqr ?(.*)"))
+@Andencento.on(admin_cmd(pattern="makeqr ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

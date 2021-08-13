@@ -7,8 +7,8 @@ from Extre import CMD_HELP
 from Extre.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
-@client.on(admin_cmd(pattern="chain$"))
-@client.on(sudo_cmd(pattern="chain$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="chain$"))
+@Andencento.on(sudo_cmd(pattern="chain$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -18,7 +18,7 @@ async def _(event):
     while message:
         reply = await message.get_reply_message()
         if reply is None:
-            await event.client(
+            await event.Andencento(
                 SaveDraftRequest(
                     await event.get_input_chat(), "", reply_to_msg_id=message.id
                 )

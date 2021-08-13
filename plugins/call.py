@@ -10,7 +10,7 @@ from Extre.utils import admin_cmd
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "@pureindialover"
 
 
-@client.on(admin_cmd(pattern=r"call"))
+@Andencento.on(admin_cmd(pattern=r"call"))
 async def _(event):
 
     if event.fwd_from:

@@ -20,7 +20,7 @@ from Extre.utils import admin_cmd
 langi = "en"
 
 #kanged from Blank-x ;---;
-@client.on(admin_cmd("imdb (.*)", outgoing=True)) 
+@Andencento.on(admin_cmd("imdb (.*)", outgoing=True)) 
 async def imdb(e):
  try:
     movie_name = e.pattern_match.group(1)

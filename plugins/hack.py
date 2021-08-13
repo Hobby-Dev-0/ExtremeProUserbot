@@ -13,7 +13,7 @@ from Extre import CMD_HELP
 from Extre.utils import admin_cmd
 from Extre import bot as borg
 
-@client.on(admin_cmd(pattern="hack ?(.*)"))
+@Andencento.on(admin_cmd(pattern="hack ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

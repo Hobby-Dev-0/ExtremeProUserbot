@@ -7,7 +7,7 @@ from telethon.tl import types, functions
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd(pattern="frwd"))
+@Andencento.on(admin_cmd(pattern="frwd"))
 async def _(event):
     if event.fwd_from:
         return

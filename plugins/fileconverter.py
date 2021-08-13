@@ -14,9 +14,9 @@ from datetime import datetime
 from Extre.utils import admin_cmd, sudo_cmd , edit_or_reply
 from Extre import CMD_HELP, bot
 
-@client.on(admin_cmd(pattern=r"open", outgoing=True))
+@Andencento.on(admin_cmd(pattern=r"open", outgoing=True))
 async def _(event):
-    b = await event.client.download_media(await event.get_reply_message())
+    b = await event.Andencento.download_media(await event.get_reply_message())
     a = open(b, "r")
     c = a.read()
     a.close()
@@ -31,12 +31,12 @@ async def _(event):
                 f" Output file is too large Not supported By Telegram\n**So Pasted to** [Dog Bin]({url}) 😁😁", link_preview=False)            
             await a.delete()
     else:
-        await event.client.send_message(event.chat_id, f"{c}")
+        await event.Andencento.send_message(event.chat_id, f"{c}")
         await a.delete()
     os.remove(b)
 
 
-@client.on(admin_cmd(pattern="doc ?(.*)"))
+@Andencento.on(admin_cmd(pattern="doc ?(.*)"))
 async def get(event):
     name = event.text[5:]
     if name is None:
@@ -47,7 +47,7 @@ async def get(event):
         with open(name, "w") as f:
             f.write(m.message)
         await event.delete()
-        await event.client.send_file(event.chat_id, name, force_document=True)
+        await event.Andencento.send_file(event.chat_id, name, force_document=True)
         os.remove(name)
     else:
         await event.edit("reply to text message as .doc <file name.extension>")
@@ -66,8 +66,8 @@ async def get(event):
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "thumb_image.jpg"
 
 
-@client.on(admin_cmd(pattern="stoi"))
-@client.on(sudo_cmd(pattern="stoi", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="stoi"))
+@Andencento.on(sudo_cmd(pattern="stoi", allow_sudo=True))
 async def danish(hehe):
     if hehe.fwd_from:
         return
@@ -88,7 +88,7 @@ async def danish(hehe):
       
         to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
         downloaded_file_name = os.path.join(to_download_directory, file_name)
-        downloaded_file_name = await hehe.client.download_media(
+        downloaded_file_name = await hehe.Andencento.download_media(
             reply_message,
             downloaded_file_name
         )
@@ -99,7 +99,7 @@ async def danish(hehe):
             thumb = thumb
         if os.path.exists(downloaded_file_name):
             
-            dc = await hehe.client.send_file(
+            dc = await hehe.Andencento.send_file(
                 hehe.chat_id,
                 downloaded_file_name,
                 force_document=False,
@@ -121,8 +121,8 @@ async def danish(hehe):
   
   #hehe
   
-@client.on(admin_cmd(pattern="itos"))
-@client.on(sudo_cmd(pattern="itos", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="itos"))
+@Andencento.on(sudo_cmd(pattern="itos", allow_sudo=True))
 async def teamcobra(hehe):
     if hehe.fwd_from:
         return
@@ -143,7 +143,7 @@ async def teamcobra(hehe):
       
         to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
         downloaded_file_name = os.path.join(to_download_directory, file_name)
-        downloaded_file_name = await hehe.client.download_media(
+        downloaded_file_name = await hehe.Andencento.download_media(
             reply_message,
             downloaded_file_name
         )
@@ -154,7 +154,7 @@ async def teamcobra(hehe):
             thumb = thumb
         if os.path.exists(downloaded_file_name):
             
-            dc = await hehe.client.send_file(
+            dc = await hehe.Andencento.send_file(
                 hehe.chat_id,
                 downloaded_file_name,
                 force_document=False,

@@ -19,7 +19,7 @@ from telethon.errors import (BadRequestError, ChatAdminRequiredError,
 from Extre import CMD_HELP
 from Extre.utils import  errors_handler, admin_cmd
 
-@client.on(admin_cmd(pattern="leave$"))
+@Andencento.on(admin_cmd(pattern="leave$"))
 async def leave(e):
         await e.edit("`Legend is leaving this chat.....!Goodbye aren't forever..` ")
         time.sleep(3)
@@ -28,7 +28,7 @@ async def leave(e):
         else:
             await e.edit('`Sar This is Not A Chat`')
 
-@client.on(admin_cmd(pattern="chatinfo(?: |$)(.*)", outgoing=True))
+@Andencento.on(admin_cmd(pattern="chatinfo(?: |$)(.*)", outgoing=True))
 async def info(event):
     await event.edit("`Analysing the chat...`")
     chat = await get_chatinfo(event)
@@ -57,10 +57,10 @@ async def get_chatinfo(event):
         else:
             chat = event.chat_id
     try:
-        chat_info = await event.client(GetFullChatRequest(chat))
+        chat_info = await event.Andencento(GetFullChatRequest(chat))
     except:
         try:
-            chat_info = await event.client(GetFullChannelRequest(chat))
+            chat_info = await event.Andencento(GetFullChannelRequest(chat))
         except ChannelInvalidError:
             await event.reply("`Invalid channel/group`")
             return None
@@ -78,13 +78,13 @@ async def get_chatinfo(event):
 
 async def fetch_info(chat, event):
     # chat.chats is a list so we use get_entity() to avoid IndexError
-    chat_obj_info = await event.client.get_entity(chat.full_chat.id)
+    chat_obj_info = await event.Andencento.get_entity(chat.full_chat.id)
     broadcast = chat_obj_info.broadcast if hasattr(chat_obj_info, "broadcast") else False
     chat_type = "Channel" if broadcast else "Group"
     chat_title = chat_obj_info.title
     warn_emoji = emojize(":warning:")
     try:
-        msg_info = await event.client(GetHistoryRequest(peer=chat_obj_info.id, offset_id=0, offset_date=datetime(2010, 1, 1), 
+        msg_info = await event.Andencento(GetHistoryRequest(peer=chat_obj_info.id, offset_id=0, offset_date=datetime(2010, 1, 1), 
                                                         add_offset=-1, limit=1, max_id=0, min_id=0, hash=0))
     except Exception as e:
         msg_info = None
@@ -131,7 +131,7 @@ async def fetch_info(chat, event):
     if admins is None:
         # use this alternative way if chat.full_chat.admins_count is None, works even without being an admin
         try:
-            participants_admins = await event.client(GetParticipantsRequest(channel=chat.full_chat.id, filter=ChannelParticipantsAdmins(),
+            participants_admins = await event.Andencento(GetParticipantsRequest(channel=chat.full_chat.id, filter=ChannelParticipantsAdmins(),
                                                                             offset=0, limit=0, hash=0))
             admins = participants_admins.count if participants_admins else None
         except Exception as e:
@@ -208,15 +208,15 @@ async def fetch_info(chat, event):
         caption += f"Description: \n<code>{description}</code>\n"
     return caption
   
-@client.on(admin_cmd(pattern="adminlist", outgoing=True))
+@Andencento.on(admin_cmd(pattern="adminlist", outgoing=True))
 @errors_handler
 async def get_admin(show):
     """ For .admins command, list all of the admins of the chat. """
-    info = await show.client.get_entity(show.chat_id)
+    info = await show.Andencento.get_entity(show.chat_id)
     title = info.title if info.title else "this chat"
     mentions = f'<b>Admins in {title}:</b> \n'
     try:
-        async for user in show.client.iter_participants(
+        async for user in show.Andencento.iter_participants(
                 show.chat_id, filter=ChannelParticipantsAdmins):
             if not user.deleted:
                 link = f"<a href=\"tg://user?id={user.id}\">{user.first_name}</a>"
@@ -229,24 +229,24 @@ async def get_admin(show):
     await show.edit(mentions, parse_mode="html")
 
     
-@client.on(admin_cmd(pattern=r"users ?(.*)", outgoing=True))
+@Andencento.on(admin_cmd(pattern=r"users ?(.*)", outgoing=True))
 async def get_users(show):
         if not show.is_group:
             await show.edit("Are you sure this is a group?")
             return
-        info = await show.client.get_entity(show.chat_id)
+        info = await show.Andencento.get_entity(show.chat_id)
         title = info.title if info.title else "this chat"
         mentions = 'Users in {}: \n'.format(title)
         try:
             if not show.pattern_match.group(1):
-                async for user in show.client.iter_participants(show.chat_id):
+                async for user in show.Andencento.iter_participants(show.chat_id):
                     if not user.deleted:
                         mentions += f"\n[{user.first_name}](tg://user?id={user.id}) `{user.id}`"
                     else:
                         mentions += f"\nDeleted Account `{user.id}`"
             else:
                 searchq = show.pattern_match.group(1)
-                async for user in show.client.iter_participants(show.chat_id, search=f'{searchq}'):
+                async for user in show.Andencento.iter_participants(show.chat_id, search=f'{searchq}'):
                     if not user.deleted:
                         mentions += f"\n[{user.first_name}](tg://user?id={user.id}) `{user.id}`"
                     else:
@@ -260,7 +260,7 @@ async def get_users(show):
             file = open("userslist.txt", "w+")
             file.write(mentions)
             file.close()
-            await show.client.send_file(
+            await show.Andencento.send_file(
                 show.chat_id,
                 "userslist.txt",
                 caption='Users in {}'.format(title),

@@ -11,7 +11,7 @@ from Extre.utils import admin_cmd, progress
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "thumb_image.jpg"
 
 
-@client.on(admin_cmd(pattern="ren (.*)"))
+@Andencento.on(admin_cmd(pattern="ren (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -31,7 +31,7 @@ async def _(event):
         c_time = time.time()
         to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
         downloaded_file_name = os.path.join(to_download_directory, file_name)
-        downloaded_file_name = await event.client.download_media(
+        downloaded_file_name = await event.Andencento.download_media(
             reply_message,
             downloaded_file_name,
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
@@ -46,7 +46,7 @@ async def _(event):
             thumb = thumb
         if os.path.exists(downloaded_file_name):
             c_time = time.time()
-            hmm = await event.client.send_file(
+            hmm = await event.Andencento.send_file(
                 event.chat_id,
                 downloaded_file_name,
                 force_document=False,
@@ -74,7 +74,7 @@ async def _(event):
         await dcevent.edit(".rename file.name as reply to a Telegram media/file")
 
 
-@client.on(admin_cmd(pattern="tf ?(.*)"))
+@Andencento.on(admin_cmd(pattern="tf ?(.*)"))
 async def get(event):
     name = event.text[5:]
     m = await event.get_reply_message()

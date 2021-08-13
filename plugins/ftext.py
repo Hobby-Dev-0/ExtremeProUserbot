@@ -6,7 +6,7 @@ from Extre.utils import admin_cmd
 
 
 
-@client.on(admin_cmd(pattern="ftext ?(.*)"))
+@Andencento.on(admin_cmd(pattern="ftext ?(.*)"))
 async def payf(event):
     input_str=event.pattern_match.group(1)
     if input_str:

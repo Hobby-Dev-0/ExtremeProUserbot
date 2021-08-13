@@ -43,7 +43,7 @@ async def inline_id_handler(q_event: events.InlineQuery.Event):
     #match = q_event.pattern_match.group(1)
 
     match,shivam = q_event.pattern_match.group(1).split(";")
-    if q_event.query.user_id == client.uid:
+    if q_event.query.user_id == Andencento.uid:
         miraculous = []
         page = findall(r"page=\d+", match)
         try:
@@ -72,7 +72,7 @@ async def inline_id_handler(q_event: events.InlineQuery.Event):
                     text=msg,
                     buttons=Button.switch_inline("Search Again", query="google ", same_peer=True)))
         await q_event.answer(miraculous)
-    if not q_event.query.user_id == client.uid:
+    if not q_event.query.user_id == Andencento.uid:
         resultm = builder.article(title="me not your bot",description="Mind Your Business",text="Hey U Must Use https://github.com/TeamExtremePro/ExtremeProUserbot ",buttons=[[Button.switch_inline("Search Again", query="google ", same_peer=True)],], )
         await q_event.answer([resultm])
         return

@@ -5,7 +5,7 @@ import random
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd(pattern="coin ?(.*)"))
+@Andencento.on(admin_cmd(pattern="coin ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

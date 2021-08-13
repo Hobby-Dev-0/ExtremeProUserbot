@@ -14,7 +14,7 @@ ANTI_FLOOD_WARN_MODE = ChatBannedRights(
 )
 
 
-@client.on(admin_cmd(incoming=True))
+@Andencento.on(admin_cmd(incoming=True))
 async def _(event):
     if not CHAT_FLOOD:
         return
@@ -24,13 +24,13 @@ async def _(event):
     if not should_ban:
         return
     try:
-        await event.client(
+        await event.Andencento(
             EditBannedRequest(
                 event.chat_id, event.message.sender_id, ANTI_FLOOD_WARN_MODE
             )
         )
     except Exception as e:  # pylint:disable=C0103,W0703
-        no_admin_privilege_message = await event.client.send_message(
+        no_admin_privilege_message = await event.Andencento.send_message(
             entity=event.chat_id,
             message="""**Automatic AntiFlooder**
 @admin [User](tg://user?id={}) is flooding this chat.
@@ -44,7 +44,7 @@ async def _(event):
             "This is useless SPAM dude. Stop this, enjoy chat man ", link_preview=False
         )
     else:
-        await event.client.send_message(
+        await event.Andencento.send_message(
             entity=event.chat_id,
             message="""**Automatic AntiFlooder**
 [User](tg://user?id={}) has been automatically restricted
@@ -55,8 +55,8 @@ because he reached the defined flood limit.""".format(
         )
 
 
-@client.on(admin_cmd(pattern="setflood(?: |$)(.*)"))
-@client.on(sudo_cmd(pattern="setflood(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="setflood(?: |$)(.*)"))
+@Andencento.on(sudo_cmd(pattern="setflood(?: |$)(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

@@ -208,7 +208,7 @@ async def upstream(ups):
             file = open("output.txt", "w+")
             file.write(changelog_str)
             file.close()
-            await ups.client.send_file(
+            await ups.Andencento.send_file(
                 ups.chat_id,
                 "output.txt",
                 edit_to=ups.id,
@@ -282,7 +282,7 @@ async def upstream(ups):
 
 '''
 from Extre.utils import admin_cmd
-@client.on(admin_cmd(pattern="update|update now"))
+@Andencento.on(admin_cmd(pattern="update|update now"))
 async def hehe (event):
   await event.edit("want to update your bot ?\nnow not use update now use \n`.restart` only")
 #maked by LEGENDX22 🔥🔥🔥⚡⚡⚡⚡

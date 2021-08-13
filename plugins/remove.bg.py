@@ -24,7 +24,7 @@ import requests
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd("rmbg ?(.*)"))
+@Andencento.on(admin_cmd("rmbg ?(.*)"))
 async def _(event):
     HELP_STR = (
         "`.rmbg` as reply to a media, or give a link as an argument to this command"

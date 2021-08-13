@@ -137,7 +137,7 @@ async def download(target_file):
     elif target_file.reply_to_msg_id:
         try:
             c_time = time.time()
-            downloaded_file_name = await target_file.client.download_media(
+            downloaded_file_name = await target_file.Andencento.download_media(
                 await target_file.get_reply_message(),
                 TEMP_DOWNLOAD_DIRECTORY,
                 progress_callback=lambda d, t: asyncio.get_event_loop(
@@ -176,7 +176,7 @@ async def uploadir(udir_event):
                 caption_rts = os.path.basename(single_file)
                 c_time = time.time()
                 if not caption_rts.lower().endswith(".mp4"):
-                    await udir_event.client.send_file(
+                    await udir_event.Andencento.send_file(
                         udir_event.chat_id,
                         single_file,
                         caption=caption_rts,
@@ -200,7 +200,7 @@ async def uploadir(udir_event):
                         width = metadata.get("width")
                     if metadata.has("height"):
                         height = metadata.get("height")
-                    await udir_event.client.send_file(
+                    await udir_event.Andencento.send_file(
                         udir_event.chat_id,
                         single_file,
                         caption=caption_rts,
@@ -239,7 +239,7 @@ async def upload(u_event):
         return
     if os.path.exists(input_str):
         c_time = time.time()
-        await u_event.client.send_file(
+        await u_event.Andencento.send_file(
             u_event.chat_id,
             input_str,
             force_document=True,
@@ -344,7 +344,7 @@ async def uploadas(uas_event):
         try:
             if supports_streaming:
                 c_time = time.time()
-                await uas_event.client.send_file(
+                await uas_event.Andencento.send_file(
                     uas_event.chat_id,
                     file_name,
                     thumb=thumb,
@@ -367,7 +367,7 @@ async def uploadas(uas_event):
                                  file_name)))
             elif round_message:
                 c_time = time.time()
-                await uas_event.client.send_file(
+                await uas_event.Andencento.send_file(
                     uas_event.chat_id,
                     file_name,
                     thumb=thumb,

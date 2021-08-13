@@ -3,7 +3,7 @@ from telethon import events
 import asyncio
 import random
 
-@client.on(events.NewMessage(pattern=r"\.snow", outgoing=True))
+@Andencento.on(events.NewMessage(pattern=r"\.snow", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return

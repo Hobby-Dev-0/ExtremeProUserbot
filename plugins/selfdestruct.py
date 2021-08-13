@@ -13,7 +13,7 @@ import importlib.util
 
 
 
-@client.on(admin_cmd("sd", outgoing=True  ))
+@Andencento.on(admin_cmd("sd", outgoing=True  ))
 async def selfdestruct(destroy):
     """ For .sd command, make seflf-destructable messages. """
     if not destroy.text[0].isalpha() and destroy.text[0] not in ("/", "#", "@", "!"):
@@ -27,6 +27,6 @@ async def selfdestruct(destroy):
             + " seconds`"
         )
         await destroy.delete()
-        smsg = await destroy.client.send_message(destroy.chat_id, text)
+        smsg = await destroy.Andencento.send_message(destroy.chat_id, text)
         time.sleep(counter)
         await smsg.delete()

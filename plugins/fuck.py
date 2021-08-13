@@ -16,7 +16,7 @@ from Extre.utils import admin_cmd
 
 
 
-@client.on(admin_cmd("fuck"))
+@Andencento.on(admin_cmd("fuck"))
 
 async def _(event):
 
@@ -53,7 +53,7 @@ async def _(event):
         await event.edit(animation_chars[i % 4])
 
 
-@client.on(admin_cmd("sux"))
+@Andencento.on(admin_cmd("sux"))
 
 async def _(event):
 
@@ -101,7 +101,7 @@ import asyncio
 
 
 
-@client.on(admin_cmd("kiss"))
+@Andencento.on(admin_cmd("kiss"))
 
 async def _(event):
 

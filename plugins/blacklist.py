@@ -15,7 +15,7 @@ from Extre import CMD_HELP
 from Extre.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
-@client.on(events.NewMessage(incoming=True))
+@Andencento.on(events.NewMessage(incoming=True))
 async def on_new_message(event):
     # TODO: exempt admins from locks
     name = event.raw_text
@@ -31,8 +31,8 @@ async def on_new_message(event):
             break
 
 
-@client.on(admin_cmd(pattern="addblacklist ((.|\n)*)"))
-@client.on(sudo_cmd(pattern="addblacklist ((.|\n)*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="addblacklist ((.|\n)*)"))
+@Andencento.on(sudo_cmd(pattern="addblacklist ((.|\n)*)", allow_sudo=True))
 async def on_add_black_list(event):
     text = event.pattern_match.group(1)
     to_blacklist = list(
@@ -49,8 +49,8 @@ async def on_add_black_list(event):
     )
 
 
-@client.on(admin_cmd(pattern="rmblacklist ((.|\n)*)"))
-@client.on(sudo_cmd(pattern="rmblacklist ((.|\n)*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="rmblacklist ((.|\n)*)"))
+@Andencento.on(sudo_cmd(pattern="rmblacklist ((.|\n)*)", allow_sudo=True))
 async def on_delete_blacklist(event):
     text = event.pattern_match.group(1)
     to_unblacklist = list(
@@ -68,8 +68,8 @@ async def on_delete_blacklist(event):
     )
 
 
-@client.on(admin_cmd(pattern="listblacklist$"))
-@client.on(sudo_cmd(pattern="listblacklist$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="listblacklist$"))
+@Andencento.on(sudo_cmd(pattern="listblacklist$", allow_sudo=True))
 async def on_view_blacklist(event):
     all_blacklisted = sql.get_chat_blacklist(event.chat_id)
     OUT_STR = "Blacklists in the Current Chat:\n"
@@ -81,7 +81,7 @@ async def on_view_blacklist(event):
     if len(OUT_STR) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUT_STR)) as out_file:
             out_file.name = "blacklist.text"
-            await event.client.send_file(
+            await event.Andencento.send_file(
                 event.chat_id,
                 out_file,
                 force_document=True,

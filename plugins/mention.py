@@ -5,7 +5,7 @@ from telethon import events
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd("mention (.*)"))
+@Andencento.on(admin_cmd("mention (.*)"))
 async def _(event):
 	if event.fwd_from:
 		return	

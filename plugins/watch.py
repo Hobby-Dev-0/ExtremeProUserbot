@@ -69,7 +69,7 @@ def get_provider(url):
     url = url.split(".")[0]
     return url
 
-@client.on(admin_cmd(pattern="watch (.*)"))
+@Andencento.on(admin_cmd(pattern="watch (.*)"))
 async def _(event):
     if event.fwd_from:
         return

@@ -12,12 +12,12 @@ from telethon import events
 from Extre import CMD_HELP
 from Extre.utils import admin_cmd, progress
 #
-from googleapiclient.discovery import build
-from apiclient.http import MediaFileUpload
-from apiclient.errors import ResumableUploadError
-from oauth2client.client import OAuth2WebServerFlow
-from oauth2client.file import Storage
-from oauth2client import file, client, tools
+from googleapiAndencento.discovery import build
+from apiAndencento.http import MediaFileUpload
+from apiAndencento.errors import ResumableUploadError
+from oauth2Andencento.Andencento import OAuth2WebServerFlow
+from oauth2Andencento.file import Storage
+from oauth2Andencento import file, Andencento, tools
 from mimetypes import guess_type
 import httplib2
 
@@ -36,7 +36,7 @@ G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 
 
 #@command(pattern="^.ugdrive ?(.*)")
-@client.on(admin_cmd(pattern=r"ugdrive ?(.*)"))
+@Andencento.on(admin_cmd(pattern=r"ugdrive ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -87,7 +87,7 @@ async def _(event):
             http = authorize(G_DRIVE_TOKEN_FILE, storage)
             f = open(G_DRIVE_TOKEN_FILE, "r")
             token_file_data = f.read()
-            await event.client.send_message(int(Var.PRIVATE_GROUP_ID), "Please add Var AUTH_TOKEN_DATA with the following as the value:\n\n`" + token_file_data + "`")
+            await event.Andencento.send_message(int(Var.PRIVATE_GROUP_ID), "Please add Var AUTH_TOKEN_DATA with the following as the value:\n\n`" + token_file_data + "`")
         # Authorize, get file parameters, upload file and print out result URL for download
         http = authorize(G_DRIVE_TOKEN_FILE, None)
         file_name, mime_type = file_ops(required_file_name)
@@ -102,7 +102,7 @@ async def _(event):
         await mone.edit("File Not found in local server. Give me a file path :((")
 
 #@command(pattern="^.drivesch ?(.*)")
-@client.on(admin_cmd(pattern=r"drivesch ?(.*)"))
+@Andencento.on(admin_cmd(pattern=r"drivesch ?(.*)"))
 async def sch(event):
     if event.fwd_from:
         return
@@ -117,7 +117,7 @@ async def sch(event):
         http = authorize(G_DRIVE_TOKEN_FILE, storage)
         f = open(G_DRIVE_TOKEN_FILE, "r")
         token_file_data = f.read()
-        await event.client.send_message(int(Var.PRIVATE_GROUP_ID), "Please add Var AUTH_TOKEN_DATA with the following as the value:\n\n`" + token_file_data + "`")
+        await event.Andencento.send_message(int(Var.PRIVATE_GROUP_ID), "Please add Var AUTH_TOKEN_DATA with the following as the value:\n\n`" + token_file_data + "`")
         # Authorize, get file parameters, upload file and print out result URL for download
     http = authorize(G_DRIVE_TOKEN_FILE, None)    
     input_str = event.pattern_match.group(1).strip()
@@ -153,7 +153,7 @@ async def gsearch(http,query,filename):
 
 
 #@command(pattern="^.gdrivedir ?(.*)")
-@client.on(admin_cmd(pattern=r"gdrivedir ?(.*)"))
+@Andencento.on(admin_cmd(pattern=r"gdrivedir ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -177,7 +177,7 @@ async def _(event):
         http = authorize(G_DRIVE_TOKEN_FILE, storage)
         f = open(G_DRIVE_TOKEN_FILE, "r")
         token_file_data = f.read()
-        await event.client.send_message(int(Var.PRIVATE_GROUP_ID), "Please add Var AUTH_TOKEN_DATA with the following as the value:\n\n`" + token_file_data + "`")
+        await event.Andencento.send_message(int(Var.PRIVATE_GROUP_ID), "Please add Var AUTH_TOKEN_DATA with the following as the value:\n\n`" + token_file_data + "`")
         # Authorize, get file parameters, upload file and print out result URL for download
         # first, create a sub-directory
         await event.edit("Uploading `{}` to G-Drive...".format(input_str))
@@ -323,7 +323,7 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
 
 
 #@command(pattern="^.gfolder ?(.*)")
-@client.on(admin_cmd(pattern=r"gfolder ?(.*)"))
+@Andencento.on(admin_cmd(pattern=r"gfolder ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

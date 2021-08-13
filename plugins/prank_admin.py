@@ -16,7 +16,7 @@ from Extre.utils import extremepro_cmd
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Extre USER"
 
 
-@client.on(extremepro_cmd(pattern=f"padmin", outgoing=True))
+@Andencento.on(extremepro_cmd(pattern=f"padmin", outgoing=True))
 
 async def _(event):
 

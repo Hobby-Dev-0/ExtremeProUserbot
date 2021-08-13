@@ -33,8 +33,8 @@ from Extre import CMD_HELP
 from Extre.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
-@client.on(admin_cmd(pattern="frybot$"))
-@client.on(sudo_cmd(pattern="frybot$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="frybot$"))
+@Andencento.on(sudo_cmd(pattern="frybot$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -58,12 +58,12 @@ async def _(event):
         event = await edit_or_reply(event, "Reply to actual users message.")
         return
     event = await edit_or_reply(event, "```Processing```")
-    async with event.client.conversation(chat) as conv:
+    async with event.Andencento.conversation(chat) as conv:
         try:
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=432858024)
             )
-            await event.client.forward_messages(chat, reply_message)
+            await event.Andencento.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
             await event.reply("unblock @image_deepfrybot and try again")
@@ -74,12 +74,12 @@ async def _(event):
                 "```can you kindly disable your forward privacy settings for good?```"
             )
         else:
-            await event.client.send_file(event.chat_id, response.message.media)
+            await event.Andencento.send_file(event.chat_id, response.message.media)
         await event.delete()
 
 
-@client.on(admin_cmd(pattern="deepfry(?: |$)(.*)", outgoing=True))
-@client.on(sudo_cmd(pattern="deepfry(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="deepfry(?: |$)(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="deepfry(?: |$)(.*)", allow_sudo=True))
 async def deepfryer(event):
     try:
         frycount = int(event.pattern_match.group(1))
@@ -100,7 +100,7 @@ async def deepfryer(event):
         return
     # download last photo (highres) as byte array
     image = io.BytesIO()
-    await event.client.download_media(data, image)
+    await event.Andencento.download_media(data, image)
     image = Image.open(image)
     # fry the image
     hmm = await edit_or_reply(event, "`Deep frying media…`")

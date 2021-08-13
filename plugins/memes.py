@@ -656,7 +656,7 @@ HIT = [
 
 
 #@register(outgoing=True, pattern=r"^.(\w+)say (.*)")
-@client.on(admin_cmd(pattern=r"(\w+)say (.*)"))
+@Andencento.on(admin_cmd(pattern=r"(\w+)say (.*)"))
 async def univsaye(cowmsg):
     """ For .cowsay module, Extre wrapper for cow which says things. """
     if not cowmsg.text[0].isalpha() and cowmsg.text[0] not in ("/", "#", "@", "!"):
@@ -707,7 +707,7 @@ async def get_user(event):
     """ Get the user from argument or replied message. """
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
-        replied_user = await event.client(GetFullUserRequest(previous_message.sender_id))
+        replied_user = await event.Andencento(GetFullUserRequest(previous_message.sender_id))
     else:
         user = event.pattern_match.group(1)
 
@@ -715,7 +715,7 @@ async def get_user(event):
             user = int(user)
 
         if not user:
-            self_user = await event.client.get_me()
+            self_user = await event.Andencento.get_me()
             user = self_user.id
 
         if event.message.entities is not None:
@@ -723,11 +723,11 @@ async def get_user(event):
 
             if isinstance(probable_user_mention_entity, MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
-                replied_user = await event.client(GetFullUserRequest(user_id))
+                replied_user = await event.Andencento(GetFullUserRequest(user_id))
                 return replied_user
         try:
-            user_object = await event.client.get_entity(user)
-            replied_user = await event.client(GetFullUserRequest(user_object.id))
+            user_object = await event.Andencento.get_entity(user)
+            replied_user = await event.Andencento(GetFullUserRequest(user_object.id))
 
         except (TypeError, ValueError):
             await event.edit("`I don't slap aliens, they ugly AF !!`")
@@ -847,7 +847,7 @@ async def vapor(vpr):
         await vpr.edit("".join(reply_text))
 
 			  
-@client.on(admin_cmd(outgoing=True, pattern="repo"))
+@Andencento.on(admin_cmd(outgoing=True, pattern="repo"))
 async def repo(event):
     if event.fwd_from:
         return

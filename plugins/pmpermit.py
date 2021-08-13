@@ -10,7 +10,7 @@ Config.INSTANT_BLOCK = os.environ.get("INSTANT_BLOCK", None)
 from plugins import *
 Config.CUSTOM_PMPERMIT = os.environ.get("COUSTOMPM", None)
 # I Have Taken Permisson To Import Pmpermit, Inline, Help from Eiva
-# Userbot To client. from Owner Shivansh Proof -
+# Userbot To Andencento. from Owner Shivansh Proof -
 # https://telegra.ph/file/692c46d42e8021ddb61fc.png
 
 DEVLIST = ["1320929227"]
@@ -32,12 +32,12 @@ Eiva_FIRST = (
 )
 
 
-@client.on(extremepro_cmd(pattern="block$"))
+@Andencento.on(extremepro_cmd(pattern="block$"))
 async def approve_p_m(event):
     if event.fwd_from:
         return
     if event.is_private:
-        replied_user = await event.client(
+        replied_user = await event.Andencento(
             GetFullUserRequest(await event.get_input_chat())
         )
         firstname = replied_user.user.first_name
@@ -51,13 +51,13 @@ async def approve_p_m(event):
                 firstname, event.chat_id
             )
         )
-        await event.client(functions.contacts.BlockRequest(event.chat_id))
+        await event.Andencento(functions.contacts.BlockRequest(event.chat_id))
     elif event.is_group:
         reply_s = await event.get_reply_message()
         if not reply_s:
             await eod(event, "Reply to someone to block them..")
             return
-        replied_user = await event.client(GetFullUserRequest(reply_s.sender_id))
+        replied_user = await event.Andencento(GetFullUserRequest(reply_s.sender_id))
         firstname = replied_user.user.first_name
         if str(reply_s.sender_id) in DEVLIST:
             await event.edit("**I can't Block My Devloper !!**")
@@ -69,23 +69,23 @@ async def approve_p_m(event):
                 firstname, reply_s.sender_id
             )
         )
-        await event.client(functions.contacts.BlockRequest(reply_s.sender_id))
+        await event.Andencento(functions.contacts.BlockRequest(reply_s.sender_id))
         await asyncio.sleep(3)
         await event.delete()
 
 
 if PM_ON_OFF != "DISABLE":
 
-    @client.on(events.NewMessage(outgoing=True))
+    @Andencento.on(events.NewMessage(outgoing=True))
     async def auto_approve_for_out_going(event):
         if event.fwd_from:
             return
         if not event.is_private:
             return
         chat_ids = event.chat_id
-        sender = await event.client(GetFullUserRequest(await event.get_input_chat()))
+        sender = await event.Andencento(GetFullUserRequest(await event.get_input_chat()))
         sender.user.first_name
-        if chat_ids == client.uid:
+        if chat_ids == Andencento.uid:
             return
         if sender.user.bot:
             return
@@ -99,12 +99,12 @@ if PM_ON_OFF != "DISABLE":
             if event.chat_id not in PM_WARNS:
                 pm_sql.approve(event.chat_id, "outgoing")
 
-    @client.on(extremepro_cmd(pattern="(a|approve|allow)$"))
+    @Andencento.on(extremepro_cmd(pattern="(a|approve|allow)$"))
     async def approve(event):
         if event.fwd_from:
             return
         if event.is_private:
-            replied_user = await event.client(
+            replied_user = await event.Andencento(
                 GetFullUserRequest(await event.get_input_chat())
             )
             firstname = replied_user.user.first_name
@@ -132,7 +132,7 @@ if PM_ON_OFF != "DISABLE":
                 await event.edit("Reply to someone to approve them !!")
                 return
             if not pm_sql.is_approved(reply_s.sender_id):
-                replied_user = await event.client(GetFullUserRequest(reply_s.sender_id))
+                replied_user = await event.Andencento(GetFullUserRequest(reply_s.sender_id))
                 firstname = replied_user.user.first_name
                 pm_sql.approve(reply_s.sender_id, "Approved")
                 await event.edit(
@@ -146,12 +146,12 @@ if PM_ON_OFF != "DISABLE":
                 await event.edit("User Already Approved !")
                 await event.delete()
 
-    @client.on(extremepro_cmd(pattern="(da|disapprove|disallow)$"))
+    @Andencento.on(extremepro_cmd(pattern="(da|disapprove|disallow)$"))
     async def dapprove(event):
         if event.fwd_from:
             return
         if event.is_private:
-            replied_user = await event.client(
+            replied_user = await event.Andencento(
                 GetFullUserRequest(await event.get_input_chat())
             )
             firstname = replied_user.user.first_name
@@ -184,7 +184,7 @@ if PM_ON_OFF != "DISABLE":
                 )
                 return
             if pm_sql.is_approved(reply_s.sender_id):
-                replied_user = await event.client(GetFullUserRequest(reply_s.sender_id))
+                replied_user = await event.Andencento(GetFullUserRequest(reply_s.sender_id))
                 firstname = replied_user.user.first_name
                 pm_sql.disapprove(reply_s.sender_id)
                 await event.edit(
@@ -198,7 +198,7 @@ if PM_ON_OFF != "DISABLE":
                 await event.edit("Not even in my approved list.")
                 await event.delete()
 
-    @client.on(extremepro_cmd(pattern="listapproved$"))
+    @Andencento.on(extremepro_cmd(pattern="listapproved$"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -217,7 +217,7 @@ if PM_ON_OFF != "DISABLE":
         if len(APPROVED_PMs) > 4095:
             with io.BytesIO(str.encode(APPROVED_PMs)) as out_file:
                 out_file.name = "approved.pms.text"
-                await event.client.send_file(
+                await event.Andencento.send_file(
                     event.chat_id,
                     out_file,
                     force_document=True,
@@ -229,25 +229,25 @@ if PM_ON_OFF != "DISABLE":
         else:
             await event.edit(APPROVED_PMs)
 
-    @client.on(events.NewMessage(incoming=True))
+    @Andencento.on(events.NewMessage(incoming=True))
     async def on_new_private_message(event):
         if not event.is_private:
             return
-        if event.sender_id == client.uid:
+        if event.sender_id == Andencento.uid:
             return
         if str(event.sender_id) in DEVLIST:
             return
         if Config.LOGGER_ID is None:
             await bot.send_message(
-                client.uid, "Please Set `LOGGER_ID` For Working Of Pm Permit"
+                Andencento.uid, "Please Set `LOGGER_ID` For Working Of Pm Permit"
             )
             return
         message_text = event.message.raw_text
         chat_ids = event.sender_id
         if Eiva_FIRST == message_text:
             return
-        sender = await event.client.get_entity(await event.get_input_chat())
-        if chat_ids == client.uid:
+        sender = await event.Andencento.get_entity(await event.get_input_chat())
+        if chat_ids == Andencento.uid:
             return
         if sender.bot:
             return
@@ -266,7 +266,7 @@ if PM_ON_OFF != "DISABLE":
         if PM_WARNS[chat_ids] == Config.MAX_SPAM:
             r = await event.reply(Eiva_ZERO)
             await asyncio.sleep(3)
-            await event.client(functions.contacts.BlockRequest(chat_ids))
+            await event.Andencento(functions.contacts.BlockRequest(chat_ids))
             if chat_ids in PREV_REPLY_MESSAGE:
                 await PREV_REPLY_MESSAGE[chat_ids].delete()
             PREV_REPLY_MESSAGE[chat_ids] = r
@@ -297,7 +297,7 @@ if PM_ON_OFF != "DISABLE":
 NEEDIT = Config.INSTANT_BLOCK
 if NEEDIT == "ENABLE":
 
-    @client.on(events.NewMessage(incoming=True))
+    @Andencento.on(events.NewMessage(incoming=True))
     async def on_new_private_message(event):
         event.message.message
         event.message.media
@@ -305,7 +305,7 @@ if NEEDIT == "ENABLE":
         event.message.to_id
         chat_id = event.chat_id
         sender = await bot.get_entity(chat_id)
-        if chat_id == client.uid:
+        if chat_id == Andencento.uid:
             return
         if chat_id == 1432756163:
             return

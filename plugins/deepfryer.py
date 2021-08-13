@@ -7,7 +7,7 @@ from telethon.tl.types import DocumentAttributeFilename
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd(pattern="deepfry(?: |$)(.*)", outgoing=True))
+@Andencento.on(admin_cmd(pattern="deepfry(?: |$)(.*)", outgoing=True))
 async def deepfryer(event):
     try:
         frycount = int(event.pattern_match.group(1))
@@ -26,7 +26,7 @@ async def deepfryer(event):
         return
     await event.edit("`Downloading media…`")
     image = io.BytesIO()
-    await event.client.download_media(data, image)
+    await event.Andencento.download_media(data, image)
     image = Image.open(image)
     await event.edit("`Deep frying media…`")
     for _ in range(frycount):

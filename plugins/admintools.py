@@ -61,7 +61,7 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 
 #@register(outgoing=True, pattern="^.setgpic$")
-@client.on(extremepro_cmd(pattern=r"setgpic"))
+@Andencento.on(extremepro_cmd(pattern=r"setgpic"))
 @errors_handler
 async def set_group_photo(gpic):
     """ For .setgpic command, changes the picture of a group """
@@ -80,17 +80,17 @@ async def set_group_photo(gpic):
 
     if replymsg and replymsg.media:
         if isinstance(replymsg.media, MessageMediaPhoto):
-            photo = await gpic.client.download_media(message=replymsg.photo)
+            photo = await gpic.Andencento.download_media(message=replymsg.photo)
         elif "image" in replymsg.media.document.mime_type.split('/'):
-            photo = await gpic.client.download_file(replymsg.media.document)
+            photo = await gpic.Andencento.download_file(replymsg.media.document)
         else:
             await gpic.edit(INVALID_MEDIA)
 
     if photo:
         try:
-            await gpic.client(
+            await gpic.Andencento(
                 EditPhotoRequest(gpic.chat_id, await
-                                 gpic.client.upload_file(photo)))
+                                 gpic.Andencento.upload_file(photo)))
             await gpic.edit(CHAT_PP_CHANGED)
 
         except PhotoCropSizeSmallError:
@@ -100,7 +100,7 @@ async def set_group_photo(gpic):
 
 
 #@register(outgoing=True, pattern="^.promote(?: |$)(.*)")
-@client.on(extremepro_cmd(pattern=r"promote(?: |$)(.*)"))
+@Andencento.on(extremepro_cmd(pattern=r"promote(?: |$)(.*)"))
 @errors_handler
 async def promote(promt):
     """ For .promote command, promotes the replied/tagged person """
@@ -133,7 +133,7 @@ async def promote(promt):
 
     # Try to promote if current user is admin or creator
     try:
-        await promt.client(
+        await promt.Andencento(
             EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
         await promt.edit(f"𝚃𝚑𝚒𝚜 𝚄𝚜𝚎𝚛 𝚒𝚜 𝙿𝚛𝚘𝚖𝚘𝚝𝚎𝚍 𝚂𝚞𝚌𝚌𝚎𝚜𝚜𝚏𝚞𝚕𝚕𝚢 𝚋𝚢 EXTREMEPRO USERBOT")
 
@@ -145,14 +145,14 @@ async def promote(promt):
 
     # Announce to the logging group if we have promoted successfully
     if BOTLOG:
-        await promt.client.send_message(
+        await promt.Andencento.send_message(
             BOTLOG_CHATID, "#PROMOTE\n"
             f"USER: [{user.first_name}](tg://user?id={user.id})\n"
             f"CHAT: {promt.chat.title}(`{promt.chat_id}`)")
 
 
 #@register(outgoing=True, pattern="^.demote(?: |$)(.*)")
-@client.on(extremepro_cmd(pattern=r"demote(?: |$)(.*)"))
+@Andencento.on(extremepro_cmd(pattern=r"demote(?: |$)(.*)"))
 @errors_handler
 async def demote(dmod):
     """ For .demote command, demotes the replied/tagged person """
@@ -184,7 +184,7 @@ async def demote(dmod):
                                 pin_messages=None)
     # Edit Admin Permission
     try:
-        await dmod.client(
+        await dmod.Andencento(
             EditAdminRequest(dmod.chat_id, user.id, newrights, rank))
 
     # If we catch BadRequestError from Telethon
@@ -196,14 +196,14 @@ async def demote(dmod):
 
     # Announce to the logging group if we have demoted successfully
     if BOTLOG:
-        await dmod.client.send_message(
+        await dmod.Andencento.send_message(
             BOTLOG_CHATID, "#DEMOTE\n"
             f"USER: [{user.first_name}](tg://user?id={user.id})\n"
             f"CHAT: {dmod.chat.title}(`{dmod.chat_id}`)")
 
 
 #@register(outgoing=True, pattern="^.ban(?: |$)(.*)")
-@client.on(extremepro_cmd(pattern=r"ban(?: |$)(.*)"))
+@Andencento.on(extremepro_cmd(pattern=r"ban(?: |$)(.*)"))
 @errors_handler
 async def ban(bon):
     """ For .ban command, bans the replied/tagged person """
@@ -227,7 +227,7 @@ async def ban(bon):
     await bon.edit("`𝙱𝚊𝚗𝚗𝚒𝚗𝚐 𝚃𝚑𝚒𝚜 𝚄𝚜𝚎𝚛 `")
 
     try:
-        await bon.client(EditBannedRequest(bon.chat_id, user.id,
+        await bon.Andencento(EditBannedRequest(bon.chat_id, user.id,
                                            BANNED_RIGHTS))
     except BadRequestError:
         await bon.edit(NO_PERM)
@@ -251,14 +251,14 @@ async def ban(bon):
     # Announce to the logging group if we have banned the person
     # successfully!
     if BOTLOG:
-        await bon.client.send_message(
+        await bon.Andencento.send_message(
             BOTLOG_CHATID, "#BAN\n"
             f"USER: [{user.first_name}](tg://user?id={user.id})\n"
             f"CHAT: {bon.chat.title}(`{bon.chat_id}`)")
 
 
 #@register(outgoing=True, pattern="^.unban(?: |$)(.*)")
-@client.on(extremepro_cmd(pattern=r"unban(?: |$)(.*)"))
+@Andencento.on(extremepro_cmd(pattern=r"unban(?: |$)(.*)"))
 @errors_handler
 async def nothanos(unbon):
     """ For .unban command, unbans the replied/tagged person """
@@ -283,12 +283,12 @@ async def nothanos(unbon):
         return
 
     try:
-        await unbon.client(
+        await unbon.Andencento(
             EditBannedRequest(unbon.chat_id, user.id, UNBAN_RIGHTS))
         await unbon.edit(f"```Unbanned Successfully.\n By {BOT} My Master {MASTER}```")
 
         if BOTLOG:
-            await unbon.client.send_message(
+            await unbon.Andencento.send_message(
                 BOTLOG_CHATID, "#UNBAN\n"
                 f"USER: [{user.first_name}](tg://user?id={user.id})\n"
                 f"CHAT: {unbon.chat.title}(`{unbon.chat_id}`)")
@@ -297,7 +297,7 @@ async def nothanos(unbon):
 
 
 #@register(outgoing=True, pattern="^.mute(?: |$)(.*)")
-@client.on(extremepro_cmd(pattern=r"mute(?: |$)(.*)"))
+@Andencento.on(extremepro_cmd(pattern=r"mute(?: |$)(.*)"))
 @errors_handler
 async def spider(spdr):
     """
@@ -326,7 +326,7 @@ async def spider(spdr):
     else:
         return
 
-    self_user = await spdr.client.get_me()
+    self_user = await spdr.Andencento.get_me()
 
     if user.id == self_user.id:
         await spdr.edit(
@@ -339,7 +339,7 @@ async def spider(spdr):
         return await spdr.edit('`Error! User probably already muted.`')
     else:
         try:
-            await spdr.client(
+            await spdr.Andencento(
                 EditBannedRequest(spdr.chat_id, user.id, MUTE_RIGHTS))
 
             # Announce that the function is done
@@ -350,7 +350,7 @@ async def spider(spdr):
 
             # Announce to logging group
             if BOTLOG:
-                await spdr.client.send_message(
+                await spdr.Andencento.send_message(
                     BOTLOG_CHATID, "#MUTE\n"
                     f"USER: [{user.first_name}](tg://user?id={user.id})\n"
                     f"CHAT: {spdr.chat.title}(`{spdr.chat_id}`)")
@@ -359,7 +359,7 @@ async def spider(spdr):
 
 
 #@register(outgoing=True, pattern="^.unmute(?: |$)(.*)")
-@client.on(extremepro_cmd(pattern=r"unmute(?: |$)(.*)"))
+@Andencento.on(extremepro_cmd(pattern=r"unmute(?: |$)(.*)"))
 @errors_handler
 async def unmoot(unmot):
     """ For .unmute command, unmute the replied/tagged person """
@@ -394,7 +394,7 @@ async def unmoot(unmot):
     else:
 
         try:
-            await unmot.client(
+            await unmot.Andencento(
                 EditBannedRequest(unmot.chat_id, user.id, UNBAN_RIGHTS))
             await unmot.edit("```Unmuted Successfully```")
         except UserIdInvalidError:
@@ -402,7 +402,7 @@ async def unmoot(unmot):
             return
 
         if BOTLOG:
-            await unmot.client.send_message(
+            await unmot.Andencento.send_message(
                 BOTLOG_CHATID, "#UNMUTE\n"
                 f"USER: [{user.first_name}](tg://user?id={user.id})\n"
                 f"CHAT: {unmot.chat.title}(`{unmot.chat_id}`)")
@@ -433,7 +433,7 @@ async def muter(moot):
         for i in muted:
             if str(i.sender) == str(moot.sender_id):
                 await moot.delete()
-                await moot.client(
+                await moot.Andencento(
                     EditBannedRequest(moot.chat_id, moot.sender_id, rights))
     for i in gmuted:
         if i.sender == str(moot.sender_id):
@@ -441,7 +441,7 @@ async def muter(moot):
 
 
 #@register(outgoing=True, pattern="^.ungmute(?: |$)(.*)")
-@client.on(extremepro_cmd(pattern=r"ungmute(?: |$)(.*)"))
+@Andencento.on(extremepro_cmd(pattern=r"ungmute(?: |$)(.*)"))
 @errors_handler
 async def ungmoot(un_gmute):
     """ For .ungmute command, ungmutes the target in the EXTREMEPRO """
@@ -479,14 +479,14 @@ async def ungmoot(un_gmute):
         await un_gmute.edit("```Ungmuted Successfully```")
 
         if BOTLOG:
-            await un_gmute.client.send_message(
+            await un_gmute.Andencento.send_message(
                 BOTLOG_CHATID, "#UNGMUTE\n"
                 f"USER: [{user.first_name}](tg://user?id={user.id})\n"
                 f"CHAT: {un_gmute.chat.title}(`{un_gmute.chat_id}`)")
 
 
 #@register(outgoing=True, pattern="^.gmute(?: |$)(.*)")
-@client.on(extremepro_cmd(pattern=r"gmute(?: |$)(.*)"))
+@Andencento.on(extremepro_cmd(pattern=r"gmute(?: |$)(.*)"))
 @errors_handler
 async def gspider(gspdr):
     """ For .gmute command, globally mutes the replied/tagged person """
@@ -525,14 +525,14 @@ async def gspider(gspdr):
             await gspdr.edit("`Globally taped!`")
 
         if BOTLOG:
-            await gspdr.client.send_message(
+            await gspdr.Andencento.send_message(
                 BOTLOG_CHATID, "#GMUTE\n"
                 f"USER: [{user.first_name}](tg://user?id={user.id})\n"
                 f"CHAT: {gspdr.chat.title}(`{gspdr.chat_id}`)")
 
 
 #@register(outgoing=True, pattern="^.delusers(?: |$)(.*)")
-@client.on(extremepro_cmd(pattern=r"delusers(?: |$)(.*)"))
+@Andencento.on(extremepro_cmd(pattern=r"delusers(?: |$)(.*)"))
 @errors_handler
 async def rm_deletedacc(show):
     """ For .delusers command, list all the ghost/deleted accounts in a chat. """
@@ -545,7 +545,7 @@ async def rm_deletedacc(show):
 
     if con != "clean":
         await show.edit("`Searching for zombie accounts...`")
-        async for user in show.client.iter_participants(show.chat_id,
+        async for user in show.Andencento.iter_participants(show.chat_id,
                                                         aggressive=True):
             if user.deleted:
                 del_u += 1
@@ -571,10 +571,10 @@ async def rm_deletedacc(show):
     del_u = 0
     del_a = 0
 
-    async for user in show.client.iter_participants(show.chat_id):
+    async for user in show.Andencento.iter_participants(show.chat_id):
         if user.deleted:
             try:
-                await show.client(
+                await show.Andencento(
                     EditBannedRequest(show.chat_id, user.id, BANNED_RIGHTS))
             except ChatAdminRequiredError:
                 await show.edit("`I don't have ban rights in this group`")
@@ -582,7 +582,7 @@ async def rm_deletedacc(show):
             except UserAdminInvalidError:
                 del_u -= 1
                 del_a += 1
-            await show.client(
+            await show.Andencento(
                 EditBannedRequest(show.chat_id, user.id, UNBAN_RIGHTS))
             del_u += 1
 
@@ -598,22 +598,22 @@ async def rm_deletedacc(show):
     await show.delete()
 
     if BOTLOG:
-        await show.client.send_message(
+        await show.Andencento.send_message(
             BOTLOG_CHATID, "#CLEANUP\n"
             f"Cleaned **{del_u}** deleted account(s) !!\
             \nCHAT: {show.chat.title}(`{show.chat_id}`)")
 
 
 #@register(outgoing=True, pattern="^.adminlist$")
-@client.on(extremepro_cmd(pattern=r"adminlist"))
+@Andencento.on(extremepro_cmd(pattern=r"adminlist"))
 @errors_handler
 async def get_admin(show):
     """ For .admins command, list all of the admins of the chat. """
-    info = await show.client.get_entity(show.chat_id)
+    info = await show.Andencento.get_entity(show.chat_id)
     title = info.title if info.title else "this chat"
     mentions = f'<b>Admins in {title}:</b> \n'
     try:
-        async for user in show.client.iter_participants(
+        async for user in show.Andencento.iter_participants(
                 show.chat_id, filter=ChannelParticipantsAdmins):
             if not user.deleted:
                 link = f"<a href=\"tg://user?id={user.id}\">{user.first_name}</a>"
@@ -627,7 +627,7 @@ async def get_admin(show):
 
 
 #@register(outgoing=True, pattern="^.pin(?: |$)(.*)")
-@client.on(extremepro_cmd(pattern=r"pin(?: |$)(.*)"))
+@Andencento.on(extremepro_cmd(pattern=r"pin(?: |$)(.*)"))
 @errors_handler
 async def pin(msg):
     """ For .pin command, pins the replied/tagged message on the top the chat. """
@@ -655,7 +655,7 @@ async def pin(msg):
         is_silent = False
 
     try:
-        await msg.client(
+        await msg.Andencento(
             UpdatePinnedMessageRequest(msg.to_id, to_pin, is_silent))
     except BadRequestError:
         await msg.edit(NO_PERM)
@@ -666,7 +666,7 @@ async def pin(msg):
     user = await get_user_sender_id(msg.sender_id, msg)
 
     if BOTLOG:
-        await msg.client.send_message(
+        await msg.Andencento.send_message(
             BOTLOG_CHATID, "#PIN\n"
             f"ADMIN: [{user.first_name}](tg://user?id={user.id})\n"
             f"CHAT: {msg.chat.title}(`{msg.chat_id}`)\n"
@@ -674,7 +674,7 @@ async def pin(msg):
 
 
 #@register(outgoing=True, pattern="^.kick(?: |$)(.*)")
-@client.on(extremepro_cmd(pattern=r"kick(?: |$)(.*)"))
+@Andencento.on(extremepro_cmd(pattern=r"kick(?: |$)(.*)"))
 @errors_handler
 async def kick(usr):
     """ For .kick command, kicks the replied/tagged person from the group. """
@@ -696,7 +696,7 @@ async def kick(usr):
     await usr.edit("`Kicking...`")
 
     try:
-        await usr.client.kick_participant(usr.chat_id, user.id)
+        await usr.Andencento.kick_participant(usr.chat_id, user.id)
         await sleep(.5)
     except Exception as e:
         await usr.edit(NO_PERM + f"\n{str(e)}")
@@ -711,30 +711,30 @@ async def kick(usr):
             f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`")
 
     if BOTLOG:
-        await usr.client.send_message(
+        await usr.Andencento.send_message(
             BOTLOG_CHATID, "#KICK\n"
             f"USER: [{user.first_name}](tg://user?id={user.id})\n"
             f"CHAT: {usr.chat.title}(`{usr.chat_id}`)\n")
 
 
 #@register(outgoing=True, pattern="^.users ?(.*)")
-@client.on(extremepro_cmd(pattern=r"users ?(.*)"))
+@Andencento.on(extremepro_cmd(pattern=r"users ?(.*)"))
 @errors_handler
 async def get_users(show):
     """ For .users command, list all of the users in a chat. """
-    info = await show.client.get_entity(show.chat_id)
+    info = await show.Andencento.get_entity(show.chat_id)
     title = info.title if info.title else "this chat"
     mentions = 'Users in {}: \n'.format(title)
     try:
         if not show.pattern_match.group(1):
-            async for user in show.client.iter_participants(show.chat_id):
+            async for user in show.Andencento.iter_participants(show.chat_id):
                 if not user.deleted:
                     mentions += f"\n[{user.first_name}](tg://user?id={user.id}) `{user.id}`"
                 else:
                     mentions += f"\nDeleted Account `{user.id}`"
         else:
             searchq = show.pattern_match.group(1)
-            async for user in show.client.iter_participants(
+            async for user in show.Andencento.iter_participants(
                     show.chat_id, search=f'{searchq}'):
                 if not user.deleted:
                     mentions += f"\n[{user.first_name}](tg://user?id={user.id}) `{user.id}`"
@@ -750,7 +750,7 @@ async def get_users(show):
         file = open("userslist.txt", "w+")
         file.write(mentions)
         file.close()
-        await show.client.send_file(
+        await show.Andencento.send_file(
             show.chat_id,
             "userslist.txt",
             caption='Users in {}'.format(title),
@@ -765,7 +765,7 @@ async def get_user_from_event(event):
     extra = None
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
-        user_obj = await event.client.get_entity(previous_message.sender_id)
+        user_obj = await event.Andencento.get_entity(previous_message.sender_id)
         extra = event.pattern_match.group(1)
     elif args:
         user = args[0]
@@ -785,10 +785,10 @@ async def get_user_from_event(event):
             if isinstance(probable_user_mention_entity,
                           MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
-                user_obj = await event.client.get_entity(user_id)
+                user_obj = await event.Andencento.get_entity(user_id)
                 return user_obj
         try:
-            user_obj = await event.client.get_entity(user)
+            user_obj = await event.Andencento.get_entity(user)
         except (TypeError, ValueError) as err:
             await event.edit(str(err))
             return None
@@ -801,7 +801,7 @@ async def get_user_sender_id(user, event):
         user = int(user)
 
     try:
-        user_obj = await event.client.get_entity(user)
+        user_obj = await event.Andencento.get_entity(user)
     except (TypeError, ValueError) as err:
         await event.edit(str(err))
         return None

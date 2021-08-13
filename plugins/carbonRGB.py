@@ -14,8 +14,8 @@ from selenium.webdriver.chrome.options import Options
 from Extre.utils import admin_cmd
 
 
-# @client.on(events.NewMessage(pattern=r"\.karb ", outgoing=True))
-@client.on(admin_cmd(pattern="karb"))
+# @Andencento.on(events.NewMessage(pattern=r"\.karb ", outgoing=True))
+@Andencento.on(admin_cmd(pattern="karb"))
 async def carbon_api(e):
     RED = random.randint(0, 256)
     GREEN = random.randint(0, 256)
@@ -105,7 +105,7 @@ async def carbon_api(e):
         await e.edit("⬛⬛⬛⬛⬛")
         file = "./carbon.png"
         await e.edit("✅RGB Karbon Completed, Uploading RGB Karbon✅")
-        await e.client.send_file(
+        await e.Andencento.send_file(
             e.chat_id,
             file,
             caption="✅Carbonised by [ExtremeProUserbot](https://github.com/TeamExtremePro/ExtremeProUserbot/)",

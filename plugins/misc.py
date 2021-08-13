@@ -35,7 +35,7 @@ async def sleepybot(time):
             await time.edit("`I am sulking and snoozing....`")
             sleep(2)
             if LOGGER:
-                await time.client.send_message(
+                await time.Andencento.send_message(
                     LOGGER_GROUP,
                     "You put the bot to sleep for " + str(counter) + " seconds",
                 )

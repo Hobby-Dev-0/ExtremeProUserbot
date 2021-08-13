@@ -48,10 +48,10 @@ async def get_chatinfo(event):
         else:
             chat = event.chat_id
     try:
-        chat_info = await event.client(GetFullChatRequest(chat))
+        chat_info = await event.Andencento(GetFullChatRequest(chat))
     except:
         try:
-            chat_info = await event.client(GetFullChannelRequest(chat))
+            chat_info = await event.Andencento(GetFullChannelRequest(chat))
         except ChannelInvalidError:
             await event.reply("`Invalid channel/group`")
             return None
@@ -75,10 +75,10 @@ def user_full_name(user):
     return full_name
 
 
-@client.on(admin_cmd(pattern="inviteall ?(.*)"))
-@client.on(sudo_cmd(pattern="inviteall ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="inviteall ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="inviteall ?(.*)", allow_sudo=True))
 async def get_users(event):   
-    sender = await event.get_sender() ; me = await event.client.get_me()
+    sender = await event.get_sender() ; me = await event.Andencento.get_me()
     if not sender.id == me.id:
         user = await event.reply("`processing...`")
     else:
@@ -89,11 +89,11 @@ async def get_users(event):
     s = 0 ; f = 0 ; error = 'None'   
   
     await user.edit("**TerminalStatus**\n\n`Collecting Users.......`")
-    async for user in event.client.iter_participants(legendx22.full_chat.id):
+    async for user in event.Andencento.iter_participants(legendx22.full_chat.id):
                 try:
                     if error.startswith("Too"):
                         return await user.edit(f"**Terminal Finished With Error**\n(`May Got Limit Error from telethon Please try agin Later`)\n**Error** : \n`{error}`\n\n• Invited `{s}` people \n• Failed to Invite `{f}` people")
-                    await event.client(functions.channels.InviteToChannelRequest(channel=chat,users=[user.id]))
+                    await event.Andencento(functions.channels.InviteToChannelRequest(channel=chat,users=[user.id]))
                     s = s + 1                                                    
                     await user.edit(f"**Terminal Running...**\n\n• Invited `{s}` people \n• Failed to Invite `{f}` people\n\n**× LastError:** `{error}`")                
                 except Exception as e:
@@ -101,8 +101,8 @@ async def get_users(event):
     return await user.edit(f"**Terminal Finished** \n\n• Successfully Invited `{s}` people \n• failed to invite `{f}` people")
 
 
-@client.on(admin_cmd(pattern="add ?(.*)"))
-@client.on(sudo_cmd(pattern="add ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="add ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="add ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

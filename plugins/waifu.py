@@ -36,7 +36,7 @@ def deEmojify(inputString: str) -> str:
 
 
 # @register(outgoing=True, pattern="^.waifu(?: |$)(.*)", allow_sudo=True))
-@client.on(admin_cmd(pattern=r"waifu(?: |$)(.*)"))
+@Andencento.on(admin_cmd(pattern=r"waifu(?: |$)(.*)"))
 async def waifu(animu):
     # """Creates random anime sticker!"""
 

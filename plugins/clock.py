@@ -7,7 +7,7 @@ from collections import deque
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd(pattern=r"clock"))
+@Andencento.on(admin_cmd(pattern=r"clock"))
 async def _(event):
     if event.fwd_from:
         return

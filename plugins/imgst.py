@@ -5,7 +5,7 @@ from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from Extre.utils import admin_cmd
 from Extre import bot 
 
-@client.on(admin_cmd(pattern="ss2 ?(.*)"))
+@Andencento.on(admin_cmd(pattern="ss2 ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 
@@ -18,10 +18,10 @@ async def _(event):
        return
     chat = "@buildstickerbot"
     await event.edit("Making a sticker")
-    async with event.client.conversation(chat) as conv:
+    async with event.Andencento.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=164977173))
-              await event.client.forward_messages(chat, reply_message)
+              await event.Andencento.forward_messages(chat, reply_message)
               response = await response 
           except YouBlockedUserError: 
               await event.reply("Unblock me (@buildstickerbot) and try again")
@@ -30,10 +30,10 @@ async def _(event):
              await event.edit("Can you kindly disable your forward privacy settings for good?")
           else: 
              await event.delete()
-             await event.client.send_message(event.chat_id, response.message)
+             await event.Andencento.send_message(event.chat_id, response.message)
           await bot.send_read_acknowledge(conv.chat_id)
             
-@client.on(admin_cmd(pattern="stoi ?(.*)"))
+@Andencento.on(admin_cmd(pattern="stoi ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 
@@ -46,10 +46,10 @@ async def _(event):
        return
     chat = "@stickers_to_image_bot"
     await event.edit("Making a image")
-    async with event.client.conversation(chat) as conv:
+    async with event.Andencento.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=611085086))
-              await event.client.forward_messages(chat, reply_message)
+              await event.Andencento.forward_messages(chat, reply_message)
               response = await response 
           except YouBlockedUserError: 
               await event.reply("Unblock me (@stickers_to_image_bot) to work")
@@ -63,7 +63,7 @@ async def _(event):
                   response = conv.wait_event(events.NewMessage(incoming=True,from_users=611085086))
                   response = await response
                   await event.delete()
-                  await event.client.send_message(event.chat_id, response.message , reply_to = reply_message.id)
+                  await event.Andencento.send_message(event.chat_id, response.message , reply_to = reply_message.id)
               else:
                   await event.edit("try again")
           await bot.send_read_acknowledge(conv.chat_id)

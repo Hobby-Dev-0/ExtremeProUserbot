@@ -11,7 +11,7 @@ from telethon import events
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd(pattern="screenshot (.*)"))
+@Andencento.on(admin_cmd(pattern="screenshot (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -34,8 +34,8 @@ async def _(event):
         input_str = event.pattern_match.group(1)
         driver.get(input_str)
         await event.edit("Calculating Page Dimensions")
-        height = driver.execute_script("return Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);")
-        width = driver.execute_script("return Math.max(document.body.scrollWidth, document.body.offsetWidth, document.documentElement.clientWidth, document.documentElement.scrollWidth, document.documentElement.offsetWidth);")
+        height = driver.execute_script("return Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.AndencentoHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);")
+        width = driver.execute_script("return Math.max(document.body.scrollWidth, document.body.offsetWidth, document.documentElement.AndencentoWidth, document.documentElement.scrollWidth, document.documentElement.offsetWidth);")
         await event.edit("Painting web-page")
         driver.set_window_size(width + 100, height + 100)
         # Add some pixels on top of the calculated dimensions 

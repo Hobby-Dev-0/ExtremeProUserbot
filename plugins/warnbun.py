@@ -5,7 +5,7 @@ from telethon.tl.types import ChannelParticipantsAdmins
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd("warn1"))
+@Andencento.on(admin_cmd("warn1"))
 async def _(event):
     if event.fwd_from:
         return
@@ -28,7 +28,7 @@ from telethon.tl.types import ChannelParticipantsAdmins
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd("warn2"))
+@Andencento.on(admin_cmd("warn2"))
 async def _(event):
     if event.fwd_from:
         return
@@ -51,7 +51,7 @@ from telethon.tl.types import ChannelParticipantsAdmins
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd("warn3"))
+@Andencento.on(admin_cmd("warn3"))
 async def _(event):
     if event.fwd_from:
         return
@@ -74,7 +74,7 @@ from telethon.tl.types import ChannelParticipantsAdmins
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd("warn0"))
+@Andencento.on(admin_cmd("warn0"))
 async def _(event):
     if event.fwd_from:
         return
@@ -98,7 +98,7 @@ from Extre.utils import admin_cmd
 
 
 
-@client.on(admin_cmd("ocb"))
+@Andencento.on(admin_cmd("ocb"))
 async def _(event):
     if event.fwd_from:
         return
@@ -114,7 +114,7 @@ async def _(event):
         await event.reply(mentions)
     await event.delete()
 
-@client.on(admin_cmd("fw"))
+@Andencento.on(admin_cmd("fw"))
 async def _(event):
     if event.fwd_from:
         return

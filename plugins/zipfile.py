@@ -6,7 +6,7 @@ import zipfile
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd(pattern="compress ?(.*)"))
+@Andencento.on(admin_cmd(pattern="compress ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

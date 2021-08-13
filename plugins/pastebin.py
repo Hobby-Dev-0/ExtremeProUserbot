@@ -16,7 +16,7 @@ def progress(current, total):
     )
 
 
-@client.on(admin_cmd("paste ?(.*)"))
+@Andencento.on(admin_cmd("paste ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

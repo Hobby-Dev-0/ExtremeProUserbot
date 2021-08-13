@@ -6,7 +6,7 @@ from telethon import events, utils
 from telethon.tl import types
 from Extre.utils import admin_cmd
 
-@client.on(admin_cmd(pattern="resend"))
+@Andencento.on(admin_cmd(pattern="resend"))
 async def _(event):
     await event.delete()
     m = await event.get_reply_message()

@@ -8,8 +8,8 @@ from Extre import CMD_HELP
 
 
 
-@client.on(admin_cmd("circle ?(.*)"))
-@client.on(sudo_cmd(pattern="circle ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd("circle ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="circle ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -26,12 +26,12 @@ async def _(event):
         await edit_or_reply(event, "Reply to actual users message.")
         return
     legendx22 = await edit_or_reply(event, "Trying to convert...")
-    async with event.client.conversation(chat) as conv:
+    async with event.Andencento.conversation(chat) as conv:
         try:
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=397367589)
             )
-            await event.client.send_message(chat, reply_message)
+            await event.Andencento.send_message(chat, reply_message)
             response = await response
         except YouBlockedUserError:
             await legendx22.edit("```Please unblock @TelescopyBot and try again```")
@@ -42,9 +42,9 @@ async def _(event):
             )
         else:
             await legendx22.delete()
-            await event.client.send_file(
+            await event.Andencento.send_file(
                 event.chat_id,
                 response.message.media,
             )
-            await event.client.send_read_acknowledge(conv.chat_id)
+            await event.Andencento.send_read_acknowledge(conv.chat_id)
 

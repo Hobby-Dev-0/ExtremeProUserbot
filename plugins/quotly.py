@@ -8,7 +8,7 @@ from Extre.utils import admin_cmd
 
 
 # @register(outgoing=True, pattern="^.q(?: |$)(.*)")
-@client.on(admin_cmd(pattern=r"qbot(?: |$)(.*)"))
+@Andencento.on(admin_cmd(pattern=r"qbot(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return

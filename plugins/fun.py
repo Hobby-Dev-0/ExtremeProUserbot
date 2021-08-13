@@ -87,7 +87,7 @@ INSULT_STRINGS = [
 # ===========================================
                           
 
-@client.on(admin_cmd(pattern="run ?(.*)"))
+@Andencento.on(admin_cmd(pattern="run ?(.*)"))
 async def _(event):
     if event.fwd_from:
          return
@@ -97,7 +97,7 @@ async def _(event):
     await event.edit(reply_text)
 
 
-@client.on(admin_cmd(pattern="metoo ?(.*)"))
+@Andencento.on(admin_cmd(pattern="metoo ?(.*)"))
 async def _(event):
     if event.fwd_from:
          return
@@ -107,7 +107,7 @@ async def _(event):
     await event.edit(reply_text)
 
 
-@client.on(admin_cmd(pattern="rapee ?(.*)"))
+@Andencento.on(admin_cmd(pattern="rapee ?(.*)"))
 async def _(event):
     if event.fwd_from:
          return
@@ -117,7 +117,7 @@ async def _(event):
     await event.edit(reply_text)
 			  
                           
-@client.on(admin_cmd(pattern="insultt ?(.*)"))
+@Andencento.on(admin_cmd(pattern="insultt ?(.*)"))
 async def _(event):
     if event.fwd_from:
          return
@@ -127,7 +127,7 @@ async def _(event):
     await event.edit(reply_text)
 			  
 			  
-@client.on(admin_cmd(pattern="proo ?(.*)"))
+@Andencento.on(admin_cmd(pattern="proo ?(.*)"))
 async def _(event):
     if event.fwd_from:
          return
@@ -137,7 +137,7 @@ async def _(event):
     await event.edit(reply_text)
 			  
 			  
-@client.on(admin_cmd(pattern="abusee ?(.*)"))
+@Andencento.on(admin_cmd(pattern="abusee ?(.*)"))
 async def _(event):
     if event.fwd_from:
          return
@@ -147,7 +147,7 @@ async def _(event):
     await event.edit(reply_text)
 			  
 			  
-@client.on(admin_cmd(pattern="geyy ?(.*)"))
+@Andencento.on(admin_cmd(pattern="geyy ?(.*)"))
 async def _(event):
     if event.fwd_from:
          return

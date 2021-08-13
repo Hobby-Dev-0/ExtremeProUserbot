@@ -5,7 +5,7 @@ from telethon.tl import functions
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd("cpin ?(.*)"))
+@Andencento.on(admin_cmd("cpin ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

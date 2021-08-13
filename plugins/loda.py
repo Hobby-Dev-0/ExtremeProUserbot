@@ -36,8 +36,8 @@ def get_readable_time(seconds: int) -> str:
 uptime = get_readable_time((time.time() - StartTime))
 
 
-@client.on(admin_cmd(pattern="loda$"))
-@client.on(sudo_cmd(pattern="loda$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="loda$"))
+@Andencento.on(sudo_cmd(pattern="loda$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

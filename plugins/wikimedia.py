@@ -4,7 +4,7 @@ import requests
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd(pattern="wikimedia (.*)"))
+@Andencento.on(admin_cmd(pattern="wikimedia (.*)"))
 async def _(event):
     if event.fwd_from:
         return

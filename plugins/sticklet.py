@@ -13,7 +13,7 @@ from telethon.tl.types import InputMessagesFilterDocument
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd(pattern="text (.*)"))
+@Andencento.on(admin_cmd(pattern="text (.*)"))
 async def sticklet(event):
     R = random.randint(0,256)
     G = random.randint(0,256)
@@ -35,7 +35,7 @@ async def sticklet(event):
     draw = ImageDraw.Draw(image)
     fontsize = 230
 
-    FONT_FILE = await get_font_file(event.client, "@FontHub")
+    FONT_FILE = await get_font_file(event.Andencento, "@FontHub")
 
     font = ImageFont.truetype(FONT_FILE, size=fontsize)
 
@@ -52,7 +52,7 @@ async def sticklet(event):
     image_stream.seek(0)
 
     # finally, reply the sticker
-    await event.client.send_message(event.chat_id, "{}".format(sticktext), file=image_stream, reply_to=event.message.reply_to_msg_id)
+    await event.Andencento.send_message(event.chat_id, "{}".format(sticktext), file=image_stream, reply_to=event.message.reply_to_msg_id)
 
     # cleanup
     try:
@@ -61,9 +61,9 @@ async def sticklet(event):
         pass
 
 
-async def get_font_file(client, channel_id):
+async def get_font_file(Andencento, channel_id):
     # first get the font messages
-    font_file_message_s = await client.get_messages(
+    font_file_message_s = await Andencento.get_messages(
         entity=channel_id,
         filter=InputMessagesFilterDocument,
         # this might cause FLOOD WAIT,
@@ -74,4 +74,4 @@ async def get_font_file(client, channel_id):
     # https://docs.python.org/3/library/random.html#random.choice
     font_file_message = random.choice(font_file_message_s)
     # download and return the file path
-    return await client.download_media(font_file_message)
+    return await Andencento.download_media(font_file_message)

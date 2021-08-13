@@ -35,7 +35,7 @@ async def gethash(hash_q):
         hashfile = open("hashes.txt", "w+")
         hashfile.write(ans)
         hashfile.close()
-        await hash_q.client.send_file(
+        await hash_q.Andencento.send_file(
             hash_q.chat_id,
             "hashes.txt",
             reply_to=hash_q.id,

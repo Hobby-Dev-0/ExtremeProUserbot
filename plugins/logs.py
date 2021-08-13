@@ -32,7 +32,7 @@ heroku_api = "https://api.heroku.com"
 @tgbot.on(events.InlineQuery(pattern=r"logs"))
 async def inline_id_handler(event: events.InlineQuery.Event):
     builder = event.builder
-    me = await client.get_me()
+    me = await Andencento.get_me()
     if event.query.user_id == me.id:
         try:
             Heroku = heroku3.from_key(HEROKU_API_KEY);app = Heroku.app(HEROKU_APP_NAME)

@@ -11,12 +11,12 @@ from datetime import datetime
 from mimetypes import guess_type
 
 import httplib2
-from apiclient.http import MediaFileUpload
+from apiAndencento.http import MediaFileUpload
 
 #
-from googleapiclient.discovery import build
-from oauth2client.client import OAuth2WebServerFlow
-from oauth2client.file import Storage
+from googleapiAndencento.discovery import build
+from oauth2Andencento.Andencento import OAuth2WebServerFlow
+from oauth2Andencento.file import Storage
 from telethon import events
 from Extre.utils import admin_cmd
 
@@ -34,7 +34,7 @@ G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 
 
 # @command(pattern="^.ugdrive ?(.*)")
-@client.on(admin_cmd(pattern=r"ugdrive ?(.*)"))
+@Andencento.on(admin_cmd(pattern=r"ugdrive ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -88,7 +88,7 @@ async def _(event):
             http = authorize(G_DRIVE_TOKEN_FILE, storage)
             f = open(G_DRIVE_TOKEN_FILE, "r")
             token_file_data = f.read()
-            await event.client.send_message(
+            await event.Andencento.send_message(
                 int(Var.PRIVATE_GROUP_ID),
                 "Please add Var AUTH_TOKEN_DATA with the following as the value:\n\n`"
                 + token_file_data
@@ -115,7 +115,7 @@ async def _(event):
 
 
 # @command(pattern="^.drivesch ?(.*)")
-@client.on(admin_cmd(pattern=r"drivesch ?(.*)"))
+@Andencento.on(admin_cmd(pattern=r"drivesch ?(.*)"))
 async def sch(event):
     if event.fwd_from:
         return
@@ -132,7 +132,7 @@ async def sch(event):
         http = authorize(G_DRIVE_TOKEN_FILE, storage)
         f = open(G_DRIVE_TOKEN_FILE, "r")
         token_file_data = f.read()
-        await event.client.send_message(
+        await event.Andencento.send_message(
             int(Var.PRIVATE_GROUP_ID),
             "Please add Var AUTH_TOKEN_DATA with the following as the value:\n\n`"
             + token_file_data
@@ -191,7 +191,7 @@ async def gsearch(http, query, filename):
 
 
 # @command(pattern="^.gdrivedir ?(.*)")
-@client.on(admin_cmd(pattern=r"gdrivedir ?(.*)"))
+@Andencento.on(admin_cmd(pattern=r"gdrivedir ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -219,7 +219,7 @@ async def _(event):
         http = authorize(G_DRIVE_TOKEN_FILE, storage)
         f = open(G_DRIVE_TOKEN_FILE, "r")
         token_file_data = f.read()
-        await event.client.send_message(
+        await event.Andencento.send_message(
             int(Var.PRIVATE_GROUP_ID),
             "Please add Var AUTH_TOKEN_DATA with the following as the value:\n\n`"
             + token_file_data
@@ -370,7 +370,7 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
 
 
 # @command(pattern="^.gfolder ?(.*)")
-@client.on(admin_cmd(pattern=r"gfolder ?(.*)"))
+@Andencento.on(admin_cmd(pattern=r"gfolder ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

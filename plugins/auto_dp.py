@@ -225,139 +225,139 @@ async def animeppwall():
         )
     urllib.request.urlretrieve(fy, "donottouch.jpg")
 
-@client.on(admin_cmd(pattern="batmandp$"))
+@Andencento.on(admin_cmd(pattern="batmandp$"))
 async def main(event):
     await event.edit("Actibated Batman Dp\nEnjoy 💜") 
     while True:
         await animeppbat()
-        file = await event.client.upload_file("donottouch.jpg")
-        await event.client(
+        file = await event.Andencento.upload_file("donottouch.jpg")
+        await event.Andencento(
             functions.photos.DeletePhotosRequest(
-                await event.client.get_profile_photos("me", limit=1)
+                await event.Andencento.get_profile_photos("me", limit=1)
             )
         )
-        await event.client(functions.photos.UploadProfilePhotoRequest(file))
+        await event.Andencento(functions.photos.UploadProfilePhotoRequest(file))
         os.system("rm -rf donottouch.jpg")
         await asyncio.sleep(600)  # Edit this to your required needs
 
 
-@client.on(admin_cmd(pattern="thordp$"))
+@Andencento.on(admin_cmd(pattern="thordp$"))
 async def main(event):
     await event.edit("Activated Thor Dp\nEnjoy 💜") 
     while True:
         await animeppthor()
-        file = await event.client.upload_file("donottouch.jpg")
-        await event.client(
+        file = await event.Andencento.upload_file("donottouch.jpg")
+        await event.Andencento(
             functions.photos.DeletePhotosRequest(
-                await event.client.get_profile_photos("me", limit=1)
+                await event.Andencento.get_profile_photos("me", limit=1)
             )
         )
-        await event.client(functions.photos.UploadProfilePhotoRequest(file))
+        await event.Andencento(functions.photos.UploadProfilePhotoRequest(file))
         os.system("rm -rf donottouch.jpg")
         await asyncio.sleep(600)  # Edit this to your required needs
 
-@client.on(admin_cmd(pattern="actressdp$"))
+@Andencento.on(admin_cmd(pattern="actressdp$"))
 async def main(event):
     await event.edit("Activated Actress Dp\nEnjoy 💜")
     while True:
         await animeppactress()
-        file = await event.client.upload_file("donottouch.jpg")
-        await event.client(
+        file = await event.Andencento.upload_file("donottouch.jpg")
+        await event.Andencento(
             functions.photos.DeletePhotosRequest(
-                await event.client.get_profile_photos("me", limit=1)
+                await event.Andencento.get_profile_photos("me", limit=1)
             )
         )
-        await event.client(functions.photos.UploadProfilePhotoRequest(file))
+        await event.Andencento(functions.photos.UploadProfilePhotoRequest(file))
         os.system("rm -rf donottouch.jpg")
         await asyncio.sleep(600) 
 
-@client.on(admin_cmd(pattern="animedp$"))
+@Andencento.on(admin_cmd(pattern="animedp$"))
 async def main(event):
     await event.edit("Activated Anime Dp\nEnjoy 💜")
     while True:
         await animepppoke()
-        file = await event.client.upload_file("donottouch.jpg")
-        await event.client(
+        file = await event.Andencento.upload_file("donottouch.jpg")
+        await event.Andencento(
             functions.photos.DeletePhotosRequest(
-                await event.client.get_profile_photos("me", limit=1)
+                await event.Andencento.get_profile_photos("me", limit=1)
             )
         )
-        await event.client(functions.photos.UploadProfilePhotoRequest(file))
+        await event.Andencento(functions.photos.UploadProfilePhotoRequest(file))
         os.system("rm -rf donottouch.jpg")
         await asyncio.sleep(600) 
 
-@client.on(admin_cmd(pattern="avengersdp$"))
+@Andencento.on(admin_cmd(pattern="avengersdp$"))
 async def main(event):
     await event.edit("Activated Avengers Dp\nEnjoy 💜")
     while True:
         await animeppaven()
-        file = await event.client.upload_file("donottouch.jpg")
-        await event.client(
+        file = await event.Andencento.upload_file("donottouch.jpg")
+        await event.Andencento(
             functions.photos.DeletePhotosRequest(
-                await event.client.get_profile_photos("me", limit=1)
+                await event.Andencento.get_profile_photos("me", limit=1)
             )
         )
-        await event.client(functions.photos.UploadProfilePhotoRequest(file))
+        await event.Andencento(functions.photos.UploadProfilePhotoRequest(file))
         os.system("rm -rf donottouch.jpg")
         await asyncio.sleep(600) 
 
-@client.on(admin_cmd(pattern="gamerdp$"))
+@Andencento.on(admin_cmd(pattern="gamerdp$"))
 async def main(event):
     await event.edit("Activated Gamers Dp\nEnjoy 💜")
     while True:
         await animeppgame()
-        file = await event.client.upload_file("donottouch.jpg")
-        await event.client(
+        file = await event.Andencento.upload_file("donottouch.jpg")
+        await event.Andencento(
             functions.photos.DeletePhotosRequest(
-                await event.client.get_profile_photos("me", limit=1)
+                await event.Andencento.get_profile_photos("me", limit=1)
             )
         )
-        await event.client(functions.photos.UploadProfilePhotoRequest(file))
+        await event.Andencento(functions.photos.UploadProfilePhotoRequest(file))
         os.system("rm -rf donottouch.jpg")
         await asyncio.sleep(600) 
 
-@client.on(admin_cmd(pattern="hackerdp$"))
+@Andencento.on(admin_cmd(pattern="hackerdp$"))
 async def main(event):
     await event.edit("Activated Hackers Dp\nEnjoy 💜")
     while True:
         await animepphack()
-        file = await event.client.upload_file("donottouch.jpg")
-        await event.client(
+        file = await event.Andencento.upload_file("donottouch.jpg")
+        await event.Andencento(
             functions.photos.DeletePhotosRequest(
-                await event.client.get_profile_photos("me", limit=1)
+                await event.Andencento.get_profile_photos("me", limit=1)
             )
         )
-        await event.client(functions.photos.UploadProfilePhotoRequest(file))
+        await event.Andencento(functions.photos.UploadProfilePhotoRequest(file))
         os.system("rm -rf donottouch.jpg")
         await asyncio.sleep(600) 
 
-@client.on(admin_cmd(pattern="spacedp$"))
+@Andencento.on(admin_cmd(pattern="spacedp$"))
 async def main(event):
     await event.edit("Activated Space Dp\nEnjoy 💜")
     while True:
         await animeppspace()
-        file = await event.client.upload_file("donottouch.jpg")
-        await event.client(
+        file = await event.Andencento.upload_file("donottouch.jpg")
+        await event.Andencento(
             functions.photos.DeletePhotosRequest(
-                await event.client.get_profile_photos("me", limit=1)
+                await event.Andencento.get_profile_photos("me", limit=1)
             )
         )
-        await event.client(functions.photos.UploadProfilePhotoRequest(file))
+        await event.Andencento(functions.photos.UploadProfilePhotoRequest(file))
         os.system("rm -rf donottouch.jpg")
         await asyncio.sleep(600) 
 
-@client.on(admin_cmd(pattern="wallpapers$"))
+@Andencento.on(admin_cmd(pattern="wallpapers$"))
 async def main(event):
     await event.edit("Activated Wallappers on your DP\nEnjoy 💜")
     while True:
         await animeppwall()
-        file = await event.client.upload_file("donottouch.jpg")
-        await event.client(
+        file = await event.Andencento.upload_file("donottouch.jpg")
+        await event.Andencento(
             functions.photos.DeletePhotosRequest(
-                await event.client.get_profile_photos("me", limit=1)
+                await event.Andencento.get_profile_photos("me", limit=1)
             )
         )
-        await event.client(functions.photos.UploadProfilePhotoRequest(file))
+        await event.Andencento(functions.photos.UploadProfilePhotoRequest(file))
         os.system("rm -rf donottouch.jpg")
         await asyncio.sleep(600) 
         

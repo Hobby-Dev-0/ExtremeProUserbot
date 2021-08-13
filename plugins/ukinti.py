@@ -12,7 +12,7 @@ import asyncio
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd(pattern="unbanall ?(.*)"))
+@Andencento.on(admin_cmd(pattern="unbanall ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -41,7 +41,7 @@ async def _(event):
         await event.edit("{}: {} unbanned".format(event.chat_id, p))
 
 
-@client.on(admin_cmd(pattern="ikuck ?(.*)"))
+@Andencento.on(admin_cmd(pattern="ikuck ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

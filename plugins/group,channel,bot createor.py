@@ -6,8 +6,8 @@ from Extre import CMD_HELP
 from Extre.utils import extremepro_cmd, edit_or_reply, amanpandey_cmd
 
 
-@client.on(extremepro_cmd(pattern="create (b|g|c) (.*)"))  # pylint:disable=E0602
-@client.on(amanpandey_cmd(pattern="create (b|g|c) (.*)", allow_sudo=True))
+@Andencento.on(extremepro_cmd(pattern="create (b|g|c) (.*)"))  # pylint:disable=E0602
+@Andencento.on(amanpandey_cmd(pattern="create (b|g|c) (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -16,7 +16,7 @@ async def _(event):
     event = await edit_or_reply(event, "Creating wait sar.....")
     if type_of_group == "b":
         try:
-            result = await event.client(
+            result = await event.Andencento(
                 functions.messages.CreateChatRequest(  # pylint:disable=E0602
                     users=["@sarah_robot"],
                     # Not enough users (to create a chat, for example)
@@ -25,12 +25,12 @@ async def _(event):
                 )
             )
             created_chat_id = result.chats[0].id
-            await event.client(
+            await event.Andencento(
                 functions.messages.DeleteChatUserRequest(
                     chat_id=created_chat_id, user_id="@sarah_robot"
                 )
             )
-            result = await event.client(
+            result = await event.Andencento(
                 functions.messages.ExportChatInviteRequest(
                     peer=created_chat_id,
                 )
@@ -44,7 +44,7 @@ async def _(event):
             await event.edit(str(e))
     elif type_of_group in ["g", "c"]:
         try:
-            r = await event.client(
+            r = await event.Andencento(
                 functions.channels.CreateChannelRequest(
                     title=group_name,
                     about="Created By Extre BOT",
@@ -53,7 +53,7 @@ async def _(event):
             )
 
             created_chat_id = r.chats[0].id
-            result = await event.client(
+            result = await event.Andencento(
                 functions.messages.ExportChatInviteRequest(
                     peer=created_chat_id,
                 )

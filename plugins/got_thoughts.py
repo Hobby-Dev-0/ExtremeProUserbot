@@ -10,7 +10,7 @@ import random
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd(pattern=r"gott", outgoing=True))
+@Andencento.on(admin_cmd(pattern=r"gott", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return

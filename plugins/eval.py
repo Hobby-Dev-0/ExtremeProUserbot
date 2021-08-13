@@ -14,7 +14,7 @@ from Extre import CMD_HELP
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd("eval"))
+@Andencento.on(admin_cmd("eval"))
 async def _(event):
     if event.fwd_from:
         return

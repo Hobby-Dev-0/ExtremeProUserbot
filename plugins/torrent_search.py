@@ -26,7 +26,7 @@ def dogbin(magnets):
 		counter = counter + 1
 	return urls	
 	
-@client.on(admin_cmd(pattern="tsearch ?(.*)"))
+@Andencento.on(admin_cmd(pattern="tsearch ?(.*)"))
 async def tor_search(event):
 	if event.fwd_from:
 		return 

@@ -32,7 +32,7 @@ DEFAULTUSERBIO = str(BIO_MSG) if BIO_MSG else "LEGEND USE ExtremeProUserbot"
 BOTLOG_CHATID = Config.PRIVATE_GROUP_BOT_API_ID
 BOTLOG = True
 
-@client.on(admin_cmd(pattern="clone ?(.*)"))
+@Andencento.on(admin_cmd(pattern="clone ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -42,7 +42,7 @@ async def _(event):
         await event.edit(str(error_i_a))
         return False
     user_id = replied_user.user.id
-    profile_pic = await event.client.download_profile_photo(user_id, Config.TMP_DOWNLOAD_DIRECTORY)
+    profile_pic = await event.Andencento.download_profile_photo(user_id, Config.TMP_DOWNLOAD_DIRECTORY)
     # some people have weird HTML in their names
     first_name = html.escape(replied_user.user.first_name)
     # https://stackoverflow.com/a/5072031/4723940
@@ -82,21 +82,21 @@ async def _(event):
       reply_to=reply_message
       )
     if BOTLOG:
-        await event.client.send_message(BOTLOG_CHATID, f"#CLONED\nSuccesfulley cloned [{first_name}](tg://user?id={user_id })")
+        await event.Andencento.send_message(BOTLOG_CHATID, f"#CLONED\nSuccesfulley cloned [{first_name}](tg://user?id={user_id })")
     
-@client.on(admin_cmd(pattern="revert$"))
+@Andencento.on(admin_cmd(pattern="revert$"))
 async def _(event):
     if event.fwd_from:
         return
     name = f"{DEFAULTUSER}"
     bio = f"{DEFAULTUSERBIO}"
     n = 1
-    await borg(functions.photos.DeletePhotosRequest(await event.client.get_profile_photos("me", limit= n)))    
+    await borg(functions.photos.DeletePhotosRequest(await event.Andencento.get_profile_photos("me", limit= n)))    
     await borg(functions.account.UpdateProfileRequest(about=f"{bio}"))
     await borg(functions.account.UpdateProfileRequest(first_name=f"{name}"))
     await event.edit("succesfully reverted to your account back")
     if BOTLOG:
-        await event.client.send_message(BOTLOG_CHATID, f"#REVERT\nSuccesfully reverted back to your profile")
+        await event.Andencento.send_message(BOTLOG_CHATID, f"#REVERT\nSuccesfully reverted back to your profile")
     
     
     
@@ -104,14 +104,14 @@ async def get_full_user(event):
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         if previous_message.forward:
-            replied_user = await event.client(
+            replied_user = await event.Andencento(
                 GetFullUserRequest(
                     previous_message.forward.sender_id or previous_message.forward.channel_id
                 )
             )
             return replied_user, None
         else:
-            replied_user = await event.client(
+            replied_user = await event.Andencento(
                 GetFullUserRequest(
                     previous_message.sender_id
                 )
@@ -128,28 +128,28 @@ async def get_full_user(event):
             probable_user_mention_entity = mention_entity[0]
             if isinstance(probable_user_mention_entity, MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
-                replied_user = await event.client(GetFullUserRequest(user_id))
+                replied_user = await event.Andencento(GetFullUserRequest(user_id))
                 return replied_user, None
             else:
                 try:
-                    user_object = await event.client.get_entity(input_str)
+                    user_object = await event.Andencento.get_entity(input_str)
                     user_id = user_object.id
-                    replied_user = await event.client(GetFullUserRequest(user_id))
+                    replied_user = await event.Andencento(GetFullUserRequest(user_id))
                     return replied_user, None
                 except Exception as e:
                     return None, e
         elif event.is_private:
             try:
                 user_id = event.chat_id
-                replied_user = await event.client(GetFullUserRequest(user_id))
+                replied_user = await event.Andencento(GetFullUserRequest(user_id))
                 return replied_user, None
             except Exception as e:
                 return None, e
         else:
             try:
-                user_object = await event.client.get_entity(int(input_str))
+                user_object = await event.Andencento.get_entity(int(input_str))
                 user_id = user_object.id
-                replied_user = await event.client(GetFullUserRequest(user_id))
+                replied_user = await event.Andencento(GetFullUserRequest(user_id))
                 return replied_user, None
             except Exception as e:
                 return None, e

@@ -22,7 +22,7 @@ path = "./LEGENDX/"
 if not os.path.isdir(path):
     os.makedirs(path)
 
-@client.on(admin_cmd("blur"))
+@Andencento.on(admin_cmd("blur"))
 async def hehe(event):
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
@@ -34,13 +34,13 @@ async def hehe(event):
     ret, frame = img.read() 
     blur = cv2.GaussianBlur(frame, (35, 35), 0)
     cv2.imwrite("danish.jpg", blur)
-    await event.client.send_file(event.chat_id, "danish.jpg", force_document=False, reply_to=event.reply_to_msg_id)
+    await event.Andencento.send_file(event.chat_id, "danish.jpg", force_document=False, reply_to=event.reply_to_msg_id)
     await event.delete()
     shutil.rmtree(path)
     os.remove("danish.jpg")
 
 
-@client.on(admin_cmd("invert"))
+@Andencento.on(admin_cmd("invert"))
 async def hehe(event):
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
@@ -52,14 +52,14 @@ async def hehe(event):
     ret, frame = img.read()
     invert = cv2.bitwise_not(frame)
     cv2.imwrite("danish.jpg", invert)
-    await event.client.send_file(event.chat_id, "danish.jpg", force_document=False, reply_to=event.reply_to_msg_id)
+    await event.Andencento.send_file(event.chat_id, "danish.jpg", force_document=False, reply_to=event.reply_to_msg_id)
     await event.delete()
     shutil.rmtree(path)
     os.remove("danish.jpg")
 
 
     
-@client.on(admin_cmd("mirror"))
+@Andencento.on(admin_cmd("mirror"))
 async def hehe(event):
     if not event.reply_to_msg_id:
         await event.edit("Reply to media")
@@ -72,14 +72,14 @@ async def hehe(event):
     ish = cv2.flip(dan, 1)
     misi = cv2.hconcat([dan, ish])
     cv2.imwrite('dark.jpg', misi)
-    await event.client.send_file(event.chat_id, "dark.jpg" , reply_to=event.reply_to_msg_id) 
+    await event.Andencento.send_file(event.chat_id, "dark.jpg" , reply_to=event.reply_to_msg_id) 
     await event.delete()
     shutil.rmtree(path)
     os.remove("dark.jpg")
     
 
 
-@client.on(admin_cmd("quad"))
+@Andencento.on(admin_cmd("quad"))
 async def hehe(event):
     if not event.reply_to_msg_id:
         await event.edit("Reply to media")
@@ -95,13 +95,13 @@ async def hehe(event):
     trn = cv2.rotate(fr, cv2.ROTATE_180)
     fix = cv2.vconcat([mici, trn])
     cv2.imwrite('dark.jpg', fix)
-    await event.client.send_file(event.chat_id, "dark.jpg" , reply_to=event.reply_to_msg_id) 
+    await event.Andencento.send_file(event.chat_id, "dark.jpg" , reply_to=event.reply_to_msg_id) 
     await event.delete()
     shutil.rmtree(path)
     os.remove("dark.jpg")   
     
 
-@client.on(admin_cmd("flip"))
+@Andencento.on(admin_cmd("flip"))
 async def hehe(event):
     if not event.reply_to_msg_id:
         await event.edit("Reply to media")
@@ -115,14 +115,14 @@ async def hehe(event):
     ish = cv2.rotate(trn, cv2.ROTATE_180)
     misi = cv2.vconcat([dan, ish])
     cv2.imwrite('dark.jpg', misi)
-    await event.client.send_file(event.chat_id, "dark.jpg" , reply_to=event.reply_to_msg_id) 
+    await event.Andencento.send_file(event.chat_id, "dark.jpg" , reply_to=event.reply_to_msg_id) 
     await event.delete()
     shutil.rmtree(path)
     os.remove("dark.jpg")
     
 
 
-@client.on(admin_cmd("enhance"))
+@Andencento.on(admin_cmd("enhance"))
 async def hehe(event):
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
@@ -134,13 +134,13 @@ async def hehe(event):
     ret, frame = img.read()
     dtl = cv2.detailEnhance(frame, sigma_s=10, sigma_r=0.15)
     cv2.imwrite("danish.jpg", dtl)
-    await event.client.send_file(event.chat_id, "danish.jpg", force_document=False, reply_to=event.reply_to_msg_id)
+    await event.Andencento.send_file(event.chat_id, "danish.jpg", force_document=False, reply_to=event.reply_to_msg_id)
     await event.delete()
     shutil.rmtree(path)
     os.remove("danish.jpg")
 
 
-@client.on(admin_cmd("pencil"))
+@Andencento.on(admin_cmd("pencil"))
 async def hehe(event):
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
@@ -156,12 +156,12 @@ async def hehe(event):
     output = 255 - output
     ret, output = cv2.threshold(output, 150, 255, cv2.THRESH_BINARY)
     cv2.imwrite("danish.jpg", output)
-    await event.client.send_file(event.chat_id, "danish.jpg", force_document=False, reply_to=event.reply_to_msg_id)
+    await event.Andencento.send_file(event.chat_id, "danish.jpg", force_document=False, reply_to=event.reply_to_msg_id)
     await event.delete()
     shutil.rmtree(path)
     os.remove("danish.jpg")
     
-@client.on(admin_cmd("smooth"))
+@Andencento.on(admin_cmd("smooth"))
 async def hehe(event):
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
@@ -173,14 +173,14 @@ async def hehe(event):
     ret, frame = img.read() 
     smooth = cv2.edgePreservingFilter(frame, flags=1, sigma_s=60, sigma_r=0.4)
     cv2.imwrite("danish.jpg", smooth)
-    await event.client.send_file(event.chat_id, "danish.jpg", force_document=False, reply_to=event.reply_to_msg_id)
+    await event.Andencento.send_file(event.chat_id, "danish.jpg", force_document=False, reply_to=event.reply_to_msg_id)
     await event.delete()
     shutil.rmtree(path)
     os.remove("danish.jpg")
 
     # .ytc by @shivam_patel
     #  kang with credits
-@client.on(admin_cmd(pattern=r"ytc"))
+@Andencento.on(admin_cmd(pattern=r"ytc"))
 async def hehe(event):
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
@@ -202,7 +202,7 @@ async def hehe(event):
     nikal = f"https://some-random-api.ml/canvas/youtube-comment?avatar={imglink}&comment={comment}&username={username}"
     r = requests.get(nikal)
     open("shivam.png", "wb").write(r.content)
-    await event.client.send_file(event.chat_id, "shivam.png", reply_to=event.reply_to_msg_id)
+    await event.Andencento.send_file(event.chat_id, "shivam.png", reply_to=event.reply_to_msg_id)
     await event.delete()
     shutil.rmtree(path)
     os.remove("shivam.png")

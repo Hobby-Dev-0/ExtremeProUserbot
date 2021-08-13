@@ -11,7 +11,7 @@ from gtts import gTTS
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd(pattern="voice (.*)"))
+@Andencento.on(admin_cmd(pattern="voice (.*)"))
 async def _(event):
     if event.fwd_from:
         return

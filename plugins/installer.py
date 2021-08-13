@@ -24,7 +24,7 @@ async def install(event):
         return
     if event.reply_to_msg_id:
         try:
-            downloaded_file_name = await event.client.download_media(  # pylint:disable=E0602
+            downloaded_file_name = await event.Andencento.download_media(  # pylint:disable=E0602
                 await event.get_reply_message(),
                 "./plugins/"  # pylint:disable=E0602
             )

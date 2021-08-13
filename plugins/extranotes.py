@@ -4,7 +4,7 @@ import os
 import sys
 from Extre.utils import admin_cmd
 
-@client.on(admin_cmd(pattern=r"gaali"))
+@Andencento.on(admin_cmd(pattern=r"gaali"))
 async def test(event):
     if event.fwd_from:
         return 

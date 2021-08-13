@@ -7,7 +7,7 @@ from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from Extre.utils import admin_cmd
 from Extre import CMD_HELP
 
-@client.on(admin_cmd(pattern="recognize ?(.*)"))
+@Andencento.on(admin_cmd(pattern="recognize ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 
@@ -24,10 +24,10 @@ async def _(event):
        await event.edit("Reply to actual users message.")
        return
     cat = await event.edit("recognizeing this media")
-    async with event.client.conversation(chat) as conv:
+    async with event.Andencento.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=461083923))
-              await event.client.forward_messages(chat, reply_message)
+              await event.Andencento.forward_messages(chat, reply_message)
               response = await response 
           except YouBlockedUserError: 
               await event.reply("unblock @Rekognition_Bot and try again")

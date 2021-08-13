@@ -6,7 +6,7 @@ from Extre import CMD_HELP
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd("get_bot ?(.*)"))
+@Andencento.on(admin_cmd("get_bot ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

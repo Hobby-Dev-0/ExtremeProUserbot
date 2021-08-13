@@ -9,8 +9,8 @@ SESSION_ID = {}
 
 if Var.LYDIA_API_KEY:
     api_key = Var.LYDIA_API_KEY
-    api_client = coffeehouse.API(api_key)
-    Lydia = LydiaAI(api_client)
+    api_Andencento = coffeehouse.API(api_key)
+    Lydia = LydiaAI(api_Andencento)
 
 @command(pattern="^.repcf", outgoing=True)
 async def repcf(event):
@@ -59,14 +59,14 @@ async def remcf(event):
     except KeyError:
         await event.edit("This person does not have Lydia activated on him/her.")
 
-@client.on(events.NewMessage(incoming=True))
+@Andencento.on(events.NewMessage(incoming=True))
 async def user(event):
     user_text = event.text
     try:
         session = ACC_LYDIA[str(event.chat_id) + " " + str(event.sender_id)]
         session_id = SESSION_ID[str(event.chat_id) + " " + str(event.sender_id)]
         msg = event.text
-        async with event.client.action(event.chat_id, "typing"):
+        async with event.Andencento.action(event.chat_id, "typing"):
             text_rep = session.think_thought((session_id, msg))
             wait_time = 0
             for i in range(len(text_rep)):

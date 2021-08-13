@@ -5,7 +5,7 @@ import asyncio
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd(pattern="type (.*)"))
+@Andencento.on(admin_cmd(pattern="type (.*)"))
 async def _(event):
     if event.fwd_from:
         return

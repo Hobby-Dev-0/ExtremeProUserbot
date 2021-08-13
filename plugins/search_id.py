@@ -5,7 +5,7 @@ from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from Extre.utils import extremepro_cmd
 from Extre import bot, CMD_HELP
 
-@client.on(extremepro_cmd(pattern="sg ?(.*)"))
+@Andencento.on(extremepro_cmd(pattern="sg ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 
@@ -19,7 +19,7 @@ async def _(event):
        await event.edit("Reply to actual users message.")
        return
     await event.edit("Checking...")
-    async with event.client.conversation(chat) as conv:
+    async with event.Andencento.conversation(chat) as conv:
           try:     
               #await conv.send_message("/search_id {}".format(sender))
               response1 = conv.wait_event(events.NewMessage(incoming=True,from_users=461843263))
@@ -36,9 +36,9 @@ async def _(event):
              await event.edit("User never changed his Username...")
           else: 
              await event.delete()
-             await event.client.send_message(event.chat_id, response2.message)
+             await event.Andencento.send_message(event.chat_id, response2.message)
              
-             await event.client.send_message(event.chat_id, response3.message)
+             await event.Andencento.send_message(event.chat_id, response3.message)
 
 
 CMD_HELP.update(

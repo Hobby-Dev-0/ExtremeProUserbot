@@ -28,7 +28,7 @@ gTTS>=2.0.1
 opencv-python--headless
 scapy
 gitpython
-google-api-python-client==1.8.0
+google-api-python-Andencento==1.8.0
 google-auth-oauthlib
 google_images_download>=2.8.0
 googletrans==3.1.0a0
@@ -43,7 +43,7 @@ justwatch
 lxml
 lottie
 nekos.py
-oauth2client
+oauth2Andencento
 patool
 psycopg2
 psycopg2-binary

@@ -3,7 +3,7 @@ import bs4
 import requests
 from Extre.utils import admin_cmd
 
-@client.on(admin_cmd(pattern="giz ?(.*)"))
+@Andencento.on(admin_cmd(pattern="giz ?(.*)"))
 async def gizoogle(event):
     if event.fwd_from:
         return

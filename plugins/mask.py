@@ -4,7 +4,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from Extre.utils import admin_cmd
 
-@client.on(admin_cmd("mask ?(.*)"))
+@Andencento.on(admin_cmd("mask ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 

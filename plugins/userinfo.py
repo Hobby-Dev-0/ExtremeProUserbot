@@ -74,7 +74,7 @@ async def get_user_sender_id(user, event):
         user = int(user)
 
     try:
-        user_obj = await event.client.get_entity(user)
+        user_obj = await event.Andencento.get_entity(user)
     except (TypeError, ValueError) as err:
         await event.edit(str(err))
         return None
@@ -99,12 +99,12 @@ async def get_user_from_event(event: NewMessage.Event, **kwargs):
             if isinstance(probable_user_mention_entity,
                           MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
-                replied_user = await event.client(GetFullUserRequest(user_id))
+                replied_user = await event.Andencento(GetFullUserRequest(user_id))
                 return replied_user
 
         try:
-            user_object = await event.client.get_entity(user)
-            replied_user = await event.client(
+            user_object = await event.Andencento.get_entity(user)
+            replied_user = await event.Andencento(
                 GetFullUserRequest(user_object.id))
         except (TypeError, ValueError) as err:
             return None
@@ -115,17 +115,17 @@ async def get_user_from_event(event: NewMessage.Event, **kwargs):
           reply_msg.forward.sender_id and
           kwargs['forward']):
         forward = reply_msg.forward
-        replied_user = await event.client(GetFullUserRequest(forward.sender_id))
+        replied_user = await event.Andencento(GetFullUserRequest(forward.sender_id))
 
     # Check for a replied to message
     elif event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
-        replied_user = await event.client(GetFullUserRequest(previous_message.sender_id))
+        replied_user = await event.Andencento(GetFullUserRequest(previous_message.sender_id))
 
     # Last case scenario is to get the current user
     else:
-        self_user = await event.client.get_me()
-        replied_user = await event.client(GetFullUserRequest(self_user.id))
+        self_user = await event.Andencento.get_me()
+        replied_user = await event.Andencento(GetFullUserRequest(self_user.id))
 
     return replied_user
 
@@ -136,11 +136,11 @@ async def get_chat_from_event(event: NewMessage.Event, **kwargs):
 
     if chat:
         try:
-            input_entity = await event.client.get_input_entity(chat)
+            input_entity = await event.Andencento.get_input_entity(chat)
             if isinstance(input_entity, InputPeerChannel):
-                return await event.client(GetFullChannelRequest(input_entity.channel_id))
+                return await event.Andencento(GetFullChannelRequest(input_entity.channel_id))
             elif isinstance(input_entity, InputPeerChat):
-                return await event.client(GetFullChatRequest(input_entity.chat_id))
+                return await event.Andencento(GetFullChatRequest(input_entity.chat_id))
             else:
                 return None
         except(TypeError, ValueError):
@@ -149,18 +149,18 @@ async def get_chat_from_event(event: NewMessage.Event, **kwargs):
     #     return None
     else:
         chat = await event.get_chat()
-        return await event.client(GetFullChannelRequest(chat.id))
+        return await event.Andencento(GetFullChannelRequest(chat.id))
 
 
 async def list_admins(event):
-    adms = await event.client.get_participants(event.chat, filter=ChannelParticipantsAdmins)
+    adms = await event.Andencento.get_participants(event.chat, filter=ChannelParticipantsAdmins)
     adms = map(lambda x: x if not x.bot else None, adms)
     adms = [i for i in list(adms) if i]
     return adms
 
 
 async def list_bots(event):
-    bots = await event.client.get_participants(event.chat, filter=ChannelParticipantsBots)
+    bots = await event.Andencento.get_participants(event.chat, filter=ChannelParticipantsBots)
     return bots
 
 

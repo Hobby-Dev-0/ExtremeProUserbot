@@ -13,7 +13,7 @@ from telethon.tl import types
 
 
 
-@client.on(admin_cmd(pattern="gps ?(.*)"))
+@Andencento.on(admin_cmd(pattern="gps ?(.*)"))
 async def gps(event):
     if event.fwd_from:
         return

@@ -10,7 +10,7 @@ import os
 import sys
 from Extre.utils import admin_cmd
 
-@client.on(admin_cmd(pattern=r"meme"))
+@Andencento.on(admin_cmd(pattern=r"meme"))
 async def meme(event):
     if event.fwd_from:
         return   
@@ -54,7 +54,7 @@ Bonus : Flower Boquee Generater
 usage:- .flower
 
 """
-@client.on(admin_cmd(pattern=r"flower"))
+@Andencento.on(admin_cmd(pattern=r"flower"))
 async def meme(event):
     if event.fwd_from:
         return   

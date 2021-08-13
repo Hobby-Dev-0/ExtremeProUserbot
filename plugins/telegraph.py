@@ -12,7 +12,7 @@ r = telegraph.create_account(short_name=Config.TELEGRAPH_SHORT_NAME)
 auth_url = r["auth_url"]
 
 
-@client.on(admin_cmd("t(m|t) ?(.*)"))
+@Andencento.on(admin_cmd("t(m|t) ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

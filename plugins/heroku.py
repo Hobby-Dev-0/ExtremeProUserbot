@@ -13,7 +13,7 @@ import requests
 import math
 from Extre.utils import admin_cmd
 from Extre import CMD_HELP
-from Extre.uniclient.onfig import Config
+from Extre.uniAndencento.onfig import Config
 
 # ================= 
 
@@ -27,7 +27,7 @@ Heroku = heroku3.from_key(Var.HEROKU_API_KEY)
 heroku_api = "https://api.heroku.com"
 
 
-@client.on(admin_cmd(pattern="(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", outgoing=True))
+@Andencento.on(admin_cmd(pattern="(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", outgoing=True))
 async def variable(var):
     """
         Manage most of ConfigVars setting, set new var, get current var,
@@ -58,7 +58,7 @@ async def variable(var):
             with open("configs.json", "r") as fp:
                 result = fp.read()
                 if len(result) >= 4096:
-                    await var.client.send_file(
+                    await var.Andencento.send_file(
                         var.chat_id,
                         "configs.json",
                         reply_to=var.id,
@@ -104,7 +104,7 @@ async def variable(var):
             return await var.edit(f"**{variable}**  `is not exists`")
 
 
-@client.on(admin_cmd(pattern="usage(?: |$)", outgoing=True))
+@Andencento.on(admin_cmd(pattern="usage(?: |$)", outgoing=True))
 async def dyno_usage(dyno):
     """
         Get your account Dyno Usage
@@ -161,7 +161,7 @@ async def dyno_usage(dyno):
                            f"**|**  [`{percentage}`**%**]"
                            )
 
-@client.on(admin_cmd(pattern="logs$", outgoing=True))
+@Andencento.on(admin_cmd(pattern="logs$", outgoing=True))
 async def _(dyno):        
         try:
              Heroku = heroku3.from_key(HEROKU_API_KEY)                         
@@ -172,7 +172,7 @@ async def _(dyno):
         with open('logs.txt', 'w') as log:
             log.write(app.get_log())
         await dyno.edit("Got the logs wait a sec")    
-        await dyno.client.send_file(
+        await dyno.Andencento.send_file(
             dyno.chat_id,
             "logs.txt",
             reply_to=dyno.id,

@@ -5,7 +5,7 @@ import os
 from telethon import TelegramClient
 extremepro_version = "0.1"
 from telethon.sessions import StringSession
-from Extre.connections import client_connection, redis_connection
+from Extre.connections import Andencento_connection, redis_connection
 from Extre import *
 from Extre import *
 from Extre.core import *
@@ -57,27 +57,27 @@ from Extre import *
 from Extre import *
 from Extre import ALIVE_NAME, bot
 PMSECURITY = os.environ.get("PMSECURITY", None)
-bot = client
+bot = Andencento
 uptime = "dekhna jaruri hai kya"
 
-Eiva_USER = "client User"
+Eiva_USER = "Andencento User"
 ForGo10God = "-100"
 Eiva_mention = f"[{Eiva_USER}](tg://user?id={ForGo10God})"
 
-client_USER = "client"
-client_mention = f"[{client_USER}](tg://user?id={ForGo10God})"
+Andencento_USER = "Andencento"
+Andencento_mention = f"[{Andencento_USER}](tg://user?id={ForGo10God})"
 hl = os.environ.get("HANDLER", None) or "."
 shl = os.environ.get("SUDO_HANDLER", None) or "."
-client_ver = "0.1"
+Andencento_ver = "0.1"
 tel_ver = "0.1"
 devs = ""
-user_mention = client_mention
+user_mention = Andencento_mention
 
 import os
 
 from Extre import CMD_HELP
 
-chnl_link = "https://t.me/client"
+chnl_link = "https://t.me/Andencento"
 
 COMMAND_HAND_LER = os.environ.get("HANDLER", ".")
 
@@ -247,7 +247,7 @@ from Extre import *
 
 async def extremepro_grps(event):
     a = []
-    async for dialog in event.client.iter_dialogs():
+    async for dialog in event.Andencento.iter_dialogs():
         entity = dialog.entity
         if isinstance(entity, Channel):
             if entity.megagroup:

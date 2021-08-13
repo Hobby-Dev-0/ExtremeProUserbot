@@ -8,7 +8,7 @@ import speedtest
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd("speedtest ?(.*)"))
+@Andencento.on(admin_cmd("speedtest ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -33,9 +33,9 @@ async def _(event):
     download_speed = response.get("download")
     upload_speed = response.get("upload")
     ping_time = response.get("ping")
-    client_infos = response.get("client")
-    i_s_p = client_infos.get("isp")
-    i_s_p_rating = client_infos.get("isprating")
+    Andencento_infos = response.get("Andencento")
+    i_s_p = Andencento_infos.get("isp")
+    i_s_p_rating = Andencento_infos.get("isprating")
     reply_msg_id = event.message.id
     if event.reply_to_msg_id:
         reply_msg_id = event.reply_to_msg_id

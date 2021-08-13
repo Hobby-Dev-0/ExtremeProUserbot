@@ -15,7 +15,7 @@ from Extre.utils import admin_cmd
 
 
 
-@client.on(admin_cmd("screencapture (.*)"))
+@Andencento.on(admin_cmd("screencapture (.*)"))
 
 async def _(event):
 

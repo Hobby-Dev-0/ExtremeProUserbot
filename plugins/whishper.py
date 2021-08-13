@@ -5,7 +5,7 @@ from var import Var
 
 
 
-@client.on(admin_cmd(pattern="wspr ?(.*)"))
+@Andencento.on(admin_cmd(pattern="wspr ?(.*)"))
 async def wspr(event):
     if event.fwd_from:
         return

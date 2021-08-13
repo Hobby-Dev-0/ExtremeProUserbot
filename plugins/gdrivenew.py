@@ -22,12 +22,12 @@ from datetime import datetime
 from telethon import events
 from Extre.utils import admin_cmd, progress, humanbytes
 from mimetypes import guess_type
-from apiclient.discovery import build
-from apiclient.http import MediaFileUpload
-from apiclient.errors import ResumableUploadError
-from oauth2client.client import OAuth2WebServerFlow
-from oauth2client.file import Storage
-from oauth2client import file, client, tools
+from apiAndencento.discovery import build
+from apiAndencento.http import MediaFileUpload
+from apiAndencento.errors import ResumableUploadError
+from oauth2Andencento.Andencento import OAuth2WebServerFlow
+from oauth2Andencento.file import Storage
+from oauth2Andencento import file, Andencento, tools
 import httplib2
 
 
@@ -46,7 +46,7 @@ G_DRIVE_F_PARENT_ID = None
 G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 
 
-@client.on(admin_cmd(pattern="gdrive ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="gdrive ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -116,7 +116,7 @@ async def _(event):
         await mone.edit("File Not found in local server. Give me a file path :((")
 
 
-@client.on(admin_cmd(pattern="dfolder https?://drive\.google\.com/drive/u/\d/folders/([-\w]{25,})", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="dfolder https?://drive\.google\.com/drive/u/\d/folders/([-\w]{25,})", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -130,7 +130,7 @@ async def _(event):
         await mone.edit("Send `.gdrivesp https://drive.google.com/drive/u/X/folders/Y` to set the folder to upload new files to")
 
 
-@client.on(admin_cmd(pattern="gclear", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="gclear", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -140,7 +140,7 @@ async def _(event):
     await event.delete()
 
 
-@client.on(admin_cmd(pattern="gdir ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="gdir ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -173,7 +173,7 @@ async def _(event):
         await mone.edit(f"directory {input_str} does not seem to exist")
 
 
-@client.on(admin_cmd(pattern="drive (delete|get) ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="drive (delete|get) ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -205,7 +205,7 @@ async def _(event):
     await mone.edit(response_from_svc)
 
 
-@client.on(admin_cmd(pattern="sdrive ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="sdrive ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -250,7 +250,7 @@ async def create_token_file(token_file, event):
         redirect_uri=REDIRECT_URI
     )
     authorize_url = flow.step1_get_authorize_url()
-    async with event.client.conversation(Config.PLUGIN_CHANNEL) as conv:
+    async with event.Andencento.conversation(Config.PLUGIN_CHANNEL) as conv:
         await conv.send_message(f"Go to the following link in your browser: {authorize_url} and reply the code")
         response = conv.wait_event(events.NewMessage(
             outgoing=True,

@@ -9,8 +9,8 @@ from Extre import CMD_HELP
 from Extre.utils import admin_cmd, sudo_cmd
 from var import Var
 # how a lazy guy ports.
-client = borg
-@client.on(admin_cmd("memify ?(.*)"))
+Andencento = borg
+@Andencento.on(admin_cmd("memify ?(.*)"))
 async def handler(event):
     if event.fwd_from:
         return
@@ -21,13 +21,13 @@ async def handler(event):
     if not reply_message.media:
         await event.edit("```Reply to a image/sticker.```")
         return
-    file = await client.download_media(reply_message, Var.TEMP_DOWNLOAD_DIRECTORY)
+    file = await Andencento.download_media(reply_message, Var.TEMP_DOWNLOAD_DIRECTORY)
     await event.edit("```Memifying this image! (」ﾟﾛﾟ)｣ ```")
     text = str(event.pattern_match.group(1)).strip()
     if len(text) < 1:
         return await event.edit("You might want to try `.help memify`")
     meme = await drawText(file, text)
-    await client.send_file(event.chat_id, file=meme, force_document=False)
+    await Andencento.send_file(event.chat_id, file=meme, force_document=False)
     os.remove(meme)
 
 # Taken from https://github.com/UsergeTeam/Userge-Plugins/blob/master/plugins/memify.py#L64

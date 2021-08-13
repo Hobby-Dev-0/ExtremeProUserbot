@@ -38,8 +38,8 @@ async def get_tz(con):
         return
 
 
-@client.on(admin_cmd(outgoing=True, pattern="climate( (.*)|$)"))
-@client.on(sudo_cmd(pattern="climate( (.*)|$)", allow_sudo=True))
+@Andencento.on(admin_cmd(outgoing=True, pattern="climate( (.*)|$)"))
+@Andencento.on(sudo_cmd(pattern="climate( (.*)|$)", allow_sudo=True))
 @errors_handler
 async def get_weather(weather):
     """ For .weather command, gets the current weather of a city. """
@@ -137,8 +137,8 @@ async def get_weather(weather):
     )
 
 
-@client.on(admin_cmd(outgoing=True, pattern="setcity(?: |$)(.*)"))
-@client.on(sudo_cmd(pattern="setcity(?: |$)(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(outgoing=True, pattern="setcity(?: |$)(.*)"))
+@Andencento.on(sudo_cmd(pattern="setcity(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def set_default_city(city):
     """ For .ctime command, change the default Extre country for date and time commands. """
@@ -186,8 +186,8 @@ async def set_default_city(city):
     await edit_or_reply(city, f"`Set default city as {cityname}, {fullc_n}.`")
 
 
-@client.on(admin_cmd(pattern="wttr ?(.*)"))
-@client.on(sudo_cmd(pattern="wttr ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="wttr ?(.*)"))
+@Andencento.on(sudo_cmd(pattern="wttr ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

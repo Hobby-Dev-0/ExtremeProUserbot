@@ -10,7 +10,7 @@ from Extre import CMD_HELP
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd("info ?(.*)"))
+@Andencento.on(admin_cmd("info ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -89,14 +89,14 @@ async def get_full_user(event):
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         if previous_message.forward:
-            replied_user = await event.client(
+            replied_user = await event.Andencento(
                 GetFullUserRequest(
                     previous_message.forward.sender_id or previous_message.forward.channel_id
                 )
             )
             return replied_user, None
         else:
-            replied_user = await event.client(
+            replied_user = await event.Andencento(
                 GetFullUserRequest(
                     previous_message.sender_id
                 )
@@ -113,28 +113,28 @@ async def get_full_user(event):
             probable_user_mention_entity = mention_entity[0]
             if isinstance(probable_user_mention_entity, MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
-                replied_user = await event.client(GetFullUserRequest(user_id))
+                replied_user = await event.Andencento(GetFullUserRequest(user_id))
                 return replied_user, None
             else:
                 try:
-                    user_object = await event.client.get_entity(input_str)
+                    user_object = await event.Andencento.get_entity(input_str)
                     user_id = user_object.id
-                    replied_user = await event.client(GetFullUserRequest(user_id))
+                    replied_user = await event.Andencento(GetFullUserRequest(user_id))
                     return replied_user, None
                 except Exception as e:
                     return None, e
         elif event.is_private:
             try:
                 user_id = event.chat_id
-                replied_user = await event.client(GetFullUserRequest(user_id))
+                replied_user = await event.Andencento(GetFullUserRequest(user_id))
                 return replied_user, None
             except Exception as e:
                 return None, e
         else:
             try:
-                user_object = await event.client.get_entity(int(input_str))
+                user_object = await event.Andencento.get_entity(int(input_str))
                 user_id = user_object.id
-                replied_user = await event.client(GetFullUserRequest(user_id))
+                replied_user = await event.Andencento(GetFullUserRequest(user_id))
                 return replied_user, None
             except Exception as e:
                 return None, e

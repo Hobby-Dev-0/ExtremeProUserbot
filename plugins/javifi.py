@@ -15,7 +15,7 @@ bluebot = "@ceowhitehatcracks"
 freebot = "@ceowhitehatcracks"
 
 
-@client.on(admin_cmd("jav ?(.*)"))
+@Andencento.on(admin_cmd("jav ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

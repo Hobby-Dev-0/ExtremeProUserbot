@@ -10,7 +10,7 @@ from pathlib import Path
 from Extre import LOAD_PLUG, CMD_HELP
 from Extre.utils import admin_cmd
 import os
-@client.on(admin_cmd(pattern=r"^uninstall (?P<shortname>\w+)$"))
+@Andencento.on(admin_cmd(pattern=r"^uninstall (?P<shortname>\w+)$"))
 async def unload(event):
     if event.fwd_from:
         return

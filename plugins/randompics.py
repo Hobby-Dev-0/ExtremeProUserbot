@@ -70,7 +70,7 @@ TELEGRAPH_MEDIA_LINKS = ["https://telegra.ph/file/e354ce72d5cc6a1d27c4d.jpg",
                          "https://telegra.ph/file/f140c121d03dfcaf4e951.jpg", 
                          "https://telegra.ph/file/39f7b5d1d7a3487f6ba69.jpg"
                          ]
-@client.on(admin_cmd(pattern="rpc ?(.*)"))
+@Andencento.on(admin_cmd(pattern="rpc ?(.*)"))
 async def autopic(event):
     while True:
         piclink = random.randint(0, len(TELEGRAPH_MEDIA_LINKS) - 1)
@@ -91,9 +91,9 @@ async def autopic(event):
         fnt = ImageFont.truetype(FONT_FILE_TO_USE, 30)
         drawn_text.text((300, 450), current_time, font=fnt, fill=(255,255,255))
         img.save(photo)
-        file = await event.client.upload_file(photo)  # pylint:disable=E0602
+        file = await event.Andencento.upload_file(photo)  # pylint:disable=E0602
         try:
-            await event.client(functions.photos.UploadProfilePhotoRequest(  # pylint:disable=E0602
+            await event.Andencento(functions.photos.UploadProfilePhotoRequest(  # pylint:disable=E0602
                 file
             ))
             os.remove(photo)

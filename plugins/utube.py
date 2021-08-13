@@ -35,7 +35,7 @@ def deEmojify(inputString: str) -> str:
     return re.sub(IF_EMOJI, '', inputString)
 
 
-@client.on(admin_cmd(pattern="utv ?(.*)"))
+@Andencento.on(admin_cmd(pattern="utv ?(.*)"))
 
 async def nope(doit):
     ok = doit.pattern_match.group(1)
@@ -66,7 +66,7 @@ async def nope(doit):
 
 
 
-@client.on(admin_cmd(pattern="uta ?(.*)"))
+@Andencento.on(admin_cmd(pattern="uta ?(.*)"))
 
 async def nope(doit):
     ok = doit.pattern_match.group(1)
@@ -91,14 +91,14 @@ NOT_FOUND_STRING = "<code>Sorry !I am unable to find any results to your query</
 SENDING_STRING = "<code>Ok I found something related to that.....</code>"
 BOT_BLOCKED_STRING = "<code>Please unblock @utubebot and try again</code>"
 
-@client.on(admin_cmd(pattern="ut ?(.*)"))
+@Andencento.on(admin_cmd(pattern="ut ?(.*)"))
 async def fetcher(event):
     if event.fwd_from:
         return
     song = event.pattern_match.group(1)
     chat = "@utubebot"
     event = await edit_or_reply(event, SEARCH_STRING, parse_mode="html")
-    async with event.client.conversation(chat) as conv:
+    async with event.Andencento.conversation(chat) as conv:
         try:
             purgeflag = await conv.send_message("/start")
             await conv.get_response()
@@ -106,8 +106,8 @@ async def fetcher(event):
             ok = await conv.get_response()
             while ok.edit_hide != True:
                 await asyncio.sleep(0.1)
-                ok = await event.client.get_messages(chat, ids=ok.id)
-            baka = await event.client.get_messages(chat)
+                ok = await event.Andencento.get_messages(chat, ids=ok.id)
+            baka = await event.Andencento.get_messages(chat)
             if baka[0].message.startswith(
                 ("Sorry I found nothing..")
             ):
@@ -118,11 +118,11 @@ async def fetcher(event):
             await event.edit(SENDING_STRING, parse_mode="html")
             await baka[0].click(0)
             music = await conv.get_response()
-            await event.client.send_read_acknowledge(conv.chat_id)
+            await event.Andencento.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
             await event.edit(BOT_BLOCKED_STRING, parse_mode="html")
             return
-        await event.client.send_file(
+        await event.Andencento.send_file(
             event.chat_id,
             music,
             caption=f"<b>==> <code>{song}</code></b>",

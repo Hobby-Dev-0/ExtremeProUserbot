@@ -9,7 +9,7 @@ from datetime import tzinfo, datetime
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd(pattern="weathers (.*)"))
+@Andencento.on(admin_cmd(pattern="weathers (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -51,7 +51,7 @@ async def _(event):
         await event.edit(response_api["message"])
 
 
-@client.on(admin_cmd(pattern="wttr (.*)"))
+@Andencento.on(admin_cmd(pattern="wttr (.*)"))
 async def _(event):
     if event.fwd_from:
         return

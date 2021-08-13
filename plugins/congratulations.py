@@ -16,7 +16,7 @@ RUNSREACTS = [
 ]
 
 
-@client.on(admin_cmd(pattern="congo"))
+@Andencento.on(admin_cmd(pattern="congo"))
 async def _(event):
     if event.fwd_from:
         return

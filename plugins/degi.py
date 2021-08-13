@@ -5,8 +5,8 @@ import asyncio
 from telethon import events
 from Extre import CMD_HELP
 
-@client.on(admin_cmd(pattern="degi$"))
-@client.on(sudo_cmd(pattern="degi$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="degi$"))
+@Andencento.on(sudo_cmd(pattern="degi$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -30,8 +30,8 @@ async def _(event):
     await event.edit("Wo DeGi TuM eKbAr MaNg KaR tOh DeKhO😄")
 
 
-@client.on(admin_cmd(pattern=f"nehi$", outgoing=True))
-@client.on(sudo_cmd(pattern=f"nehi$", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern=f"nehi$", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=f"nehi$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

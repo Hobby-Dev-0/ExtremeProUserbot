@@ -10,7 +10,7 @@ from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from Extre.utils import admin_cmd
 
 
-@client.on(admin_cmd(pattern="mash ?(.*)"))
+@Andencento.on(admin_cmd(pattern="mash ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 
@@ -18,10 +18,10 @@ async def _(event):
     reply_message = await event.get_reply_message()
     chat = "@vixtbot"
     await event.edit("```Checking...```")
-    async with event.client.conversation(chat) as conv:
+    async with event.Andencento.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=285336877))
-              await event.client.send_message(chat, "{}".format(input_str))
+              await event.Andencento.send_message(chat, "{}".format(input_str))
               response = await response 
           except YouBlockedUserError: 
               await event.reply("```Unblock @vixtbot```")
@@ -30,4 +30,4 @@ async def _(event):
              await event.edit("😐")
           else: 
              await event.delete()
-             await event.client.send_message(event.chat_id, response.message)
+             await event.Andencento.send_message(event.chat_id, response.message)
