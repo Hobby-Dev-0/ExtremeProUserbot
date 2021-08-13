@@ -18,9 +18,9 @@ jobs:
 
         with:
 
-          find: "Andencento.on"
+          find: "Andencento.uid"
 
-          replace: "client.on"
+          replace: "client.uid"
 
       - name: Create Pull Request
 
