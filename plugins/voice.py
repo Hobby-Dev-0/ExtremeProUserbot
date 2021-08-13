@@ -2,7 +2,7 @@
 Available Commands:
 .tts LanguageCode as reply to a message
 .tts LangaugeCode | text to speak"""
-from userbot import CMD_HELP
+from Extre import CMD_HELP
 import asyncio
 import os
 import subprocess

@@ -2,7 +2,7 @@ import asyncio
 from collections import deque
 
 from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
-from userbot import CMD_HELP
+from Extre import CMD_HELP
 
 
 @Andencento.on(admin_cmd(pattern="think$", outgoing=True))

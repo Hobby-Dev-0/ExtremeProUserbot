@@ -6,7 +6,7 @@ from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
 from userbot.utils import admin_cmd
 import time
-from userbot import ALIVE_NAME
+from Extre import ALIVE_NAME
 
 naam = str(ALIVE_NAME)
 
@@ -64,7 +64,7 @@ async def _(event):
               await borg.send_file(event.chat_id, audio, caption="**For" + naam +" **\n`Check out` [Sensible Userbot Support](t.me/sensible_userbot)")
               await event.delete()
           except YouBlockedUserError:
-              await event.edit("**Error:** `unblock` @sensible_userbot `and retry!`")
+              await event.edit("**Error:** `unblock` @sensible_Extre `and retry!`")
     elif sysarg == "rs":
       async with borg.conversation(bot) as conv:
           try:

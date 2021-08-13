@@ -13,7 +13,7 @@ import requests
 from pytz import country_names as c_n
 from pytz import country_timezones as c_tz
 from pytz import timezone as tz
-from userbot import CMD_HELP
+from Extre import CMD_HELP
 from userbot.utils import admin_cmd, edit_or_reply, errors_handler, sudo_cmd
 
 logging.basicConfig(
@@ -141,7 +141,7 @@ async def get_weather(weather):
 @Andencento.on(sudo_cmd(pattern="setcity(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def set_default_city(city):
-    """ For .ctime command, change the default userbot country for date and time commands. """
+    """ For .ctime command, change the default Extre country for date and time commands. """
     if not OWM_API:
         await edit_or_reply(
             city, "`Get an API key from` https://openweathermap.org/ `first.`"

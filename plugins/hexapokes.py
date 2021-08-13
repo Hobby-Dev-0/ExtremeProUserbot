@@ -2,7 +2,7 @@
 
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from userbot import ALIVE_NAME, CMD_HELP
+from Extre import ALIVE_NAME, CMD_HELP
 from userbot.utils import admin_cmd
 
 naam = str(ALIVE_NAME)

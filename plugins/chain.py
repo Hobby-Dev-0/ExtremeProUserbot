@@ -3,7 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 from telethon.tl.functions.messages import SaveDraftRequest
 
-from userbot import CMD_HELP
+from Extre import CMD_HELP
 from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 

@@ -15,7 +15,7 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from telethon.tl.types import DocumentAttributeVideo
 
-from userbot import LOGS, CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
+from Extre import LOGS, CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
 from userbot.events import register
 
 
@@ -80,7 +80,7 @@ def time_formatter(milliseconds: int) -> str:
 @register(pattern=r".dl(?: |$)(.*)", outgoing=True)
 async def download(target_file):
     """ For .dl command, download files to the userbot's server. """
-    await target_file.edit("Processing using userbot server ( ◜‿◝ )♡")
+    await target_file.edit("Processing using Extre server ( ◜‿◝ )♡")
     input_str = target_file.pattern_match.group(1)
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)

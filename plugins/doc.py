@@ -6,7 +6,7 @@ import time
 from datetime import datetime
 from io import BytesIO
 from pathlib import Path
-from userbot import bot as borg
+from Extre import bot as borg
 from telethon import functions, types
 from telethon.errors import PhotoInvalidDimensionsError
 from telethon.errors.rpcerrorlist import YouBlockedUserError

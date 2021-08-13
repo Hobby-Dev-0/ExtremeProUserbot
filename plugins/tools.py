@@ -13,7 +13,7 @@ from PIL import Image, ImageColor
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
-from userbot import CMD_HELP
+from Extre import CMD_HELP
 
 
 @Andencento.on(admin_cmd(pattern="scan ?(.*)"))
@@ -389,7 +389,7 @@ CMD_HELP.update(
         \n\n**Syntax : **`cal year ; month`\
         \n**Function : **__Shows you the calendar of given month and year__\
         \n\n**Syntax : **`.currency` amount (from currency) (to currency)\
-        \n**Function : **__Currency converter for userbot __**Example :** `.currency 10 usd inr`\
+        \n**Function : **__Currency converter for Extre __**Example :** `.currency 10 usd inr`\
         \n\n**Syntax : **`.currencies`\
         \n**Function : **__Shows you the some list of currencies__\
         \n\n**Syntax : **`.ifsc` <IFSC code>\

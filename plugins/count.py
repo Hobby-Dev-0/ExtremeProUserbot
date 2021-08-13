@@ -4,7 +4,7 @@ from telethon.events import NewMessage
 from telethon.tl.custom import Dialog
 from telethon.tl.types import Channel, Chat, User
 from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
-from userbot import CMD_HELP
+from Extre import CMD_HELP
 
 
 @Andencento.on(admin_cmd(pattern="stats$"))

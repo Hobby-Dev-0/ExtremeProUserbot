@@ -2,7 +2,7 @@
 
 
 from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
-from userbot import CMD_HELP
+from Extre import CMD_HELP
 from userbot.utils import admin_cmd
 import html
 from telethon import events
@@ -94,7 +94,7 @@ async def gspider(userbot):
             await userbot.client(BlockRequest(user))
         except:
             pass
-        testuserbot = [
+        testExtre = [
             d.entity.id
             for d in await userbot.client.get_dialogs()
             if (d.is_group or d.is_channel)
@@ -158,7 +158,7 @@ async def gspider(userbot):
             await userbot.client(UnblockRequest(user))
         except:
             pass
-        testuserbot = [
+        testExtre = [
             d.entity.id
             for d in await userbot.client.get_dialogs()
             if (d.is_group or d.is_channel)

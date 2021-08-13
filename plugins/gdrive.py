@@ -9,7 +9,7 @@ import time
 import math
 from datetime import datetime
 from telethon import events
-from userbot import CMD_HELP
+from Extre import CMD_HELP
 from userbot.utils import admin_cmd, progress
 #
 from googleapiclient.discovery import build

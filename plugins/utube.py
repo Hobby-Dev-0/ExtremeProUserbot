@@ -7,7 +7,7 @@
 
 import re
 import random
-from userbot import bot, CMD_HELP
+from Extre import bot, CMD_HELP
 import asyncio
 import os
 from pathlib import Path

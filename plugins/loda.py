@@ -2,7 +2,7 @@ import asyncio
 import time
 from datetime import datetime
 
-from userbot import ALIVE_NAME, StartTime, CMD_HELP
+from Extre import ALIVE_NAME, StartTime, CMD_HELP
 from userbot.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "LEGEND USER"

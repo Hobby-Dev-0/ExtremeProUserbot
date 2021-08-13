@@ -12,7 +12,7 @@ import os
 import requests
 import math
 from userbot.utils import admin_cmd
-from userbot import CMD_HELP
+from Extre import CMD_HELP
 from userbot.uniborgConfig import Config
 
 # ================= 
@@ -176,7 +176,7 @@ async def _(dyno):
             dyno.chat_id,
             "logs.txt",
             reply_to=dyno.id,
-            caption="Extreme Pro userbot logs of 100+ lines",
+            caption="Extreme Pro Extre logs of 100+ lines",
         )
         
         await asyncio.sleep(5)

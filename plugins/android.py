@@ -11,7 +11,7 @@ import re
 from bs4 import BeautifulSoup
 from requests import get
 
-from userbot import CMD_HELP
+from Extre import CMD_HELP
 from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 GITHUB = "https://github.com"

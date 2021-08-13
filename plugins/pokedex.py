@@ -3,7 +3,7 @@
 
 from pokedex import pokedex
 
-from userbot import CMD_HELP
+from Extre import CMD_HELP
 from userbot.utils import admin_cmd
 
 
