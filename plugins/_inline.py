@@ -1,509 +1,292 @@
+import io
 import re
-import time
-from datetime import datetime
 from math import ceil
-from os import remove
 
-from git import Repo
-from Extre.dB.core import *
-from Extre.misc import owner_and_sudos
-from support import *
-from telethon.tl.types import InputBotInlineResult, InputWebDocument
-
+from config import Config
+from telethon import custom, events
+from userbot import CMD_LIST
 
 from . import *
 
-# ================================================#
-notmine = f"This bot is for {OWNER_NAME}"
-
-TLINK = "https://telegra.ph/file/75520b56df7b9159438cb.jpg"
-helps = get_string("inline_1")
-
-add_ons = udB.get("ADDONS")
-if add_ons == "True" or add_ons is None:
-    zhelps = get_string("inline_2")
-else:
-    zhelps = get_string("inline_3")
-
-C_PIC = udB.get("INLINE_PIC")
-
-if C_PIC:
-    _file_to_replace = C_PIC
-    TLINK = C_PIC
-else:
-    _file_to_replace = "resources/extras/inline.jpg"
-# ============================================#
-
-
-# --------------------BUTTONS--------------------#
-
-_main_help_menu = [
-    [
-        Button.inline("• Pʟᴜɢɪɴs", data="hrrrr"),
-        Button.inline("• Aᴅᴅᴏɴs", data="frrr"),
-    ],
-    [
-        Button.inline("Oᴡɴᴇʀ•ᴛᴏᴏʟꜱ", data="ownr"),
-        Button.inline("Iɴʟɪɴᴇ•Pʟᴜɢɪɴs", data="inlone"),
-    ],
-    [
-        Button.url("⚙️Sᴇᴛᴛɪɴɢs⚙️", url=f"https://t.me/{asst.me.username}?start=set"),
-    ],
-    [Button.inline("••Cʟᴏꜱᴇ••", data="close")],
-]
-
-SUP_BUTTONS = [
-    [
-        Button.url("Repo", url="kk"),
-        Button.url("Addons", url="kk"),
-    ],
-    [Button.url("Support", url="t.me/Andencento")],
-]
-
-# --------------------BUTTONS--------------------#
-
-
-@in_pattern("")
-@in_owner
-async def inline_alive(o):
-    if len(o.text) == 0:
-        b = o.builder
-        MSG = "• **ExtremeProXAndenceno Userbot •**"
-        uptime = time_formatter((time.time() - start_time) * 1000)
-        MSG += f"\n\n• **Uptime** - `{uptime}`\n"
-        MSG += f"• **OWNER** - `{OWNER_NAME}`"
-        WEB0 = InputWebDocument(
-            "https://telegra.ph/file/75520b56df7b9159438cb.jpg", 0, "image/jpg", []
-        )
-        RES = [
-            InputBotInlineResult(
-                str(o.id),
-                "photo",
-                send_message=await b._message(
-                    text=MSG,
-                    media=True,
-                    buttons=SUP_BUTTONS,
-                ),
-                title="ExtremePro Userbot",
-                description="Userbot | Telethon",
-                url=TLINK,
-                thumb=WEB0,
-                content=InputWebDocument(TLINK, 0, "image/jpg", []),
-            )
-        ]
-        await o.answer(RES, switch_pm=f"👥 EXTREME PORTAL", switch_pm_param="start")
-
-
-@in_pattern("ultd")
-@in_owner
-async def inline_handler(event):
-    z = []
-    for x in LIST.values():
-        for y in x:
-            z.append(y)
-    result = event.builder.photo(
-        file=_file_to_replace,
-        link_preview=False,
-        text=get_string("inline_4").format(
-            OWNER_NAME,
-            len(PLUGINS),
-            len(ADDONS),
-            len(z),
-        ),
-        buttons=_main_help_menu,
-    )
-    await event.answer([result], gallery=True)
-
-
-@in_pattern("haste")
-@in_owner
-async def _(event):
-    ok = event.text.split(" ")[1]
-    link = "https://hastebin.com/"
-    result = event.builder.article(
-        title="Paste",
-        text="Pᴀsᴛᴇᴅ Tᴏ Hᴀsᴛᴇʙɪɴ!",
-        buttons=[
-            [
-                Button.url("HasteBin", url=f"{link}{ok}"),
-                Button.url("Raw", url=f"{link}raw/{ok}"),
-            ],
-        ],
-    )
-    await event.answer([result])
-
-
-@callback("ownr")
-@owner
-async def setting(event):
-    z = []
-    for x in LIST.values():
-        for y in x:
-            z.append(y)
-    cmd = len(z)
-    await event.edit(
-        get_string("inline_4").format(
-            OWNER_NAME,
-            len(PLUGINS),
-            len(ADDONS),
-            cmd,
-        ),
-        file=_file_to_replace,
-        link_preview=False,
-        buttons=[
-            [
-                Button.inline("•Pɪɴɢ•", data="pkng"),
-                Button.inline("•Uᴘᴛɪᴍᴇ•", data="upp"),
-            ],
-            [
-                Button.inline("•Rᴇsᴛᴀʀᴛ•", data="rstrt"),
-                Button.inline("•Uᴘᴅᴀᴛᴇ•", data="doupdate"),
-            ],
-            [Button.inline("« Bᴀᴄᴋ", data="open")],
-        ],
-    )
-
-
-
-@callback("pkng")
-async def _(event):
-    start = datetime.now()
-    end = datetime.now()
-    ms = (end - start).microseconds
-    pin = f"🌋Pɪɴɢ = {ms} microseconds"
-    await event.answer(pin, cache_time=0, alert=True)
-
-
-@callback("upp")
-async def _(event):
-    uptime = time_formatter((time.time() - start_time) * 1000)
-    pin = f"🙋Uᴘᴛɪᴍᴇ = {uptime}"
-    await event.answer(pin, cache_time=0, alert=True)
-
-
-@callback("inlone")
-@owner
-async def _(e):
-    button = [
-        [
-            Button.switch_inline(
-                "Pʟᴀʏ Sᴛᴏʀᴇ Aᴘᴘs",
-                query="app telegram",
-                same_peer=True,
-            ),
-            Button.switch_inline(
-                "Mᴏᴅᴅᴇᴅ Aᴘᴘs",
-                query="mods minecraft",
-                same_peer=True,
-            ),
-        ],
-        [
-            Button.switch_inline(
-                "Sᴇᴀʀᴄʜ Oɴ Gᴏᴏɢʟᴇ",
-                query="go AndencentoDB",
-                same_peer=True,
-            ),
-            Button.switch_inline(
-                "Sᴇᴀʀᴄʜ Oɴ Yᴀʜᴏᴏ",
-                query="yahoo AndencentoDB",
-                same_peer=True,
-            ),
-        ],
-        [
-            Button.switch_inline(
-                "WʜɪSᴘᴇʀ",
-                query="msg username wspr Hello",
-                same_peer=True,
-            ),
-            Button.switch_inline(
-                "YᴏᴜTᴜʙᴇ Dᴏᴡɴʟᴏᴀᴅᴇʀ",
-                query="yt Ed Sheeran Perfect",
-                same_peer=True,
-            ),
-        ],
-        [
-            Button.switch_inline(
-                "EBᴏᴏᴋs Uᴘʟᴏᴀᴅᴇʀ",
-                query="ebooks India",
-                same_peer=True,
-            ),
-            Button.switch_inline(
-                "OʀᴀɴɢᴇFᴏx🦊",
-                query="ofox beryllium",
-                same_peer=True,
-            ),
-        ],
-        [
-            Button.inline(
-                "« Bᴀᴄᴋ",
-                data="open",
-            ),
-        ],
-    ]
-    await e.edit(buttons=button, link_preview=False)
-
-
-@callback("hrrrr")
-@owner
-async def on_plug_in_callback_query_handler(event):
-    xhelps = helps.format(OWNER_NAME, len(PLUGINS))
-    buttons = page_num(0, PLUGINS, "helpme", "def")
-    await event.edit(f"{xhelps}", buttons=buttons, link_preview=False)
-
-
-@callback("frrr")
-@owner
-async def addon(event):
-    halp = zhelps.format(OWNER_NAME, len(ADDONS))
-    if len(ADDONS) > 0:
-        buttons = page_num(0, ADDONS, "addon", "add")
-        await event.edit(f"{halp}", buttons=buttons, link_preview=False)
-    else:
-        await event.answer(
-            f"• Tʏᴘᴇ `{HNDLR}setredis ADDONS True`\n Tᴏ ɢᴇᴛ ᴀᴅᴅᴏɴs ᴘʟᴜɢɪɴs",
-            cache_time=0,
-            alert=True,
-        )
-
-
-@callback("rstrt")
-@owner
-async def rrst(ult):
-    await restart(ult)
-
-
-@callback(
-    re.compile(
-        rb"helpme_next\((.+?)\)",
-    ),
+Andencento_pic = (
+    Config.PMPERMIT_PIC or "https://telegra.ph/file/ac32724650ef92663fbd1.png"
 )
-@owner
-async def on_plug_in_callback_query_handler(event):
-    current_page_number = int(event.data_match.group(1).decode("UTF-8"))
-    buttons = page_num(current_page_number + 1, PLUGINS, "helpme", "def")
-    await event.edit(buttons=buttons, link_preview=False)
-
-
-@callback(
-    re.compile(
-        rb"helpme_prev\((.+?)\)",
-    ),
+cstm_pmp = Config.CUSTOM_PMPERMIT
+ALV_PIC = Config.ALIVE_PIC
+mssge = (
+    str(cstm_pmp)
+    if cstm_pmp
+    else "**You Have Trespassed To My Master's PM!\nThis Is Illegal And Regarded As Crime.**"
 )
-@owner
-async def on_plug_in_callback_query_handler(event):
-    current_page_number = int(event.data_match.group(1).decode("UTF-8"))
-    buttons = page_num(current_page_number - 1, PLUGINS, "helpme", "def")
-    await event.edit(buttons=buttons, link_preview=False)
 
-
-@callback(
-    re.compile(
-        rb"addon_next\((.+?)\)",
-    ),
+USER_BOT_WARN_ZERO = (
+    "Enough Of Your Flooding In My Master's PM!! \n\n**🚫 Blocked and Reported**"
 )
-@owner
-async def on_plug_in_callback_query_handler(event):
-    current_page_number = int(event.data_match.group(1).decode("UTF-8"))
-    buttons = page_num(current_page_number + 1, ADDONS, "addon", "add")
-    await event.edit(buttons=buttons, link_preview=False)
-
-
-@callback(
-    re.compile(
-        rb"addon_prev\((.+?)\)",
-    ),
+ANDENCENTO_FIRST = (
+    "**🔥 Andencento ULTRA Private Security 🔥**\n\nThis is to inform you that "
+    "{} is currently unavailable.\nThis is an automated message.\n\n"
+    "{}\n\n**Please Choose Why You Are Here!!**".format(Andencento_mention, mssge)
 )
-@owner
-async def on_plug_in_callback_query_handler(event):
-    current_page_number = int(event.data_match.group(1).decode("UTF-8"))
-    buttons = page_num(current_page_number - 1, ADDONS, "addon", "add")
-    await event.edit(buttons=buttons, link_preview=False)
+cmd = "commands"
+andencento = Config.YOUR_NAME
+if Config.BOT_USERNAME is not None and tgbot is not None:
 
+    @tgbot.on(events.InlineQuery)  # pylint:disable=E0602
+    async def inline_handler(event):
+        builder = event.builder
+        result = None
+        query = event.text
+        paginate_help(0, CMD_LIST, "helpme")
+        apn = []
+        for x in CMD_LIST.values():
+            for y in x:
+                apn.append(y)
+        if event.query.user_id == bot.uid and query.startswith("Userbot"):
+            rev_text = query[::-1]
+            buttons = paginate_help(0, CMD_LIST, "helpme")
 
-@callback("back")
-@owner
-async def backr(event):
-    xhelps = helps.format(OWNER_NAME, len(PLUGINS))
-    current_page_number = int(upage)
-    buttons = page_num(current_page_number, PLUGINS, "helpme", "def")
-    await event.edit(
-        f"{xhelps}",
-        file=_file_to_replace,
-        buttons=buttons,
-        link_preview=False,
-    )
-
-
-@callback("buck")
-@owner
-async def backr(event):
-    xhelps = zhelps.format(OWNER_NAME, len(ADDONS))
-    current_page_number = int(upage)
-    buttons = page_num(current_page_number, ADDONS, "addon", "add")
-    await event.edit(
-        f"{xhelps}",
-        file=_file_to_replace,
-        buttons=buttons,
-        link_preview=False,
-    )
-
-
-@callback("open")
-@owner
-async def opner(event):
-    z = []
-    for x in LIST.values():
-        for y in x:
-            z.append(y)
-    await event.edit(
-        get_string("inline_4").format(
-            OWNER_NAME,
-            len(PLUGINS),
-            len(ADDONS),
-            len(z),
-        ),
-        buttons=_main_help_menu,
-        link_preview=False,
-    )
-
-
-@callback("close")
-@owner
-async def on_plug_in_callback_query_handler(event):
-    await event.edit(
-        get_string("inline_5"),
-        file=_file_to_replace,
-        buttons=Button.inline("Oᴘᴇɴ Aɢᴀɪɴ", data="open"),
-    )
-
-
-@callback(
-    re.compile(
-        b"def_plugin_(.*)",
-    ),
-)
-@owner
-async def on_plug_in_callback_query_handler(event):
-    plugin_name = event.data_match.group(1).decode("UTF-8")
-    help_string = f"Plugin Name - `{plugin_name}`\n"
-    try:
-        for i in HELP[plugin_name]:
-            help_string += i
-    except BaseException:
-        pass
-    if help_string == "":
-        reply_pop_up_alert = f"{plugin_name} has no detailed help..."
-    else:
-        reply_pop_up_alert = help_string
-    reply_pop_up_alert += "\n© @Andencento"
-    buttons = [
-        [
-            Button.inline(
-                "« Sᴇɴᴅ Pʟᴜɢɪɴ »",
-                data=f"sndplug_{(event.data).decode('UTF-8')}",
-            )
-        ],
-        [
-            Button.inline("« Bᴀᴄᴋ", data="back"),
-            Button.inline("••Cʟᴏꜱᴇ••", data="close"),
-        ],
-    ]
-    try:
-        if str(event.query.user_id) in owner_and_sudos():
-            await event.edit(
-                reply_pop_up_alert,
+            result = builder.article(
+                "© Andencento-UserBot Help",
+                text=f"Andencento[🤖](https://telegra.ph/file/ac32724650ef92663fbd1.png)\n🔰 **{andencento}**\n\n📜 __No.of Plugins__ : `{len(CMD_LIST)}` \n🗂️ __Commands__ : `{len(apn)}`",
                 buttons=buttons,
+                link_preview=False,
             )
+        elif event.query.user_id == bot.uid and query == "pm_warn":
+            hel_l = ANDENCENTO_FIRST.format(Andencento_mention, mssge)
+            result = builder.photo(
+                file=Andencento_pic,
+                text=hel_l,
+                buttons=[
+                    [
+                        custom.Button.inline("📝 Request 📝", data="req"),
+                        custom.Button.inline("💬 Chat 💬", data="chat"),
+                    ],
+                    [custom.Button.inline("🚫 Spam 🚫", data="heheboi")],
+                    [custom.Button.inline("Curious ❓", data="pmclick")],
+                ],
+            )
+
+        elif event.query.user_id == bot.uid and query == "repo":
+            result = builder.article(
+                title="Repository",
+                text=f"**⚡ ɛɢɛռɖαʀʏ ᴀғ Andencento Userbot ⚡**",
+                buttons=[
+                    [Button.url("📑 Repo 📑", "https://t.me/AndencentoSupport")],
+                    [
+                        Button.url(
+                            "🚀 Deploy 🚀",
+                            "https://heroku.com/deploy?template=https://github.com/Andencento/Deploy-Andencento",
+                        )
+                    ],
+                ],
+            )
+
+        elif query.startswith("http"):
+            part = query.split(" ")
+            result = builder.article(
+                "File uploaded",
+                text=f"**File uploaded successfully to {part[2]} site.\n\nUpload Time : {part[1][:3]} second\n[‏‏‎ ‎]({part[0]})",
+                buttons=[[custom.Button.url("URL", part[0])]],
+                link_preview=True,
+            )
+
         else:
-            reply_pop_up_alert = notmine
-            await event.answer(reply_pop_up_alert, cache_time=0)
-    except BaseException:
-        halps = f"Do .help {plugin_name} to get the list of commands."
-        await event.edit(halps, buttons=buttons)
+            result = builder.article(
+                "@TheEiva",
+                text="""**Hey! This is [Andencento](https://t.me/Andencento) \nYou can know more about me from the links given below 👇**""",
+                buttons=[
+                    [
+                        custom.Button.url("🔥 CHANNEL 🔥", "https://t.me/Andencento"),
+                        custom.Button.url(
+                            "⚡ GROUP ⚡", "https://t.me/AndencentoSupport"
+                        ),
+                    ],
+                    [
+                        custom.Button.url(
+                            "✨ REPO ✨", "https://github.com/Andencento/Andencento"
+                        ),
+                        custom.Button.url(
+                            "🔰 TUTORIAL 🔰",
+                            "https://www.youtube.com/watch?v=9WxN6aq5wsQ",
+                        ),
+                    ],
+                ],
+                link_preview=False,
+            )
+        await event.answer([result] if result else None)
 
+    @tgbot.on(
+        events.callbackquery.CallbackQuery(  # pylint:disable=E0602
+            data=re.compile(b"pmclick\\((.+?)\\)")
+        )
+    )
+    async def on_pm_click(event):
+        if event.query.user_id == bot.uid:
+            reply_pop_up_alert = "This is for Other Users..."
+            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+        else:
+            await event.edit(
+                f"🔰 This is Andencento PM Security for {Eiva_mention} to keep away unwanted retards from spamming PM..."
+            )
 
-@callback(
-    re.compile(
-        b"add_plugin_(.*)",
-    ),
-)
-@owner
-async def on_plug_in_callback_query_handler(event):
-    plugin_name = event.data_match.group(1).decode("UTF-8")
-    help_string = ""
-    try:
-        for i in HELP[plugin_name]:
-            help_string += i
-    except BaseException:
-        try:
-            for u in CMD_HELP[plugin_name]:
-                help_string = f"Plugin Name-{plugin_name}\n\n✘ Commands Available-\n\n"
-                help_string += str(CMD_HELP[plugin_name])
-        except BaseException:
+    @tgbot.on(
+        events.callbackquery.CallbackQuery(  # pylint:disable=E0602
+            data=re.compile(b"reg\\((.+?)\\)")
+        )
+    )
+    async def on_pm_click(event):
+        if event.query.user_id == bot.uid:
+            reply_pop_up_alert = "This is for other users!"
+            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+        else:
+            await event.edit(
+                f"✅ **Request Registered** \n\n{Eiva_mention} will now decide to look for your request or not.\n😐 Till then wait patiently and don't spam else block!!"
+            )
+            target = await event.client(GetFullUserRequest(event.query.user_id))
+            first_name = html.escape(target.user.first_name)
+            ok = event.query.user_id
+            if first_name is not None:
+                first_name = first_name.replace("\u2060", "")
+            tosend = f"**👀 Hey {Eiva_mention} !!** \n\n⚜️ You Got A Request From [{first_name}](tg://user?id={ok}) In PM!!"
+            await bot.send_message(LOG_GP, tosend)
+
+    @tgbot.on(
+        events.callbackquery.CallbackQuery(  # pylint:disable=E0602
+            data=re.compile(b"chat\\((.+?)\\)")
+        )
+    )
+    async def on_pm_click(event):
+        event.query.user_id
+        if event.query.user_id == bot.uid:
+            reply_pop_up_alert = "This is for other users!"
+            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+        else:
+            await event.edit(
+                f"Ahh!! You here to do chit-chat!!\n\nPlease wait for {Eiva_mention} to come. Till then keep patience and don't spam."
+            )
+            target = await event.client(GetFullUserRequest(event.query.user_id))
+            ok = event.query.user_id
+            first_name = html.escape(target.user.first_name)
+            if first_name is not None:
+                first_name = first_name.replace("\u2060", "")
+            tosend = f"**👀 Hey {Eiva_mention} !!** \n\n⚜️ You Got A PM from  [{first_name}](tg://user?id={ok})  for random chats!!"
+            await bot.send_message(LOG_GP, tosend)
+
+    @tgbot.on(
+        events.callbackquery.CallbackQuery(  # pylint:disable=E0602
+            data=re.compile(b"heheboi\\((.+?)\\)")
+        )
+    )
+    async def on_pm_click(event):
+        if event.query.user_id == bot.uid:
+            reply_pop_up_alert = "This is for other users!"
+            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+        else:
+            await event.edit(f"🥴 **Go away from here\nYou Are Blocked Now**")
+            await bot(functions.contacts.BlockRequest(event.query.user_id))
+            target = await event.client(GetFullUserRequest(event.query.user_id))
+            ok = event.query.user_id
+            first_name = html.escape(target.user.first_name)
+            if first_name is not None:
+                first_name = first_name.replace("\u2060", "")
+            first_name = html.escape(target.user.first_name)
+            await bot.send_message(
+                LOG_GP,
+                f"**Blocked**  [{first_name}](tg://user?id={ok}) \n\nReason:- Spam",
+            )
+
+    @tgbot.on(
+        events.callbackquery.CallbackQuery(  # pylint:disable=E0602
+            data=re.compile(b"helpme_next\\((.+?)\\)")
+        )
+    )
+    async def on_plug_in_callback_query_handler(event):
+        if (
+            event.query.user_id == bot.uid or event.query.user_id in Config.SUDO_USERS
+        ):  # pylint:disable=E0602
+            current_page_number = int(event.data_match.group(1).decode("UTF-8"))
+            buttons = paginate_help(current_page_number + 1, CMD_LIST, "helpme")
+            # https://t.me/TelethonChat/115200
+            await event.edit(buttons=buttons)
+        else:
+            reply_pop_up_alert = (
+                "Check Pinned Message in\n@ANDENCENTO And\nGet Your Own Userbot"
+            )
+            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+
+    @tgbot.on(
+        events.callbackquery.CallbackQuery(  # pylint:disable=E0602
+            data=re.compile(b"helpme_prev\\((.+?)\\)")
+        )
+    )
+    async def on_plug_in_callback_query_handler(event):
+        if (
+            event.query.user_id == bot.uid or event.query.user_id in Config.SUDO_USERS
+        ):  # pylint:disable=E0602
+            current_page_number = int(event.data_match.group(1).decode("UTF-8"))
+            buttons = paginate_help(
+                current_page_number - 1, CMD_LIST, "helpme"  # pylint:disable=E0602
+            )
+            # https://t.me/TelethonChat/115200
+            await event.edit(buttons=buttons)
+        else:
+            reply_pop_up_alert = (
+                "Check Pinned Message in\n@ANDENCENTO And\nGet Your Own Userbot"
+            )
+            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+
+    @tgbot.on(
+        events.callbackquery.CallbackQuery(  # pylint:disable=E0602
+            data=re.compile(b"us_plugin_(.*)")
+        )
+    )
+    async def on_plug_in_callback_query_handler(event):
+        if event.query.user_id == bot.uid or event.query.user_id in Config.SUDO_USERS:
+            plugin_name = event.data_match.group(1).decode("UTF-8")
+            help_string = ""
             try:
-                if plugin_name in LIST:
-                    help_string = (
-                        f"Plugin Name-{plugin_name}\n\n✘ Commands Available-\n\n"
-                    )
-                    for d in LIST[plugin_name]:
-                        help_string += HNDLR + d
-                        help_string += "\n"
+                for i in CMD_LIST[plugin_name]:
+                    help_string += i
+                    help_string += "\n"
             except BaseException:
                 pass
-    if help_string == "":
-        reply_pop_up_alert = f"{plugin_name} has no detailed help..."
-    else:
-        reply_pop_up_alert = help_string
-    reply_pop_up_alert += "\n© @AndencenTo"
-    buttons = [
-        [
-            Button.inline(
-                "« Sᴇɴᴅ Pʟᴜɢɪɴ »",
-                data=f"sndplug_{(event.data).decode('UTF-8')}",
-            )
-        ],
-        [
-            Button.inline("« Bᴀᴄᴋ", data="buck"),
-            Button.inline("••Cʟᴏꜱᴇ••", data="close"),
-        ],
-    ]
-    try:
-        if str(event.query.user_id) in owner_and_sudos():
-            await event.edit(
-                reply_pop_up_alert,
-                buttons=buttons,
-            )
+            if help_string is "":
+                reply_pop_up_alert = "{} is useless".format(plugin_name)
+            else:
+                reply_pop_up_alert = help_string
+                reply_pop_up_alert += "\n Use .unload {} to remove this plugin\n\
+          © ANDENCENTo".format(
+                    plugin_name
+                )
+            try:
+                await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+            except BaseException:
+                with io.BytesIO(str.encode(reply_pop_up_alert)) as out_file:
+                    out_file.name = "{}.txt".format(plugin_name)
+                    await event.client.send_file(
+                        event.chat_id,
+                        out_file,
+                        force_document=True,
+                        allow_cache=False,
+                        caption=plugin_name,
+                    )
         else:
-            reply_pop_up_alert = notmine
-            await event.answer(reply_pop_up_alert, cache_time=0)
-    except BaseException:
-        halps = f"Do .help {plugin_name} to get the list of commands."
-        await event.edit(halps, buttons=buttons)
+            reply_pop_up_alert = (
+                "Check Pinned Message in\n@ANDENCENTO And\nGet Your Own Userbot"
+            )
+            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
 
-def page_num(page_number, loaded_plugins, prefix, type):
-    number_of_rows = 5
-    number_of_cols = 2
-    emoji = Redis("EMOJI_IN_HELP")
-    if emoji:
-        multi = emoji
-    else:
-        multi = "✘"
+def paginate_help(page_number, loaded_plugins, prefix):
+    number_of_rows = 8
+    number_of_cols = 3
     helpable_plugins = []
-    global upage
-    upage = page_number
     for p in loaded_plugins:
-        helpable_plugins.append(p)
+        if not p.startswith("_"):
+            helpable_plugins.append(p)
     helpable_plugins = sorted(helpable_plugins)
     modules = [
-        Button.inline(
-            "{} {} {}".format(
-                multi,
-                x,
-                multi,
-            ),
-            data=f"{type}_plugin_{x}",
-        )
+        custom.Button.inline("{} {}".format(" ", x), data="us_plugin_{}".format(x))
         for x in helpable_plugins
     ]
     pairs = list(zip(modules[::number_of_cols], modules[1::number_of_cols]))
@@ -516,19 +299,12 @@ def page_num(page_number, loaded_plugins, prefix, type):
             modulo_page * number_of_rows : number_of_rows * (modulo_page + 1)
         ] + [
             (
-                Button.inline(
-                    "« Pʀᴇᴠɪᴏᴜs",
-                    data=f"{prefix}_prev({modulo_page})",
+                custom.Button.inline(
+                    "«« Previous", data="{}_prev({})".format(prefix, modulo_page)
                 ),
-                Button.inline("« Bᴀᴄᴋ »", data="open"),
-                Button.inline(
-                    "Nᴇxᴛ »",
-                    data=f"{prefix}_next({modulo_page})",
+                custom.Button.inline(
+                    "Next »»", data="{}_next({})".format(prefix, modulo_page)
                 ),
-            ),
+            )
         ]
-    else:
-        pairs = pairs[
-            modulo_page * number_of_rows : number_of_rows * (modulo_page + 1)
-        ] + [(Button.inline("« Bᴀᴄᴋ »", data="open"),)]
     return pairs
