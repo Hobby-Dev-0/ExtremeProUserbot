@@ -4,7 +4,7 @@ import io
 from telethon import events, functions
 from telethon.tl.functions.users import GetFullUserRequest
 from Extre.utils import *
-
+import os
 from sql_helper import pmpermit_sql as pm_sql
 Config.INSTANT_BLOCK = os.environ.get("INSTANT_BLOCK", None)
 from plugins import *
