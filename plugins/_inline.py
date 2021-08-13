@@ -1,434 +1,534 @@
+mport re
+import time
+from datetime import datetime
 from math import ceil
-from re import compile
-import asyncio
-import html
-import os
-import re
-import sys
+from os import remove
 
-# I Have Taken Permisson To Import Pmpermit, Inline, Help from Eiva Userbot To Andencento. from Owner Shivansh Proof - https://telegra.ph/file/692c46d42e8021ddb61fc.png
+from git import Repo
+from Extre.dB.core import *
+from Extre.misc import owner_and_sudos
+from support import *
+from telethon.tl.types import InputBotInlineResult, InputWebDocument
 
-from plugins import *
-from Extre import Andencento
-Eiva_USER = Andencento.me.first_name
-from telethon import Button, custom, events, functions
-from telethon.tl.functions.users import GetFullUserRequest
-from telethon.events import InlineQuery, callbackquery
-from telethon.sync import custom
-from telethon.errors.rpcerrorlist import UserNotParticipantError
-from telethon.tl.functions.channels import GetParticipantRequest
-from telethon.tl.functions.channels import JoinChannelRequest
-from telethon.tl.functions.messages import ExportChatInviteRequest
-Config.SUDO_USERS = os.environ.get("SUDO_USERS", None)
-# Thanks to Shivansh To give permisson to import 3 plugins from Eiva Bot
 
-Eiva_mention = f"[{Eiva_USER}](tg://user?id={ForGo10God})"
+from . import *
 
-Eiva_row = os.environ.get("ROW", None)
-Eiva_emoji = os.environ.get("EMOJI", None)
-Eiva_pic = os.environ.get("ALIVE_PIC", None) or "None"
-cstm_pmp = os.environ.get("COUSTOM_PMPERMIT", None)
-ALV_PIC = os.environ.get("ALIVE_PIC", None)
+# ================================================#
+notmine = f"This bot is for {OWNER_NAME}"
 
-PM_WARNS = {}
-PREV_REPLY_MESSAGE = {}
-Config.ALIVE_MSG = "IAMALIVE"
+TLINK = "https://telegra.ph/file/75520b56df7b9159438cb.jpg"
+helps = get_string("inline_1")
 
-mybot = os.environ.get("TG_BOT_TOKEN_BF_HER", None)
-Config.BOT_USERNAME = os.environ.get("TG_BOT_USER_NAME_BF_HER", None)
-if mybot.startswith("@"):
-    botname = mybot
+add_ons = udB.get("ADDONS")
+if add_ons == "True" or add_ons is None:
+    zhelps = get_string("inline_2")
 else:
-    botname = f"@{mybot}"
-LOG_GP = os.environ.get("LOGGER_ID", None)
-mssge = (
-    str(cstm_pmp)
-    if cstm_pmp
-    else "**You Have Trespassed To My Master's PM!\nThis Is Illegal And Regarded As Crime.**"
-)
+    zhelps = get_string("inline_3")
 
-USER_BOT_WARN_ZERO = "Enough Of Your Flooding In My Master's PM!! \n\n**🚫 Blocked and Reported**"
+C_PIC = udB.get("INLINE_PIC")
 
-Eiva_FIRST = (
-    "**🔥 ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ᴘʀɪᴠᴀᴛᴇ ᴜʟᴛʀᴀ ꜱᴇᴄᴜʀɪᴛʏ ᴏꜰ ᴍʏ ᴍᴀꜱᴛᴇʀ 🔥**\n\nThis is to inform you that "
-    "{} is currently unavailable.\nThis is an automated message.\n\n"
-    "{}\n\n**Please Choose Why You Are Here!!**".format(Eiva_mention, mssge))
+if C_PIC:
+    _file_to_replace = C_PIC
+    TLINK = C_PIC
+else:
+    _file_to_replace = "resources/extras/inline.jpg"
+# ============================================#
 
 
-def button(page, modules):
-    Row = Eiva_row
-    Column = 3
+# --------------------BUTTONS--------------------#
 
-    modules = sorted([modul for modul in modules if not modul.startswith("_")])
-    pairs = list(map(list, zip(modules[::2], modules[1::2])))
-    if len(modules) % 2 == 1:
-        pairs.append([modules[-1]])
-    max_pages = ceil(len(pairs) / Row)
-    pairs = [pairs[i : i + Row] for i in range(0, len(pairs), Row)]
-    buttons = []
-    for pairs in pairs[page]:
-        buttons.append(
+_main_help_menu = [
+    [
+        Button.inline("• Pʟᴜɢɪɴs", data="hrrrr"),
+        Button.inline("• Aᴅᴅᴏɴs", data="frrr"),
+    ],
+    [
+        Button.inline("Oᴡɴᴇʀ•ᴛᴏᴏʟꜱ", data="ownr"),
+        Button.inline("Iɴʟɪɴᴇ•Pʟᴜɢɪɴs", data="inlone"),
+    ],
+    [
+        Button.url("⚙️Sᴇᴛᴛɪɴɢs⚙️", url=f"https://t.me/{asst.me.username}?start=set"),
+    ],
+    [Button.inline("••Cʟᴏꜱᴇ••", data="close")],
+]
+
+SUP_BUTTONS = [
+    [
+        Button.url("Repo", url="kk"),
+        Button.url("Addons", url="kk"),
+    ],
+    [Button.url("Support", url="t.me/Andencento")],
+]
+
+# --------------------BUTTONS--------------------#
+
+
+@in_pattern("")
+@in_owner
+async def inline_alive(o):
+    if len(o.text) == 0:
+        b = o.builder
+        MSG = "• **ExtremeProXAndenceno Userbot •**"
+        uptime = time_formatter((time.time() - start_time) * 1000)
+        MSG += f"\n\n• **Uptime** - `{uptime}`\n"
+        MSG += f"• **OWNER** - `{OWNER_NAME}`"
+        WEB0 = InputWebDocument(
+            "https://telegra.ph/file/75520b56df7b9159438cb.jpg", 0, "image/jpg", []
+        )
+        RES = [
+            InputBotInlineResult(
+                str(o.id),
+                "photo",
+                send_message=await b._message(
+                    text=MSG,
+                    media=True,
+                    buttons=SUP_BUTTONS,
+                ),
+                title="ExtremePro Userbot",
+                description="Userbot | Telethon",
+                url=TLINK,
+                thumb=WEB0,
+                content=InputWebDocument(TLINK, 0, "image/jpg", []),
+            )
+        ]
+        await o.answer(RES, switch_pm=f"👥 EXTREME PORTAL", switch_pm_param="start")
+
+
+@in_pattern("ultd")
+@in_owner
+async def inline_handler(event):
+    z = []
+    for x in LIST.values():
+        for y in x:
+            z.append(y)
+    result = event.builder.photo(
+        file=_file_to_replace,
+        link_preview=False,
+        text=get_string("inline_4").format(
+            OWNER_NAME,
+            len(PLUGINS),
+            len(ADDONS),
+            len(z),
+        ),
+        buttons=_main_help_menu,
+    )
+    await event.answer([result], gallery=True)
+
+
+@in_pattern("haste")
+@in_owner
+async def _(event):
+    ok = event.text.split(" ")[1]
+    link = "https://hastebin.com/"
+    result = event.builder.article(
+        title="Paste",
+        text="Pᴀsᴛᴇᴅ Tᴏ Hᴀsᴛᴇʙɪɴ!",
+        buttons=[
             [
-                custom.Button.inline(f"{Eiva_emoji} " + pair + f" {Eiva_emoji}", data=f"Information[{page}]({pair})")
-                for pair in pairs
-            ]
+                Button.url("HasteBin", url=f"{link}{ok}"),
+                Button.url("Raw", url=f"{link}raw/{ok}"),
+            ],
+        ],
+    )
+    await event.answer([result])
+
+
+@callback("ownr")
+@owner
+async def setting(event):
+    z = []
+    for x in LIST.values():
+        for y in x:
+            z.append(y)
+    cmd = len(z)
+    await event.edit(
+        get_string("inline_4").format(
+            OWNER_NAME,
+            len(PLUGINS),
+            len(ADDONS),
+            cmd,
+        ),
+        file=_file_to_replace,
+        link_preview=False,
+        buttons=[
+            [
+                Button.inline("•Pɪɴɢ•", data="pkng"),
+                Button.inline("•Uᴘᴛɪᴍᴇ•", data="upp"),
+            ],
+            [
+                Button.inline("•Rᴇsᴛᴀʀᴛ•", data="rstrt"),
+                Button.inline("•Uᴘᴅᴀᴛᴇ•", data="doupdate"),
+            ],
+            [Button.inline("« Bᴀᴄᴋ", data="open")],
+        ],
+    )
+
+
+
+@callback("pkng")
+async def _(event):
+    start = datetime.now()
+    end = datetime.now()
+    ms = (end - start).microseconds
+    pin = f"🌋Pɪɴɢ = {ms} microseconds"
+    await event.answer(pin, cache_time=0, alert=True)
+
+
+@callback("upp")
+async def _(event):
+    uptime = time_formatter((time.time() - start_time) * 1000)
+    pin = f"🙋Uᴘᴛɪᴍᴇ = {uptime}"
+    await event.answer(pin, cache_time=0, alert=True)
+
+
+@callback("inlone")
+@owner
+async def _(e):
+    button = [
+        [
+            Button.switch_inline(
+                "Pʟᴀʏ Sᴛᴏʀᴇ Aᴘᴘs",
+                query="app telegram",
+                same_peer=True,
+            ),
+            Button.switch_inline(
+                "Mᴏᴅᴅᴇᴅ Aᴘᴘs",
+                query="mods minecraft",
+                same_peer=True,
+            ),
+        ],
+        [
+            Button.switch_inline(
+                "Sᴇᴀʀᴄʜ Oɴ Gᴏᴏɢʟᴇ",
+                query="go AndencentoDB",
+                same_peer=True,
+            ),
+            Button.switch_inline(
+                "Sᴇᴀʀᴄʜ Oɴ Yᴀʜᴏᴏ",
+                query="yahoo AndencentoDB",
+                same_peer=True,
+            ),
+        ],
+        [
+            Button.switch_inline(
+                "WʜɪSᴘᴇʀ",
+                query="msg username wspr Hello",
+                same_peer=True,
+            ),
+            Button.switch_inline(
+                "YᴏᴜTᴜʙᴇ Dᴏᴡɴʟᴏᴀᴅᴇʀ",
+                query="yt Ed Sheeran Perfect",
+                same_peer=True,
+            ),
+        ],
+        [
+            Button.switch_inline(
+                "EBᴏᴏᴋs Uᴘʟᴏᴀᴅᴇʀ",
+                query="ebooks India",
+                same_peer=True,
+            ),
+            Button.switch_inline(
+                "OʀᴀɴɢᴇFᴏx🦊",
+                query="ofox beryllium",
+                same_peer=True,
+            ),
+        ],
+        [
+            Button.inline(
+                "« Bᴀᴄᴋ",
+                data="open",
+            ),
+        ],
+    ]
+    await e.edit(buttons=button, link_preview=False)
+
+
+@callback("hrrrr")
+@owner
+async def on_plug_in_callback_query_handler(event):
+    xhelps = helps.format(OWNER_NAME, len(PLUGINS))
+    buttons = page_num(0, PLUGINS, "helpme", "def")
+    await event.edit(f"{xhelps}", buttons=buttons, link_preview=False)
+
+
+@callback("frrr")
+@owner
+async def addon(event):
+    halp = zhelps.format(OWNER_NAME, len(ADDONS))
+    if len(ADDONS) > 0:
+        buttons = page_num(0, ADDONS, "addon", "add")
+        await event.edit(f"{halp}", buttons=buttons, link_preview=False)
+    else:
+        await event.answer(
+            f"• Tʏᴘᴇ `{HNDLR}setredis ADDONS True`\n Tᴏ ɢᴇᴛ ᴀᴅᴅᴏɴs ᴘʟᴜɢɪɴs",
+            cache_time=0,
+            alert=True,
         )
 
-    buttons.append(
+
+@callback("rstrt")
+@owner
+async def rrst(ult):
+    await restart(ult)
+
+
+@callback(
+    re.compile(
+        rb"helpme_next\((.+?)\)",
+    ),
+)
+@owner
+async def on_plug_in_callback_query_handler(event):
+    current_page_number = int(event.data_match.group(1).decode("UTF-8"))
+    buttons = page_num(current_page_number + 1, PLUGINS, "helpme", "def")
+    await event.edit(buttons=buttons, link_preview=False)
+
+
+@callback(
+    re.compile(
+        rb"helpme_prev\((.+?)\)",
+    ),
+)
+@owner
+async def on_plug_in_callback_query_handler(event):
+    current_page_number = int(event.data_match.group(1).decode("UTF-8"))
+    buttons = page_num(current_page_number - 1, PLUGINS, "helpme", "def")
+    await event.edit(buttons=buttons, link_preview=False)
+
+
+@callback(
+    re.compile(
+        rb"addon_next\((.+?)\)",
+    ),
+)
+@owner
+async def on_plug_in_callback_query_handler(event):
+    current_page_number = int(event.data_match.group(1).decode("UTF-8"))
+    buttons = page_num(current_page_number + 1, ADDONS, "addon", "add")
+    await event.edit(buttons=buttons, link_preview=False)
+
+
+@callback(
+    re.compile(
+        rb"addon_prev\((.+?)\)",
+    ),
+)
+@owner
+async def on_plug_in_callback_query_handler(event):
+    current_page_number = int(event.data_match.group(1).decode("UTF-8"))
+    buttons = page_num(current_page_number - 1, ADDONS, "addon", "add")
+    await event.edit(buttons=buttons, link_preview=False)
+
+
+@callback("back")
+@owner
+async def backr(event):
+    xhelps = helps.format(OWNER_NAME, len(PLUGINS))
+    current_page_number = int(upage)
+    buttons = page_num(current_page_number, PLUGINS, "helpme", "def")
+    await event.edit(
+        f"{xhelps}",
+        file=_file_to_replace,
+        buttons=buttons,
+        link_preview=False,
+    )
+
+
+@callback("buck")
+@owner
+async def backr(event):
+    xhelps = zhelps.format(OWNER_NAME, len(ADDONS))
+    current_page_number = int(upage)
+    buttons = page_num(current_page_number, ADDONS, "addon", "add")
+    await event.edit(
+        f"{xhelps}",
+        file=_file_to_replace,
+        buttons=buttons,
+        link_preview=False,
+    )
+
+
+@callback("open")
+@owner
+async def opner(event):
+    z = []
+    for x in LIST.values():
+        for y in x:
+            z.append(y)
+    await event.edit(
+        get_string("inline_4").format(
+            OWNER_NAME,
+            len(PLUGINS),
+            len(ADDONS),
+            len(z),
+        ),
+        buttons=_main_help_menu,
+        link_preview=False,
+    )
+
+
+@callback("close")
+@owner
+async def on_plug_in_callback_query_handler(event):
+    await event.edit(
+        get_string("inline_5"),
+        file=_file_to_replace,
+        buttons=Button.inline("Oᴘᴇɴ Aɢᴀɪɴ", data="open"),
+    )
+
+
+@callback(
+    re.compile(
+        b"def_plugin_(.*)",
+    ),
+)
+@owner
+async def on_plug_in_callback_query_handler(event):
+    plugin_name = event.data_match.group(1).decode("UTF-8")
+    help_string = f"Plugin Name - `{plugin_name}`\n"
+    try:
+        for i in HELP[plugin_name]:
+            help_string += i
+    except BaseException:
+        pass
+    if help_string == "":
+        reply_pop_up_alert = f"{plugin_name} has no detailed help..."
+    else:
+        reply_pop_up_alert = help_string
+    reply_pop_up_alert += "\n© @Andencento"
+    buttons = [
         [
-            custom.Button.inline(
-               f"◀️ Back {Eiva_emoji}", data=f"page({(max_pages - 1) if page == 0 else (page - 1)})"
+            Button.inline(
+                "« Sᴇɴᴅ Pʟᴜɢɪɴ »",
+                data=f"sndplug_{(event.data).decode('UTF-8')}",
+            )
+        ],
+        [
+            Button.inline("« Bᴀᴄᴋ", data="back"),
+            Button.inline("••Cʟᴏꜱᴇ••", data="close"),
+        ],
+    ]
+    try:
+        if str(event.query.user_id) in owner_and_sudos():
+            await event.edit(
+                reply_pop_up_alert,
+                buttons=buttons,
+            )
+        else:
+            reply_pop_up_alert = notmine
+            await event.answer(reply_pop_up_alert, cache_time=0)
+    except BaseException:
+        halps = f"Do .help {plugin_name} to get the list of commands."
+        await event.edit(halps, buttons=buttons)
+
+
+@callback(
+    re.compile(
+        b"add_plugin_(.*)",
+    ),
+)
+@owner
+async def on_plug_in_callback_query_handler(event):
+    plugin_name = event.data_match.group(1).decode("UTF-8")
+    help_string = ""
+    try:
+        for i in HELP[plugin_name]:
+            help_string += i
+    except BaseException:
+        try:
+            for u in CMD_HELP[plugin_name]:
+                help_string = f"Plugin Name-{plugin_name}\n\n✘ Commands Available-\n\n"
+                help_string += str(CMD_HELP[plugin_name])
+        except BaseException:
+            try:
+                if plugin_name in LIST:
+                    help_string = (
+                        f"Plugin Name-{plugin_name}\n\n✘ Commands Available-\n\n"
+                    )
+                    for d in LIST[plugin_name]:
+                        help_string += HNDLR + d
+                        help_string += "\n"
+            except BaseException:
+                pass
+    if help_string == "":
+        reply_pop_up_alert = f"{plugin_name} has no detailed help..."
+    else:
+        reply_pop_up_alert = help_string
+    reply_pop_up_alert += "\n© @AndencenTo"
+    buttons = [
+        [
+            Button.inline(
+                "« Sᴇɴᴅ Pʟᴜɢɪɴ »",
+                data=f"sndplug_{(event.data).decode('UTF-8')}",
+            )
+        ],
+        [
+            Button.inline("« Bᴀᴄᴋ", data="buck"),
+            Button.inline("••Cʟᴏꜱᴇ••", data="close"),
+        ],
+    ]
+    try:
+        if str(event.query.user_id) in owner_and_sudos():
+            await event.edit(
+                reply_pop_up_alert,
+                buttons=buttons,
+            )
+        else:
+            reply_pop_up_alert = notmine
+            await event.answer(reply_pop_up_alert, cache_time=0)
+    except BaseException:
+        halps = f"Do .help {plugin_name} to get the list of commands."
+        await event.edit(halps, buttons=buttons)
+
+
+def page_num(page_number, loaded_plugins, prefix, type):
+    number_of_rows = 5
+    number_of_cols = 2
+    emoji = Redis("EMOJI_IN_HELP")
+    if emoji:
+        multi = emoji
+    else:
+        multi = "✘"
+    helpable_plugins = []
+    global upage
+    upage = page_number
+    for p in loaded_plugins:
+        helpable_plugins.append(p)
+    helpable_plugins = sorted(helpable_plugins)
+    modules = [
+        Button.inline(
+            "{} {} {}".format(
+                multi,
+                x,
+                multi,
             ),
-            custom.Button.inline(
-               f"• ❌ •", data="close"
-            ),
-            custom.Button.inline(
-               f"{Eiva_emoji} Next ▶️", data=f"page({0 if page == (max_pages - 1) else page + 1})"
+            data=f"{type}_plugin_{x}",
+        )
+        for x in helpable_plugins
+    ]
+    pairs = list(zip(modules[::number_of_cols], modules[1::number_of_cols]))
+    if len(modules) % number_of_cols == 1:
+        pairs.append((modules[-1],))
+    max_num_pages = ceil(len(pairs) / number_of_rows)
+    modulo_page = page_number % max_num_pages
+    if len(pairs) > number_of_rows:
+        pairs = pairs[
+            modulo_page * number_of_rows : number_of_rows * (modulo_page + 1)
+        ] + [
+            (
+                Button.inline(
+                    "« Pʀᴇᴠɪᴏᴜs",
+                    data=f"{prefix}_prev({modulo_page})",
+                ),
+                Button.inline("« Bᴀᴄᴋ »", data="open"),
+                Button.inline(
+                    "Nᴇxᴛ »",
+                    data=f"{prefix}_next({modulo_page})",
+                ),
             ),
         ]
-    )
-    return [max_pages, buttons]
-
-
-    modules = CMD_HELP
-if Config.BOT_USERNAME is not None and tgbot is not None:
-    @tgbot.on(InlineQuery)  # pylint:disable=E0602
-    async def inline_handler(event):
-        builder = event.builder
-        result = None
-        query = event.text
-        if event.query.user_id == Andencento.uid and query == "Eivabot_help":
-            rev_text = query[::-1]
-            veriler = button(0, sorted(CMD_HELP))
-            apn = []
-            for x in CMD_LIST.values():
-                for y in x:
-                    apn.append(y)
-            result = await builder.article(
-                f"Hey! Only use .help please",
-                text=f"🔰 **{Eiva_mention}**\n\n📜 __No.of Plugins__ : `{len(CMD_HELP)}` \n🗂️ __Commands__ : `{len(apn)}`\n🗒️ __Page__ : 1/{veriler[0]}",
-                buttons=veriler[1],
-                link_preview=False,
-            )
-        elif event.query.user_id == Andencento.uid and query.startswith("fsub"):
-            hunter = event.pattern_match.group(1)
-            Eiva = hunter.split("+")
-            user = await bot.get_entity(int(Eiva[0]))
-            channel = await bot.get_entity(int(Eiva[1]))
-            msg = f"**👋 Welcome** [{user.first_name}](tg://user?id={user.id}), \n\n**📍 You need to Join** {channel.title} **to chat in this group.**"
-            if not channel.username:
-                link = (await bot(ExportChatInviteRequest(channel))).link
-            else:
-                link = "https://t.me/" + channel.username
-            result = [
-                await builder.article(
-                    title="force_sub",
-                    text = msg,
-                    buttons=[
-                        [Button.url(text="Channel", url=link)],
-                        [custom.Button.inline("🔓 Unmute Me", data=unmute)],
-                    ],
-                )
-            ]
-
-        elif event.query.user_id == Andencento.uid and query == "alive":
-            he_ll = alive_txt.format(Config.ALIVE_MSG, tel_ver, Eiva_ver, uptime, abuse_m, is_sudo)
-            alv_btn = [
-                [Button.url(f"{Eiva_USER}", f"tg://openmessage?user_id={ForGo10God}")],
-                [Button.url("My Channel", f"https://t.me/{my_channel}"), 
-                Button.url("My Group", f"https://t.me/{my_group}")],
-            ]
-            if ALV_PIC and ALV_PIC.endswith((".jpg", ".png")):
-                result = builder.photo(
-                    ALV_PIC,
-                    text=he_ll,
-                    buttons=alv_btn,
-                    link_preview=False,
-                )
-            elif ALV_PIC:
-                result = builder.document(
-                    ALV_PIC,
-                    text=he_ll,
-                    title="EivaBot Alive",
-                    buttons=alv_btn,
-                    link_preview=False,
-                )
-            else:
-                result = builder.article(
-                    text=he_ll,
-                    title="EivaBot Alive",
-                    buttons=alv_btn,
-                    link_preview=False,
-                )
-
-        elif event.query.user_id == Andencento.uid and query == "pm_warn":
-            hel_l = Eiva_FIRST.format(Eiva_mention, mssge)
-            result = builder.photo(
-                file=Eiva_pic,
-                text=hel_l,
-                buttons=[
-                    [
-                        custom.Button.inline("📝 Request 📝", data="req"),
-                        custom.Button.inline("💬 Chat 💬", data="chat"),
-                    ],
-                    [custom.Button.inline("🚫 Spam 🚫", data="heheboi")],
-                    [custom.Button.inline("Curious ❓", data="pmclick")],
-                ],
-            )
-
-        elif event.query.user_id == Andencento.uid and query == "repo":
-            result = builder.article(
-                title="Repository",
-                text=f"**⚡ ᴜʟᴛɪᴍᴀᴛᴇ ᴜꜱᴇʀʙᴏᴛ ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ⚡**",
-                buttons=[
-                    [Button.url("📑 Repo 📑", "https://github.com/Team-Andencento/Andencento")],
-                    [Button.url("🚀 Deploy 🚀", "https://github.com/Team-Andencento/Andencento")],
-                ],
-            )
-
-        elif query.startswith("http"):
-            part = query.split(" ")
-            result = builder.article(
-                "File uploaded",
-                text=f"**File uploaded successfully to {part[2]} site.\n\nUpload Time : {part[1][:3]} second\n[‏‏‎ ‎]({part[0]})",
-                buttons=[[custom.Button.url("URL", part[0])]],
-                link_preview=True,
-            )
-
-        else:
-            result = builder.article(
-                "@TheEiva",
-                text="""**Hey! This is [ᴀɴᴅᴇɴᴄᴇɴᴛᴏ](https://t.me/Andencento) \nYou can know more about me from the links given below 👇**""",
-                buttons=[
-                    [
-                        custom.Button.url("🔥 CHANNEL 🔥", "https://t.me/Andencento"),
-                        custom.Button.url(
-                            "⚡ GROUP ⚡", "https://t.me/AndencentoSupport"
-                        ),
-                    ],
-                    [
-                        custom.Button.url(
-                            "✨ REPO ✨", "https://github.com/Team-Andencento/Andencento"),
-                        custom.Button.url
-                    (
-                            "🔰 TUTORIAL 🔰", "Coming Soon"
-                    )
-                    ],
-                ],
-                link_preview=False,
-            )
-        await event.answer([result] if result else None)
-
-
-    @tgbot.on(callbackquery.CallbackQuery(data=compile(b"pmclick")))
-    async def on_pm_click(event):
-        if event.query.user_id == Andencento.uid:
-            reply_pop_up_alert = "This is for Other Users..."
-            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
-        else:
-            await event.edit(
-                f"🔰 This is ΣIVΛBθƬ PM Security for {Eiva_mention} to keep away unwanted retards from spamming PM..."
-            )
-
-    @tgbot.on(callbackquery.CallbackQuery(data=compile(b"req")))
-    async def on_pm_click(event):
-        if event.query.user_id == Andencento.uid:
-            reply_pop_up_alert = "This is for other users!"
-            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
-        else:
-            await event.edit(
-                f"✅ **Request Registered** \n\n{Eiva_mention} will now decide to look for your request or not.\n😐 Till then wait patiently and don't spam!!"
-            )
-            target = await event.client(GetFullUserRequest(event.query.user_id))
-            first_name = html.escape(target.user.first_name)
-            ok = event.query.user_id
-            if first_name is not None:
-                first_name = first_name.replace("\u2060", "")
-            tosend = f"**👀 Hey {Eiva_mention} !!** \n\n⚜️ You Got A Request From [{first_name}](tg://user?id={ok}) In PM!!"
-            await bot.send_message(LOG_GP, tosend)
-
-
-    @tgbot.on(callbackquery.CallbackQuery(data=compile(b"chat")))
-    async def on_pm_click(event):
-        event.query.user_id
-        if event.query.user_id == Andencento.uid:
-            reply_pop_up_alert = "This is for other users!"
-            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
-        else:
-            await event.edit(
-                f"Ahh!! You here to do chit-chat!!\n\nPlease wait for {Eiva_mention} to come. Till then keep patience and don't spam."
-            )
-            target = await event.client(GetFullUserRequest(event.query.user_id))
-            ok = event.query.user_id
-            first_name = html.escape(target.user.first_name)
-            if first_name is not None:
-                first_name = first_name.replace("\u2060", "")
-            tosend = f"**👀 Hey {Eiva_mention} !!** \n\n⚜️ You Got A PM from  [{first_name}](tg://user?id={ok})  for random chats!!"
-            await bot.send_message(LOG_GP, tosend)
-
-
-    @tgbot.on(callbackquery.CallbackQuery(data=compile(b"heheboi")))
-    async def on_pm_click(event):
-        if event.query.user_id == Andencento.uid:
-            reply_pop_up_alert = "This is for other users!"
-            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
-        else:
-            await event.edit(
-                f"🥴 **Bohot Ho gya\nPehli fursat me nikal**"
-            )
-            await bot(functions.contacts.BlockRequest(event.query.user_id))
-            target = await event.client(GetFullUserRequest(event.query.user_id))
-            ok = event.query.user_id
-            first_name = html.escape(target.user.first_name)
-            if first_name is not None:
-                first_name = first_name.replace("\u2060", "")
-            first_name = html.escape(target.user.first_name)
-            await bot.send_message(
-                LOG_GP,
-                f"**Blocked**  [{first_name}](tg://user?id={ok}) \n\nReason:- Spam",
-            )
-
-
-    @tgbot.on(callbackquery.CallbackQuery(data=compile(b"unmute")))
-    async def on_pm_click(event):
-        hunter = (event.data_match.group(1)).decode("UTF-8")
-        Eiva = hunter.split("+")
-        if not event.sender_id == int(Eiva[0]):
-            return await event.answer("This Ain't For You!!", alert=True)
-        try:
-            await bot(GetParticipantRequest(int(Eiva[1]), int(Eiva[0])))
-        except UserNotParticipantError:
-            return await event.answer(
-                "You need to join the channel first.", alert=True
-            )
-        await bot.edit_permissions(
-            event.chat_id, int(Eiva[0]), send_message=True, until_date=None
-        )
-        await event.edit("Yay! You can chat now !!")
-
-
-    @tgbot.on(callbackquery.CallbackQuery(data=compile(b"reopen")))
-    async def reopn(event):
-            if event.query.user_id == Andencento.uid or event.query.user_id in Config.SUDO_USERS:
-                current_page_number=0
-                simp = button(current_page_number, CMD_HELP)
-                veriler = button(0, sorted(CMD_HELP))
-                apn = []
-                for x in CMD_LIST.values():
-                    for y in x:
-                        apn.append(y)
-                await event.edit(
-                    f"🔰 **{Eiva_mention}**\n\n📜 __No.of Plugins__ : `{len(CMD_HELP)}` \n🗂️ __Commands__ : `{len(apn)}`\n🗒️ __Page__ : 1/{veriler[0]}",
-                    buttons=simp[1],
-                    link_preview=False,
-                )
-            else:
-                reply_pop_up_alert = "Hoo gya aapka. Kabse tapar tapar dabae jaa rhe h. Khudka bna lo na agr chaiye to. © ΣIVΛBθƬ ™"
-                await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
-        
-
-    @tgbot.on(callbackquery.CallbackQuery(data=compile(b"close")))
-    async def on_plug_in_callback_query_handler(event):
-        if event.query.user_id == Andencento.uid or event.query.user_id in Config.SUDO_USERS:
-            veriler = custom.Button.inline(f"{Eiva_emoji} Re-Open Menu {Eiva_emoji}", data="reopen")
-            await event.edit(f"**⚜️ ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ᴍᴇɴᴜ ᴄʟᴏꜱᴇᴅ⚜️**\n\n**Bot Of :**  {Eiva_mention}\n\n        [©️ ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ™️]({chnl_link})", buttons=veriler, link_preview=False)
-        else:
-            reply_pop_up_alert = "Get Your Own Extre. © ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ™"
-            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
-   
-
-    @tgbot.on(callbackquery.CallbackQuery(data=compile(b"page\((.+?)\)")))
-    async def page(event):
-        page = int(event.data_match.group(1).decode("UTF-8"))
-        veriler = button(page, CMD_HELP)
-        apn = []
-        for x in CMD_LIST.values():
-            for y in x:
-                apn.append(y)
-        if event.query.user_id == Andencento.uid or event.query.user_id in Config.SUDO_USERS:
-            await event.edit(
-                f"🔰 **{Eiva_mention}**\n\n📜 __No.of Plugins__ : `{len(CMD_HELP)}`\n🗂️ __Commands__ : `{len(apn)}`\n🗒️ __Page__ : {page + 1}/{veriler[0]}",
-                buttons=veriler[1],
-                link_preview=False,
-            )
-        else:
-            return await event.answer(
-                "Get Your Own Extre. © ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ™",
-                cache_time=0,
-                alert=True,
-            )
-
-
-    @tgbot.on(
-        callbackquery.CallbackQuery(data=compile(b"Information\[(\d*)\]\((.*)\)"))
-    )
-    async def Information(event):
-        page = int(event.data_match.group(1).decode("UTF-8"))
-        commands = event.data_match.group(2).decode("UTF-8")
-        try:
-            buttons = [
-                custom.Button.inline(
-                    cmd[0] + " ", data=f"commands[{commands}[{page}]]({cmd[0]})"
-                )
-                for cmd in CMD_HELP_BOT[commands]["commands"].items()
-            ]
-        except KeyError:
-            return await event.answer(
-                "No Description is written for this plugin", cache_time=0, alert=True
-            )
-
-        buttons = [buttons[i : i + 2] for i in range(0, len(buttons), 2)]
-        buttons.append([custom.Button.inline(f"{Eiva_emoji} Main Menu {Eiva_emoji}", data=f"page({page})")])
-        if event.query.user_id == Andencento.uid or event.query.user_id in Config.SUDO_USERS:
-            await event.edit(
-                f"**📗 File :**  `{commands}`\n**🔢 Number of commands :**  `{len(CMD_HELP_BOT[commands]['commands'])}`",
-                buttons=buttons,
-                link_preview=False,
-            )
-        else:
-            return await event.answer(
-                "Get Your own Andencento UB © @AndencentoSupport ™",
-                cache_time=0,
-                alert=True,
-            )
-
-
-    @tgbot.on(
-        callbackquery.CallbackQuery(data=compile(b"commands\[(.*)\[(\d*)\]\]\((.*)\)"))
-    )
-    async def commands(event):
-        cmd = event.data_match.group(1).decode("UTF-8")
-        page = int(event.data_match.group(2).decode("UTF-8"))
-        commands = event.data_match.group(3).decode("UTF-8")
-        result = f"**📗 File :**  `{cmd}`\n"
-        if CMD_HELP_BOT[cmd]["info"]["info"] == "":
-            if not CMD_HELP_BOT[cmd]["info"]["warning"] == "":
-                result += f"**⚠️ Warning :**  {CMD_HELP_BOT[cmd]['info']['warning']}\n\n"
-        else:
-            if not CMD_HELP_BOT[cmd]["info"]["warning"] == "":
-                result += f"**⚠️ Warning :**  {CMD_HELP_BOT[cmd]['info']['warning']}\n"
-            result += f"**ℹ️ Info :**  {CMD_HELP_BOT[cmd]['info']['info']}\n\n"
-        command = CMD_HELP_BOT[cmd]["commands"][commands]
-        if command["params"] is None:
-            result += f"**🛠 Commands :**  `{HANDLER[:1]}{command['command']}`\n"
-        else:
-            result += f"**🛠 Commands :**  `{HANDLER[:1]}{command['command']} {command['params']}`\n"
-        if command["example"] is None:
-            result += f"**💬 Explanation :**  `{command['usage']}`\n\n"
-        else:
-            result += f"**💬 Explanation :**  `{command['usage']}`\n"
-            result += f"**⌨️ For Example :**  `{HANDLER[:1]}{command['example']}`\n\n"
-        if event.query.user_id == Andencento.uid or event.query.user_id in Config.SUDO_USERS:
-            await event.edit(
-                result,
-                buttons=[
-                    custom.Button.inline(f"{Eiva_emoji} Return {Eiva_emoji}", data=f"Information[{page}]({cmd})")
-                ],
-                link_preview=False,
-            )
-        else:
-            return await event.answer(
-                "Get Your own Andencento UB © @AndencentoSupport ™",
-                cache_time=0,
-                alert=True,
-            )
+    else:
+        pairs = pairs[
+            modulo_page * number_of_rows : number_of_rows * (modulo_page + 1)
+        ] + [(Button.inline("« Bᴀᴄᴋ »", data="open"),)]
+    return pairs
