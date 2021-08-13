@@ -28,7 +28,7 @@ async def cmd_list(event):
                         allow_cache=False,
                         caption="**COMMANDS**",
                         reply_to_id = event.message,
-                        reply_to=reply_to_id,
+                        reply_to=event.message,
                     )
                     await event.delete()
             else:
