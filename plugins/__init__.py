@@ -3,6 +3,7 @@
 import asyncio
 import os
 from telethon import TelegramClient
+extremepro_version = "0.1"
 from telethon.sessions import StringSession
 from Extre.connections import client_connection, redis_connection
 from Extre import *
