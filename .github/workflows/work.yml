@@ -18,9 +18,9 @@ jobs:
 
         with:
 
-          find: "bot.add"
+          find: "tgclient"
 
-          replace: "client.add"
+          replace: "tgbot"
 
       - name: Create Pull Request
 
