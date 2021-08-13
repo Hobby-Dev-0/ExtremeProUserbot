@@ -29,11 +29,11 @@ PMSECURITY = os.environ.get("PMSECURITY", None)
 bot = Andencento
 uptime = "dekhna jaruri hai kya"
 
-Eiva_USER = Andencento.me.first_name
-ForGo10God = Andencento.uid
+Eiva_USER = client.me.first_name
+ForGo10God = client.uid
 Eiva_mention = f"[{Eiva_USER}](tg://user?id={ForGo10God})"
 
-Andencento_USER = bot.me.first_name
+Andencento_USER = client.me.first_name
 Andencento_mention = f"[{Andencento_USER}](tg://user?id={ForGo10God})"
 hl = os.environ.get("HANDLER", None) or "."
 shl = os.environ.get("SUDO_HANDLER", None) or "."
