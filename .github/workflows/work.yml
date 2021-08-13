@@ -18,9 +18,9 @@ jobs:
 
         with:
 
-          find: "uniborg.util"
+          find: "Andencento.on"
 
-          replace: "Extre.utils"
+          replace: "client.on"
 
       - name: Create Pull Request
 
