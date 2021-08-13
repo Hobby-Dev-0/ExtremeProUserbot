@@ -9,7 +9,7 @@ from userbot import CMD_LIST
 from . import *
 
 Andencento_pic = (
-    Config.PMPERMIT_PIC or "https://telegra.ph/file/ac32724650ef92663fbd1.png"
+    ExtremedB.get("ALIVE_PIC") or "https://telegra.ph/file/ac32724650ef92663fbd1.png"
 )
 cstm_pmp = Config.CUSTOM_PMPERMIT
 ALV_PIC = Config.ALIVE_PIC
