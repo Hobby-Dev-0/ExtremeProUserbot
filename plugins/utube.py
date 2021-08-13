@@ -91,7 +91,7 @@ NOT_FOUND_STRING = "<code>Sorry !I am unable to find any results to your query</
 SENDING_STRING = "<code>Ok I found something related to that.....</code>"
 BOT_BLOCKED_STRING = "<code>Please unblock @utubebot and try again</code>"
 
-@Andencento.on(admin_cmd(pattern="ut ?(.*)"))
+@client.on(admin_cmd(pattern="ut ?(.*)"))
 async def fetcher(event):
     if event.fwd_from:
         return

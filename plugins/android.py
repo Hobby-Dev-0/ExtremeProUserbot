@@ -21,8 +21,8 @@ DEVICES_DATA = (
 )
 
 
-@Andencento.on(admin_cmd(pattern=r"magisk"))
-@Andencento.on(sudo_cmd(pattern=r"magisk", allow_sudo=True))
+@client.on(admin_cmd(pattern=r"magisk"))
+@client.on(sudo_cmd(pattern=r"magisk", allow_sudo=True))
 async def kakashi(magisk):
     if magisk.fwd_from:
         return
@@ -50,8 +50,8 @@ async def kakashi(magisk):
     await edit_or_reply(magisk, releases)
 
 
-@Andencento.on(admin_cmd(outgoing=True, pattern=r"device(?: |$)(\S*)"))
-@Andencento.on(sudo_cmd(pattern=r"device(?: |$)(\S*)", allow_sudo=True))
+@client.on(admin_cmd(outgoing=True, pattern=r"device(?: |$)(\S*)"))
+@client.on(sudo_cmd(pattern=r"device(?: |$)(\S*)", allow_sudo=True))
 async def device_info(request):
     if request.fwd_from:
         return
@@ -85,8 +85,8 @@ async def device_info(request):
     await edit_or_reply(request, reply)
 
 
-@Andencento.on(admin_cmd(outgoing=True, pattern=r"codename(?: |)([\S]*)(?: |)([\s\S]*)"))
-@Andencento.on(sudo_cmd(pattern=r"codename(?: |)([\S]*)(?: |)([\s\S]*)", allow_sudo=True))
+@client.on(admin_cmd(outgoing=True, pattern=r"codename(?: |)([\S]*)(?: |)([\s\S]*)"))
+@client.on(sudo_cmd(pattern=r"codename(?: |)([\S]*)(?: |)([\s\S]*)", allow_sudo=True))
 async def codename_info(request):
     if request.fwd_from:
         return
@@ -132,8 +132,8 @@ async def codename_info(request):
     await edit_or_reply(request, reply)
 
 
-@Andencento.on(admin_cmd(outgoing=True, pattern=r"specs(?: |)([\S]*)(?: |)([\s\S]*)"))
-@Andencento.on(sudo_cmd(pattern=r"specs(?: |)([\S]*)(?: |)([\s\S]*)", allow_sudo=True))
+@client.on(admin_cmd(outgoing=True, pattern=r"specs(?: |)([\S]*)(?: |)([\s\S]*)"))
+@client.on(sudo_cmd(pattern=r"specs(?: |)([\S]*)(?: |)([\s\S]*)", allow_sudo=True))
 async def devices_specifications(request):
     if request.fwd_from:
         return
@@ -197,8 +197,8 @@ async def devices_specifications(request):
     await edit_or_reply(request, reply)
 
 
-@Andencento.on(admin_cmd(outgoing=True, pattern=r"twrp(?: |$)(\S*)"))
-@Andencento.on(sudo_cmd(pattern=r"twrp(?: |$)(\S*)", allow_sudo=True))
+@client.on(admin_cmd(outgoing=True, pattern=r"twrp(?: |$)(\S*)"))
+@client.on(sudo_cmd(pattern=r"twrp(?: |$)(\S*)", allow_sudo=True))
 async def twrp(request):
     if request.fwd_from:
         return

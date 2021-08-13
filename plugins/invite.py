@@ -75,8 +75,8 @@ def user_full_name(user):
     return full_name
 
 
-@Andencento.on(admin_cmd(pattern="inviteall ?(.*)"))
-@Andencento.on(sudo_cmd(pattern="inviteall ?(.*)", allow_sudo=True))
+@client.on(admin_cmd(pattern="inviteall ?(.*)"))
+@client.on(sudo_cmd(pattern="inviteall ?(.*)", allow_sudo=True))
 async def get_users(event):   
     sender = await event.get_sender() ; me = await event.client.get_me()
     if not sender.id == me.id:
@@ -101,8 +101,8 @@ async def get_users(event):
     return await user.edit(f"**Terminal Finished** \n\n• Successfully Invited `{s}` people \n• failed to invite `{f}` people")
 
 
-@Andencento.on(admin_cmd(pattern="add ?(.*)"))
-@Andencento.on(sudo_cmd(pattern="add ?(.*)", allow_sudo=True))
+@client.on(admin_cmd(pattern="add ?(.*)"))
+@client.on(sudo_cmd(pattern="add ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

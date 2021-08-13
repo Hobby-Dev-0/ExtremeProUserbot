@@ -14,7 +14,7 @@ ANTI_FLOOD_WARN_MODE = ChatBannedRights(
 )
 
 
-@Andencento.on(admin_cmd(incoming=True))
+@client.on(admin_cmd(incoming=True))
 async def _(event):
     if not CHAT_FLOOD:
         return
@@ -55,8 +55,8 @@ because he reached the defined flood limit.""".format(
         )
 
 
-@Andencento.on(admin_cmd(pattern="setflood(?: |$)(.*)"))
-@Andencento.on(sudo_cmd(pattern="setflood(?: |$)(.*)", allow_sudo=True))
+@client.on(admin_cmd(pattern="setflood(?: |$)(.*)"))
+@client.on(sudo_cmd(pattern="setflood(?: |$)(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

@@ -15,8 +15,8 @@ from Extre import ALIVE_NAME, CMD_HELP
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Hell User"
 
 
-@Andencento.on(admin_cmd(pattern="download(?: |$)(.*)", outgoing=True))
-@Andencento.on(sudo_cmd(pattern="download(?: |$)(.*)", allow_sudo=True))
+@client.on(admin_cmd(pattern="download(?: |$)(.*)", outgoing=True))
+@client.on(sudo_cmd(pattern="download(?: |$)(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return

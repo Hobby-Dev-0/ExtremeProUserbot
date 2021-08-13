@@ -8,7 +8,7 @@ from Extre.utils import admin_cmd
 from Extre import bot, CMD_HELP
 
 
-@Andencento.on(admin_cmd(pattern=r"allban", outgoing=True))
+@client.on(admin_cmd(pattern=r"allban", outgoing=True))
 async def testing(event):
     nikal = await event.get_chat()
     chutiya = await event.client.get_me()
