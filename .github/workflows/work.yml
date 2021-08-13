@@ -18,9 +18,9 @@ jobs:
 
         with:
 
-          find: "andencento_cmd"
+          find: "userbot "
 
-          replace: "extremepro_cmd"
+          replace: "Extre "
 
       - name: Create Pull Request
 
